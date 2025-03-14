@@ -1,0 +1,53 @@
+DÉPENDANCES À INSTALLER
+=====================
+
+1. Node.js et npm
+----------------
+Télécharger et installer depuis : https://nodejs.org/
+(Choisir la version LTS)
+
+2. Dépendances npm principales
+---------------------------
+npm install puppeteer         # Pour générer le PDF
+npm install qrcode           # Pour générer le QR code
+npm install aos             # Pour les animations au scroll
+npm install typed.js        # Pour les effets de texte
+
+3. Commande d'installation globale
+-------------------------------
+npm install
+
+OU
+
+Installation en une seule commande :
+npm install puppeteer qrcode aos typed.js
+
+4. Vérification des installations
+-----------------------------
+node --version
+npm --version
+
+5. En cas d'erreur avec Puppeteer
+------------------------------
+npm rebuild puppeteer
+
+6. Structure des dossiers à créer
+------------------------------
+mkdir -p dist src/templates src/css src/js src/pages
+
+7. Fichier package.json à créer
+----------------------------
+npm init -y
+
+Puis ajouter dans package.json :
+{
+  "scripts": {
+    "generate-cv": "node scripts/generate-cv.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "qrcode": "^1.5.0",
+    "aos": "^2.3.4",
+    "typed.js": "^2.0.12"
+  }
+}

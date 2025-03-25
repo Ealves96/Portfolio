@@ -50,7 +50,7 @@ nav a {
 }
 
 nav a:hover {
-    background: #45a049;
+    background: var(--accent-color);
 }
 
 /* Typography */
@@ -72,7 +72,7 @@ h3 {
 
 /* Color scheme */
 a {
-    color: #4CAF50;
+    color:  var(--accent-color);
 }
 
 a:hover {
@@ -156,7 +156,7 @@ footer {
     position: absolute;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, var(--primary-color), transparent);
+    background: radial-gradient(circle, var(--accent-color), transparent);
     filter: blur(100px);
     opacity: 0.5;
     animation: float 6s ease-in-out infinite;
@@ -199,7 +199,7 @@ footer {
 
 .skill {
     height: 4px;
-    background: var(--primary-color);
+    background: var(--accent-color);
     margin: 1rem 0;
     position: relative;
     animation: fillSkill 1.5s ease-out forwards;

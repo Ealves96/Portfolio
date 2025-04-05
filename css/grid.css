@@ -96,6 +96,6 @@
         padding: 10px;
     }
     .project-title-overlay {
-        font-size: 1em; /* Titre plus petit sur mobile */
+        font-size: 13px; /* Titre plus petit sur mobile */
     }
 }

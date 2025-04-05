@@ -51,7 +51,7 @@
         gap: 5px; /* Réduit l'écart */
     }
     .tab-item {
-        font-size: 14px; /* Icônes ou texte plus grand sur mobile */
+        font-size: 12px; /* Icônes ou texte plus grand sur mobile */
         letter-spacing: 0;
         text-transform: none; /* Pas forcément majuscule sur mobile */
         flex-grow: 1; /* Les onglets prennent la même largeur */

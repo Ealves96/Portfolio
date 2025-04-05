@@ -62,9 +62,9 @@
     padding-top: 10px;
 }
 
-.profile-username-mobile {
-    display: none;
-}
+.profile-username-mobile { display: none; }
+/* Cacher les boutons mobiles par défaut */
+.profile-actions-mobile { display: none; }
 
 .profile-username-desktop {
     /* display: block; ou hériter */
@@ -77,6 +77,9 @@
     align-items: center;
     margin-bottom: 10px; /* Espace avant les boutons */
 }
+
+.profile-top-bar .profile-actions-desktop { 
+    display: flex; /* Assure visibilité desktop */ }
 
 .profile-username { 
     margin-right: 20px; 
@@ -162,8 +165,8 @@
     /* === Réorganisation MAJEURE ici === */
     .profile-header-top {
         display: flex;
-        flex-direction: column; /* Empiler photo et infos */
-        align-items: flex-start; /* Aligner à gauche */
+        flex-direction: row; /* Empiler photo et infos */
+        align-items: center; /* Aligner à gauche */
         width: 100%;
         padding: 0 15px; /* Padding latéral */
         margin-bottom: 15px;
@@ -171,10 +174,10 @@
     }
 
     .profile-pic-container {
-        width: 80px;
-        height: 80px;
-        margin-bottom: 15px; /* Espace sous la photo */
-        margin-right: 0;
+        width: 90px; /* Taille photo réduite */
+        height: 90px;
+        flex-shrink: 0;
+        margin: 0 20px 0 0; /* Marge droite seulement */
     }
 
     .profile-pic-border-wrapper {
@@ -183,46 +186,75 @@
 
     /* 3. Conteneur pour Nom/Stats/Bio/Boutons à droite */
     .profile-info-top {
-        width: 100%; /* Prend toute la largeur */
-        padding: 0;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column; /* Les stats s'empileront ici */
+        padding: 0; /* Annuler padding interne précédent */
+        width: auto; /* Prend l'espace restant */
     }
 
+    
+    .profile-stats {
+        order: 1; /* En premier dans cette colonne */
+        width: 100%; /* Prend la largeur de la colonne droite */
+        display: flex;
+        flex-direction: row; /* <<-- STATS EN LIGNE */
+        justify-content: space-around; /* <<-- Répartir les stats dans l'espace dispo */
+        gap: 15px; /* Espace entre les stats */
+        padding: 0; /* <<-- PAS de padding vertical */
+        border: none; /* <<-- PAS de bordures */
+        margin: 0; /* <<-- PAS de marges */
+        font-size: 14px;
+        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace manque */
+    }
+    
+    .profile-stats li {
+        display: flex;
+        flex-direction: column; /* Nombre au dessus du label */
+        align-items: center; /* Centrer Nombre et Label */
+        line-height: 1.2;
+        text-align: center; /* Centrer le texte */
+    }
+    .stat-number {
+        font-weight: 600;
+        font-size: 15px; /* Légèrement plus grand */
+    }
+    .stat-label {
+        color: var(--secondary-text-color);
+        font-size: 13px;
+        display: block; /* S'assure qu'il est sous le nombre */
+        margin: 0; /* Annuler marge gauche précédente */
+    }
+    
     /* 4. Barre du Nom (dans info-top) */
     .profile-top-bar {
         margin-bottom: 15px; /* Espace avant stats */
         /* Pas besoin de display flex si on ne veut que les boutons */
     }
 
-    .profile-top-bar .profile-actions-desktop {
-         display: flex; /* Afficher les boutons ici */
-         width: 100%;
-         gap: 8px;
-         margin-left: 0; /* Annuler la marge auto desktop */
-     }
-     .profile-top-bar .profile-actions-desktop .button {
-         flex-grow: 1;
-     }
-
-
-    .profile-stats {
-        display: flex;
-        justify-content: space-around; /* Répartir les stats */
-        width: 100%;
-        padding: 10px 0;
-        border-top: 1px solid var(--border-color);
-        border-bottom: 1px solid var(--border-color);
-        margin-bottom: 15px;
-        font-size: 14px;
-        gap: 10px; /* Réduire gap mobile */
-    }
-    /* Styles stats li/number/label peuvent être simplifiés */
-
-
     .profile-bio-section-desktop {
-        padding: 0;
-        width: 100%;
+        order: 2; /* Après les stats DANS la colonne .profile-info-top */
+        width: 100%; /* Prend toute la largeur */
+        padding: 0 15px; /* Padding G/D global */
+        margin-top: 15px; /* Espace après la ligne Photo/Stats */
+        box-sizing: border-box;
     }
-     /* Styles internes bio ... */
+
+    .profile-info-top > .profile-actions-desktop {
+        order: 3; /* Après la bio */
+        display: flex;
+        width: 100%;
+        padding: 0 15px; /* Padding G/D global */
+        margin-top: 15px;
+        gap: 8px;
+        box-sizing: border-box;
+    }
+
+    .profile-info-top > .profile-actions-desktop .button {
+        flex-grow: 1;
+    }
 
 
-} 
+    /* Nettoyage */
+    .settings-icon { display: none; }
+}

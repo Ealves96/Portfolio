@@ -1,0 +1,19 @@
+{
+  "name": "mon-portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js", 
+  "scripts": {
+    "build:html": "posthtml index.html -o dist/index.html -c posthtml.config.js",
+    "copy:assets": "cp -R css js img partials dist/", 
+    "build": "rm -rf dist && mkdir dist && npm run build:html && npm run copy:assets" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "posthtml": "^0.16.6", 
+    "posthtml-cli": "^0.10.0",
+    "posthtml-include": "^1.7.4"
+  }
+}

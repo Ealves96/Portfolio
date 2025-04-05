@@ -1,0 +1,101 @@
+/* Styles pour la grille de projets */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding-top: 20px;
+}
+
+.project-item {
+    position: relative;
+    aspect-ratio: 12 / 16;
+    overflow: hidden;
+    cursor: pointer;
+    display: block;
+    background-color: #eee; /* Garder un fond pendant le chargement ou si image échoue */
+    /* border-radius: 4px; Optionnel: coins arrondis */
+    transition: filter 0.2s ease; /* Pour un effet de survol subtil */
+    background-size: cover; 
+    background-position: center center;
+    background-repeat: no-repeat; 
+}
+
+/* Cacher l'image placeholder (ou la laisser en arrière-plan si souhaité) */
+/* Option 1: La cacher complètement */
+.project-item img {
+   display: none;
+}
+
+/* L'overlay est maintenant visible par défaut */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* --- Style du fond --- */
+    /* Choisissez une couleur unie... */
+    /* background-color: #333; */
+    /* ...ou un dégradé */
+    /* background-color: rgba(51, 51, 51, 0.7);  */
+    background: linear-gradient(135deg, rgba(242, 199, 234, 0.75), rgba(138, 57, 214, 0.75)); /* Exemple de dégradé violet */
+    /* ...ou une image de fond répétée/fixe si vous préférez */
+    /* background-image: url('../images/fond_pattern.png'); */
+
+    color: white; /* Couleur du texte (nom du projet) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrage horizontal */
+    justify-content: center; /* Centrage vertical */
+    text-align: center;
+    padding: 15px; /* Espace autour du texte */
+
+    opacity: 1; /* Visible par défaut (au lieu de 0) */
+    transition: opacity 0.3s ease, background 0.3s ease; /* Garder une transition si on change l'opacité au survol */
+    pointer-events: none; /* L'overlay lui-même n'intercepte pas le clic (le <a> parent le fait) */
+}
+
+.project-title-overlay {
+    font-weight: bold;
+    font-size: 1.3em; /* Ajustez la taille si besoin */
+    line-height: 1.3;
+    /* Gérer les textes longs */
+    max-height: 100%; /* Limite la hauteur au cas où */
+    overflow: hidden; /* Cache le texte qui dépasse */
+     /* Optionnel: Pour couper le texte avec "..." si trop long sur plusieurs lignes (nécessite ajustements)*/
+    /* display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; */
+    word-break: break-word; /* Permet de couper les mots longs si nécessaire */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Nouvel effet de survol (Optionnel) --- */
+/* On peut appliquer un effet subtil sur l'item entier au lieu de l'ancien zoom/fade */
+.project-item:hover {
+   filter: brightness(1.1); /* Éclaircit légèrement l'ensemble */
+   /* Ou assombrir: filter: brightness(0.9); */
+}
+
+/* Supprimer les anciens styles de survol spécifiques à l'overlay/image */
+/* .project-item:hover .project-overlay { ... } */ /* Plus nécessaire pour afficher l'overlay */
+/* .project-item:hover img { ... } */ /* Plus nécessaire pour le zoom */
+
+
+/* Classe pour masquer les projets non sélectionnés (reste inchangée) */
+.project-item.hidden {
+    display: none;
+}
+
+/* --- Responsive (reste similaire) --- */
+@media (max-width: 768px) {
+    .project-grid {
+        gap: 3px;
+    }
+    .project-overlay {
+        padding: 10px;
+    }
+    .project-title-overlay {
+        font-size: 1em; /* Titre plus petit sur mobile */
+    }
+}

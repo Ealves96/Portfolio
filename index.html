@@ -1,245 +1,43 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
-
-    <!-- === GOOGLE FONT (Pacifico) === -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
-    <!-- === BIBLIOTHÈQUE D'ICÔNES (Font Awesome) === -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- === Favicon === -->
-    <link rel="icon" href="img/logo.ico" type="image/x-icon" sizes="32x32"> <!-- Correction type MIME -->
-
-    <!-- === Inclusion des fichiers CSS === -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/sidebar.css"> <!-- << NOUVEAU CSS pour la sidebar -->
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/highlights.css">
-    <link rel="stylesheet" href="css/tabs.css">
-    <link rel="stylesheet" href="css/grid.css">
-    <link rel="stylesheet" href="css/project-modal.css">
-    <!-- Optionnel: <link rel="stylesheet" href="css/responsive.css"> -->
-
+    <!-- Inclut le contenu de _head.html -->
+    <include src="partials/_head.html"></include>
 </head>
 <body>
 
     <!-- ======================= Nouvelle Structure Globale ======================= -->
     <div class="app-layout">
 
-        <!-- ======================= Sidebar (Nouvelle Section) ======================= -->
-        <aside class="sidebar">
-            <div class="sidebar-content"> <!-- Conteneur interne pour flex column -->
+        <!-- === Inclusion Sidebar === -->
+        <include src="partials/_sidebar.html"></include>
 
-                <!-- Logo/Titre -->
-                <h1 class="sidebar-logo">
-                    <span class="logo-icon"></span> <!-- Icône exemple -->
-                    <span class="logo-text">Portfolio</span>
-                </h1>
-
-                <!-- Navigation Principale -->
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li>
-                            <a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub">
-                                <i class="fab fa-github fa-fw"></i>
-                                <span class="nav-text">GitHub</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:ealves0996@gmail.com" title="Contactez-moi par Email">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <span class="nav-text">Email</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                                <i class="fab fa-linkedin fa-fw"></i>
-                                <span class="nav-text">LinkedIn</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" id="messages-link" title="Messages (Fonctionnalité à venir)">
-                                <i class="fa-solid fa-paper-plane fa-fw"></i>
-                                <span class="nav-text">Messages</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <!-- Paramètres / Actions du bas -->
-                <div class="sidebar-settings">
-                     <a href="#" id="settings-link" title="Paramètres / Thème">
-                        <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
-                        <span class="nav-text">Apparence</span>
-                    </a>
-                     <!-- Le bouton thème séparé n'est plus nécessaire ici si on clique sur settings -->
-                     <!-- <a href="#" id="theme-toggle" title="Changer le thème" style="display: none;"> ... </a> -->
-                </div>
-
-            </div> <!-- Fin sidebar-content -->
-        </aside> <!-- Fin sidebar -->
-
-        <!-- ======================= Contenu Principal (Ancien contenu déplacé ici) ======================= -->
+        <!-- ======================= Contenu Principal ======================= -->
         <main class="main-content">
-            <div class="profile-container"> 
-                <!-- ======================= Header Section (Contenu inchangé) ======================= -->
-                <header class="profile-header-desktop">
-                    <div class="profile-header-top">
-                        <!-- === LA PHOTO EST CORRECTEMENT PLACÉE ICI === -->
-                        <div class="profile-pic-container">
-                            <div class="profile-pic-border-wrapper">
-                                <img src="img/photo cv.jpg" alt="Photo de profil">
-                            </div>
-                        </div>
-                        <div class="profile-info-top">
-                            <div class="profile-top-bar">
-                                 <h2 class="profile-username">Elisabeth Alves</h2>
-                                 <div class="profile-actions-desktop">
-                                     <a href="#" class="button">Contactez-moi</a>
-                                     <a href="#" class="button">Mon CV</a>
-                                 </div>
-                                 <!-- <span class="settings-icon">⚙️</span> L'icône est maintenant dans la sidebar -->
-                            </div>
-                            <ul class="profile-stats">
-                                <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
-                                <li><span class="stat-number">15</span> <span class="stat-label">Compétences</span></li>
-                                <li><span class="stat-number">2+</span> <span class="stat-label">Ecole 42</span></li>
-                            </ul>
-                            <div class="profile-bio-section-desktop">
-                                 <p class="profile-real-name">Developpeur Front-end</p>
-                                 <div class="profile-bio">
-                                     <!-- <p>Développeur / Ingénieur [Votre Domaine]</p> -->
-                                     <p>Bienvenue sur mon Portfolio</p>
-                                     <!-- <p>LinkedIn: <a href="VOTRE_LIEN_LINKEDIN">Votre Profil LinkedIn</a></p>  -->
-                                     <!-- <p>GitHub: <a href="https://github.com/VOTRE_PSEUDO">Votre Profil GitHub</a></p>  -->
-                                 </div>
-                            </div>
-                        </div> <!-- Fin profile-info-top -->
-                    </div> <!-- Fin profile-header-top -->
-                </header>
+            <div class="profile-container">
 
-                <!-- ================== Highlights Section (Contenu inchangé) ================== -->
-                <section class="highlights-section">
-                    <ul class="highlights-list">
-                       <li class="highlight-item">
-                           <!-- WRAPPER AUTOUR DU CERCLE -->
-                           <div class="highlight-border-wrapper">
-                               <div class="highlight-circle">
-                                   <span class="highlight-placeholder">💼</span>
-                               </div>
-                           </div>
-                           <p class="highlight-title">Expériences</p>
-                       </li>
-                       <li class="highlight-item">
-                            <!-- WRAPPER AUTOUR DU CERCLE -->
-                           <div class="highlight-border-wrapper">
-                               <div class="highlight-circle">
-                                   <span class="highlight-placeholder">💡</span>
-                               </div>
-                           </div>
-                           <p class="highlight-title">Compétences</p>
-                       </li>
-                       <li class="highlight-item">
-                            <!-- WRAPPER AUTOUR DU CERCLE -->
-                           <div class="highlight-border-wrapper">
-                               <div class="highlight-circle">
-                                   <span class="highlight-placeholder">🎓</span>
-                               </div>
-                           </div>
-                           <p class="highlight-title">Diplômes</p>
-                       </li>
-                   </ul>
-               </section>
+                <!-- === Inclusion Header === -->
+                <include src="partials/_header.html"></include>
 
-                <!-- ==================== Tabs Section (Contenu inchangé) ==================== -->
-                <section class="tabs-section" aria-label="Catégories de projets">
-                     <ul class="tabs-list">
-                        <li class="tab-item active" data-category="frontend">Front-end</li>
-                        <li class="tab-item" data-category="backend">Back-end</li>
-                        <li class="tab-item" data-category="devops">DevOps</li>
-                        <li class="tab-item" data-category="network">Network</li>
-                        <li class="tab-item" data-category="data">Data Science</li>
-                    </ul>
-                </section>
+                <!-- === Inclusion Highlights === -->
+                <include src="partials/_highlights.html"></include>
 
-                <!-- ==================== Grid Section (Contenu inchangé) ==================== -->
-                <div class="project-grid" aria-live="polite"> <!-- Note: Changé de <main> à <div> car on a déjà <main> pour le contenu principal -->
-                    <!-- Projet 1 -->
-                    <a href="#" class="project-item" data-category="frontend" data-title="Transcendence" data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail" data-description="Un jeu de Pong multijoueur..." data-tech="NestJS, Vue.js..." data-github="https://github.com/votre_pseudo/transcendence" data-live="#" data-background-image="img/logo42.png">
-                        <!-- <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence"> -->
-                        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-                    </a>
-                    <a href="#" class="project-item" data-category="frontend" data-title="Transcendence" data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail" data-description="Un jeu de Pong multijoueur..." data-tech="NestJS, Vue.js..." data-github="https://github.com/votre_pseudo/transcendence" data-live="#" data-background-image="img/logo42.png">
-                        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence">
-                        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-                    </a>
-                    <a href="#" class="project-item" data-category="frontend" data-title="Transcendence" data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail" data-description="Un jeu de Pong multijoueur..." data-tech="NestJS, Vue.js..." data-github="https://github.com/votre_pseudo/transcendence" data-live="#" data-background-image="img/logo42.png">
-                        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence">
-                        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-                    </a>
-                    <!-- Projet 2 -->
-                    <a href="#" class="project-item" data-category="backend" data-title="Bibliothèque C Allocateur Mémoire" data-image="https://via.placeholder.com/600x400/4682B4/FFFFFF?text=Lib+Malloc+Detail" data-description="Une réimplémentation de malloc..." data-tech="C, Gestion Mémoire" data-github="https://github.com/votre_pseudo/libmalloc" data-live="">
-                        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Bibliothèque C">
-                        <div class="project-overlay"><span class="project-title-overlay">Lib Malloc C</span></div>
-                    </a>
-                    <!-- Projet 3 -->
-                     <a href="#" class="project-item" data-category="devops" data-title="Serveur IRC en C++" data-image="https://via.placeholder.com/600x400/8A2BE2/FFFFFF?text=IRC+Server+Detail" data-description="Un serveur IRC simple..." data-tech="C++, Sockets..." data-github="https://github.com/votre_pseudo/irc_server" data-live="">
-                        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Serveur IRC">
-                        <div class="project-overlay"><span class="project-title-overlay">Serveur IRC C++</span></div>
-                    </a>
-                    <!-- Projet 4 -->
-                     <a href="#" class="project-item" data-category="network" data-title="Pipeline CI/CD GitLab" data-image="https://via.placeholder.com/600x400/32CD32/FFFFFF?text=CI/CD+Pipeline+Detail" data-description="Configuration d'un pipeline CI/CD..." data-tech="GitLab CI, Docker..." data-github="https://github.com/votre_pseudo/cicd_example" data-live="">
-                        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Pipeline CI/CD">
-                        <div class="project-overlay"><span class="project-title-overlay">Pipeline CI/CD</span></div>
-                    </a>
-                    <!-- Projet 5 (Data) -->
-                     <a href="#" class="project-item" data-category="data" data-title="Analyse Données Ventes" data-image="https://via.placeholder.com/600x400/FF6347/FFFFFF?text=Data+Analysis+Detail" data-description="Analyse exploratoire et visualisation..." data-tech="Python, Pandas, Matplotlib" data-github="https://github.com/votre_pseudo/data_analysis" data-live="">
-                        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Analyse Données">
-                        <div class="project-overlay"><span class="project-title-overlay">Analyse Données Ventes</span></div>
-                    </a>
-                    <!-- Ajoutez d'autres projets si nécessaire -->
+                <!-- === Inclusion Tabs === -->
+                <include src="partials/_tabs.html"></include>
 
-                </div> <!-- Fin project-grid -->
+                <!-- === Inclusion Project Grid === -->
+                <include src="partials/_project-grid.html"></include>
 
-                <!-- ==================== Project Modal (Contenu inchangé) ==================== -->
-                <div id="projectModal" class="modal" style="display: none;">
-                     <div class="modal-content">
-                        <span class="close-button" id="closeModalButton" aria-label="Fermer">×</span>
-                        <h2 id="modalTitle">Titre du Projet</h2>
-                        <img src="https://via.placeholder.com/400x300" alt="Image du projet" class="modal-image" id="modalImage">
-                        <div class="modal-description">
-                            <h3>Description</h3>
-                            <p id="modalDescription">Description détaillée du projet...</p>
-                        </div>
-                        <div class="modal-tech">
-                             <h3>Technologies Utilisées</h3>
-                             <p id="modalTech">Tech 1, Tech 2, Tech 3</p>
-                        </div>
-                        <div class="modal-links">
-                            <a href="#" class="button modal-link" id="modalGithubLink" target="_blank" rel="noopener noreferrer" style="display: none;">Voir sur GitHub</a>
-                            <a href="#" class="button modal-link" id="modalLiveLink" target="_blank" rel="noopener noreferrer" style="display: none;">Démo Live</a>
-                        </div>
-                    </div>
-                </div>
+                <!-- === Inclusion Project Modal === -->
+                <include src="partials/_project-modal.html"></include>
 
             </div> <!-- Fin profile-container -->
-
         </main> <!-- Fin main-content -->
 
     </div> <!-- Fin app-layout -->
 
     <!-- ======================= Inclusion des fichiers JS ======================= -->
-    <script src="js/utils.js"></script> <!-- Si vous en avez un -->
-    <script src="js/modal.js"></script>
-    <script src="js/tabs.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/sidebar.js"></script> <!-- << NOUVEAU JS pour la sidebar/thème -->
+    <include src="partials/_scripts.html"></include>
 
 </body>
 </html>

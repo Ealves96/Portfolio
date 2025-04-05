@@ -25,6 +25,30 @@
     width: 150px;
     height: 150px;
 }
+
+.profile-pic-border-wrapper {
+    width: 100%; /* Prend la taille définie par .profile-pic-container */
+    height: 100%;
+    border-radius: 50%; /* Le rend circulaire */
+    /* === Appliquez VOTRE dégradé ici (le même que highlights/posts) === */
+    background: linear-gradient(135deg, #f2c7ea, #8a39d6);
+    padding: 3px; /* Épaisseur de l'espace + bordure. Ajustez si besoin. */
+    box-sizing: border-box; /* Important */
+    display: flex; /* Utile pour contenir/centrer l'image */
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-pic-border-wrapper img {
+    display: block; /* Comportement standard pour les images */
+    width: 100%;    /* Prend toute la place DANS le padding du wrapper */
+    height: 100%;
+    object-fit: cover; /* Assure que l'image remplit l'espace sans être déformée */
+    border-radius: 50%; /* Rend l'image elle-même ronde */
+    /* background-color: #eee; /* Optionnel: couleur de fond pendant chargement */
+    /* Pas de border: ici */
+}
+
 .profile-pic-container img {
     width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
     border: 1px solid var(--border-color);
@@ -118,6 +142,11 @@
         margin-right: 0; /* Annule marge droite desktop */
          margin-left: 0; /* Assure alignement gauche */
     }
+
+    .profile-pic-border-wrapper {
+        padding: 2px; /* Bordure peut-être plus fine sur mobile */
+    }
+
 
     /* La bio vient maintenant en premier visuellement SOUS la photo */
     .profile-bio-section-desktop {

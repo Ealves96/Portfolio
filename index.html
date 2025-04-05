@@ -87,15 +87,15 @@
 
         <!-- ======================= Contenu Principal (Ancien contenu déplacé ici) ======================= -->
         <main class="main-content">
-
-            <!-- VOTRE ANCIEN CONTENEUR EST MAINTENANT ICI -->
-            <div class="profile-container">
-
+            <div class="profile-container"> 
                 <!-- ======================= Header Section (Contenu inchangé) ======================= -->
                 <header class="profile-header-desktop">
                     <div class="profile-header-top">
+                        <!-- === LA PHOTO EST CORRECTEMENT PLACÉE ICI === -->
                         <div class="profile-pic-container">
-                            <img src="img/photo cv.jpg" alt="Photo de profil">
+                            <div class="profile-pic-border-wrapper">
+                                <img src="img/photo cv.jpg" alt="Photo de profil">
+                            </div>
                         </div>
                         <div class="profile-info-top">
                             <div class="profile-top-bar">
@@ -126,21 +126,36 @@
 
                 <!-- ================== Highlights Section (Contenu inchangé) ================== -->
                 <section class="highlights-section">
-                     <ul class="highlights-list">
-                        <li class="highlight-item">
-                            <div class="highlight-circle"><span class="highlight-placeholder">💼</span></div>
-                            <p class="highlight-title">Expériences</p>
-                        </li>
-                        <li class="highlight-item">
-                            <div class="highlight-circle"><span class="highlight-placeholder">💡</span></div>
-                            <p class="highlight-title">Compétences</p>
-                        </li>
-                        <li class="highlight-item">
-                            <div class="highlight-circle"><span class="highlight-placeholder">🎓</span></div>
-                            <p class="highlight-title">Diplômes</p>
-                        </li>
-                    </ul>
-                </section>
+                    <ul class="highlights-list">
+                       <li class="highlight-item">
+                           <!-- WRAPPER AUTOUR DU CERCLE -->
+                           <div class="highlight-border-wrapper">
+                               <div class="highlight-circle">
+                                   <span class="highlight-placeholder">💼</span>
+                               </div>
+                           </div>
+                           <p class="highlight-title">Expériences</p>
+                       </li>
+                       <li class="highlight-item">
+                            <!-- WRAPPER AUTOUR DU CERCLE -->
+                           <div class="highlight-border-wrapper">
+                               <div class="highlight-circle">
+                                   <span class="highlight-placeholder">💡</span>
+                               </div>
+                           </div>
+                           <p class="highlight-title">Compétences</p>
+                       </li>
+                       <li class="highlight-item">
+                            <!-- WRAPPER AUTOUR DU CERCLE -->
+                           <div class="highlight-border-wrapper">
+                               <div class="highlight-circle">
+                                   <span class="highlight-placeholder">🎓</span>
+                               </div>
+                           </div>
+                           <p class="highlight-title">Diplômes</p>
+                       </li>
+                   </ul>
+               </section>
 
                 <!-- ==================== Tabs Section (Contenu inchangé) ==================== -->
                 <section class="tabs-section" aria-label="Catégories de projets">

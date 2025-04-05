@@ -1,0 +1,219 @@
+/* css/sidebar.css */
+
+.sidebar {
+    width: var(--sidebar-width-wide);
+    height: 100vh; /* Toute la hauteur */
+    position: sticky; /* Colle au viewport lors du scroll */
+    top: 0;
+    left: 0;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-main);
+    padding: 8px 12px 20px 12px; /* haut, côtés, bas, côtés */
+    transition: width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+    display: flex; /* Permet au contenu interne de s'étirer */
+    flex-shrink: 0; /* Ne pas laisser la sidebar rétrécir */
+    z-index: 100; /* Au cas où */
+}
+
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Prend toute la hauteur de la sidebar */
+    overflow-y: auto; /* Scroll si contenu trop long */
+    overflow-x: hidden;
+}
+
+.sidebar-logo {
+    padding: 25px 12px 16px 12px; /* Espace autour du logo */
+    margin-bottom: 15px;
+    font-size: 20px; /* Ajustez */
+    font-weight: 600;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+}
+
+.logo-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px;
+    display: inline-block;
+    transition: margin 0.3s ease;
+}
+
+.logo-text {
+    display: inline-block;
+    font-family: 'Pacifico', cursive; 
+    font-size: 24px;
+    transition: opacity 0.1s ease; /* Transition rapide pour le texte */
+    opacity: 1;
+    white-space: nowrap; /* Empêche le retour à la ligne */
+}
+
+.sidebar-nav {
+    flex-grow: 1; /* Pousse les settings vers le bas */
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li a,
+.sidebar-settings a {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    color: var(--link-color-sidebar);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    font-size: 16px;
+    font-weight: 400; /* Normal pour les liens */
+}
+/* Style au survol */
+.sidebar-nav li a:hover,
+.sidebar-settings a:hover {
+    background-color: var(--hover-bg);
+}
+/* Style lien actif (optionnel) */
+.sidebar-nav li a.active {
+    font-weight: 600; /* Texte en gras */
+    /* background-color: var(--hover-bg); */ /* Ou un fond différent */
+}
+
+
+.sidebar-nav li a i,
+.sidebar-settings a i {
+    font-size: 20px; /* Taille icônes nav */
+    width: 28px; /* Largeur fixe pour alignement */
+    text-align: center;
+    margin-right: 16px; /* Espace entre icône et texte */
+    flex-shrink: 0;
+    transition: margin 0.3s ease;
+}
+
+.nav-text {
+    display: inline-block;
+    transition: opacity 0.1s ease;
+    opacity: 1;
+    white-space: nowrap;
+    overflow: hidden; /* Cache si ça dépasse (au cas où) */
+}
+
+.sidebar-settings {
+    margin-top: auto; /* Colle en bas si flex-grow sur nav n'est pas suffisant */
+    padding-top: 10px; /* Espace avant les settings */
+}
+
+/* --- Responsive Sidebar --- */
+
+/* --- Écran étroit (Sidebar Réduite) --- */
+@media (max-width: 1260px) { /* Doit correspondre au breakpoint de global.css */
+    .sidebar {
+        width: var(--sidebar-width-narrow);
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+    .sidebar-logo {
+        padding-left: 4px;
+        padding-right: 4px;
+        justify-content: center; /* Centre l'icône quand texte caché */
+    }
+    .logo-icon {
+       /* margin-right: 0; */ /* Garder un peu de marge ou non ? */
+    }
+    .logo-text {
+        opacity: 0; /* Cache le texte */
+        width: 0; /* Réduit sa largeur */
+        overflow: hidden;
+    }
+
+    .sidebar-nav li a,
+    .sidebar-settings a {
+        justify-content: center; /* Centre l'icône */
+         padding: 12px 8px; /* Moins de padding horizontal */
+    }
+    .sidebar-nav li a i,
+    .sidebar-settings a i {
+        margin-right: 0; /* Plus d'espace à droite de l'icône */
+    }
+    .nav-text {
+        opacity: 0;
+        width: 0;
+        overflow: hidden;
+    }
+}
+
+/* --- Mobile (Sidebar devient Bottom Bar) --- */
+@media (max-width: 767px) {
+    .sidebar {
+        width: 100%; /* Toute la largeur */
+        height: var(--bottom-nav-height); /* Hauteur fixe */
+        position: fixed; /* Fixe en bas */
+        top: auto; /* Annule top: 0 */
+        bottom: 0;
+        border-right: none; /* Plus de bordure droite */
+        border-top: 1px solid var(--border-main); /* Bordure en haut */
+        padding: 0 5px; /* Padding léger pour la barre */
+        z-index: 1100; /* Au-dessus du contenu */
+        transition: none; /* Pas de transition de largeur/hauteur */
+    }
+    .sidebar-content {
+        flex-direction: row; /* Icônes en ligne */
+        justify-content: space-around; /* Espace équitablement */
+        align-items: center; /* Centre verticalement */
+        height: 100%;
+        overflow: hidden; /* Pas de scroll */
+    }
+    .sidebar-logo {
+        display: none; /* Cache le logo */
+    }
+    .sidebar-nav {
+        flex-grow: 0; /* Ne prend pas tout l'espace */
+        margin-top: 0;
+    }
+    .sidebar-nav ul {
+        display: flex; /* Items en ligne */
+        gap: 5px; /* Petit espace entre items */
+        height: 100%;
+    }
+    .sidebar-nav li, .sidebar-settings {
+         flex: 1 1 0px; /* Chaque item prend une part égale */
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 100%;
+    }
+
+    .sidebar-nav li a,
+    .sidebar-settings a {
+        padding: 5px; /* Padding réduit pour les icônes */
+        margin-bottom: 0;
+        flex: 1; /* Prend la place dans son parent li/div */
+        justify-content: center; /* Centre l'icône */
+        height: 100%; /* Prend toute la hauteur du `li` */
+        border-radius: 0; /* Pas de coins arrondis */
+    }
+     .sidebar-nav li a:hover,
+     .sidebar-settings a:hover {
+         background-color: transparent; /* Pas de fond au survol */
+     }
+
+    .sidebar-nav li a i,
+    .sidebar-settings a i {
+        margin-right: 0; /* Pas de marge */
+        font-size: 22px; /* Taille icônes mobile */
+    }
+    .nav-text {
+        display: none; /* Assure que le texte est caché */
+    }
+    .sidebar-settings {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    /* Cache le lien thème toggle spécifique, on cliquera sur settings */
+     #theme-toggle { display: none !important; }
+
+}

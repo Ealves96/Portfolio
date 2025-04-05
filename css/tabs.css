@@ -1,7 +1,7 @@
 /* Styles pour la section des onglets */
 .tabs-section {
     border-top: 1px solid var(--border-color);
-    border-bottom: 1px solid var(--border-color);
+    /* border-bottom: 1px solid var(--border-color); */
     /* Sur Instagram Desktop, les onglets sont centrés */
     display: flex;
     justify-content: center;

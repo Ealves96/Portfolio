@@ -23,6 +23,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // --- Fin: Code pour remplir les titres ---
 
-    // Initialisation d'autres modules si nécessaire (comme les onglets ou la modale)
-    // Les scripts modal.js et tabs.js s'initialisent déjà via leur propre DOMContentLoaded
-});
+    const projectItemsForBackground = document.querySelectorAll('.project-item');
+
+    if (projectItemsForBackground.length > 0) {
+        projectItemsForBackground.forEach(item => {
+            const backgroundImageUrl = item.dataset.backgroundImage; // Récupère la valeur de data-background-image
+
+            if (backgroundImageUrl) { // Vérifie si l'attribut existe et a une valeur
+                // Applique l'image comme style d'arrière-plan à l'élément .project-item
+                item.style.backgroundImage = `url('${backgroundImageUrl}')`;
+            } else {
+                // Optionnel: que faire si l'attribut manque ?
+                // item.style.backgroundColor = '#e0e0e0'; // Appliquer un fond gris par défaut ?
+                // Ou ne rien faire et laisser le fond #eee du CSS
+            }
+        });
+        console.log("Images de fond des projets appliquées.");
+    } else {
+         console.log("Aucun project-item trouvé pour les fonds.");
+    }
+    // === FIN NOUVEAU Code fonds ===
+
+    // Initialisation d'autres modules (modal.js, tabs.js se chargent eux-mêmes)
+
+}); // Fin de DOMContentLoaded

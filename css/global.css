@@ -11,7 +11,33 @@
     --button-text-color: #ffffff;
     --link-color: #00376b;         /* Liens dans la bio */
     --highlight-border: #c7c7c7;   /* Bordure simple pour les highlights */
-    /* On pourrait ajouter un dégradé pour la bordure highlight plus tard */
+    --sidebar-width-wide: 244px; /* Largeur type Instagram desktop */
+    --sidebar-width-narrow: 72px;  /* Largeur réduite */
+    --bottom-nav-height: 50px; /*barre mobile*/
+    /* Thème Clair (Défaut) */
+    --sidebar-bg: #ffffff;
+    --content-bg: #fafafa; /* ou #ffffff si vous préférez */
+    --text-primary: #262626;
+    --text-secondary: #8e8e8e;
+    --border-main: #dbdbdb;
+    --hover-bg: #f2f2f2;
+    --link-color-sidebar: #262626;
+}
+
+/* Thème Sombre (sera activé par JS via data-theme="dark" sur <body>) */
+[data-theme="dark"] {
+    --sidebar-bg: #000000;
+    --content-bg: #000000;
+    --text-primary: #f5f5f5;
+    --text-secondary: #a8a8a8;
+    --border-main: #363636;
+    --hover-bg: #1a1a1a;
+    --link-color-sidebar: #f5f5f5;
+
+    /* Adaptez les couleurs des boutons etc. si nécessaire */
+    --button-background: /* ... une couleur sombre ... */;
+    --button-background-hover: /* ... */;
+    /* etc. */
 }
 
 /* Reset simple et styles globaux */
@@ -27,6 +53,18 @@ body {
     color: var(--primary-text-color);
     font-size: 14px; /* Taille de base d'Instagram */
     line-height: 1.6;
+    background-color: var(--content-bg); /* Utilise la variable */
+    color: var(--text-primary);
+    /* Ajout pour éviter le recouvrement par la barre mobile */
+    padding-bottom: 0; /* Sera ajusté pour mobile */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Pour le thème */
+}
+
+.main-content {
+    flex-grow: 1; /* Prend l'espace restant */
+    width: calc(100% - var(--sidebar-width-wide)); /* Calcul initial */
+    background-color: var(--content-bg);
+    transition: width 0.3s ease; /* Pour animer le changement */
 }
 
 a {
@@ -51,8 +89,11 @@ ul {
 /* Conteneur principal pour centrer le contenu */
 .profile-container {
     max-width: 975px; /* Largeur max comme sur Instagram Desktop */
-    margin: 20px auto;
+    margin: 30px auto 20px auto;
     padding: 0 20px; /* Espacement sur les côtés */
+    /* Important: pas de marge qui pousse contre la sidebar */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Style de bouton générique (similaire à ceux d'Insta) */
@@ -86,4 +127,43 @@ ul {
 .button.primary:hover {
     background-color: var(--button-background-hover);
     border-color: var(--button-background-hover);
+}
+
+.app-layout {
+    display: flex;
+    min-height: 100vh; /* Prend toute la hauteur */
+}
+
+/* --- Écran étroit (Sidebar Réduite) --- */
+@media (max-width: 1260px) { /* Ajustez ce point de rupture si besoin */
+    .main-content {
+        width: calc(100% - var(--sidebar-width-narrow));
+    }
+}
+
+/* --- Mobile (Sidebar en Bas) --- */
+@media (max-width: 767px) {
+    .app-layout {
+        flex-direction: column; /* Empile sidebar et contenu */
+    }
+    .main-content {
+        width: 100%;
+        order: -1; /* Le contenu vient AVANT la barre visuellement */
+        /* Ajuster le padding pour la barre du bas */
+         padding-bottom: calc(var(--bottom-nav-height) + 20px); /* Espace pour la barre + marge */
+    }
+     .profile-container {
+        /* Ajustements mobiles déjà présents dans header.css etc. */
+        margin-top: 20px; /* Réduire marge haute mobile */
+        padding: 0 15px; /* Réduire padding mobile */
+        max-width: 100%; /* Prend toute la largeur */
+    }
+
+    /* L'ancien header mobile/tabs etc devrait s'adapter,
+       mais vérifier les conflits avec la nouvelle structure */
+
+    /* Assurer que le corps a assez d'espace en bas */
+     body {
+         padding-bottom: var(--bottom-nav-height);
+     }
 }

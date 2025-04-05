@@ -4,24 +4,24 @@
     /* Utiliser flex column pour empiler la partie haute et la bio */
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px; /* Espace avant les highlights */
-    border-bottom: 1px solid var(--border-color); /* Ligne sous tout le header */
-    padding-bottom: 20px; /* Espace avant la bordure */
+    margin-bottom: 20px; /* Espace avant les highlights */
+    /* border-bottom: 1px solid var(--border-color); Ligne sous tout le header */
+    padding-bottom: 30px; /* Espace avant la bordure */
 }
 
 /* Partie supérieure (Photo + Infos Supérieures) */
 .profile-header-top {
     display: flex; /* Photo à gauche, Infos Sup à droite */
     align-items: flex-start; /* Aligner en haut */
-    margin-bottom: 15px; /* Espace avant la section bio */
-    padding-left: 20px; /* Petit retrait général si besoin */
+    padding-left: 40px; /* Petit retrait général si besoin */
     padding-right: 20px;
 }
 
 /* Conteneur Photo (gauche) */
 .profile-pic-container {
     flex-shrink: 0;
-    margin-right: 40px;
+    margin-right: 80px;
+    margin-top: 25px;
     width: 150px;
     height: 150px;
 }
@@ -44,15 +44,17 @@
     align-items: center;
     margin-bottom: 10px; /* Espace avant les boutons */
 }
-.profile-username { /* ... styles inchangés ... */ }
-.settings-icon { /* ... styles inchangés ... */ }
+
+.profile-username { 
+    margin-right: 20px; 
+}
 
 /* Conteneur des boutons (sous le pseudo) */
 .profile-actions-desktop {
     display: flex;
     gap: 10px; /* Espace entre les boutons */
     /* Ajuster la marge basse pour rapprocher les stats */
-    margin-bottom: 15px; /* Réduit de 20px à 15px (ou moins si désiré) */
+    margin-bottom: 5px; /* Réduit de 20px à 15px (ou moins si désiré) */
 }
 
 /* --- MODIFICATION ICI pour la taille des boutons --- */
@@ -69,14 +71,13 @@
     display: flex;
     gap: 40px; /* Espace ENTRE les items de stats */
     font-size: 16px;
-    /* Pas de marge haute nécessaire, gérée par la marge basse des boutons */
+    margin-bottom: 15px; 
 }
 .stat-number { font-weight: 500; }
 .stat-label { color: var(--primary-text-color); }
 
 /* Section Bio (sous la partie supérieure) */
 .profile-bio-section-desktop {
-    padding-left: 20px; /* Alignement avec la partie haute */
     padding-right: 20px;
     padding-top: 10px; /* Espace après la partie haute */
 }

@@ -4,6 +4,7 @@
 
 .highlights-list {
     display: flex;
+    margin-left: 35px;
     gap: 30px; /* Espace entre les cercles */
     overflow-x: auto; /* Permet de scroller horizontalement si trop d'éléments */
     padding: 5px 0; /* Petit padding pour l'ombre/bordure */

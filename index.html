@@ -21,38 +21,43 @@
     <div class="profile-container">
 
         <!-- ======================= Header Section ======================= -->
-        <header class="profile-header">
-            <div class="profile-pic-container">
-                <!-- Image temporaire -->
-                <img src="/img/photo cv.jpg" alt="Photo de profil">
-            </div>
-            <div class="profile-info">
-                <div class="profile-top-bar">
-                    <h2 class="profile-username">votre_pseudo_pro</h2>
-                    <div class="profile-actions">
-                        <!-- Remplacer par des liens réels plus tard -->
-                        <a href="#" class="button">Contactez-moi</a>
-                        <a href="#" class="button">Mon CV</a>
+        <header class="profile-header-desktop"> <!-- Changement de classe pour éviter conflits -->
+
+            <div class="profile-header-top"> <!-- Nouveau conteneur pour Photo + Infos Sup -->
+                <div class="profile-pic-container">
+                    <img src="img/photo cv.jpg" alt="Photo de profil"> <!-- Vérifiez le chemin -->
+                </div>
+        
+                <div class="profile-info-top"> <!-- Nouveau conteneur pour Pseudo/Boutons/Stats -->
+                    <div class="profile-top-bar"> <!-- Contient Pseudo + Settings Icon -->
+                         <h2 class="profile-username">votre_pseudo_pro</h2>
+                         <span class="settings-icon">⚙️</span>
                     </div>
-                    <!-- Icône paramètres (placeholder) -->
-                    <span class="settings-icon">⚙️</span>
-                </div>
-
-                <ul class="profile-stats">
-                    <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
-                    <li><span class="stat-number">15</span> <span class="stat-label">Compétences</span></li>
-                    <li><span class="stat-number">5+</span> <span class="stat-label">Années Exp.</span></li>
-                </ul>
-
-                <p class="profile-real-name">Votre Nom Complet</p>
-                <div class="profile-bio">
-                    <p>Développeur / Ingénieur [Votre Domaine]</p>
-                    <p>Contact: <a href="mailto:votre.email@example.com">votre.email@example.com</a></p>
-                    <p>LinkedIn: <a href="#">Votre Profil LinkedIn</a></p>
-                    <p>GitHub: <a href="#">Votre Profil GitHub</a></p>
-                    <!-- Ajoutez d'autres coordonnées si nécessaire -->
-                </div>
+        
+                    <div class="profile-actions-desktop"> <!-- Boutons déplacés ici -->
+                         <a href="#" class="button">Contactez-moi</a>
+                         <a href="#" class="button">Mon CV</a>
+                    </div>
+        
+                    <ul class="profile-stats"> <!-- Stats restent ici -->
+                        <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
+                        <li><span class="stat-number">15</span> <span class="stat-label">Compétences</span></li>
+                        <li><span class="stat-number">5+</span> <span class="stat-label">Années Exp.</span></li>
+                    </ul>
+                </div> <!-- Fin de profile-info-top -->
+            </div> <!-- Fin de profile-header-top -->
+        
+            <!-- La Bio est maintenant un enfant direct du header principal -->
+            <div class="profile-bio-section-desktop">
+                 <p class="profile-real-name">Votre Nom Complet</p>
+                 <div class="profile-bio">
+                     <p>Développeur / Ingénieur [Votre Domaine]</p>
+                     <p>Contact: <a href="mailto:votre.email@example.com">votre.email@example.com</a></p>
+                     <p>LinkedIn: <a href="#">Votre Profil LinkedIn</a></p>
+                     <p>GitHub: <a href="#">Votre Profil GitHub</a></p>
+                 </div>
             </div>
+        
         </header>
 
         <!-- ================== Highlights Section ================== -->

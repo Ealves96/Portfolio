@@ -1,173 +1,169 @@
-.profile-header {
+/* ===== Styles pour le Header (Desktop / défaut) ===== */
+
+.profile-header-desktop {
+    /* Utiliser flex column pour empiler la partie haute et la bio */
     display: flex;
-    align-items: flex-start; /* Aligner en haut pour bio longue */
-    padding: 30px 0;
-    margin-bottom: 40px; /* Espace avant les highlights/tabs */
-    border-bottom: 1px solid var(--border-color); /* Ligne sous le header */
+    flex-direction: column;
+    margin-bottom: 40px; /* Espace avant les highlights */
+    border-bottom: 1px solid var(--border-color); /* Ligne sous tout le header */
+    padding-bottom: 20px; /* Espace avant la bordure */
 }
 
-/* Conteneur de la photo de profil */
+/* Partie supérieure (Photo + Infos Supérieures) */
+.profile-header-top {
+    display: flex; /* Photo à gauche, Infos Sup à droite */
+    align-items: flex-start; /* Aligner en haut */
+    margin-bottom: 15px; /* Espace avant la section bio */
+    padding-left: 20px; /* Petit retrait général si besoin */
+    padding-right: 20px;
+}
+
+/* Conteneur Photo (gauche) */
 .profile-pic-container {
-    flex-shrink: 0; /* Empêche le conteneur de rétrécir */
-    margin-right: 40px; /* Espace entre photo et infos */
-    width: 150px; /* Taille fixe pour la photo */
+    flex-shrink: 0;
+    margin-right: 40px;
+    width: 150px;
     height: 150px;
 }
-
 .profile-pic-container img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%; /* Rend l'image circulaire */
-    object-fit: cover; /* Assure que l'image couvre bien sans se déformer */
-    border: 1px solid var(--border-color); /* Petite bordure optionnelle */
+    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
+    border: 1px solid var(--border-color);
 }
 
-/* Conteneur des informations */
-.profile-info {
-    flex-grow: 1; /* Prend l'espace restant */
+/* Conteneur Infos Supérieures (droite) */
+.profile-info-top {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column; /* Empile Pseudo/Boutons/Stats verticalement */
+    padding-top: 10px;
 }
 
-/* Barre supérieure (username, boutons, settings) */
+/* Barre avec Pseudo et Icône Settings */
 .profile-top-bar {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px; /* Espace avant les boutons */
+}
+.profile-username { /* ... styles inchangés ... */ }
+.settings-icon { /* ... styles inchangés ... */ }
+
+/* Conteneur des boutons (sous le pseudo) */
+.profile-actions-desktop {
+    display: flex;
+    gap: 10px; /* Espace entre les boutons */
+    /* Ajuster la marge basse pour rapprocher les stats */
+    margin-bottom: 15px; /* Réduit de 20px à 15px (ou moins si désiré) */
 }
 
-.profile-username {
-    font-size: 28px; /* Grande taille pour le pseudo */
-    font-weight: 300; /* Police légère comme sur Insta */
-    color: var(--primary-text-color);
-    margin-right: 20px; /* Espace après le pseudo */
+/* --- MODIFICATION ICI pour la taille des boutons --- */
+.profile-actions-desktop .button {
+    /* Hérite des styles .button de global.css, mais on surcharge la taille */
+    padding: 4px 12px; /* Plus petit que le padding par défaut (ex: 5px 15px) */
+    font-size: 13px; /* Optionnel: réduire aussi la taille de police (si 14px par défaut) */
+    margin-left: 0; /* Annule la marge par défaut si présente */
+    /* Les autres styles (couleur, bordure...) restent */
 }
 
-.profile-actions {
-    display: flex; /* Aligne les boutons */
-    margin-left: auto; /* Pousse les actions vers la droite */
-    padding-left: 20px; /* Espace avant les boutons si le pseudo est long */
-}
-
-.settings-icon {
-    font-size: 24px; /* Taille de l'icône */
-    margin-left: 15px;
-    cursor: pointer;
-    color: var(--primary-text-color);
-}
-
-/* Statistiques (Projets, Compétences, Exp.) */
+/* Stats (sous les boutons) */
 .profile-stats {
     display: flex;
-    gap: 40px; /* Espace entre les stats */
-    margin-bottom: 20px;
-    font-size: 16px; /* Taille un peu plus grande pour les stats */
+    gap: 40px; /* Espace ENTRE les items de stats */
+    font-size: 16px;
+    /* Pas de marge haute nécessaire, gérée par la marge basse des boutons */
 }
+.stat-number { font-weight: 500; }
+.stat-label { color: var(--primary-text-color); }
 
-.profile-stats li {
-    display: inline-block; /* Ou garder flex sur ul */
+/* Section Bio (sous la partie supérieure) */
+.profile-bio-section-desktop {
+    padding-left: 20px; /* Alignement avec la partie haute */
+    padding-right: 20px;
+    padding-top: 10px; /* Espace après la partie haute */
 }
-
-.stat-number {
-    font-weight: 500; /* Nombre en gras */
-}
-
-.stat-label {
-    color: var(--primary-text-color); /* Peut rester normal ou utiliser secondary */
-}
-
-/* Nom réel */
 .profile-real-name {
-    font-weight: 500; /* Nom en gras */
+    font-weight: 500;
     margin-bottom: 5px;
 }
-
-/* Bio / Coordonnées */
-.profile-bio {
+.profile-bio p {
+    margin-bottom: 3px;
     font-size: 14px;
 }
+.profile-bio a { font-weight: 500; }
 
-.profile-bio p {
-    margin-bottom: 3px; /* Petit espace entre les lignes de la bio */
-}
 
-.profile-bio a {
-    font-weight: 500; /* Liens un peu plus visibles */
-}
-.profile-bio a:hover {
-    text-decoration: none; /* Pas de soulignement dans la bio */
-}
-
-/* --- Responsive pour le header (simple exemple) --- */
+/* ===== Styles pour le Header (Mobile @media) ===== */
+/* Nous allons réutiliser l'ancienne logique mobile, en l'adaptant légèrement */
 @media (max-width: 768px) {
-    .profile-header {
-        padding: 20px 0;
-        margin-bottom: 20px;
-        /* Pas de bordure sur mobile ? */
-        /* border-bottom: none; */
+    .profile-header-desktop {
+        /* Header redevient simple colonne */
+        padding-bottom: 0; /* Pas de padding bas avant bordure */
+        border-bottom: none; /* Souvent pas de bordure header sur mobile */
+        margin-bottom: 0; /* Sera géré par les éléments internes */
+    }
+
+    .profile-header-top {
+        /* La partie haute redevient colonne aussi */
+        flex-direction: column;
+        align-items: stretch;
+        padding-left: 0; /* Pas de retrait global */
+        padding-right: 0;
+        margin-bottom: 0; /* Sera géré par les éléments internes */
     }
 
     .profile-pic-container {
-        width: 80px;
-        height: 80px;
-        margin-right: 20px;
+        width: 80px; height: 80px;
+        align-self: flex-start; /* Aligné à gauche */
+        margin-bottom: 15px;
+        margin-right: 0; /* Annule marge droite desktop */
+         margin-left: 0; /* Assure alignement gauche */
     }
 
-    .profile-info {
-        /* Le reste s'adapte normalement, mais on peut ajuster les tailles/marges */
+    /* La bio vient maintenant en premier visuellement SOUS la photo */
+    .profile-bio-section-desktop {
+        order: 1; /* Ordre 1 : Bio sous la photo */
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+        margin-bottom: 20px; /* Espace après la bio */
+        /* Styles pour real-name et bio restent bons */
+    }
+     .profile-real-name { font-size: 16px; }
+     .profile-bio { font-size: 14px; }
+
+
+    /* Infos supérieures (Pseudo/Boutons/Stats) viennent APRES la bio */
+    .profile-info-top {
+         order: 2; /* Ordre 2 : Le reste après la bio */
+         padding-top: 0;
     }
 
+    /* Dans info-top, l'ordre change aussi */
     .profile-top-bar {
-        flex-wrap: wrap; /* Permet aux éléments de passer à la ligne */
+        order: 1; /* Pseudo en premier */
         margin-bottom: 10px;
     }
+    .profile-username { width: 100%; font-size: 22px; margin-right: 0; }
+    .settings-icon { display: none; } /* Cacher sur mobile */
 
-    .profile-username {
-        font-size: 22px;
+    .profile-actions-desktop {
+        order: 2; /* Boutons ensuite */
+        margin-bottom: 15px;
         width: 100%; /* Prend toute la largeur */
-        margin-bottom: 10px; /* Espace avant les boutons */
-        margin-right: 0;
+        gap: 8px;
     }
-
-    .profile-actions {
-       margin-left: 0; /* Revient à gauche sous le pseudo */
-       width: 100%;
-       justify-content: flex-start; /* Alignement au début */
-       padding-left: 0;
-    }
-     .profile-actions .button {
-        flex-grow: 1; /* Les boutons prennent la largeur disponible */
-        margin-left: 0;
-        margin-right: 8px; /* Espace entre boutons */
-    }
-     .profile-actions .button:last-child {
-        margin-right: 0;
-    }
-
-
-    .settings-icon {
-        /* Option: le déplacer ailleurs ou le cacher sur mobile */
-        display: none; /* Exemple: cacher sur mobile */
+     .profile-actions-desktop .button {
+        flex-grow: 1; /* Boutons prennent la largeur */
     }
 
     .profile-stats {
-        /* Les stats pourraient être sous la bio sur mobile ou juste plus petites */
-        gap: 20px;
+        order: 3; /* Stats en dernier */
+        width: 100%;
+        justify-content: space-around;
         font-size: 14px;
-        justify-content: space-around; /* Mieux répartir */
+        gap: 20px;
         padding: 10px 0;
         border-top: 1px solid var(--border-color);
         border-bottom: 1px solid var(--border-color);
-        margin-bottom: 15px;
-        /* Mettre les stats après la bio sur mobile */
-        order: 3; /* Nécessite que profile-info soit flex-direction column */
+        margin-bottom: 15px; /* Espace final */
     }
-
-    /* Pour que order fonctionne sur les stats */
-    .profile-info {
-       display: flex;
-       flex-direction: column;
-    }
-    .profile-real-name { order: 1;}
-    .profile-bio { order: 2; margin-bottom: 15px;}
-
-
 }

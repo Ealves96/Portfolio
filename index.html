@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Portfolio</title>
+    <!-- Inclusion des fichiers CSS -->
+    <link rel="icon" href="img/logo.ico" type="img/ico" sizes="32x32">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/highlights.css">
+    <link rel="stylesheet" href="css/tabs.css">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/project-modal.css">
+    <!-- Optionnel: <link rel="stylesheet" href="css/responsive.css"> -->
+    <!-- Ici, on pourrait ajouter un lien vers une bibliothèque d'icônes comme Font Awesome si besoin -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+</head>
+<body>
+
+    <div class="profile-container">
+
+        <!-- ======================= Header Section ======================= -->
+        <header class="profile-header">
+            <div class="profile-pic-container">
+                <!-- Image temporaire -->
+                <img src="/img/photo cv.jpg" alt="Photo de profil">
+            </div>
+            <div class="profile-info">
+                <div class="profile-top-bar">
+                    <h2 class="profile-username">votre_pseudo_pro</h2>
+                    <div class="profile-actions">
+                        <!-- Remplacer par des liens réels plus tard -->
+                        <a href="#" class="button">Contactez-moi</a>
+                        <a href="#" class="button">Mon CV</a>
+                    </div>
+                    <!-- Icône paramètres (placeholder) -->
+                    <span class="settings-icon">⚙️</span>
+                </div>
+
+                <ul class="profile-stats">
+                    <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
+                    <li><span class="stat-number">15</span> <span class="stat-label">Compétences</span></li>
+                    <li><span class="stat-number">5+</span> <span class="stat-label">Années Exp.</span></li>
+                </ul>
+
+                <p class="profile-real-name">Votre Nom Complet</p>
+                <div class="profile-bio">
+                    <p>Développeur / Ingénieur [Votre Domaine]</p>
+                    <p>Contact: <a href="mailto:votre.email@example.com">votre.email@example.com</a></p>
+                    <p>LinkedIn: <a href="#">Votre Profil LinkedIn</a></p>
+                    <p>GitHub: <a href="#">Votre Profil GitHub</a></p>
+                    <!-- Ajoutez d'autres coordonnées si nécessaire -->
+                </div>
+            </div>
+        </header>
+
+        <!-- ================== Highlights Section ================== -->
+        <section class="highlights-section">
+            <ul class="highlights-list">
+                <li class="highlight-item">
+                    <div class="highlight-circle">
+                        <!-- Placeholder pour image/icône -->
+                        <span class="highlight-placeholder">💼</span>
+                    </div>
+                    <p class="highlight-title">Expériences</p>
+                </li>
+                <li class="highlight-item">
+                    <div class="highlight-circle">
+                        <span class="highlight-placeholder">💡</span>
+                    </div>
+                    <p class="highlight-title">Compétences</p>
+                </li>
+                <li class="highlight-item">
+                    <div class="highlight-circle">
+                        <span class="highlight-placeholder">🎓</span>
+                    </div>
+                    <p class="highlight-title">Diplômes</p>
+                </li>
+                <!-- Ajoutez d'autres "Highlights" si besoin -->
+            </ul>
+        </section>
+
+        <!-- ==================== Tabs Section (Placeholder) ==================== -->
+        <section class="tabs-section" aria-label="Catégories de projets">
+            <ul class="tabs-list">
+                <li class="tab-item" data-category="frontend">Front-end</li>
+                <li class="tab-item" data-category="backend">Back-end</li>
+                <li class="tab-item active" data-category="devops">DevOps</li>
+                <li class="tab-item" data-category="network">Network</li>
+                <li class="tab-item" data-category="data">Data Science</li>
+                <!-- Ajoutez d'autres onglets ici -->
+            </ul>
+        </section>
+
+        <!-- ==================== Grid Section (Placeholder) ==================== -->
+        <!-- Dans index.html, remplacez le contenu de <main class="project-grid"> -->
+
+<main class="project-grid" aria-live="polite">
+    <!-- Projet 1: Transcendence (Exemple DevOps/C++) -->
+    <a href="#" class="project-item"
+        data-category="frontend"
+        data-title="Transcendence"
+        data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail"
+        data-description="Un jeu de Pong multijoueur en temps réel avec chat intégré, développé avec NestJS (backend) et Vue.js (frontend). Déploiement via Docker."
+        data-tech="NestJS, Vue.js, TypeScript, Docker, PostgreSQL, Socket.IO"
+        data-github="https://github.com/votre_pseudo/transcendence"
+        data-live="#"> <!-- Mettez un lien si démo live existe -->
+        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence">
+        <div class="project-overlay">
+            <span class="project-title-overlay">Transcendence</span>
+        </div>
+    </a>
+
+    <!-- Projet 2: Exemple C -->
+    <a href="#" class="project-item"
+        data-category="backend"
+        data-title="Bibliothèque C Allocateur Mémoire"
+        data-image="https://via.placeholder.com/600x400/4682B4/FFFFFF?text=Lib+Malloc+Detail"
+        data-description="Une réimplémentation des fonctions malloc, free, realloc en C standard. Gestion optimisée des blocs mémoire avec listes chaînées."
+        data-tech="C, Gestion Mémoire"
+        data-github="https://github.com/votre_pseudo/libmalloc"
+        data-live="">
+        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Bibliothèque C">
+        <div class="project-overlay">
+             <span class="project-title-overlay">Lib Malloc C</span>
+        </div>
+    </a>
+
+    <!-- Projet 3: Exemple C++ -->
+    <a href="#" class="project-item"
+        data-category="devops"
+        data-title="Serveur IRC en C++"
+        data-image="https://via.placeholder.com/600x400/8A2BE2/FFFFFF?text=IRC+Server+Detail"
+        data-description="Un serveur IRC simple gérant plusieurs canaux et commandes de base, utilisant les sockets et le multiplexage (poll/select)."
+        data-tech="C++, Sockets, Multiplexage I/O"
+        data-github="https://github.com/votre_pseudo/irc_server"
+        data-live="">
+        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Serveur IRC">
+         <div class="project-overlay">
+             <span class="project-title-overlay">Serveur IRC C++</span>
+        </div>
+    </a>
+
+    <!-- Projet 4: Autre exemple DevOps -->
+     <a href="#" class="project-item"
+        data-category="network"
+        data-title="Pipeline CI/CD GitLab"
+        data-image="https://via.placeholder.com/600x400/32CD32/FFFFFF?text=CI/CD+Pipeline+Detail"
+        data-description="Configuration d'un pipeline CI/CD complet avec GitLab CI pour automatiser les tests, le build et le déploiement d'une application web."
+        data-tech="GitLab CI, Docker, Kubernetes (ou autre), Scripting Shell"
+        data-github="https://github.com/votre_pseudo/cicd_example"
+        data-live="">
+        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Pipeline CI/CD">
+         <div class="project-overlay">
+             <span class="project-title-overlay">Pipeline CI/CD</span>
+        </div>
+    </a>
+
+    <!-- Projet 4: Autre exemple DevOps -->
+    <a href="#" class="project-item"
+        data-category="data"
+        data-title="Pipeline CI/CD GitLab"
+        data-image="https://via.placeholder.com/600x400/32CD32/FFFFFF?text=CI/CD+Pipeline+Detail"
+        data-description="Configuration d'un pipeline CI/CD complet avec GitLab CI pour automatiser les tests, le build et le déploiement d'une application web."
+        data-tech="GitLab CI, Docker, Kubernetes (ou autre), Scripting Shell"
+        data-github="https://github.com/votre_pseudo/cicd_example"
+        data-live="">
+        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Pipeline CI/CD">
+        <div class="project-overlay">
+            <span class="project-title-overlay">Pipeline CI/CD</span>
+        </div>
+    </a>
+
+</main>
+
+        <!-- ==================== Project Modal (Structure Placeholder) ==================== -->
+        <!-- Sera caché par défaut et affiché via JS -->
+        <div id="projectModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeModalButton" aria-label="Fermer">×</span>
+                <h2 id="modalTitle">Titre du Projet</h2>
+                <img src="https://via.placeholder.com/400x300" alt="Image du projet" class="modal-image" id="modalImage">
+                <div class="modal-description">
+                    <h3>Description</h3>
+                    <p id="modalDescription">Description détaillée du projet...</p>
+                </div>
+                <div class="modal-tech">
+                     <h3>Technologies Utilisées</h3>
+                     <p id="modalTech">Tech 1, Tech 2, Tech 3</p>
+                </div>
+                <div class="modal-links">
+                    <a href="#" class="button modal-link" id="modalGithubLink" target="_blank" rel="noopener noreferrer" style="display: none;">Voir sur GitHub</a>
+                    <a href="#" class="button modal-link" id="modalLiveLink" target="_blank" rel="noopener noreferrer" style="display: none;">Démo Live</a>
+                </div>
+            </div>
+        </div>
+
+    <!-- Inclusion des fichiers JS (avant la fin du body) -->
+    <script src="js/utils.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/tabs.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

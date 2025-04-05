@@ -1,0 +1,138 @@
+/* Styles pour la fenêtre modale */
+.modal {
+    /* Déjà défini: display: none; */
+    position: fixed; /* Reste en place même si on scroll */
+    z-index: 1000; /* Au-dessus de tout le reste */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permet de scroller si le contenu est trop long */
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    display: flex; /* Utiliser flex pour centrer facilement */
+    align-items: center; /* Centrage vertical */
+    justify-content: center; /* Centrage horizontal */
+    opacity: 0; /* Pour l'animation d'apparition */
+    visibility: hidden; /* Pour l'animation d'apparition */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Classe ajoutée par JS pour afficher la modale */
+.modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-content {
+    background-color: var(--background-color); /* Fond blanc ou gris clair */
+    color: var(--primary-text-color);
+    margin: auto; /* Centrage (aussi géré par flex sur .modal) */
+    padding: 25px 30px;
+    border-radius: 8px;
+    max-width: 800px; /* Largeur maximale */
+    width: 90%; /* Prend 90% de la largeur dispo, jusqu'à max-width */
+    max-height: 90vh; /* Hauteur max pour laisser de l'air */
+    overflow-y: auto; /* Scroll interne si contenu trop haut */
+    position: relative; /* Pour le bouton fermer */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--secondary-text-color);
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-text-color);
+    text-decoration: none;
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 50vh; /* Limite la hauteur de l'image */
+    object-fit: contain; /* Affiche toute l'image, peut laisser des bandes */
+    /* ou object-fit: cover; pour remplir, risque de couper */
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.modal-content h2 { /* Titre du projet */
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    padding-right: 30px; /* Espace pour le bouton fermer */
+}
+.modal-content h3 { /* Titres sections */
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+.modal-description p,
+.modal-tech p {
+    font-size: 14px;
+    line-height: 1.7;
+}
+.modal-tech p {
+    color: var(--secondary-text-color); /* Technologies en gris */
+}
+
+
+.modal-links {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px; /* Espace entre les boutons */
+    flex-wrap: wrap; /* Passage à la ligne si manque de place */
+}
+
+.modal-links .button {
+    /* Utilise le style .button de global.css */
+    background-color: var(--button-background);
+    color: var(--button-text-color);
+    border-color: var(--button-background);
+    padding: 8px 18px;
+    margin-left: 0; /* Annule la marge par défaut du .button */
+}
+.modal-links .button:hover {
+    background-color: var(--button-background-hover);
+    border-color: var(--button-background-hover);
+}
+
+/* --- Responsive pour la Modale --- */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 95vh;
+        padding: 20px;
+    }
+     .modal-content h2 {
+        font-size: 20px;
+     }
+      .modal-content h3 {
+        font-size: 15px;
+     }
+      .modal-description p,
+      .modal-tech p {
+        font-size: 13px;
+     }
+     .modal-image {
+         max-height: 40vh;
+     }
+     .close-button {
+         font-size: 28px;
+         top: 8px;
+         right: 12px;
+     }
+}

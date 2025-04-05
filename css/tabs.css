@@ -1,0 +1,71 @@
+/* Styles pour la section des onglets */
+.tabs-section {
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    /* Sur Instagram Desktop, les onglets sont centrés */
+    display: flex;
+    justify-content: center;
+    margin-bottom: -1px; /* Compense la bordure de la grille pour un look connecté */
+}
+
+.tabs-list {
+    display: flex;
+    gap: 60px; /* Espace entre les onglets */
+}
+
+.tab-item {
+    padding: 15px 0;
+    font-size: 12px;
+    font-weight: 500; /* Texte un peu plus gras */
+    letter-spacing: 1px; /* Espacement des lettres */
+    text-transform: uppercase; /* Texte en majuscules */
+    color: var(--secondary-text-color); /* Couleur inactive par défaut */
+    cursor: pointer;
+    position: relative; /* Pour la barre active */
+    border-top: 1px solid transparent; /* Espace pour la barre active */
+    margin-top: -1px; /* Remonte pour que la barre touche la bordure sup */
+    transition: color 0.2s ease, border-top-color 0.2s ease;
+}
+
+/* Style de l'onglet actif */
+.tab-item.active {
+    color: var(--primary-text-color); /* Couleur active */
+    border-top-color: var(--primary-text-color); /* Barre noire au-dessus */
+}
+
+/* Petit effet au survol pour les onglets inactifs */
+.tab-item:not(.active):hover {
+    color: var(--primary-text-color);
+}
+
+/* --- Responsive pour les Onglets --- */
+@media (max-width: 768px) {
+    .tabs-section {
+        /* Sur mobile, les onglets prennent toute la largeur */
+        justify-content: space-around; /* Répartit l'espace */
+        margin-bottom: 1px; /* Pas besoin de compenser */
+    }
+    .tabs-list {
+        width: 100%;
+        justify-content: space-around;
+        gap: 5px; /* Réduit l'écart */
+    }
+    .tab-item {
+        font-size: 14px; /* Icônes ou texte plus grand sur mobile */
+        letter-spacing: 0;
+        text-transform: none; /* Pas forcément majuscule sur mobile */
+        flex-grow: 1; /* Les onglets prennent la même largeur */
+        text-align: center;
+        padding: 12px 5px;
+        /* La barre active pourrait être en dessous ou différente sur mobile */
+         border-top: none;
+         border-bottom: 2px solid transparent;
+         margin-top: 0;
+         margin-bottom: -2px;
+    }
+    .tab-item.active {
+        border-top-color: transparent; /* Annule la barre sup */
+        border-bottom-color: var(--primary-text-color); /* Barre en dessous */
+    }
+    /* Ici, on pourrait remplacer le texte par des icônes */
+}

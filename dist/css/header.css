@@ -87,6 +87,8 @@
     padding: 4px 12px;
     font-size: 13px;
     margin-left: 0;
+    background-color: var(--button-header-bg, #efefef); /* Fallback gris clair */
+    color: var(--button-header-text, var(--primary-text-color));
 }
 
 /* Stats Desktop */
@@ -96,9 +98,9 @@
     font-size: 16px;
     margin-bottom: 15px;
 }
-.profile-header-desktop-view .profile-stats li { /* Aucun style spécifique nécessaire ici par défaut */ }
+.profile-header-desktop-view .profile-stats li { color: var(--text-primary); }
 .profile-header-desktop-view .stat-number { font-weight: 600; } /* Poids desktop */
-.profile-header-desktop-view .stat-label { color: var(--primary-text-color); font-size: 16px; } /* Taille desktop */
+.profile-header-desktop-view .stat-label { color: var(--text-primary); font-size: 16px; } /* Taille desktop */
 
 /* Bio Desktop */
 .profile-header-desktop-view .profile-bio-section-desktop {
@@ -152,7 +154,7 @@
     }
     /* Conteneur Photo Mobile */
     .profile-header-mobile-view .profile-pic-container {
-        width: 100px; height: 0px; flex-shrink: 0; margin: 0 15px 0 0; margin-left: -15px;
+        width: 90px; height: 90px; flex-shrink: 0; margin: 0 15px 0 0; margin-left: -15px;
     }
     /* Wrapper Bordure Photo Mobile */
     .profile-header-mobile-view .profile-pic-border-wrapper {
@@ -196,7 +198,8 @@
         color: black; 
         display: block; 
         margin: 0; 
-        white-space: nowrap; }
+        white-space: nowrap;
+        color: var(--text-primary); }
 
 
     /* 3. Bio Mobile */
@@ -225,6 +228,8 @@
     }
     .profile-header-mobile-view .profile-actions-mobile .button {
         flex-grow: 1; text-align: center; font-size: 14px; padding: 8px 10px;
+        background-color: var(--button-header-bg, #efefef); /* Fallback gris clair */
+        color: var(--button-header-text, var(--primary-text-color));
     }
 
     /* Cache la Bio version desktop sur mobile */

@@ -82,6 +82,7 @@
     overflow: hidden;
     text-overflow: ellipsis; /* Ajoute "..." si le texte est trop long */
     width: 100%; /* Assure que text-overflow fonctionne */
+    color: var(--text-primary);
 }
 
 /* --- Responsive pour les Highlights --- */

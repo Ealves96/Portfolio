@@ -1,6 +1,6 @@
 /* Styles pour la section des onglets */
 .tabs-section {
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid rgb(93, 92, 92);
     /* border-bottom: 1px solid var(--border-color); */
     /* Sur Instagram Desktop, les onglets sont centrés */
     display: flex;
@@ -20,22 +20,23 @@
     letter-spacing: 1px; /* Espacement des lettres */
     text-transform: uppercase; /* Texte en majuscules */
     color: var(--secondary-text-color); /* Couleur inactive par défaut */
+    color: var(--tabs-text-inactive-dark, var(--secondary-text-color));
     cursor: pointer;
     position: relative; /* Pour la barre active */
-    border-top: 1px solid transparent; Espace pour la barre active
+    border-top: 1px solid transparent; /*Espace pour la barre active*/
     margin-top: -1px; /* Remonte pour que la barre touche la bordure sup */
     transition: color 0.2s ease, border-top-color 0.2s ease;
 }
 
 /* Style de l'onglet actif */
 .tab-item.active {
-    color: var(--primary-text-color); /* Couleur active */
-    border-top-color: var(--primary-text-color); /* Barre noire au-dessus */
+    color: var(--text-primary);
+    border-top-color: var(--text-primary); 
 }
 
 /* Petit effet au survol pour les onglets inactifs */
 .tab-item:not(.active):hover {
-    color: var(--primary-text-color);
+    color: var(--text-primary); 
 }
 
 /* --- Responsive pour les Onglets --- */
@@ -44,6 +45,8 @@
         /* Sur mobile, les onglets prennent toute la largeur */
         justify-content: space-around; /* Répartit l'espace */
         margin-bottom: 1px; /* Pas besoin de compenser */
+        border-top: none;
+        margin-top: -40px;
     }
     .tabs-list {
         width: 100%;
@@ -62,10 +65,11 @@
          border-bottom: 2px solid transparent;
          margin-top: 0;
          margin-bottom: -2px;
+         /* border-bottom-color: var(--text-primary);  */
     }
     .tab-item.active {
-        border-top-color: transparent; /* Annule la barre sup */
-        border-bottom-color: var(--primary-text-color); /*Barre en dessous*/
+        border-top-color: transparent; /*Annule la barre sup*/
+        border-bottom-color: var(--text-primary); 
     }
     /* Ici, on pourrait remplacer le texte par des icônes */
 }

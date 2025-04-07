@@ -1,6 +1,6 @@
 /* Styles pour la section des onglets */
 .tabs-section {
-    border-top: 1px solid rgb(93, 92, 92);
+    border-top: 1px solid var(--border-main); 
     /* border-bottom: 1px solid var(--border-color); */
     /* Sur Instagram Desktop, les onglets sont centrés */
     display: flex;
@@ -19,8 +19,8 @@
     font-weight: 500; /* Texte un peu plus gras */
     letter-spacing: 1px; /* Espacement des lettres */
     text-transform: uppercase; /* Texte en majuscules */
-    color: var(--secondary-text-color); /* Couleur inactive par défaut */
-    color: var(--tabs-text-inactive-dark, var(--secondary-text-color));
+    /* color: var(--secondary-text-color); Couleur inactive par défaut */
+    /* color: var(--tabs-text-inactive-dark, var(--secondary-text-color)); */
     cursor: pointer;
     position: relative; /* Pour la barre active */
     border-top: 1px solid transparent; /*Espace pour la barre active*/

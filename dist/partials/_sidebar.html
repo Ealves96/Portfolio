@@ -1,51 +1,78 @@
+<!-- partials/_sidebar.html -->
 <aside class="sidebar">
-    <div class="sidebar-content"> <!-- Conteneur interne pour flex column -->
 
-        <!-- Logo/Titre -->
-        <h1 class="sidebar-logo">
-            <span class="logo-icon"></span> <!-- Icône exemple -->
-            <span class="logo-text">Portfolio</span>
-        </h1>
+    <!-- ============================================ -->
+    <!-- == STRUCTURE POUR DESKTOP & ÉTROITE       == -->
+    <!-- == (Cachée sur mobile via CSS)           == -->
+    <!-- ============================================ -->
+    <div class="sidebar-view sidebar-desktop-narrow-view">
+        <div class="sidebar-content"> <!-- Conteneur interne pour flex column -->
 
-        <!-- Navigation Principale -->
-        <nav class="sidebar-nav">
+            <!-- Logo/Titre -->
+            <h1 class="sidebar-logo">
+                <span class="logo-icon"></span> <!-- Icône exemple (à ajouter si vous voulez une icône logo) -->
+                <span class="logo-text">Portfolio</span>
+            </h1>
+
+            <!-- Navigation Principale Desktop/Étroite -->
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub">
+                            <i class="fab fa-github fa-fw"></i>
+                            <span class="nav-text">GitHub</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="mailto:ealves0996@gmail.com" title="Contactez-moi par Email">
+                            <i class="fas fa-envelope fa-fw"></i>
+                            <span class="nav-text">Email</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                            <i class="fab fa-linkedin fa-fw"></i>
+                            <span class="nav-text">LinkedIn</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="messages-link" title="Messages (Fonctionnalité à venir)">
+                            <i class="fa-solid fa-paper-plane fa-fw"></i>
+                            <span class="nav-text">Messages</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Paramètres / Actions du bas Desktop/Étroite -->
+            <div class="sidebar-settings">
+                 <a href="#" id="settings-link" title="Apparence / Thème">
+                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+                    <span class="nav-text">Apparence</span>
+                </a>
+            </div>
+
+        </div> <!-- Fin sidebar-content -->
+    </div> <!-- Fin sidebar-desktop-narrow-view -->
+
+
+    <!-- ============================================ -->
+    <!-- ==   STRUCTURE MOBILE (BARRE EN BAS)      == -->
+    <!-- == (Cachée sur desktop/étroite via CSS)  == -->
+    <!-- ============================================ -->
+    <div class="sidebar-view sidebar-mobile-view">
+        <!-- Contient directement la nav et les settings pour une barre simple -->
+        <nav class="sidebar-nav-mobile">
             <ul>
-                <li>
-                    <a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub">
-                        <i class="fab fa-github fa-fw"></i>
-                        <span class="nav-text">GitHub</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:ealves0996@gmail.com" title="Contactez-moi par Email">
-                        <i class="fas fa-envelope fa-fw"></i>
-                        <span class="nav-text">Email</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                        <i class="fab fa-linkedin fa-fw"></i>
-                        <span class="nav-text">LinkedIn</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" id="messages-link" title="Messages (Fonctionnalité à venir)">
-                        <i class="fa-solid fa-paper-plane fa-fw"></i>
-                        <span class="nav-text">Messages</span>
-                    </a>
-                </li>
+                 <li><a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github fa-fw"></i></a></li>
+                 <li><a href="mailto:ealves0996@gmail.com" title="Email"><i class="fas fa-envelope fa-fw"></i></a></li>
+                 <li><a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin fa-fw"></i></a></li>
+                 <li><a href="#" id="messages-link-mobile" title="Messages"><i class="fa-solid fa-paper-plane fa-fw"></i></a></li>
             </ul>
         </nav>
-
-        <!-- Paramètres / Actions du bas -->
-        <div class="sidebar-settings">
-             <a href="#" id="settings-link" title="Paramètres / Thème">
-                <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
-                <span class="nav-text">Apparence</span>
-            </a>
-             <!-- Le bouton thème séparé n'est plus nécessaire ici si on clique sur settings -->
-             <!-- <a href="#" id="theme-toggle" title="Changer le thème" style="display: none;"> ... </a> -->
+        <div class="sidebar-settings-mobile">
+             <a href="#" id="settings-link-mobile" title="Apparence"><i class="fa-solid fa-circle-half-stroke fa-fw"></i></a>
         </div>
+    </div> <!-- Fin sidebar-mobile-view -->
 
-    </div> <!-- Fin sidebar-content -->
 </aside> <!-- Fin sidebar -->

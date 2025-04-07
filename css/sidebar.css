@@ -1,218 +1,217 @@
 /* css/sidebar.css */
 
+/* ============================================ */
+/* == STYLES COMMUNS (Variables, etc.)       == */
+/* ============================================ */
+/* Vos variables :root de global.css s'appliquent toujours */
+
+
+/* ============================================ */
+/* == STYLES DESKTOP (ET BASE POUR ÉTROITE)  == */
+/* ============================================ */
+
+/* Cacher la vue mobile par défaut */
+.sidebar-mobile-view {
+    display: none;
+}
+
+/* Afficher la vue desktop/étroite par défaut */
+.sidebar-desktop-narrow-view {
+    display: flex; /* Permet au .sidebar-content de prendre la hauteur */
+    flex-direction: column; /* Assure que le contenu s'empile bien */
+    width: 100%; /* Prend la largeur de .sidebar */
+    height: 100%;
+}
+
+/* Styles généraux de la sidebar (taille, position, fond) */
 .sidebar {
-    width: var(--sidebar-width-wide);
-    height: 100vh; /* Toute la hauteur */
-    position: sticky; /* Colle au viewport lors du scroll */
+    width: var(--sidebar-width-wide); /* Largeur desktop par défaut */
+    height: 100vh;
+    position: sticky;
     top: 0;
     left: 0;
     background-color: var(--sidebar-bg);
     border-right: 1px solid var(--border-main);
-    padding: 8px 12px 20px 12px; /* haut, côtés, bas, côtés */
+    padding: 8px 12px 20px 12px;
     transition: width 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-    display: flex; /* Permet au contenu interne de s'étirer */
-    flex-shrink: 0; /* Ne pas laisser la sidebar rétrécir */
-    z-index: 100; /* Au cas où */
+    display: flex; /* Pour .sidebar-view */
+    flex-shrink: 0;
+    z-index: 100;
+    box-sizing: border-box; /* Inclure padding */
 }
 
-.sidebar-content {
+/* Conteneur interne pour la structure verticale */
+.sidebar-desktop-narrow-view .sidebar-content {
     display: flex;
     flex-direction: column;
-    height: 100%; /* Prend toute la hauteur de la sidebar */
-    overflow-y: auto; /* Scroll si contenu trop long */
+    height: 100%;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
-.sidebar-logo {
-    padding: 25px 12px 16px 12px; /* Espace autour du logo */
+/* Logo */
+.sidebar-desktop-narrow-view .sidebar-logo {
+    padding: 25px 12px 16px 12px;
     margin-bottom: 15px;
-    font-size: 20px; /* Ajustez */
-    font-weight: 600;
+    font-weight: 600; /* Peut être supprimé si font-family l'ignore */
     color: var(--text-primary);
     display: flex;
     align-items: center;
 }
-
-.logo-icon {
-    font-size: 24px; /* Taille de l'icône */
+.sidebar-desktop-narrow-view .logo-icon { /* Style pour l'icône logo si vous en ajoutez une */
+    font-size: 24px;
     margin-right: 12px;
     display: inline-block;
     transition: margin 0.3s ease;
-}
-
-.logo-text {
-    display: inline-block;
-    font-family: 'Pacifico', cursive; 
-    font-size: 24px;
-    transition: opacity 0.1s ease; /* Transition rapide pour le texte */
-    opacity: 1;
-    white-space: nowrap; /* Empêche le retour à la ligne */
-}
-
-.sidebar-nav {
-    flex-grow: 1; /* Pousse les settings vers le bas */
-}
-
-.sidebar-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar-nav li a,
-.sidebar-settings a {
-    display: flex;
-    align-items: center;
-    padding: 12px;
-    margin-bottom: 8px;
-    border-radius: 6px;
-    color: var(--link-color-sidebar);
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-    font-size: 16px;
-    font-weight: 400; /* Normal pour les liens */
-}
-/* Style au survol */
-.sidebar-nav li a:hover,
-.sidebar-settings a:hover {
-    background-color: var(--hover-bg);
-}
-/* Style lien actif (optionnel) */
-.sidebar-nav li a.active {
-    font-weight: 600; /* Texte en gras */
-    /* background-color: var(--hover-bg); */ /* Ou un fond différent */
-}
-
-
-.sidebar-nav li a i,
-.sidebar-settings a i {
-    font-size: 20px; /* Taille icônes nav */
-    width: 28px; /* Largeur fixe pour alignement */
+    width: 24px; /* Donner une taille fixe */
     text-align: center;
-    margin-right: 16px; /* Espace entre icône et texte */
-    flex-shrink: 0;
-    transition: margin 0.3s ease;
 }
-
-.nav-text {
+.sidebar-desktop-narrow-view .logo-text {
     display: inline-block;
+    font-family: 'Pacifico', cursive;
+    font-size: 24px;
     transition: opacity 0.1s ease;
     opacity: 1;
     white-space: nowrap;
-    overflow: hidden; /* Cache si ça dépasse (au cas où) */
+    color: var(--text-primary); /* Hérite mais pour être sûr */
 }
 
-.sidebar-settings {
-    margin-top: auto; /* Colle en bas si flex-grow sur nav n'est pas suffisant */
-    padding-top: 10px; /* Espace avant les settings */
+/* Navigation principale */
+.sidebar-desktop-narrow-view .sidebar-nav {
+    flex-grow: 1; /* Pousse les settings vers le bas */
+}
+.sidebar-desktop-narrow-view .sidebar-nav ul {
+    list-style: none; padding: 0; margin: 0;
+}
+.sidebar-desktop-narrow-view .sidebar-nav li a {
+    display: flex; align-items: center; padding: 12px; margin-bottom: 8px;
+    border-radius: 6px; color: var(--link-color-sidebar); text-decoration: none;
+    transition: background-color 0.2s ease; font-size: 16px; font-weight: 400;
+}
+.sidebar-desktop-narrow-view .sidebar-nav li a:hover { background-color: var(--hover-bg); }
+.sidebar-desktop-narrow-view .sidebar-nav li a.active { font-weight: 600; }
+.sidebar-desktop-narrow-view .sidebar-nav li a i {
+    font-size: 20px; width: 28px; text-align: center; margin-right: 16px;
+    flex-shrink: 0; transition: margin 0.3s ease;
+}
+.sidebar-desktop-narrow-view .nav-text {
+    display: inline-block; transition: opacity 0.1s ease; opacity: 1;
+    white-space: nowrap; overflow: hidden;
 }
 
-/* --- Responsive Sidebar --- */
+/* Settings en bas */
+.sidebar-desktop-narrow-view .sidebar-settings {
+    margin-top: auto; padding-top: 10px;
+}
+.sidebar-desktop-narrow-view .sidebar-settings a {
+    display: flex; align-items: center; padding: 12px; margin-bottom: 8px;
+    border-radius: 6px; color: var(--link-color-sidebar); text-decoration: none;
+    transition: background-color 0.2s ease; font-size: 16px; font-weight: 400;
+}
+.sidebar-desktop-narrow-view .sidebar-settings a:hover { background-color: var(--hover-bg); }
+.sidebar-desktop-narrow-view .sidebar-settings a i {
+    font-size: 20px; width: 28px; text-align: center; margin-right: 16px;
+    flex-shrink: 0; transition: margin 0.3s ease;
+}
+/* Le .nav-text des settings utilise le même style que celui de la nav */
 
-/* --- Écran étroit (Sidebar Réduite) --- */
-@media (max-width: 1260px) { /* Doit correspondre au breakpoint de global.css */
+
+/* ============================================ */
+/* ==      STYLES SIDEBAR ÉTROITE            == */
+/* ============================================ */
+@media (max-width: 1260px) {
     .sidebar {
-        width: var(--sidebar-width-narrow);
+        width: var(--sidebar-width-narrow); /* Réduit la largeur */
         padding-left: 8px;
         padding-right: 8px;
-        justify-content: center;
+        /* justify-content: center; /* Supprimé, gérer par .sidebar-content */
     }
-    .sidebar-logo {
-        padding-left: 4px;
-        padding-right: 4px;
-        justify-content: center; /* Centre l'icône quand texte caché */
+    /* Cacher le texte */
+    .sidebar-desktop-narrow-view .logo-text,
+    .sidebar-desktop-narrow-view .nav-text {
+        opacity: 0; width: 0; overflow: hidden;
     }
-    
-    .logo-text {
-        opacity: 0; /* Cache le texte */
-        width: 0; /* Réduit sa largeur */
-        overflow: hidden;
+    /* Centrer logo et items */
+    .sidebar-desktop-narrow-view .sidebar-logo {
+        padding-left: 0; padding-right: 0; justify-content: center;
     }
-
-    .sidebar-nav li a,
-    .sidebar-settings a {
-        justify-content: center; /* Centre l'icône */
-         padding: 12px 8px; /* Moins de padding horizontal */
+     .sidebar-desktop-narrow-view .logo-icon { margin-right: 0; }
+    .sidebar-desktop-narrow-view .sidebar-nav li a,
+    .sidebar-desktop-narrow-view .sidebar-settings a {
+        justify-content: center; padding: 12px 8px;
     }
-    .sidebar-nav li a i,
-    .sidebar-settings a i {
-        margin-right: 0; /* Plus d'espace à droite de l'icône */
-    }
-    .nav-text {
-        opacity: 0;
-        width: 0;
-        overflow: hidden;
+    .sidebar-desktop-narrow-view .sidebar-nav li a i,
+    .sidebar-desktop-narrow-view .sidebar-settings a i {
+        margin-right: 0;
     }
 }
 
-/* --- Mobile (Sidebar devient Bottom Bar) --- */
+
+/* ============================================ */
+/* ==     STYLES MOBILE (BARRE EN BAS)       == */
+/* ============================================ */
 @media (max-width: 767px) {
+
+    /* Cacher la vue desktop/étroite */
+    .sidebar-desktop-narrow-view {
+        display: none;
+    }
+
+    /* Afficher la vue mobile */
+    .sidebar-mobile-view {
+        display: flex; /* Met Nav et Settings en ligne */
+        width: 100%;
+        height: 100%; /* Prend la hauteur de .sidebar */
+        align-items: stretch; /* Étire verticalement */
+    }
+
+    /* Styles de la barre du bas */
     .sidebar {
-        width: 100%; /* Toute la largeur */
-        height: var(--bottom-nav-height); /* Hauteur fixe */
-        position: fixed; /* Fixe en bas */
-        top: auto; /* Annule top: 0 */
-        bottom: 0;
-        border-right: none; /* Plus de bordure droite */
-        border-top: 1px solid var(--border-main); /* Bordure en haut */
-        padding: 0 5px; /* Padding léger pour la barre */
-        z-index: 1100; /* Au-dessus du contenu */
-        transition: none; /* Pas de transition de largeur/hauteur */
-    }
-    .sidebar-content {
-        flex-direction: row; /* Icônes en ligne */
-        justify-content: space-around; /* Espace équitablement */
-        align-items: center; /* Centre verticalement */
-        height: 100%;
-        overflow: hidden; /* Pas de scroll */
-    }
-    .sidebar-logo {
-        display: none; /* Cache le logo */
-    }
-    .sidebar-nav {
-        flex-grow: 0; /* Ne prend pas tout l'espace */
-        margin-top: 0;
-    }
-    .sidebar-nav ul {
-        display: flex; /* Items en ligne */
-        gap: 5px; /* Petit espace entre items */
-        height: 100%;
-    }
-    .sidebar-nav li, .sidebar-settings {
-         flex: 1 1 0px; /* Chaque item prend une part égale */
-         display: flex;
-         justify-content: center;
-         align-items: center;
-         height: 100%;
+        width: 100%; height: var(--bottom-nav-height); position: fixed;
+        top: auto; bottom: 0; border-right: none;
+        border-top: 1px solid var(--border-main); padding: 0; /* Pas de padding sur la barre */
+        z-index: 1100; transition: none; background-color: var(--sidebar-bg);
     }
 
-    .sidebar-nav li a,
-    .sidebar-settings a {
-        padding: 5px; /* Padding réduit pour les icônes */
-        margin-bottom: 0;
-        flex: 1; /* Prend la place dans son parent li/div */
-        justify-content: center; /* Centre l'icône */
-        height: 100%; /* Prend toute la hauteur du `li` */
-        border-radius: 0; /* Pas de coins arrondis */
+    /* Navigation mobile */
+    .sidebar-mobile-view .sidebar-nav-mobile {
+        flex-grow: 1; /* Prend la majorité de la place */
+        display: flex; height: 100%;
     }
-     .sidebar-nav li a:hover,
-     .sidebar-settings a:hover {
-         background-color: transparent; /* Pas de fond au survol */
-     }
+    .sidebar-mobile-view .sidebar-nav-mobile ul {
+        display: flex; flex-grow: 1; list-style: none; margin: 0; padding: 0; height: 100%;
+    }
+    /* Chaque item de la nav */
+    .sidebar-mobile-view .sidebar-nav-mobile li {
+        flex: 1 1 0; /* Se partage l'espace équitablement */
+        display: flex; align-items: stretch;
+    }
+    /* Lien dans l'item de nav */
+    .sidebar-mobile-view .sidebar-nav-mobile li a {
+        flex-grow: 1; /* Remplit le LI */
+        display: flex; justify-content: center; align-items: center;
+        color: var(--link-color-sidebar); padding: 0 5px; text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+    .sidebar-mobile-view .sidebar-nav-mobile li a:hover { background-color: var(--hover-bg); }
+    .sidebar-mobile-view .sidebar-nav-mobile li a i { font-size: 22px; margin: 0; }
 
-    .sidebar-nav li a i,
-    .sidebar-settings a i {
-        margin-right: 0; /* Pas de marge */
-        font-size: 22px; /* Taille icônes mobile */
-    }
-    .nav-text {
-        display: none; /* Assure que le texte est caché */
-    }
-    .sidebar-settings {
-        margin-top: 0;
-        padding-top: 0;
-    }
-    /* Cache le lien thème toggle spécifique, on cliquera sur settings */
-     #theme-toggle { display: none !important; }
 
-}
+    /* Settings mobile */
+    .sidebar-mobile-view .sidebar-settings-mobile {
+        /* flex: 1 1 0; /* Même largeur que les autres items */
+        /* OU taille fixe si désiré : */
+         flex: 0 0 70px; /* Ex: largeur fixe pour settings */
+        display: flex; align-items: stretch;
+    }
+    /* Lien dans settings */
+    .sidebar-mobile-view .sidebar-settings-mobile a {
+        flex-grow: 1; /* Remplit la DIV */
+        display: flex; justify-content: center; align-items: center;
+        color: var(--link-color-sidebar); padding: 0 5px; text-decoration: none;
+        transition: background-color 0.2s ease;
+    }
+     .sidebar-mobile-view .sidebar-settings-mobile a:hover { background-color: var(--hover-bg); }
+     .sidebar-mobile-view .sidebar-settings-mobile a i { font-size: 22px; margin: 0; }
+
+} /* Fin @media mobile */

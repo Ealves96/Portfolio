@@ -73,7 +73,7 @@
 }
 /* Nom Desktop */
 .profile-header-desktop-view .profile-username {
-    margin-right: auto; /* Pousse les boutons */
+    margin-right: 20px; /* Pousse les boutons */
     font-size: 22px; /* Assurez la taille desktop */
     font-weight: 400; /* Ou le poids que vous aviez */
 }
@@ -148,10 +148,11 @@
         flex-direction: row;
         align-items: center;
         margin-bottom: 15px; /* Espace avant la bio mobile */
+        margin-top: 35px;
     }
     /* Conteneur Photo Mobile */
     .profile-header-mobile-view .profile-pic-container {
-        width: 90px; height: 90px; flex-shrink: 0; margin: 0 15px 0 0;
+        width: 100px; height: 0px; flex-shrink: 0; margin: 0 15px 0 0; margin-left: -15px;
     }
     /* Wrapper Bordure Photo Mobile */
     .profile-header-mobile-view .profile-pic-border-wrapper {
@@ -174,7 +175,7 @@
         /* justify-content: space-between; */ /* <<< CHANGÉ */
         justify-content: flex-start;        /* <<< NOUVEAU: Aligne à gauche */
         /* Ou essayez : justify-content: center; pour centrer le groupe */
-        gap: 35px; /* <<< AJUSTEZ CETTE VALEUR (ex: 10px, 15px, 20px) pour l'espacement voulu */
+        gap: 40px; /* <<< AJUSTEZ CETTE VALEUR (ex: 10px, 15px, 20px) pour l'espacement voulu */
         padding: 0; border: none; margin: 0;
         /* font-size: 13px; Pas nécessaire ici */
         flex-wrap: nowrap; align-items: center;
@@ -190,7 +191,12 @@
         padding: 0; /* <<< IMPORTANT: Assurer 0 padding */
     }
     .profile-header-mobile-view .stat-number { font-weight: 600; font-size: 14px; white-space: nowrap; }
-    .profile-header-mobile-view .stat-label { font-size: 13px; color: var(--secondary-text-color); display: block; margin: 0; white-space: nowrap; }
+    .profile-header-mobile-view .stat-label { 
+        font-size: 13px; 
+        color: black; 
+        display: block; 
+        margin: 0; 
+        white-space: nowrap; }
 
 
     /* 3. Bio Mobile */
@@ -200,19 +206,22 @@
     }
     .profile-header-mobile-view .profile-bio-section-mobile .profile-real-name {
         font-size: 14px; font-weight: 600; margin-bottom: 3px;
+        margin-left: -10px;
     }
     .profile-header-mobile-view .profile-bio-section-mobile .profile-bio {
         font-size: 14px;
+        margin-left: -10px;
     }
     .profile-header-mobile-view .profile-bio-section-mobile .profile-bio p {
          margin-bottom: 3px; /* Assurer l'espacement */
     }
 
-
     /* 4. Boutons Mobile */
     .profile-header-mobile-view .profile-actions-mobile {
         display: flex; /* Afficher */
         width: 100%; gap: 8px; margin-top: 0; padding: 0;
+        margin-left: -20px;
+        height: 38px;
     }
     .profile-header-mobile-view .profile-actions-mobile .button {
         flex-grow: 1; text-align: center; font-size: 14px; padding: 8px 10px;

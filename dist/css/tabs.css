@@ -22,7 +22,7 @@
     color: var(--secondary-text-color); /* Couleur inactive par défaut */
     cursor: pointer;
     position: relative; /* Pour la barre active */
-    border-top: 1px solid transparent; /* Espace pour la barre active */
+    border-top: 1px solid transparent; Espace pour la barre active
     margin-top: -1px; /* Remonte pour que la barre touche la bordure sup */
     transition: color 0.2s ease, border-top-color 0.2s ease;
 }
@@ -65,7 +65,7 @@
     }
     .tab-item.active {
         border-top-color: transparent; /* Annule la barre sup */
-        border-bottom-color: var(--primary-text-color); /* Barre en dessous */
+        border-bottom-color: var(--primary-text-color); /*Barre en dessous*/
     }
     /* Ici, on pourrait remplacer le texte par des icônes */
 }

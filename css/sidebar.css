@@ -169,7 +169,7 @@
     .sidebar {
         width: 100%; height: var(--bottom-nav-height); position: fixed;
         top: auto; bottom: 0; border-right: none;
-        border-top: 1px solid var(--border-main); padding: 0; /* Pas de padding sur la barre */
+        /* border-top: 1px solid var(--border-main); padding: 0; Pas de padding sur la barre */
         z-index: 1100; transition: none; background-color: var(--sidebar-bg);
     }
 

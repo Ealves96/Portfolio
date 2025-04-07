@@ -5,6 +5,8 @@
 .highlights-list {
     display: flex;
     margin-left: 35px;
+    margin-top: 40px;
+    margin-bottom: 30px;
     gap: 30px; /* Espace entre les cercles */
     overflow-x: auto; /* Permet de scroller horizontalement si trop d'éléments */
     padding: 5px 0; /* Petit padding pour l'ombre/bordure */
@@ -86,15 +88,33 @@
 @media (max-width: 768px) {
     .highlights-section {
         padding: 0 0 20px 0;
-         /* Ajoute une bordure sup sur mobile pour séparer du header */
-        border-top: 1px solid var(--border-color);
+        /* border-top: 1px solid var(--border-color); */
         padding-top: 15px;
+        /* Optionnel: Enlever le padding global du parent si vous voulez coller au bord */
+        /* padding-left: 0; */
+        /* padding-right: 0; */
     }
+
     .highlights-list {
-        gap: 15px; /* Moins d'espace sur mobile */
-        padding-left: 10px; /* Petite marge au début */
-        padding-right: 10px; /* Petite marge à la fin */
+        display: flex; /* Garder flex */
+        justify-content: flex-start; /* <<< Confirmer l'alignement à gauche */
+        gap: 15px;
+        overflow-x: auto; /* Garder le scroll horizontal */
+        padding-left: 0px; /* <<< AJUSTER padding gauche pour l'espace au bord */
+        padding-right: 15px; /* Padding droit pour ne pas coller à la fin du scroll */
+        padding-top: 5px; /* Garder padding vertical */
+        padding-bottom: 5px;
+        margin-left: 0; /* <<< ANNULER la marge desktop */
+        /* Les styles pour cacher la scrollbar restent valides */
+        margin-top: -20px;
+         -ms-overflow-style: none;
+         scrollbar-width: none;
     }
+
+    .highlights-list::-webkit-scrollbar {
+        display: none;
+     }
+
     .highlight-item {
         width: 70px;
         /* margin-left: 5px; */

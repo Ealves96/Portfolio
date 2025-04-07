@@ -4,6 +4,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
     padding-top: 20px;
+    margin-top: -17px;
 }
 
 .project-item {
@@ -91,6 +92,7 @@
 @media (max-width: 768px) {
     .project-grid {
         gap: 3px;
+        margin-top: -17px;
     }
     .project-overlay {
         padding: 10px;

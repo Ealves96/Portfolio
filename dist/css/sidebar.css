@@ -115,6 +115,7 @@
         width: var(--sidebar-width-narrow);
         padding-left: 8px;
         padding-right: 8px;
+        justify-content: center;
     }
     .sidebar-logo {
         padding-left: 4px;

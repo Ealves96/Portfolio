@@ -1,19 +1,22 @@
 {
-  "name": "mon-portfolio",
+  "name": "portfolio",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
-    "build:html": "posthtml index.html -o dist/index.html -c posthtml.config.js",
-    "copy:assets": "cp -R css js img partials dist/", 
-    "build": "rm -rf dist && mkdir dist && npm run build:html && npm run copy:assets" 
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist/* && rm -rf node_modules/.cache",
+    "prebuild": "npm run clean",
+    "build": "node build.js",
+    "postbuild": "cp -r css js img partials dist/",
+    "start": "npm run build && cd dist && live-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "posthtml": "^0.16.6", 
-    "posthtml-cli": "^0.10.0",
-    "posthtml-include": "^1.7.4"
+    "posthtml": "^0.16.6",
+    "posthtml-include": "^2.0.1",
+    "posthtml-load-config": "^2.0.0"
   }
 }

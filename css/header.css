@@ -1,260 +1,226 @@
-/* ===== Styles pour le Header (Desktop / défaut) ===== */
+/* Dans css/header.css */
 
-.profile-header-desktop {
-    /* Utiliser flex column pour empiler la partie haute et la bio */
-    display: flex;
+/* ======================================== */
+/* ==         STYLES DESKTOP             == */
+/* ======================================== */
+
+/* Cacher la vue mobile par défaut */
+.profile-header-mobile-view {
+    display: none;
+}
+
+/* Assurer que la vue desktop est visible */
+.profile-header-desktop-view {
+    display: block; /* Conteneur principal desktop */
+}
+
+/* Styles spécifiques pour les éléments DANS .profile-header-desktop-view */
+.profile-header-desktop-view .profile-header-desktop {
+    /* Cette classe peut être redondante si c'est le seul enfant, mais gardons-la pour l'instant */
+    display: flex; /* Réappliquer le flex column si nécessaire pour la structure interne */
     flex-direction: column;
-    margin-bottom: 20px; /* Espace avant les highlights */
-    /* border-bottom: 1px solid var(--border-color); Ligne sous tout le header */
-    padding-bottom: 30px; /* Espace avant la bordure */
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+}
+.profile-header-desktop-view .profile-header-top {
+     display: flex;
+     align-items: flex-start;
+     padding-left: 40px; /* Padding gauche Desktop */
+     padding-right: 20px; /* Padding droit Desktop */
 }
 
-/* Partie supérieure (Photo + Infos Supérieures) */
-.profile-header-top {
-    display: flex; /* Photo à gauche, Infos Sup à droite */
-    align-items: flex-start; /* Aligner en haut */
-    padding-left: 40px; /* Petit retrait général si besoin */
-    padding-right: 20px;
-}
-
-/* Conteneur Photo (gauche) */
-.profile-pic-container {
-    flex-shrink: 0;
-    margin-right: 80px;
-    margin-top: 25px;
+/* Conteneur Photo Desktop */
+.profile-header-desktop-view .profile-pic-container {
     width: 150px;
     height: 150px;
+    margin-right: 80px;
+    margin-top: 25px;
+    flex-shrink: 0;
 }
-
-.profile-pic-border-wrapper {
-    width: 100%; /* Prend la taille définie par .profile-pic-container */
+/* Wrapper Bordure Photo Desktop */
+.profile-header-desktop-view .profile-pic-border-wrapper {
+    width: 100%;
     height: 100%;
-    border-radius: 50%; /* Le rend circulaire */
-    /* === Appliquez VOTRE dégradé ici (le même que highlights/posts) === */
+    border-radius: 50%;
     background: linear-gradient(135deg, #f2c7ea, #8a39d6);
-    padding: 3px; /* Épaisseur de l'espace + bordure. Ajustez si besoin. */
-    box-sizing: border-box; /* Important */
-    display: flex; /* Utile pour contenir/centrer l'image */
+    padding: 3px; /* Bordure épaisse desktop */
+    box-sizing: border-box;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.profile-pic-border-wrapper img {
-    display: block; /* Comportement standard pour les images */
-    width: 100%;    /* Prend toute la place DANS le padding du wrapper */
+/* Image Photo Desktop */
+.profile-header-desktop-view .profile-pic-border-wrapper img {
+    display: block;
+    width: 100%;
     height: 100%;
-    object-fit: cover; /* Assure que l'image remplit l'espace sans être déformée */
-    border-radius: 50%; /* Rend l'image elle-même ronde */
-    /* background-color: #eee; /* Optionnel: couleur de fond pendant chargement */
-    /* Pas de border: ici */
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-.profile-pic-container img {
-    width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    border: 1px solid var(--border-color);
-}
-
-/* Conteneur Infos Supérieures (droite) */
-.profile-info-top {
+/* Conteneur Infos Droite Desktop */
+.profile-header-desktop-view .profile-info-top {
     flex-grow: 1;
     display: flex;
-    flex-direction: column; /* Empile Pseudo/Boutons/Stats verticalement */
+    flex-direction: column;
     padding-top: 10px;
 }
-
-.profile-username-mobile { display: none; }
-/* Cacher les boutons mobiles par défaut */
-.profile-actions-mobile { display: none; }
-
-.profile-username-desktop {
-    /* display: block; ou hériter */
-    margin-right: 20px; /* Garder la marge desktop si besoin */
-}
-
-/* Barre avec Pseudo et Icône Settings */
-.profile-top-bar {
+/* Barre Supérieure (Nom + Boutons) Desktop */
+.profile-header-desktop-view .profile-top-bar {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Espace avant les boutons */
+    margin-bottom: 10px;
+}
+/* Nom Desktop */
+.profile-header-desktop-view .profile-username {
+    margin-right: auto; /* Pousse les boutons */
+    font-size: 22px; /* Assurez la taille desktop */
+    font-weight: 400; /* Ou le poids que vous aviez */
+}
+/* Boutons Desktop */
+.profile-header-desktop-view .profile-actions-desktop {
+    display: flex; /* Afficher les boutons desktop */
+    gap: 10px;
+}
+/* Style Boutons Desktop */
+.profile-header-desktop-view .profile-actions-desktop .button {
+    padding: 4px 12px;
+    font-size: 13px;
+    margin-left: 0;
 }
 
-.profile-top-bar .profile-actions-desktop { 
-    display: flex; /* Assure visibilité desktop */ }
-
-.profile-username { 
-    margin-right: 20px; 
-}
-
-/* Conteneur des boutons (sous le pseudo) */
-.profile-actions-desktop {
+/* Stats Desktop */
+.profile-header-desktop-view .profile-stats {
     display: flex;
-    gap: 10px; /* Espace entre les boutons */
-    /* Ajuster la marge basse pour rapprocher les stats */
-    margin-bottom: 5px; /* Réduit de 20px à 15px (ou moins si désiré) */
-}
-
-/* --- MODIFICATION ICI pour la taille des boutons --- */
-.profile-actions-desktop .button {
-    /* Hérite des styles .button de global.css, mais on surcharge la taille */
-    padding: 4px 12px; /* Plus petit que le padding par défaut (ex: 5px 15px) */
-    font-size: 13px; /* Optionnel: réduire aussi la taille de police (si 14px par défaut) */
-    margin-left: 0; /* Annule la marge par défaut si présente */
-    /* Les autres styles (couleur, bordure...) restent */
-}
-
-/* Stats (sous les boutons) */
-.profile-stats {
-    display: flex;
-    gap: 40px; /* Espace ENTRE les items de stats */
+    gap: 40px;
     font-size: 16px;
-    margin-bottom: 15px; 
+    margin-bottom: 15px;
 }
-.stat-number { font-weight: 500; }
-.stat-label { color: var(--primary-text-color); }
+.profile-header-desktop-view .profile-stats li { /* Aucun style spécifique nécessaire ici par défaut */ }
+.profile-header-desktop-view .stat-number { font-weight: 600; } /* Poids desktop */
+.profile-header-desktop-view .stat-label { color: var(--primary-text-color); font-size: 16px; } /* Taille desktop */
 
-/* Section Bio (sous la partie supérieure) */
-.profile-bio-section-desktop {
-    padding-right: 20px;
-    padding-top: 10px; /* Espace après la partie haute */
+/* Bio Desktop */
+.profile-header-desktop-view .profile-bio-section-desktop {
+     padding-right: 20px;
+     padding-top: 10px;
+     display: block; /* S'assurer qu'elle est visible sur desktop */
 }
-.profile-real-name {
-    font-weight: 500;
-    margin-bottom: 5px;
-}
-.profile-bio p {
-    margin-bottom: 3px;
-    font-size: 14px;
-}
-.profile-bio a { font-weight: 500; }
+.profile-header-desktop-view .profile-real-name { font-weight: 600; font-size: 14px; margin-bottom: 5px; }
+.profile-header-desktop-view .profile-bio { font-size: 14px; }
+.profile-header-desktop-view .profile-bio p { margin-bottom: 3px; }
 
 
-/* ===== Styles pour le Header (Mobile @media) ===== */
-/* Nous allons réutiliser l'ancienne logique mobile, en l'adaptant légèrement */
+/* ======================================== */
+/* ==          STYLES MOBILE             == */
+/* ======================================== */
 @media (max-width: 768px) {
-    .profile-username-mobile {
-        display: flex; /* Afficher */
-        align-items: center;
-        font-size: 22px;
-        font-weight: 600;
-        margin: 0 0 15px 0; /* Marge basse avant le reste */
-        padding: 10px 15px 0 15px; /* Padding haut/latéral */
-        /* text-align: left; */
-    }
 
-    .username-dropdown-icon {
-        font-size: 14px; /* Icône plus petite que le texte */
-        margin-left: 8px; /* Espace entre le nom et l'icône */
-        color: var(--primary-text-color); /* Assurer la bonne couleur */
-        cursor: pointer; /* Indique qu'on pourrait cliquer dessus */
-        /* Optionnel: ajouter une légère transition si elle doit bouger */
-         transition: transform 0.2s ease;
-    }
-
-
-    .profile-username-desktop {
+    /* Cacher la vue desktop */
+    .profile-header-desktop-view {
         display: none;
     }
 
-    .profile-header-desktop {
-        display: flex;
-        flex-direction: column; /* Simple colonne pour mobile */
-        padding: 0; /* Pas de padding global ici */
-        margin-bottom: 20px;
-    }
-
-    /* === Réorganisation MAJEURE ici === */
-    .profile-header-top {
-        display: flex;
-        flex-direction: row; /* Empiler photo et infos */
-        align-items: center; /* Aligner à gauche */
-        width: 100%;
-        padding: 0 15px; /* Padding latéral */
-        margin-bottom: 15px;
+    /* Afficher la vue mobile */
+    .profile-header-mobile-view {
+        display: block; /* Conteneur principal mobile */
+        padding: 0 15px; /* Padding latéral global mobile */
         box-sizing: border-box;
+        margin-bottom: 20px; /* Espace avant highlights */
     }
 
-    .profile-pic-container {
-        width: 90px; /* Taille photo réduite */
-        height: 90px;
+    /* --- Styles pour les éléments DANS .profile-header-mobile-view --- */
+
+    /* 1. Nom Mobile */
+    .profile-header-mobile-view .profile-username-mobile {
+        display: flex; align-items: center;
+        font-size: 16px; font-weight: 600;
+        margin: 0 0 15px 0; padding: 10px 0 0 0; /* Padding haut seulement */
+    }
+    .profile-header-mobile-view .username-dropdown-icon {
+        font-size: 14px; margin-left: 8px; color: var(--primary-text-color); cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    /* 2. Ligne Photo | Stats */
+    .profile-header-mobile-view .photo-stats-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 15px; /* Espace avant la bio mobile */
+    }
+    /* Conteneur Photo Mobile */
+    .profile-header-mobile-view .profile-pic-container {
+        width: 90px; height: 90px; flex-shrink: 0; margin: 0 15px 0 0;
+    }
+    /* Wrapper Bordure Photo Mobile */
+    .profile-header-mobile-view .profile-pic-border-wrapper {
+        width: 100%; height: 100%; border-radius: 50%;
+        background: linear-gradient(135deg, #f2c7ea, #8a39d6);
+        padding: 2px; /* Bordure fine mobile */
+        box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+    }
+    /* Image Photo Mobile */
+     .profile-header-mobile-view .profile-pic-border-wrapper img {
+        display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+     }
+
+    /* Stats Mobile (celles dans la structure mobile) */
+    .profile-header-mobile-view .profile-stats {
+        width: auto; /* Largeur s'adapte au contenu */
+        flex-grow: 1; /* Prend l'espace dispo à droite de la photo */
+        display: flex;
+        flex-direction: row;
+        /* justify-content: space-between; */ /* <<< CHANGÉ */
+        justify-content: flex-start;        /* <<< NOUVEAU: Aligne à gauche */
+        /* Ou essayez : justify-content: center; pour centrer le groupe */
+        gap: 35px; /* <<< AJUSTEZ CETTE VALEUR (ex: 10px, 15px, 20px) pour l'espacement voulu */
+        padding: 0; border: none; margin: 0;
+        /* font-size: 13px; Pas nécessaire ici */
+        flex-wrap: nowrap; align-items: center;
+        /* overflow: hidden; */ /* <<< COMMENTEZ/SUPPRIMEZ pour voir si ça déborde */
+    }
+    .profile-header-mobile-view .profile-stats li {
+        display: flex; flex-direction: column; align-items: center;
+        line-height: 1.2; text-align: center;
+        /* flex-shrink: 1; */ /* Mis à 0 car on ne veut pas qu'ils rétrécissent forcément */
         flex-shrink: 0;
-        margin: 0 20px 0 0; /* Marge droite seulement */
+        /* flex-basis: 0; */ /* Moins pertinent avec flex-start */
+        /* min-width: 0; */ /* Moins pertinent avec flex-start */
+        padding: 0; /* <<< IMPORTANT: Assurer 0 padding */
     }
+    .profile-header-mobile-view .stat-number { font-weight: 600; font-size: 14px; white-space: nowrap; }
+    .profile-header-mobile-view .stat-label { font-size: 13px; color: var(--secondary-text-color); display: block; margin: 0; white-space: nowrap; }
 
-    .profile-pic-border-wrapper {
-        padding: 2px; /* Garde la bordure fine */
+
+    /* 3. Bio Mobile */
+    .profile-header-mobile-view .profile-bio-section-mobile {
+        display: block; /* Assure visibilité */
+        width: 100%; text-align: left; margin-bottom: 15px; padding: 0;
     }
-
-    /* 3. Conteneur pour Nom/Stats/Bio/Boutons à droite */
-    .profile-info-top {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column; /* Les stats s'empileront ici */
-        padding: 0; /* Annuler padding interne précédent */
-        width: auto; /* Prend l'espace restant */
+    .profile-header-mobile-view .profile-bio-section-mobile .profile-real-name {
+        font-size: 14px; font-weight: 600; margin-bottom: 3px;
     }
-
-    
-    .profile-stats {
-        order: 1; /* En premier dans cette colonne */
-        width: 100%; /* Prend la largeur de la colonne droite */
-        display: flex;
-        flex-direction: row; /* <<-- STATS EN LIGNE */
-        justify-content: space-around; /* <<-- Répartir les stats dans l'espace dispo */
-        gap: 15px; /* Espace entre les stats */
-        padding: 0; /* <<-- PAS de padding vertical */
-        border: none; /* <<-- PAS de bordures */
-        margin: 0; /* <<-- PAS de marges */
+    .profile-header-mobile-view .profile-bio-section-mobile .profile-bio {
         font-size: 14px;
-        flex-wrap: wrap; /* Permet de passer à la ligne si l'espace manque */
     }
-    
-    .profile-stats li {
-        display: flex;
-        flex-direction: column; /* Nombre au dessus du label */
-        align-items: center; /* Centrer Nombre et Label */
-        line-height: 1.2;
-        text-align: center; /* Centrer le texte */
-    }
-    .stat-number {
-        font-weight: 600;
-        font-size: 15px; /* Légèrement plus grand */
-    }
-    .stat-label {
-        color: var(--secondary-text-color);
-        font-size: 13px;
-        display: block; /* S'assure qu'il est sous le nombre */
-        margin: 0; /* Annuler marge gauche précédente */
-    }
-    
-    /* 4. Barre du Nom (dans info-top) */
-    .profile-top-bar {
-        margin-bottom: 15px; /* Espace avant stats */
-        /* Pas besoin de display flex si on ne veut que les boutons */
-    }
-
-    .profile-bio-section-desktop {
-        order: 2; /* Après les stats DANS la colonne .profile-info-top */
-        width: 100%; /* Prend toute la largeur */
-        padding: 0 15px; /* Padding G/D global */
-        margin-top: 15px; /* Espace après la ligne Photo/Stats */
-        box-sizing: border-box;
-    }
-
-    .profile-info-top > .profile-actions-desktop {
-        order: 3; /* Après la bio */
-        display: flex;
-        width: 100%;
-        padding: 0 15px; /* Padding G/D global */
-        margin-top: 15px;
-        gap: 8px;
-        box-sizing: border-box;
-    }
-
-    .profile-info-top > .profile-actions-desktop .button {
-        flex-grow: 1;
+    .profile-header-mobile-view .profile-bio-section-mobile .profile-bio p {
+         margin-bottom: 3px; /* Assurer l'espacement */
     }
 
 
-    /* Nettoyage */
-    .settings-icon { display: none; }
-}
+    /* 4. Boutons Mobile */
+    .profile-header-mobile-view .profile-actions-mobile {
+        display: flex; /* Afficher */
+        width: 100%; gap: 8px; margin-top: 0; padding: 0;
+    }
+    .profile-header-mobile-view .profile-actions-mobile .button {
+        flex-grow: 1; text-align: center; font-size: 14px; padding: 8px 10px;
+    }
+
+    /* Cache la Bio version desktop sur mobile */
+     .profile-bio-section-desktop {
+         display: none;
+     }
+
+} /* Fin @media */

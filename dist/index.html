@@ -246,119 +246,173 @@
 </section>
 
                 <!-- === Inclusion Project Grid === -->
-                <div class="project-grid" aria-live="polite"> <!-- Note: Changé de <main> à <div> car on a déjà <main> pour le contenu principal -->
-    <!-- Projet 1 -->
-    <a href="#" class="project-item" data-category="frontend" data-title="Transcendence" data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail" data-description="Un jeu de Pong multijoueur..." data-tech="NestJS, Vue.js..." data-github="https://github.com/votre_pseudo/transcendence" data-live="#" data-background-image="img/logo42.png">
-        <!-- <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence"> -->
-        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-    </a>
-    <a href="#" class="project-item" data-category="frontend" data-title="Transcendence" data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail" data-description="Un jeu de Pong multijoueur..." data-tech="NestJS, Vue.js..." data-github="https://github.com/votre_pseudo/transcendence" data-live="#" data-background-image="img/logo42.png">
-        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence">
-        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-    </a>
-    <a href="#" class="project-item" data-category="frontend" data-title="Transcendence" data-image="https://via.placeholder.com/600x400/FFD700/000000?text=Transcendence+Detail" data-description="Un jeu de Pong multijoueur..." data-tech="NestJS, Vue.js..." data-github="https://github.com/votre_pseudo/transcendence" data-live="#" data-background-image="img/logo42.png">
-        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Transcendence">
-        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-    </a>
-    <!-- Projet 2 -->
-    <a href="#" class="project-item" data-category="backend" data-title="Bibliothèque C Allocateur Mémoire" data-image="https://via.placeholder.com/600x400/4682B4/FFFFFF?text=Lib+Malloc+Detail" data-description="Une réimplémentation de malloc..." data-tech="C, Gestion Mémoire" data-github="https://github.com/votre_pseudo/libmalloc" data-live="">
-        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Bibliothèque C">
-        <div class="project-overlay"><span class="project-title-overlay">Lib Malloc C</span></div>
-    </a>
-    <!-- Projet 3 -->
-     <a href="#" class="project-item" data-category="devops" data-title="Serveur IRC en C++" data-image="https://via.placeholder.com/600x400/8A2BE2/FFFFFF?text=IRC+Server+Detail" data-description="Un serveur IRC simple..." data-tech="C++, Sockets..." data-github="https://github.com/votre_pseudo/irc_server" data-live="">
-        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Serveur IRC">
-        <div class="project-overlay"><span class="project-title-overlay">Serveur IRC C++</span></div>
-    </a>
-    <!-- Projet 4 -->
-     <a href="#" class="project-item" data-category="network" data-title="Pipeline CI/CD GitLab" data-image="https://via.placeholder.com/600x400/32CD32/FFFFFF?text=CI/CD+Pipeline+Detail" data-description="Configuration d'un pipeline CI/CD..." data-tech="GitLab CI, Docker..." data-github="https://github.com/votre_pseudo/cicd_example" data-live="">
-        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Pipeline CI/CD">
-        <div class="project-overlay"><span class="project-title-overlay">Pipeline CI/CD</span></div>
-    </a>
-    <!-- Projet 5 (Data) -->
-     <a href="#" class="project-item" data-category="data" data-title="Analyse Données Ventes" data-image="https://via.placeholder.com/600x400/FF6347/FFFFFF?text=Data+Analysis+Detail" data-description="Analyse exploratoire et visualisation..." data-tech="Python, Pandas, Matplotlib" data-github="https://github.com/votre_pseudo/data_analysis" data-live="">
-        <img src="https://via.placeholder.com/300/777777/FFFFFF?text=Projet" alt="Miniature Analyse Données">
-        <div class="project-overlay"><span class="project-title-overlay">Analyse Données Ventes</span></div>
-    </a>
-    <!-- Ajoutez d'autres projets si nécessaire -->
+                <!-- partials/_project-grid.html -->
+<div class="project-grid" aria-live="polite">
 
-    <!-- Exemple de structure d'un projet dans la grille -->
-    <div class="project-item" data-title="Titre du projet" data-image="chemin/vers/image.jpg" data-description="Description du projet" data-tech="Technologies utilisées" data-github="lien-github" data-live="lien-demo">
-        <!-- Contenu du projet -->
-    </div>
+    <!-- Projet 1: Transcendence (Exemple avec plusieurs images) -->
+    <a href="#" class="project-item" data-category="frontend backend devops" data-title="Transcendence Game" data-image="img/projects/transcendence/transcendence-main.jpg" data-images="[
+            &quot;img/projects/transcendence/transcendence-main.jpg&quot;,
+            &quot;img/projects/transcendence/transcendence-gameplay.png&quot;,
+            &quot;img/projects/transcendence/transcendence-chat.gif&quot;,
+            &quot;img/projects/transcendence/transcendence-docker.png&quot;
+        ]" data-description="Développement d'un jeu de Pong multijoueur en temps réel inspiré du classique Pong.\n\nFonctionnalités :\n- Mode multijoueur via WebSockets (Socket.IO).\n- Système d'authentification sécurisé (JWT, OAuth2 avec l'API 42).\n- Chat global et privé entre utilisateurs.\n- Interface utilisateur réactive construite avec Vue.js.\n- Backend robuste avec NestJS et base de données PostgreSQL.\n- Déploiement containérisé avec Docker et Docker Compose.\n\nCe projet a été réalisé dans le cadre du cursus de l'école 42, mettant l'accent sur le travail d'équipe, la gestion de projet et l'application des technologies web modernes." data-tech="Vue.js, NestJS, TypeScript, PostgreSQL, Socket.IO, Docker, OAuth2, JWT" data-github="https://github.com/Ealves96/transcendence" data-live="#" data-background-image="img/logo42.png">
+        <!-- L'image interne est cachée par CSS, mais utile pour le référencement/fallback -->
+        <img src="img/projects/transcendence/transcendence-thumb.jpg" alt="Miniature Transcendence">
+        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
+    </a>
+
+    <!-- Projet 2: Cub3D (Exemple Raycasting) -->
+     <a href="#" class="project-item" data-category="backend" data-title="Cub3D - Raycasting Engine" data-image="img/projects/cub3d/cub3d-main.png" data-images="[
+            &quot;img/projects/cub3d/cub3d-main.png&quot;,
+            &quot;img/projects/cub3d/cub3d-map.png&quot;,
+            &quot;img/projects/cub3d/cub3d-textures.gif&quot;
+        ]" data-description="Création d'un moteur graphique simplifié utilisant la technique du raycasting pour afficher une vue 3D à partir d'une carte 2D, similaire aux premiers jeux comme Wolfenstein 3D.\n\nImplémentation en C standard avec la bibliothèque MiniLibX pour l'affichage graphique.\n- Parsing de fichiers de description de scène (.cub).\n- Gestion des textures murales et des couleurs sol/plafond.\n- Mouvements et rotations du joueur dans l'environnement.\n- Optimisation basique des calculs de rayons." data-tech="C, MiniLibX, Raycasting, Parsing" data-github="https://github.com/Ealves96/cub3d" data-live="" data-background-image="img/logo42.png">
+        <img src="img/projects/cub3d/cub3d-thumb.jpg" alt="Miniature Cub3D">
+        <div class="project-overlay"><span class="project-title-overlay">Cub3D Engine</span></div>
+    </a>
+
+    <!-- Projet 3: Portfolio (Ce site !) -->
+     <a href="#" class="project-item" data-category="frontend" data-title="Mon Portfolio Web" data-image="img/projects/portfolio/portfolio-main.png" data-images="[
+            &quot;img/projects/portfolio/portfolio-main.png&quot;,
+            &quot;img/projects/portfolio/portfolio-dark.png&quot;,
+            &quot;img/projects/portfolio/portfolio-mobile.png&quot;
+        ]" data-description="Création de ce portfolio en ligne pour présenter mes projets et compétences.\n\nObjectifs :\n- Design responsive inspiré d'Instagram.\n- Utilisation de HTML sémantique et CSS moderne (Flexbox, Grid, Variables CSS).\n- Implémentation d'un thème Clair/Sombre sauvegardé en localStorage.\n- Structure modulaire avec fichiers partiels et build via NPM/PostHTML.\n- Animation subtiles et modale de projet interactive.\n- Déploiement continu via Netlify." data-tech="HTML, CSS, JavaScript, PostHTML, Netlify, Git" data-github="https://github.com/Ealves96/Portfolio" <!--="" Mettez="" le="" lien="" réel="" de="" ce="" repo="" --="">
+        data-live="#" <!-- Le site actuel ! -->
+        data-background-image="img/icons/code-icon-bw.png"> <!-- Une icône de code générique -->
+        <img src="img/projects/portfolio/portfolio-thumb.jpg" alt="Miniature Portfolio">
+         <div class="project-overlay">
+             <span class="project-title-overlay">Portfolio</span>
+        </div>
+    </a>
+
+    <!-- Projet 4: Minishell -->
+    <a href="#" class="project-item" data-category="backend" data-title="Minishell" data-image="img/projects/minishell/minishell-main.png" data-description="Réimplémentation d'un interpréteur de commandes (shell) simple en langage C.\n\nGestion des commandes simples, redirections (>, <, >>, <<), pipes (|), variables d'environnement, et signaux (Ctrl+C, Ctrl+\\). Parsing de la ligne de commande et gestion des processus enfants." data-tech="C, Parsing, Gestion Processus, Signaux" data-github="https://github.com/Ealves96/minishell" data-live="" data-background-image="img/logo42.png">
+        <img src="img/projects/minishell/minishell-thumb.jpg" alt="Miniature Minishell">
+        <div class="project-overlay">
+             <span class="project-title-overlay">Minishell</span>
+        </div>
+    </a>
+
+    <!-- Projet 5: Push Swap -->
+    <a href="#" class="project-item" data-category="backend" data-title="Push Swap" data-image="img/projects/pushswap/pushswap-main.gif" data-description="Algorithme de tri utilisant deux piles (stacks) et un ensemble limité d'opérations autorisées (push, swap, rotate). L'objectif est de trier une liste d'entiers avec le moins d'opérations possible.\n\nDéveloppement de l'algorithme de tri et d'un visualiseur (optionnel) pour observer les étapes." data-tech="C, Algorithmes, Structures de Données (Piles)" data-github="https://github.com/Ealves96/push_swap" data-live="" data-background-image="img/logo42.png">
+        <img src="img/projects/pushswap/pushswap-thumb.jpg" alt="Miniature Push Swap">
+         <div class="project-overlay">
+             <span class="project-title-overlay">Push Swap</span>
+        </div>
+    </a>
+
+    <!-- Projet 6: (Exemple - Ajoutez un vrai projet ici) -->
+     <a href="#" class="project-item" data-category="devops frontend" data-title="Site E-commerce Simple" data-image="img/projects/ecommerce/ecommerce-main.jpg" data-description="Maquette et développement front-end d'un site e-commerce simple avec panier d'achat. Focus sur l'intégration de maquettes et l'interactivité utilisateur." data-tech="HTML, CSS, JavaScript, Figma" data-github="#" data-live="#" data-background-image="img/icons/shop-icon-bw.png">
+        <img src="img/projects/ecommerce/ecommerce-thumb.jpg" alt="Miniature E-commerce">
+         <div class="project-overlay">
+             <span class="project-title-overlay">E-commerce UI</span>
+        </div>
+    </a>
+
+     <!-- Projet 7: (Exemple - Ajoutez un vrai projet ici) -->
+     <a href="#" class="project-item" data-category="data" data-title="Dashboard Visualisation" data-image="img/projects/dashboard/dashboard-main.png" data-description="Création d'un tableau de bord interactif pour visualiser des données (fictives) de ventes en utilisant une bibliothèque JavaScript." data-tech="JavaScript, Chart.js, HTML, CSS" data-github="#" data-live="#" data-background-image="img/icons/data-icon-bw.png">
+        <img src="img/projects/dashboard/dashboard-thumb.jpg" alt="Miniature Dashboard">
+        <div class="project-overlay">
+            <span class="project-title-overlay">Data Dashboard</span>
+        </div>
+    </a>
+
+    <!-- Supprimer l'exemple de structure div vide à la fin -->
+    <!-- <div class="project-item" ...> ... </div> -->
 
 </div> <!-- Fin project-grid -->
 
                 <!-- === Inclusion Project Modal === -->
-                <div id="projectModal" class="modal">
-    <div class="modal-content">
-        <!-- Bouton fermeture mobile -->
-        <button class="close-button-mobile" id="closeModalButtonMobile" aria-label="Fermer">
-            <i class="fas fa-times"></i>
-        </button>
-        
+                <!-- partials/_project-modal.html -->
+<!-- UNIQUEMENT le code de la modale -->
+
+<div id="projectModal" class="modal"> <!-- ID utilisé par JS -->
+    <div class="modal-content"> <!-- Classe utilisée par CSS -->
+
+        <!-- Header Mobile (visible uniquement en mobile via CSS) -->
+        <div class="modal-mobile-header">
+            <div class="modal-author">
+                <div class="author-avatar">
+                    <img src="img/photo cv.jpg" alt="Avatar auteur">
+                </div>
+                <span class="author-name">Elisabeth Alves</span>
+            </div>
+            <!-- Le bouton fermer mobile est positionné absolument par CSS -->
+        </div>
+
+        <!-- Layout principal (Desktop: 2 colonnes, Mobile: Média puis Infos) -->
         <div class="modal-layout">
-            <!-- Version Mobile Header (affiché uniquement en mobile) -->
-            <div class="modal-mobile-header">
-                <div class="modal-author">
-                    <div class="author-avatar">
-                        <img src="img/photo cv.jpg" alt="Elisabeth Alves">
-                    </div>
-                    <div class="author-name">Elisabeth Alves</div>
-                </div>
-            </div>
 
-            <!-- Section Image -->
+            <!-- Section Image (Gauche Desktop / Haut Mobile) -->
             <div class="modal-image-section">
-                <img src="" alt="" class="modal-image" id="modalImage">
-            </div>
-            
-            <!-- Actions Bar Mobile (affiché uniquement en mobile) -->
-            <div class="modal-mobile-actions">
-                <div class="mobile-actions-left">
-                    <button class="action-button">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <button class="action-button">
-                        <i class="far fa-comment"></i>
-                    </button>
-                    <button class="action-button">
-                        <i class="far fa-paper-plane"></i>
-                    </button>
-                </div>
-                <div class="mobile-actions-right">
-                    <button class="action-button">
-                        <i class="far fa-bookmark"></i>
-                    </button>
-                </div>
+                <img id="modalImage" src="https://via.placeholder.com/600x400" alt="Image du projet"> <!-- ID utilisé par JS -->
+                <!-- Indicateurs de slide Desktop -->
+                <div class="slide-indicators-desktop"></div> <!-- Classe utilisée par JS/CSS -->
+                 <!-- Indicateurs de slide Mobile (positionnés différemment) -->
+                <div class="slide-indicators-mobile"></div> <!-- Classe utilisée par JS/CSS -->
             </div>
 
-            <!-- Info Section -->
+            <!-- Section Infos (Droite Desktop / Bas Mobile) -->
             <div class="modal-info-section">
-                <!-- Description du projet avec possibilité d'édition -->
+
+                <!-- Header Infos Desktop (caché mobile) -->
+                <div class="modal-header">
+                    <div class="modal-author">
+                        <div class="author-avatar">
+                            <img src="img/photo cv.jpg" alt="Avatar auteur">
+                        </div>
+                        <span class="author-name">Elisabeth Alves</span>
+                    </div>
+                    <!-- Bouton fermer Desktop (ou utiliser celui positionné absolument) -->
+                    <button id="closeModalButtonDesktop" class="close-button" aria-label="Fermer">×</button> <!-- ID ajouté pour JS desktop si besoin -->
+                </div>
+
+                <!-- Conteneur Description/Tech Scrollable -->
                 <div class="modal-description-container">
                     <div class="modal-description-content">
-                        <h2 id="modalTitle"></h2>
-                        <div class="editable-description" id="modalDescription" contenteditable="true"></div>
-                        <div class="modal-tech-stack">
-                            <span id="modalTech"></span>
-                        </div>
+                        <h2 id="modalTitle">Titre du Projet</h2> <!-- ID utilisé par JS -->
+                        <p id="modalDescription">Description détaillée...</p> <!-- ID utilisé par JS -->
+                        <p id="modalTech" class="modal-tech-stack">#Tech1 #Tech2</p> <!-- ID utilisé par JS -->
                     </div>
+                    <!-- Espace pour commentaires si besoin -->
                 </div>
 
-                <!-- Liens (version desktop) -->
-                <div class="modal-actions desktop-only">
-                    <a href="#" class="modal-link" id="modalGithubLink" target="_blank">
-                        <i class="fab fa-github"></i> Voir sur GitHub
-                    </a>
-                    <a href="#" class="modal-link" id="modalLiveLink" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                    </a>
+                <!-- Actions Desktop (Like/Comment/Share/Links) -->
+                <div class="modal-actions"> <!-- Caché sur mobile via CSS -->
+                    <!-- Icônes d'action à ajouter ici si besoin pour desktop -->
+                    <a href="#" id="modalGithubLink" class="modal-link" target="_blank" rel="noopener noreferrer" style="display: none;"><i class="fab fa-github"></i> GitHub</a> <!-- ID utilisé par JS -->
+                    <a href="#" id="modalLiveLink" class="modal-link" target="_blank" rel="noopener noreferrer" style="display: none;"><i class="fas fa-external-link-alt"></i> Démo</a> <!-- ID utilisé par JS -->
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+                 <!-- Actions spécifiques Mobile (Affichées via JS/CSS) -->
+                 <div class="modal-mobile-actions">
+                     <div class="mobile-actions-left">
+                         <button class="action-button like-button" aria-label="Aimer">
+                             <i class="far fa-heart"></i> <!-- JS cible le i -->
+                         </button>
+                         <button class="action-button comment-button" aria-label="Commenter">
+                             <i class="far fa-comment"></i>
+                         </button>
+                         <button class="action-button share-button" aria-label="Partager">
+                             <i class="far fa-paper-plane"></i>
+                         </button>
+                     </div>
+                     <div class="mobile-actions-right">
+                         <!-- Bouton Save/Bookmark Mobile si besoin -->
+                          <button class="action-button save-button" aria-label="Enregistrer">
+                             <i class="far fa-bookmark"></i>
+                          </button>
+                     </div>
+                 </div>
+
+            </div> <!-- Fin modal-info-section -->
+        </div> <!-- Fin modal-layout -->
+
+        <!-- Bouton Fermer spécifique Mobile (positionné absolument) -->
+        <button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button> <!-- ID utilisé par JS -->
+
+    </div> <!-- Fin modal-content -->
+</div> <!-- Fin projectModal -->
 
             </div> <!-- Fin profile-container -->
         </main> <!-- Fin main-content -->

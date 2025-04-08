@@ -1,69 +1,90 @@
-<div id="projectModal" class="modal">
-    <div class="modal-content">
-        <!-- Bouton fermeture mobile -->
-        <button class="close-button-mobile" id="closeModalButtonMobile" aria-label="Fermer">
-            <i class="fas fa-times"></i>
-        </button>
-        
+<!-- partials/_project-modal.html -->
+<!-- UNIQUEMENT le code de la modale -->
+
+<div id="projectModal" class="modal"> <!-- ID utilisé par JS -->
+    <div class="modal-content"> <!-- Classe utilisée par CSS -->
+
+        <!-- Header Mobile (visible uniquement en mobile via CSS) -->
+        <div class="modal-mobile-header">
+            <div class="modal-author">
+                <div class="author-avatar">
+                    <img src="img/photo cv.jpg" alt="Avatar auteur">
+                </div>
+                <span class="author-name">Elisabeth Alves</span>
+            </div>
+            <!-- Le bouton fermer mobile est positionné absolument par CSS -->
+        </div>
+
+        <!-- Layout principal (Desktop: 2 colonnes, Mobile: Média puis Infos) -->
         <div class="modal-layout">
-            <!-- Version Mobile Header (affiché uniquement en mobile) -->
-            <div class="modal-mobile-header">
-                <div class="modal-author">
-                    <div class="author-avatar">
-                        <img src="img/photo cv.jpg" alt="Elisabeth Alves">
-                    </div>
-                    <div class="author-name">Elisabeth Alves</div>
-                </div>
-            </div>
 
-            <!-- Section Image -->
+            <!-- Section Image (Gauche Desktop / Haut Mobile) -->
             <div class="modal-image-section">
-                <img src="" alt="" class="modal-image" id="modalImage">
-            </div>
-            
-            <!-- Actions Bar Mobile (affiché uniquement en mobile) -->
-            <div class="modal-mobile-actions">
-                <div class="mobile-actions-left">
-                    <button class="action-button">
-                        <i class="far fa-heart"></i>
-                    </button>
-                    <button class="action-button">
-                        <i class="far fa-comment"></i>
-                    </button>
-                    <button class="action-button">
-                        <i class="far fa-paper-plane"></i>
-                    </button>
-                </div>
-                <div class="mobile-actions-right">
-                    <button class="action-button">
-                        <i class="far fa-bookmark"></i>
-                    </button>
-                </div>
+                <img id="modalImage" src="https://via.placeholder.com/600x400" alt="Image du projet"> <!-- ID utilisé par JS -->
+                <!-- Indicateurs de slide Desktop -->
+                <div class="slide-indicators-desktop"></div> <!-- Classe utilisée par JS/CSS -->
+                 <!-- Indicateurs de slide Mobile (positionnés différemment) -->
+                <div class="slide-indicators-mobile"></div> <!-- Classe utilisée par JS/CSS -->
             </div>
 
-            <!-- Info Section -->
+            <!-- Section Infos (Droite Desktop / Bas Mobile) -->
             <div class="modal-info-section">
-                <!-- Description du projet avec possibilité d'édition -->
+
+                <!-- Header Infos Desktop (caché mobile) -->
+                <div class="modal-header">
+                    <div class="modal-author">
+                        <div class="author-avatar">
+                            <img src="img/photo cv.jpg" alt="Avatar auteur">
+                        </div>
+                        <span class="author-name">Elisabeth Alves</span>
+                    </div>
+                    <!-- Bouton fermer Desktop (ou utiliser celui positionné absolument) -->
+                    <button id="closeModalButtonDesktop" class="close-button" aria-label="Fermer">×</button> <!-- ID ajouté pour JS desktop si besoin -->
+                </div>
+
+                <!-- Conteneur Description/Tech Scrollable -->
                 <div class="modal-description-container">
                     <div class="modal-description-content">
-                        <h2 id="modalTitle"></h2>
-                        <div class="editable-description" id="modalDescription" contenteditable="true"></div>
-                        <div class="modal-tech-stack">
-                            <span id="modalTech"></span>
-                        </div>
+                        <h2 id="modalTitle">Titre du Projet</h2> <!-- ID utilisé par JS -->
+                        <p id="modalDescription">Description détaillée...</p> <!-- ID utilisé par JS -->
+                        <p id="modalTech" class="modal-tech-stack">#Tech1 #Tech2</p> <!-- ID utilisé par JS -->
                     </div>
+                    <!-- Espace pour commentaires si besoin -->
                 </div>
 
-                <!-- Liens (version desktop) -->
-                <div class="modal-actions desktop-only">
-                    <a href="#" class="modal-link" id="modalGithubLink" target="_blank">
-                        <i class="fab fa-github"></i> Voir sur GitHub
-                    </a>
-                    <a href="#" class="modal-link" id="modalLiveLink" target="_blank">
-                        <i class="fas fa-external-link-alt"></i> Voir le projet
-                    </a>
+                <!-- Actions Desktop (Like/Comment/Share/Links) -->
+                <div class="modal-actions"> <!-- Caché sur mobile via CSS -->
+                    <!-- Icônes d'action à ajouter ici si besoin pour desktop -->
+                    <a href="#" id="modalGithubLink" class="modal-link" target="_blank" rel="noopener noreferrer" style="display: none;"><i class="fab fa-github"></i> GitHub</a> <!-- ID utilisé par JS -->
+                    <a href="#" id="modalLiveLink" class="modal-link" target="_blank" rel="noopener noreferrer" style="display: none;"><i class="fas fa-external-link-alt"></i> Démo</a> <!-- ID utilisé par JS -->
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+                 <!-- Actions spécifiques Mobile (Affichées via JS/CSS) -->
+                 <div class="modal-mobile-actions">
+                     <div class="mobile-actions-left">
+                         <button class="action-button like-button" aria-label="Aimer">
+                             <i class="far fa-heart"></i> <!-- JS cible le i -->
+                         </button>
+                         <button class="action-button comment-button" aria-label="Commenter">
+                             <i class="far fa-comment"></i>
+                         </button>
+                         <button class="action-button share-button" aria-label="Partager">
+                             <i class="far fa-paper-plane"></i>
+                         </button>
+                     </div>
+                     <div class="mobile-actions-right">
+                         <!-- Bouton Save/Bookmark Mobile si besoin -->
+                          <button class="action-button save-button" aria-label="Enregistrer">
+                             <i class="far fa-bookmark"></i>
+                          </button>
+                     </div>
+                 </div>
+
+            </div> <!-- Fin modal-info-section -->
+        </div> <!-- Fin modal-layout -->
+
+        <!-- Bouton Fermer spécifique Mobile (positionné absolument) -->
+        <button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button> <!-- ID utilisé par JS -->
+
+    </div> <!-- Fin modal-content -->
+</div> <!-- Fin projectModal -->

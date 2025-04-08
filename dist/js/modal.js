@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectGrid = document.querySelector('.project-grid');
     const modal = document.getElementById('projectModal');
     const closeModalButton = document.getElementById('closeModalButton');
+    const closeModalButtonMobile = document.getElementById('closeModalButtonMobile');
 
     // Éléments à l'intérieur de la modale à remplir
     const modalTitle = document.getElementById('modalTitle');
@@ -14,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalGithubLink = document.getElementById('modalGithubLink');
     const modalLiveLink = document.getElementById('modalLiveLink');
 
-    // Vérification si tous les éléments existent
-    if (!projectGrid || !modal || !closeModalButton || !modalTitle || !modalImage || !modalDescription || !modalTech || !modalGithubLink || !modalLiveLink) {
-        console.error("Un ou plusieurs éléments nécessaires pour la modale sont manquants.");
+    // Vérification modifiée pour ne vérifier que les éléments essentiels
+    if (!projectGrid || !modal || !modalImage || !modalDescription) {
+        console.error("Un ou plusieurs éléments essentiels pour la modale sont manquants.");
         return; // Arrête l'exécution si un élément manque
     }
 
@@ -25,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalTitle.textContent = projectData.title;
         modalImage.src = projectData.image;
         modalImage.alt = `Image du projet ${projectData.title}`;
-        modalDescription.textContent = projectData.description;
+        modalDescription.innerHTML = projectData.description; // Au lieu de textContent
         modalTech.textContent = projectData.tech;
 
         // Gérer les liens (afficher seulement s'ils existent)
@@ -50,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Fonction pour fermer la modale
-    function closeModal() {
-         modal.classList.remove('active');
+    const closeModal = () => {
+        modal.classList.remove('active');
         // Rétablir le scroll de l'arrière-plan
         document.body.style.overflow = '';
-    }
+    };
 
     // Écouteur d'événement sur la grille (délégation d'événement)
     projectGrid.addEventListener('click', (event) => {
@@ -79,8 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Écouteur pour fermer la modale avec le bouton X
-    closeModalButton.addEventListener('click', closeModal);
+    // Ajout des écouteurs d'événements pour les deux boutons de fermeture
+    if (closeModalButton) {
+        closeModalButton.addEventListener('click', closeModal);
+    }
+
+    if (closeModalButtonMobile) {
+        closeModalButtonMobile.addEventListener('click', closeModal);
+    }
 
     // Écouteur pour fermer la modale en cliquant en dehors du contenu
     modal.addEventListener('click', (event) => {
@@ -95,6 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.key === 'Escape' && modal.classList.contains('active')) {
             closeModal();
         }
+    });
+
+    // Ajout d'un écouteur d'événement pour la description
+    modalDescription.addEventListener('blur', function() {
+        // Ici vous pouvez ajouter du code pour sauvegarder les modifications
+        // Par exemple, envoyer à une API ou stocker localement
+        console.log('Description modifiée:', this.innerHTML);
     });
 
 }); // Fin de DOMContentLoaded

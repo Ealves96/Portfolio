@@ -1,19 +1,69 @@
-<div id="projectModal" class="modal" style="display: none;">
+<div id="projectModal" class="modal">
     <div class="modal-content">
-       <span class="close-button" id="closeModalButton" aria-label="Fermer">×</span>
-       <h2 id="modalTitle">Titre du Projet</h2>
-       <img src="https://via.placeholder.com/400x300" alt="Image du projet" class="modal-image" id="modalImage">
-       <div class="modal-description">
-           <h3>Description</h3>
-           <p id="modalDescription">Description détaillée du projet...</p>
-       </div>
-       <div class="modal-tech">
-            <h3>Technologies Utilisées</h3>
-            <p id="modalTech">Tech 1, Tech 2, Tech 3</p>
-       </div>
-       <div class="modal-links">
-           <a href="#" class="button modal-link" id="modalGithubLink" target="_blank" rel="noopener noreferrer" style="display: none;">Voir sur GitHub</a>
-           <a href="#" class="button modal-link" id="modalLiveLink" target="_blank" rel="noopener noreferrer" style="display: none;">Démo Live</a>
-       </div>
-   </div>
+        <!-- Bouton fermeture mobile -->
+        <button class="close-button-mobile" id="closeModalButtonMobile" aria-label="Fermer">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="modal-layout">
+            <!-- Version Mobile Header (affiché uniquement en mobile) -->
+            <div class="modal-mobile-header">
+                <div class="modal-author">
+                    <div class="author-avatar">
+                        <img src="img/photo cv.jpg" alt="Elisabeth Alves">
+                    </div>
+                    <div class="author-name">Elisabeth Alves</div>
+                </div>
+            </div>
+
+            <!-- Section Image -->
+            <div class="modal-image-section">
+                <img src="" alt="" class="modal-image" id="modalImage">
+            </div>
+            
+            <!-- Actions Bar Mobile (affiché uniquement en mobile) -->
+            <div class="modal-mobile-actions">
+                <div class="mobile-actions-left">
+                    <button class="action-button">
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <button class="action-button">
+                        <i class="far fa-comment"></i>
+                    </button>
+                    <button class="action-button">
+                        <i class="far fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="mobile-actions-right">
+                    <button class="action-button">
+                        <i class="far fa-bookmark"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Info Section -->
+            <div class="modal-info-section">
+                <!-- Description du projet avec possibilité d'édition -->
+                <div class="modal-description-container">
+                    <div class="modal-description-content">
+                        <h2 id="modalTitle"></h2>
+                        <div class="editable-description" id="modalDescription" contenteditable="true"></div>
+                        <div class="modal-tech-stack">
+                            <span id="modalTech"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liens (version desktop) -->
+                <div class="modal-actions desktop-only">
+                    <a href="#" class="modal-link" id="modalGithubLink" target="_blank">
+                        <i class="fab fa-github"></i> Voir sur GitHub
+                    </a>
+                    <a href="#" class="modal-link" id="modalLiveLink" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Voir le projet
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

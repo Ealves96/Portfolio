@@ -1,0 +1,269 @@
+/* Base Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: none;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background: var(--background-color);
+    max-width: 1215px;
+    width: 65vw;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Layout Instagram-style */
+.modal-layout {
+    display: flex;
+    height: 90vh;
+    max-height: 815px;
+}
+
+/* Image Section */
+.modal-image-section {
+    flex: 1.5;
+    background: #000;
+    display: flex;
+    align-items: center;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Info Section */
+.modal-info-section {
+    flex: 0.7;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border-color);
+}
+
+/* Header */
+.modal-header {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.author-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Description */
+.modal-description-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.modal-description-content {
+    color: var(--text-primary);
+}
+
+#modalTitle {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+#modalDescription {
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.modal-tech-stack {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+}
+
+/* Actions */
+.modal-actions {
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 12px;
+}
+
+.modal-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.modal-link:hover {
+    text-decoration: underline;
+}
+
+/* Close Button */
+.close-button {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Close Button Mobile */
+.close-button-mobile {
+    display: none; /* Caché par défaut (version desktop) */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    padding: 8px;
+}
+
+/* Styles Mobile Spécifiques */
+.modal-mobile-header,
+.modal-mobile-actions {
+    display: none; /* Caché par défaut (desktop) */
+}
+
+/* Header Mobile */
+.modal-mobile-header {
+    padding: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Actions Bar Mobile */
+.modal-mobile-actions {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mobile-actions-left {
+    display: flex;
+    gap: 16px;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    padding: 8px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-primary);
+}
+
+.action-button:hover {
+    opacity: 0.7;
+}
+
+/* Description éditable */
+.editable-description {
+    padding: 8px;
+    min-height: 100px;
+    border: 1px solid transparent;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.editable-description:focus {
+    outline: none;
+    border-color: var(--border-color);
+    background: var(--background-secondary);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .modal-layout {
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .modal-mobile-header,
+    .modal-mobile-actions {
+        display: flex; /* Afficher en mobile */
+    }
+
+    .modal-image-section {
+        height: auto;
+        aspect-ratio: 1 / 1; /* Format carré comme Instagram */
+    }
+
+    .modal-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .desktop-only {
+        display: none; /* Cache les éléments marqués desktop-only */
+    }
+
+    .modal-info-section {
+        padding: 12px;
+        border-top: none;
+    }
+
+    .modal-description-container {
+        max-height: calc(40vh - 120px);
+    }
+
+    .close-button {
+        display: none; /* Cache le bouton de fermeture desktop */
+    }
+
+    .close-button-mobile {
+        display: block; /* Affiche le bouton de fermeture mobile */
+    }
+}

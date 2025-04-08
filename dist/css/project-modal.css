@@ -87,6 +87,10 @@
     gap: 12px;
 }
 
+.mobile-modal-author {
+    display: none;
+}
+
 .author-avatar {
     width: 32px;
     height: 32px;
@@ -215,6 +219,12 @@
 
 .dot.active {
     background-color: #0095f6;
+}
+
+.modal-mobile-header,
+.modal-mobile-actions,
+.close-button-mobile {
+    display: none;
 }
 
 /* Version Desktop (dots en bas) */

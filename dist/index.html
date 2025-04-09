@@ -302,7 +302,7 @@
     </a>
 
     <!-- Projet 6: (Exemple - Ajoutez un vrai projet ici) -->
-     <a href="#" class="project-item" data-category="devops frontend" data-title="Site E-commerce Simple" data-image="img/projects/ecommerce/ecommerce-main.jpg" data-description="Maquette et développement front-end d'un site e-commerce simple avec panier d'achat. Focus sur l'intégration de maquettes et l'interactivité utilisateur." data-tech="HTML, CSS, JavaScript, Figma" data-github="#" data-live="#" data-background-image="img/icons/shop-icon-bw.png">
+     <a href="#" class="project-item" data-category="devops frontend" data-title="Site E-commerce Simple" data-image="img/projects/ecommerce/ecommerce-main.jpg" data-description="Maquette et développement front-end d'un site e-commerce simple avec panier d'achat. Focus sur l'intégration de maquettes et l'interactivité utilisateur." data-tech="HTML, CSS, JavaScript, Figma" data-github="https://github.com/Ealves96/Portfolio" data-live="#" data-background-image="img/icons/shop-icon-bw.png">
         <img src="img/projects/ecommerce/ecommerce-thumb.jpg" alt="Miniature E-commerce">
          <div class="project-overlay">
              <span class="project-title-overlay">E-commerce UI</span>
@@ -380,30 +380,59 @@
 
                 <!-- Conteneur Description/Tech Scrollable -->
                 <div class="modal-description-container">
+                    <!-- <h2 id="modalTitle">Titre du Projet</h2> -->
                     <div class="modal-description-content">
-                        <h2 id="modalTitle">Titre du Projet</h2> <!-- ID utilisé par JS -->
-                        <p id="modalDescription">Description détaillée...</p> <!-- ID utilisé par JS -->
-                        <p id="modalTech" class="modal-tech-stack">#Tech1 #Tech2</p> <!-- ID utilisé par JS -->
+                        <div class="author-description-line">
+                             <span class="modal-author-inline"> <!-- Classe différente pour ciblage spécifique si besoin -->
+                                <img src="img/photo cv.jpg" alt="Avatar auteur" class="author-avatar author-avatar-inline">
+                                 <span class="author-name">Elisabeth Alves</span>
+                             </span>
+                             <span id="modalDescription">Description détaillée...</span> <!-- Changé en SPAN pour être inline-block -->
+                        </div>
+                        <p id="modalTech" class="modal-tech-stack">#Tech1 #Tech2</p>
+
                     </div>
                     <!-- Espace pour commentaires si besoin -->
                 </div>
 
-                <!-- Actions Desktop (Like/Comment/Share/Links) -->
-                <div class="modal-actions"> <!-- Caché sur mobile via CSS -->
-                    <!-- Icônes d'action à ajouter ici si besoin pour desktop -->
-                    <a href="#" id="modalGithubLink" class="modal-link" target="_blank" rel="noopener noreferrer" style="display: none;"><i class="fab fa-github"></i> GitHub</a> <!-- ID utilisé par JS -->
-                    <a href="#" id="modalLiveLink" class="modal-link" target="_blank" rel="noopener noreferrer" style="display: none;"><i class="fas fa-external-link-alt"></i> Démo</a> <!-- ID utilisé par JS -->
+                <div class="modal-actions-bar">
+                    <div class="actions-left">
+                        <button class="action-button like-button" aria-label="Aimer"><i class="far fa-heart"></i></button>
+                        <button class="action-button comment-button" aria-label="Commenter"><i class="far fa-comment"></i></button>
+                        <button class="action-button share-button" aria-label="Partager"><i class="far fa-paper-plane"></i></button>
+                    </div>
+                    <div class="actions-right">
+                         <button class="action-button save-button" aria-label="Enregistrer"><i class="far fa-bookmark"></i></button>
+                    </div>
                 </div>
 
+                <div class="modal-footer-link-section desktop-only"> <!-- Assurer desktop-only si besoin -->
+                    <!-- === CONTENEUR VIDE POUR LES LIENS AJOUTÉS PAR JS === -->
+                    <div class="modal-project-links-footer">
+                        <!-- Liens GitHub/Live seront ajoutés ici -->
+                    </div>
+                    <!-- =========================================== -->
+                </div>
 
-            </div> <!-- Fin modal-info-section -->
-        </div> <!-- Fin modal-layout -->
+             <!-- Section Ajout Commentaire Desktop -->
+            <div class="modal-footer-link-section">
+                <!-- === CONTENEUR AJOUTÉ POUR LES LIENS JS === -->
+                <div class="modal-project-links-footer">
+                    <!-- Les liens GitHub/Live seront ajoutés ici par js/modal.js -->
+            </div>
 
-        <!-- Bouton Fermer spécifique Mobile (positionné absolument) -->
-        <button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button> <!-- ID utilisé par JS -->
 
-    </div> <!-- Fin modal-content -->
-</div> <!-- Fin projectModal -->
+
+            <!-- Actions spécifiques Mobile (restent là mais cachées sur desktop) -->
+             <div class="modal-mobile-actions">
+                <button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button>
+             </div>
+
+        </div> <!-- Fin modal-info-section -->
+    </div> <!-- Fin modal-layout -->
+    <!-- ... close-button-mobile ... -->
+</div> <!-- Fin modal-content -->
+</div></div>
 
             </div> <!-- Fin profile-container -->
         </main> <!-- Fin main-content -->

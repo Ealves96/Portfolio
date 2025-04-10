@@ -71,7 +71,9 @@
 /* ========== SECTION INFO ========== */
 /* Zone d'informations (droite en desktop, bas en mobile) */
 .modal-info-section {
-    flex: 0.7; display: flex; flex-direction: column;
+    flex: 0.7; 
+    display: flex; 
+    flex-direction: column;
     border-left: 1px solid var(--border-main); /* <<< Rétablir bordure gauche Desktop */
     background-color: var(--content-bg); /* Assurer fond */
     overflow: hidden; /* Empêche débordement global */
@@ -127,11 +129,33 @@ img.author-avatar {
 }
 /* Ligne contenant Auteur + Description */
 .author-description-line {
-    margin-bottom: 16px; word-wrap: break-word; display: block; padding-left: 44px;
+    margin-bottom: 16px;
+    word-wrap: break-word;
+    display: block;
+    padding-left: 44px;
 }
-.modal-author-inline { display: block; margin-left: -44px; float: left; margin-right: 6px; height: 5px; }
-.modal-author-inline .author-avatar { width: 32px; height: 32px; display: inline-block; vertical-align: top; margin-right: 6px; }
-.modal-author-inline .author-name { font-weight: 600; color: var(--text-primary); display: inline-block; vertical-align: top; line-height: 1.2; }
+.modal-author-inline { 
+    display: block;
+    margin-left: -44px; 
+    float: left; 
+    margin-right: 6px; 
+    height: 5px; 
+}
+.modal-author-inline .author-avatar { 
+    width: 32px; 
+    height: 32px; 
+    display: inline-block; 
+    vertical-align: top; 
+    margin-right: 6px; 
+}
+.modal-author-inline .author-name { 
+    font-weight: 600; 
+    color: var(--text-primary); 
+    display: inline-block; 
+    vertical-align: top; 
+    line-height: 1.2; 
+    margin-top: 1px;
+}
 
 
 /* Description qui suit */
@@ -142,6 +166,7 @@ img.author-avatar {
     /* vertical-align: top; /* Plus pertinent */
     line-height: 1.5; /* Hauteur de ligne normale */
     color: var(--text-primary);
+    margin-top: 1px;
     /* Le padding-left du parent (.author-description-line) crée l'indentation */
 }
 
@@ -247,12 +272,26 @@ img.author-avatar {
     color: var(--text-secondary); /* Couleur discrète ? */
     text-decoration: none;
 }
-.modal-footer-link-section .modal-footer-github-link:hover {
-    color: var(--text-primary); /* Change couleur au survol */
+.modal-project-links-footer { /* Conteneur interne */
+    display: flex; 
+    justify-content: center; 
+    gap: 15px;
+ }
+ .modal-footer-link-section a { /* Style des liens DANS le footer */
+    display: inline-flex; 
+    align-items: center; 
+    gap: 6px; 
+    font-size: 13px;
+    font-weight: 500; 
+    color: var(--text-secondary); 
+    text-decoration: none;
+}
+.modal-footer-link-section a:hover { 
+    color: var(--text-primary); 
     text-decoration: underline;
 }
-.modal-footer-link-section .modal-footer-github-link i {
-    font-size: 20px; /* Taille icône GitHub */
+.modal-footer-link-section a i { 
+    font-size: 20px; 
 }
 
 
@@ -310,7 +349,7 @@ img.author-avatar {
      .close-button { display: none; }              /* Cache Bouton Fermer Desktop */
      .modal-actions-bar { display: none; }         /* <<< AJOUT: Cache Actions Desktop */
      .modal-engagement-section { display: none; }   /* <<< AJOUT: Cache Engagement Desktop */
-     .modal-footer-link-section { display: none; }  /* <<< AJOUT: Cache Footer Link Desktop */
+     /* .modal-footer-link-section { display: none; } */
 
     /* --- Conteneur & Dimensions Globales --- */
     .modal {
@@ -323,8 +362,6 @@ img.author-avatar {
     .modal-content {
         width: 100%;
         height: 100%;
-        max-width: none;
-        max-height: none; /* Annule les limites */
         margin: 0; /* Annule le centrage auto */
         border-radius: 0;
     }
@@ -352,6 +389,33 @@ img.author-avatar {
         overflow-y: auto;
         padding: 16px;
     }
+
+    .modal-info-section {
+        flex: 1; display: flex; flex-direction: column;
+        border-left: none; min-height: 0;
+        overflow: hidden; /* <<< IMPORTANT : Doit cacher, le scroll est dans la description */
+        position: relative; /* Contexte pour sticky si nécessaire, bien que flex suffise souvent */
+    }
+
+    .modal-footer-link-section {
+        order: 99;
+        display: block !important; /* <<< Assurer qu'il est VISIBLE */
+        padding: 15px 16px; /* Plus d'espace vertical mobile ? */
+        /* text-align: left; /* Ou aligner à gauche si préféré */
+        border-top: 1px solid var(--border-main); /* Garder séparateur */
+        flex-shrink: 0;
+        /* margin-bottom: -25px; */
+        /* background-color: rgba(245, 12, 12, 0.6); */
+    }
+     .modal-footer-link-section .modal-project-links-footer {
+         justify-content: center; /* ou flex-start */
+     }
+     .modal-footer-link-section a {
+        /* Styles existants (inline-flex, gap, font-size etc.) */
+         font-size: 14px; /* Un peu plus grand mobile ? */
+         color: var(--link-general-color, var(--link-color)); /* Utiliser couleur lien */
+    }
+     .modal-footer-link-section a i { font-size: 16px; }
 
     /* ----- Barre d'Actions Mobile ----- */
     .modal-mobile-actions {

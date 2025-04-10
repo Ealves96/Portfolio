@@ -333,6 +333,11 @@ img.author-avatar {
     background-color: #0095f6;
 }
 
+.slide-indicators-desktop {
+    bottom: 15px; /* En bas de l'image sur desktop */
+    /* display: flex; est géré par JS */
+}
+
 /* ========== ÉLÉMENTS MOBILE MASQUÉS (par défaut) ========== */
 .modal-mobile-actions,
 .modal-mobile-header,
@@ -349,6 +354,9 @@ img.author-avatar {
      .close-button { display: none; }              /* Cache Bouton Fermer Desktop */
      .modal-actions-bar { display: none; }         /* <<< AJOUT: Cache Actions Desktop */
      .modal-engagement-section { display: none; }   /* <<< AJOUT: Cache Engagement Desktop */
+     .slide-indicators-desktop {
+        display: none !important; /* Forcer le masquage */
+    }
      /* .modal-footer-link-section { display: none; } */
 
     /* --- Conteneur & Dimensions Globales --- */
@@ -402,14 +410,10 @@ img.author-avatar {
         order: 99;
         display: block !important; /* <<< Assurer qu'il est VISIBLE */
         padding: 15px 16px; /* Plus d'espace vertical mobile ? */
-        /* text-align: left; /* Ou aligner à gauche si préféré */
         border-top: 1px solid var(--border-main); /* Garder séparateur */
         flex-shrink: 0;
         position: sticky; 
-        /* margin-bottom: -15; Collant en bas */
         z-index: 5;  
-        /* margin-bottom: -25px; */
-        /* background-color: rgba(245, 12, 12, 0.6); */
     }
      .modal-footer-link-section .modal-project-links-footer {
          justify-content: center; /* ou flex-start */
@@ -428,6 +432,7 @@ img.author-avatar {
         justify-content: space-between;
         align-items: center;
         width: 100%;
+        /* height: 100vh; */
         padding: 8px 16px; /* Ajuster padding si besoin */
         background-color: var(--background-color);
         /* border-top: 1px solid var(--border-main); */
@@ -454,7 +459,6 @@ img.author-avatar {
         margin-left: auto; /* Pousse à droite */
     }
 
-    /* ----- Ajustement de la Section Image Active ----- */
     .modal.active .modal-image-section {
         height: auto;
         aspect-ratio: 1/1;
@@ -474,16 +478,12 @@ img.author-avatar {
         align-items: center;
         padding: 0 16px;
         margin-top: 7px;
-    }
-
-    /* ----- Indicateurs de Slide ----- */
-    .slide-indicators-desktop {
-        display: none !important; /* Cache les dots desktop */
+        color: var(--text-primary); 
     }
 
     .slide-indicators-mobile {
-        display: flex;
-        bottom: -20px;
+        /* display: flex; */
+        bottom: 10px;
     }
 
     /* ----- Bouton Fermer Mobile ----- */

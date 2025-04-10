@@ -89,28 +89,34 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDots(currentIndex, totalImages) {
         const mobileContainer = modal.querySelector('.slide-indicators-mobile');
         const desktopContainer = modal.querySelector('.slide-indicators-desktop');
-        // Ne pas retourner si un conteneur manque, juste le logger
-        if (!mobileContainer) console.warn("Modal JS: .slide-indicators-mobile non trouvé.");
-        if (!desktopContainer) console.warn("Modal JS: .slide-indicators-desktop non trouvé.");
 
+        // Fonction interne pour créer les dots
         const createDots = (container) => {
-             if (!container) return; // Sécurité supplémentaire
-            container.innerHTML = ''; // Vider
-            const containerStyle = window.getComputedStyle(container);
-            // Ne pas créer les dots si le conteneur est caché par CSS OU s'il n'y a qu'une image/média
-            if (containerStyle.display === 'none' || totalImages <= 1) {
-                 container.style.display = 'none'; // Assurer qu'il est caché
-                 return;
+             if (!container) return; // Quitter si ce conteneur spécifique n'existe pas
+
+            container.innerHTML = ''; // Toujours vider les anciens
+
+            // --- CONDITION SIMPLIFIÉE ---
+            // On affiche les dots SI le nombre d'images est supérieur à 1
+            if (totalImages > 1) {
+                container.style.display = 'flex'; // <<< On le met en flex
+                for (let i = 0; i < totalImages; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'dot';
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    }
+                    container.appendChild(dot);
+                }
+            } else {
+                // S'il y a 1 image ou moins, on s'assure que le conteneur est caché
+                container.style.display = 'none';
             }
-            container.style.display = 'flex'; // Afficher le conteneur
-            for (let i = 0; i < totalImages; i++) {
-                const dot = document.createElement('span');
-                dot.className = 'dot';
-                if (i === currentIndex) { dot.classList.add('active'); }
-                container.appendChild(dot);
-            }
+            // --- FIN CONDITION SIMPLIFIÉE ---
         };
 
+        // Appeler pour les deux conteneurs
+        // Le CSS se chargera de cacher celui qui n'est pas pertinent pour la vue actuelle
         createDots(mobileContainer);
         createDots(desktopContainer);
     }

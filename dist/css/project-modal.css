@@ -414,6 +414,7 @@ img.author-avatar {
         flex-shrink: 0;
         position: sticky; 
         z-index: 5;  
+        background-color: var(--content-bg);
     }
      .modal-footer-link-section .modal-project-links-footer {
          justify-content: center; /* ou flex-start */
@@ -434,7 +435,7 @@ img.author-avatar {
         width: 100%;
         /* height: 100vh; */
         padding: 8px 16px; /* Ajuster padding si besoin */
-        background-color: var(--background-color);
+        background-color: var(--content-bg);
         /* border-top: 1px solid var(--border-main); */
         box-sizing: border-box;
         flex-shrink: 0; /* Important */
@@ -471,7 +472,7 @@ img.author-avatar {
         left: 0;
         right: 0;
         height: 44px; /* Hauteur fixe du header comme Instagram */
-        background-color: var(--background-color);
+        background-color: var(--content-bg);
         z-index: 999;
         border-bottom: 1px solid var(--border-color);
         display: flex;
@@ -494,6 +495,7 @@ img.author-avatar {
         right: 10px;
         color: var(--text-primary);
         background: none;
+        /* background-color: var(--content-bg); */
         border: none;
         font-size: 22px;
         padding: 8px;

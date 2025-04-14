@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // === Sélection Éléments Généraux ===
     const projectGrid = document.querySelector('.project-grid');
-    const modal = document.getElementById('projectModal'); // Le conteneur principal de la modale
-    const closeModalButtonMobile = document.getElementById('closeModalButtonMobile'); // Bouton fermer mobile
-    const closeModalButtonDesktop = document.getElementById('closeModalButtonDesktop'); // Bouton fermer desktop
+    const modal = document.getElementById('projectModal');
+    const closeModalButtonMobile = document.getElementById('closeModalButtonMobile');
+    const closeModalButtonDesktop = document.getElementById('closeModalButtonDesktop');
 
     // --- Vérifications Essentielles ---
     if (!projectGrid) console.warn("Modal JS: .project-grid non trouvé.");
@@ -17,27 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!closeModalButtonDesktop) console.warn("Modal JS: #closeModalButtonDesktop introuvable.");
 
     // === Sélection Éléments Internes à la Modale ===
-    const modalImage = modal.querySelector('#modalImage');              // Image principale du projet
-    const modalDescription = modal.querySelector('#modalDescription');  // <p> ou <span> de la description
-    const modalTech = modal.querySelector('#modalTech');                // <p> pour les hashtags tech
-    // Conteneur pour les liens GitHub/Live dans le footer
+    const modalImage = modal.querySelector('#modalImage');
+    const modalDescription = modal.querySelector('#modalDescription');
+    const modalTech = modal.querySelector('#modalTech');
+    // Conteneur pour les liens dans le footer
     const modalProjectLinksFooterContainer = modal.querySelector('.modal-project-links-footer');
     // Indicateurs de slides
     const mobileDotsContainer = modal.querySelector('.slide-indicators-mobile');
     const desktopDotsContainer = modal.querySelector('.slide-indicators-desktop');
-    // Infos Auteur (pour les headers spécifiques)
-    const authorAvatarHeader = modal.querySelector('.modal-header .author-avatar img'); // Desktop
-    const authorNameHeader = modal.querySelector('.modal-header .author-name');         // Desktop
-    const mobileAuthorAvatar = modal.querySelector('.modal-mobile-header .author-avatar img'); // Mobile
-    const mobileAuthorName = modal.querySelector('.modal-mobile-header .author-name');         // Mobile
-    // Infos Auteur (inline dans la description)
+    // Infos Auteur (Headers)
+    const authorAvatarHeader = modal.querySelector('.modal-header .author-avatar img');
+    const authorNameHeader = modal.querySelector('.modal-header .author-name');
+    const mobileAuthorAvatar = modal.querySelector('.modal-mobile-header .author-avatar img');
+    const mobileAuthorName = modal.querySelector('.modal-mobile-header .author-name');
+    // Infos Auteur (Inline)
     const authorAvatarInline = modal.querySelector('.modal-description-container img.author-avatar-inline');
     const authorNameInline = modal.querySelector('.modal-description-container .modal-author-inline .author-name');
-    // Boutons d'action (cibler ceux dans la barre commune)
-    const likeButton = modal.querySelector('.modal-actions-bar .like-button');
-    // const commentButton = modal.querySelector('.modal-actions-bar .comment-button'); // Si vous ajoutez des fonctionnalités
+    // Boutons d'action (Barre commune + spécifiques si besoin)
+    const likeButton = modal.querySelector('.modal-actions-bar .like-button'); // Cible dans la barre commune
+    // const commentButton = modal.querySelector('.modal-actions-bar .comment-button');
     // const shareButton = modal.querySelector('.modal-actions-bar .share-button');
     // const saveButton = modal.querySelector('.modal-actions-bar .save-button');
+    // const likeButtonMobile = modal.querySelector('.modal-mobile-actions .like-button'); // Si classe différente
 
     // --- Vérification éléments internes critiques ---
      if (!modalImage) console.error("Modal JS: #modalImage manquant.");
@@ -49,40 +50,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // === Variables d'état pour le Slider ===
-    let currentProjectImages = []; // Tableau des URLs des images/médias du projet courant
-    let currentImageIndex = 0;    // Index de l'image actuellement affichée
-    let projectDataForMedia = {}; // Pour stocker les données du projet en cours pour l'alt text
+    let currentProjectImages = [];
+    let currentImageIndex = 0;
+    let projectDataForMedia = {};
 
     // === Fonction pour mettre à jour le média affiché et les dots ===
     function updateModalMedia() {
         if (!modalImage) { updateDots(0, 0); return; }
 
         if (currentProjectImages && currentProjectImages.length > 0) {
-            // Assurer que l'index est valide
             if (currentImageIndex < 0) currentImageIndex = 0;
             if (currentImageIndex >= currentProjectImages.length) currentImageIndex = currentProjectImages.length - 1;
-
             const currentMediaUrl = currentProjectImages[currentImageIndex];
-
-            // TODO: Différencier Image et Vidéo basé sur l'URL (ex: .mp4)
             modalImage.src = currentMediaUrl;
             modalImage.alt = `Média ${currentImageIndex + 1} du projet ${projectDataForMedia.title || ''}`;
-
-            // Mettre à jour les indicateurs
             updateDots(currentImageIndex, currentProjectImages.length);
-
         } else {
-            // S'il n'y a pas d'images dans la liste, utiliser l'image principale ou un fallback
             const fallbackImage = projectDataForMedia?.image || 'https://via.placeholder.com/600x400';
             modalImage.src = fallbackImage;
             modalImage.alt = `Média principal du projet ${projectDataForMedia.title || ''}`;
-            updateDots(0, 0); // Cacher les dots
+            updateDots(0, 0);
         }
-
-        // Gérer l'affichage/état des flèches de navigation (si vous les ajoutez)
-        // const prevButton = modal.querySelector('.modal-media-prev');
-        // const nextButton = modal.querySelector('.modal-media-next');
-        // if(prevButton && nextButton) { ... }
+        // Gérer flèches si ajoutées
     }
 
     // === Fonction pour mettre à jour les indicateurs (dots) ===
@@ -90,44 +79,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const mobileContainer = modal.querySelector('.slide-indicators-mobile');
         const desktopContainer = modal.querySelector('.slide-indicators-desktop');
 
-        // Fonction interne pour créer les dots
-        const createDots = (container) => {
-             if (!container) return; // Quitter si ce conteneur spécifique n'existe pas
-
-            container.innerHTML = ''; // Toujours vider les anciens
-
-            // --- CONDITION SIMPLIFIÉE ---
-            // On affiche les dots SI le nombre d'images est supérieur à 1
-            if (totalImages > 1) {
-                container.style.display = 'flex'; // <<< On le met en flex
+        const processContainer = (container) => {
+            if (!container) return;
+            container.innerHTML = '';
+            const shouldBeVisible = totalImages > 1;
+            if (shouldBeVisible) {
                 for (let i = 0; i < totalImages; i++) {
                     const dot = document.createElement('span');
                     dot.className = 'dot';
-                    if (i === currentIndex) {
-                        dot.classList.add('active');
-                    }
+                    if (i === currentIndex) { dot.classList.add('active'); }
                     container.appendChild(dot);
                 }
+                container.classList.add('visible');
             } else {
-                // S'il y a 1 image ou moins, on s'assure que le conteneur est caché
-                container.style.display = 'none';
+                container.classList.remove('visible');
             }
-            // --- FIN CONDITION SIMPLIFIÉE ---
         };
-
-        // Appeler pour les deux conteneurs
-        // Le CSS se chargera de cacher celui qui n'est pas pertinent pour la vue actuelle
-        createDots(mobileContainer);
-        createDots(desktopContainer);
+        processContainer(mobileContainer);
+        processContainer(desktopContainer);
     }
 
     // === Fonction pour ouvrir la modale et la remplir ===
     function openModal(projectData) {
         console.log("Modal JS: Appel de openModal pour", projectData?.title);
-        projectDataForMedia = projectData || {}; // Stocker pour alt text de l'image
+        projectDataForMedia = projectData || {};
 
-        // --- Remplir les informations textuelles et auteur ---
-        // Note: Le titre H2 a été retiré du HTML
+        // Remplir Description, Tech, Auteurs
         if (modalDescription) {
              const formattedDescription = (projectData?.description || 'Description non disponible.').replace(/\n/g, '<br>');
              modalDescription.innerHTML = formattedDescription;
@@ -136,8 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
              const techs = projectData?.tech ? projectData.tech.split(/,\s*|\s+/) : [];
              modalTech.textContent = techs.map(tech => `#${tech}`).join(' ');
         }
-        // Remplir les infos auteur (on utilise la même image/nom pour tous les emplacements)
-        const authorImgSrc = 'img/photo cv.jpg'; // Utiliser avatar pré-redimensionné
+        const authorImgSrc = 'img/photo cv.jpg'; // Ou avatar.jpg si vous avez créé une version plus petite
         const authorNameTxt = 'Elisabeth Alves';
         if (authorAvatarHeader) authorAvatarHeader.src = authorImgSrc;
         if (authorNameHeader) authorNameHeader.textContent = authorNameTxt;
@@ -147,9 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (authorNameInline) authorNameInline.textContent = authorNameTxt;
 
 
-        // --- Gérer les Liens dans le FOOTER ---
+        // === Gérer les Liens dans le FOOTER ===
         if (modalProjectLinksFooterContainer) {
             modalProjectLinksFooterContainer.innerHTML = ''; // Vider les anciens liens
+
+            let linkAdded = false; // Pour savoir si on cache la section
 
             // Ajouter Lien GitHub s'il existe
             if (projectData?.github && projectData.github !== '#') {
@@ -157,9 +135,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 githubLink.href = projectData.github;
                 githubLink.target = '_blank';
                 githubLink.rel = 'noopener noreferrer';
-                githubLink.classList.add('modal-footer-github-link'); // Classe pour style spécifique footer
+                // Utiliser la classe CSS définie pour le style
+                githubLink.classList.add('modal-footer-github-link'); // ou 'modal-link' si style commun
                 githubLink.innerHTML = `<i class="fab fa-github"></i> Voir le projet sur GitHub`;
                 modalProjectLinksFooterContainer.appendChild(githubLink);
+                linkAdded = true;
             }
 
             // Ajouter Lien Démo Live s'il existe
@@ -168,99 +148,70 @@ document.addEventListener('DOMContentLoaded', () => {
                 liveLink.href = projectData.live;
                 liveLink.target = '_blank';
                 liveLink.rel = 'noopener noreferrer';
-                liveLink.classList.add('modal-footer-live-link'); // Classe CSS spécifique si besoin
+                liveLink.classList.add('modal-footer-live-link'); // ou 'modal-link'
                 liveLink.innerHTML = `<i class="fas fa-external-link-alt"></i> Voir la démo`;
-
-                // Ajouter un espace si les deux liens sont présents (ou gérer avec CSS gap)
-                if (modalProjectLinksFooterContainer.children.length > 0) { // Vérifie s'il y a déjà un enfant (le lien github)
-                   liveLink.style.marginLeft = '15px';
+                if (modalProjectLinksFooterContainer.children.length > 0) {
+                   liveLink.style.marginLeft = '15px'; // Espace si les deux liens
                 }
                 modalProjectLinksFooterContainer.appendChild(liveLink);
+                linkAdded = true;
             }
 
-            // (Optionnel) Cacher toute la section footer si aucun lien n'est présent
+            // Cacher toute la section footer si aucun lien
             const footerSection = modalProjectLinksFooterContainer.closest('.modal-footer-link-section');
             if (footerSection) {
-                footerSection.style.display = modalProjectLinksFooterContainer.hasChildNodes() ? 'block' : 'none';
+                footerSection.style.display = linkAdded ? 'block' : 'none';
             }
 
         } else { console.warn("Modal JS: Conteneur .modal-project-links-footer non trouvé."); }
 
 
-        // --- Initialiser le slider d'images ---
+        // Initialiser slider
         currentProjectImages = (projectData?.images && Array.isArray(projectData.images) && projectData.images.length > 0)
                              ? projectData.images
-                             : (projectData?.image ? [projectData.image] : []); // Fallback sur image unique si 'images' absent/vide
+                             : (projectData?.image ? [projectData.image] : []);
+        modal.dataset.fallbackImage = projectData?.image;
+        currentImageIndex = 0;
+        updateModalMedia(); // Affiche média + dots
 
-        currentImageIndex = 0; // Toujours commencer à la première image
-        updateModalMedia(); // Affiche la première image et les dots
-
-        // --- Reset l'état du bouton Like ---
+        // Reset Like
         if (likeButton) {
             likeButton.classList.remove('liked');
             const icon = likeButton.querySelector('i');
             if (icon) {
-                icon.classList.remove('fas'); // Enlève solide (plein)
-                icon.classList.add('far'); // Remet regular (vide)
+                icon.classList.remove('fas');
+                icon.classList.add('far');
             }
         }
 
-        // --- Afficher la modale ---
+        // Afficher modale
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Empêcher scroll arrière-plan
+        document.body.style.overflow = 'hidden';
         console.log("Modal JS: Modale ouverte et remplie.");
     }
 
     // === Fonction pour fermer la modale ===
     const closeModal = () => {
-        if (modal.classList.contains('active')) { // Vérifier si elle est active avant de fermer
+        if (modal.classList.contains('active')) {
             modal.classList.remove('active');
-            document.body.style.overflow = ''; // Rétablir scroll arrière-plan
+            document.body.style.overflow = '';
             console.log("Modal JS: Modale fermée.");
         }
     };
 
-
     // === Écouteurs d'Événements ===
-
-    // 1. Ouverture au clic sur un projet
+    // 1. Ouverture clic projet
     if (projectGrid) {
         projectGrid.addEventListener('click', (event) => {
             const projectItem = event.target.closest('.project-item');
             if (projectItem) {
                 event.preventDefault();
                 console.log("Modal JS: Clic sur project-item:", projectItem.dataset.title);
-
-                // Parse data-images (avec validation)
                 let imagesData = null;
                 const imagesAttr = projectItem.dataset.images;
-                if (imagesAttr) {
-                    try {
-                        // Remplacer les guillemets HTML (") par des vrais guillemets
-                        const validJsonString = imagesAttr.replace(/"/g, '"');
-                        imagesData = JSON.parse(validJsonString);
-                        if (!Array.isArray(imagesData)) {
-                             console.warn("data-images n'est pas un tableau JSON valide après remplacement, utilise data-image.", validJsonString);
-                             imagesData = null; // Rejeter si ce n'est pas un tableau
-                         }
-                    } catch (e) {
-                        console.error("Erreur parsing JSON data-images:", e, imagesAttr);
-                        imagesData = null; // Rejeter si erreur de parsing
-                    }
-                }
-
-                // Récupérer les données
-                const projectData = {
-                    title: projectItem.dataset.title,
-                    image: projectItem.dataset.image, // Image principale/fallback
-                    description: projectItem.dataset.description,
-                    tech: projectItem.dataset.tech,
-                    github: projectItem.dataset.github,
-                    live: projectItem.dataset.live,
-                    images: imagesData // Tableau d'images ou null
-                };
-
-                openModal(projectData); // Appelle openModal
+                if (imagesAttr) { try { const validJsonString = imagesAttr.replace(/"/g, '"'); imagesData = JSON.parse(validJsonString); if (!Array.isArray(imagesData)) imagesData = null; } catch (e) { console.error("Erreur parsing JSON data-images:", e); imagesData = null; } }
+                const projectData = { title: projectItem.dataset.title, image: projectItem.dataset.image, description: projectItem.dataset.description, tech: projectItem.dataset.tech, github: projectItem.dataset.github, live: projectItem.dataset.live, images: imagesData };
+                openModal(projectData);
             }
         });
     } else { console.warn("Modal JS: Grille projet non trouvée."); }
@@ -275,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Fermeture Échap
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 
-    // 5. Gestion Like (cible commune)
+    // 5. Gestion Like (cible commune .modal-actions-bar .like-button)
     if (likeButton) {
         likeButton.addEventListener('click', (event) => {
              const button = event.currentTarget;
@@ -283,15 +234,11 @@ document.addEventListener('DOMContentLoaded', () => {
              button.classList.toggle('liked');
              const icon = button.querySelector('i');
              if (icon) {
-                 icon.classList.toggle('far'); // Bascule vide
-                 icon.classList.toggle('fas'); // Bascule plein
+                 icon.classList.toggle('far');
+                 icon.classList.toggle('fas');
              }
         });
     } else { console.warn("Modal JS: Bouton Like non trouvé via .modal-actions-bar .like-button"); }
 
-    // 6. (Optionnel) Gestion Description Éditable
-    // if(modalDescription && modalDescription.getAttribute('contenteditable') === 'true'){ ... }
-
-    // 7. (Implémentation Future) Écouteurs pour Slider (Flèches/Dots)
 
 }); // Fin de DOMContentLoaded

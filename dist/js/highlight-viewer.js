@@ -15,12 +15,12 @@ const progressBarContainer = highlightViewer.querySelector('.highlight-progress-
 // Chaque objet slide devrait avoir au moins 'type' ('image', 'video', 'text') et 'src' ou 'content'
 const highlightData = {
     "experiences": [
-        { type: 'image', src: '/img/Competences1.png', alt: 'Expérience 1' },
+        { type: 'image', src: '/img/competences1.png', alt: 'Expérience 1' },
         { type: 'image', src: 'assets/images/exp-placeholder-2.png', alt: 'Expérience 2' },
         // { type: 'video', src: 'assets/videos/exp-video.mp4' },
     ],
     "competences": [
-        { type: 'image', src: '/img/Competences1.png', alt: 'Compétences Clés' }
+        { type: 'image', src: '/img/competences1.png', alt: 'Compétences Clés' }
     ],
     "diplomes": [
         { type: 'image', src: 'assets/images/diploma-placeholder.png', alt: 'Diplôme Principal' }

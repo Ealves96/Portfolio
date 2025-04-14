@@ -20,7 +20,8 @@ const highlightData = {
         // { type: 'video', src: 'assets/videos/exp-video.mp4' },
     ],
     "competences": [
-        { type: 'image', src: '/img/competences1.png', alt: 'Compétences Clés' }
+        { type: 'video', src: '/img/competences.mp4', alt: 'Competences 1' },
+        { type: 'video', src: '/img/competences2.mp4', alt: 'Competences 2' },
     ],
     "diplomes": [
         { type: 'image', src: 'assets/images/diploma-placeholder.png', alt: 'Diplôme Principal' }

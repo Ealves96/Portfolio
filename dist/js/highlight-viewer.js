@@ -5,7 +5,7 @@ const highlightViewerIcon = highlightViewer.querySelector('.highlight-viewer-ico
 const highlightViewerTitle = highlightViewer.querySelector('.highlight-viewer-title');
 const highlightMediaContainer = highlightViewer.querySelector('.highlight-media-container');
 const highlightImageEl = document.getElementById('highlightMediaContent');
-// const highlightVideoEl = document.getElementById('highlightVideoContent'); // Si tu utilises des vidéos
+const highlightVideoEl = document.getElementById('highlightVideoContent'); // Si tu utilises des vidéos
 const prevButton = document.getElementById('highlightPrevButton');
 const nextButton = document.getElementById('highlightNextButton');
 const progressBarContainer = highlightViewer.querySelector('.highlight-progress-bar-container');
@@ -15,7 +15,7 @@ const progressBarContainer = highlightViewer.querySelector('.highlight-progress-
 // Chaque objet slide devrait avoir au moins 'type' ('image', 'video', 'text') et 'src' ou 'content'
 const highlightData = {
     "experiences": [
-        { type: 'image', src: '/img/competences1.png', alt: 'Expérience 1' },
+        { type: 'video', src: '/img/competences.mp4', alt: 'Expérience 1' },
         { type: 'image', src: 'assets/images/exp-placeholder-2.png', alt: 'Expérience 2' },
         // { type: 'video', src: 'assets/videos/exp-video.mp4' },
     ],
@@ -82,6 +82,12 @@ function closeHighlightViewer() {
     document.body.style.overflow = ''; // Rétablir le scroll
     highlightImageEl.style.display = 'none'; // Cacher l'image
     highlightImageEl.src = ''; // Vider la source
+    if (highlightVideoEl) { // Vérifie si l'élément existe
+        highlightVideoEl.style.display = 'none';
+        highlightVideoEl.pause(); // Arrêter la lecture
+        highlightVideoEl.src = ''; // Vider la source
+        highlightVideoEl.onended = null; // Supprimer le gestionnaire de fin
+    }
     // Reset video/text elements if used
     // Clear timer
     clearTimeout(autoAdvanceTimer);
@@ -108,12 +114,18 @@ function loadHighlightItem(index) {
 
     // Cacher tous les types de média d'abord
     highlightImageEl.style.display = 'none';
+    if (highlightVideoEl) highlightVideoEl.style.display = 'none';
     // highlightVideoEl.style.display = 'none';
     // highlightTextEl.style.display = 'none';
 
     // Arrêter le timer précédent
     clearTimeout(autoAdvanceTimer);
     autoAdvanceTimer = null;
+
+    if (highlightVideoEl) {
+        highlightVideoEl.pause();
+        highlightVideoEl.onended = null; // Important pour éviter appels multiples
+    }
 
     // Charger le contenu basé sur le type
     if (item.type === 'image') {
@@ -123,9 +135,21 @@ function loadHighlightItem(index) {
         // Relancer le timer pour l'auto-avance (si plusieurs slides)
         startAutoAdvance();
     } else if (item.type === 'video') {
-        // highlightVideoEl.src = item.src;
-        // highlightVideoEl.style.display = 'block';
-        // highlightVideoEl.currentTime = 0; // Rembobiner
+        highlightVideoEl.src = item.src;
+        highlightVideoEl.style.display = 'block';
+        highlightVideoEl.currentTime = 0; // Rembobiner
+        const playPromise = highlightVideoEl.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(error => {
+                // Autoplay a été empêché (souvent car l'onglet n'était pas actif, ou interaction utilisateur nécessaire)
+                console.error("Video autoplay prevented:", error);
+                // Tu pourrais afficher un bouton "Play" ici si nécessaire
+            });
+        }
+        highlightVideoEl.onended = () => {
+            console.log("Video ended, advancing...");
+            showNextHighlightItem();
+        };
         // highlightVideoEl.play();
          // Pas d'auto-avance pour les vidéos, on attend la fin (ou un clic)
          // Tu pourrais ajouter un listener 'ended' sur la vidéo pour passer au suivant

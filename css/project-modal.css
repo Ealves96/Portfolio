@@ -311,15 +311,20 @@ img.author-avatar {
 /* IMPORTANT : NE RIEN RETIRER - ces styles gèrent l'affichage des dots */
 .slide-indicators-mobile,
 .slide-indicators-desktop {
-    /* ... position, left, transform, gap, padding, z-index ... */
-    display: flex; /* IMPORTANT: Doit être flex pour que les dots s'alignent */
-    visibility: hidden;
+    /* Styles communs de base si besoin, MAIS PAS display: none ici */
+    position: absolute;   /* Positionnement de base */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    /* display: flex; */
+    gap: 5px;
+    padding: 5px;
+    visibility: hidden; /* Caché par défaut (avant ajout de .visible) */
     opacity: 0;
     transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    pointer-events: none;
 }
 
-/* Pour afficher quand JS ajoute la classe .visible */
+/* Règle pour afficher quand .visible est ajouté */
 .slide-indicators-mobile.visible,
 .slide-indicators-desktop.visible {
     visibility: visible;
@@ -349,7 +354,8 @@ img.author-avatar {
 /* ========== ÉLÉMENTS MOBILE MASQUÉS (par défaut) ========== */
 .modal-mobile-actions,
 .modal-mobile-header,
-.close-button-mobile {
+.close-button-mobile,
+.slide-indicators-mobile {
     display: none;
 }
 
@@ -362,11 +368,6 @@ img.author-avatar {
      .close-button { display: none; }              /* Cache Bouton Fermer Desktop */
      .modal-actions-bar { display: none; }         /* <<< AJOUT: Cache Actions Desktop */
      .modal-engagement-section { display: none; }   /* <<< AJOUT: Cache Engagement Desktop */
-     .slide-indicators-desktop {
-        display: none !important; /* Forcer le masquage en mobile */
-        visibility: hidden !important;
-        opacity: 0 !important;
-   }
      /* .modal-footer-link-section { display: none; } */
 
     /* --- Conteneur & Dimensions Globales --- */
@@ -493,8 +494,8 @@ img.author-avatar {
     }
 
     .slide-indicators-mobile {
-        /* display: flex; */
-        bottom: 10px;
+        display: flex;
+        bottom: -20px;
     }
 
     /* ----- Bouton Fermer Mobile ----- */
@@ -512,4 +513,28 @@ img.author-avatar {
         cursor: pointer;
         z-index: 1050;
     }
+}
+
+@media (min-width: 769px) { 
+
+    .slide-indicators-desktop {
+        display: flex; /* <<< AFFICHE les dots desktop (si .visible) */
+        /* bottom: 15px; est déjà défini globalement */
+    }
+
+    .slide-indicators-mobile {
+        display: none; /* << S'assure que mobile est caché */
+    }
+
+     /* Assure que les éléments desktop sont visibles */
+     .modal-header { display: flex; }
+     .close-button { display: block; }
+     .modal-actions-bar { display: flex; }
+     .modal-engagement-section { display: block; }
+     .modal-footer-link-section { display: block; }
+
+     /* Assure que les éléments mobiles sont cachés (même si c'est le défaut) */
+     .modal-mobile-actions { display: none; }
+     .modal-mobile-header { display: none; }
+     .close-button-mobile { display: none; }
 }

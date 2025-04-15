@@ -88,8 +88,6 @@ function closeHighlightViewer() {
         highlightVideoEl.pause(); // Arrêter la lecture
         highlightVideoEl.src = ''; // Vider la source
         highlightVideoEl.onended = null; // Supprimer le gestionnaire de fin
-        clearTimeout(autoAdvanceTimer);
-        autoAdvanceTimer = null;
     }
     // Reset video/text elements if used
     // Clear timer

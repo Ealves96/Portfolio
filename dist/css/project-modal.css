@@ -597,4 +597,13 @@ img.author-avatar {
         right: calc(50% - 710px - 60px);
         left: auto; /* Important d'annuler left */
     }
+
+    .slide-indicators-desktop {
+        display: flex; /* <<< AFFICHE les dots desktop (si .visible) */
+        /* bottom: 15px; est déjà défini globalement */
+    }
+
+    .slide-indicators-mobile {
+        display: none; /* << S'assure que mobile est caché */
+    }
 }

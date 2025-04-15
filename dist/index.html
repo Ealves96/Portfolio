@@ -369,8 +369,7 @@
 <!-- UNIQUEMENT le code de la modale -->
 
 <div id="projectModal" class="modal"> <!-- ID utilisé par JS -->
-    <div class="modal-content"> <!-- Classe utilisée par CSS -->
-
+    <div class="modal-content"> 
         <!-- Header Mobile (visible uniquement en mobile via CSS) -->
         <div class="modal-mobile-header">
             <div class="modal-author">
@@ -462,7 +461,14 @@
             <button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button>
         </div>
     </div> <!-- Fin modal-layout -->
+    <button class="modal-nav-button prev" id="prevModalButton" aria-label="Projet précédent" style="display: none;">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="modal-nav-button next" id="nextModalButton" aria-label="Projet suivant" style="display: none;">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 </div> <!-- Fin modal-content -->
+
 </div>
 
             </div> <!-- Fin profile-container -->

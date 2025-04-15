@@ -35,24 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const authorNameInline = modal.querySelector('.modal-description-container .modal-author-inline .author-name');
     // Boutons d'action (Barre commune + spécifiques si besoin)
     const likeButton = modal.querySelector('.modal-actions-bar .like-button'); // Cible dans la barre commune
-    // const commentButton = modal.querySelector('.modal-actions-bar .comment-button');
-    // const shareButton = modal.querySelector('.modal-actions-bar .share-button');
-    // const saveButton = modal.querySelector('.modal-actions-bar .save-button');
-    // const likeButtonMobile = modal.querySelector('.modal-mobile-actions .like-button'); // Si classe différente
+    //Sélection des éléments de navigation
+    const modalImageSection = modal.querySelector('.modal-image-section'); // Pour le swipe
+    const prevModalButton = document.getElementById('prevModalButton');     // Flèche Précédent
+    const nextModalButton = document.getElementById('nextModalButton');     // Flèche Suivant
 
     // --- Vérification éléments internes critiques ---
-     if (!modalImage) console.error("Modal JS: #modalImage manquant.");
-     if (!modalDescription) console.error("Modal JS: #modalDescription manquant.");
-     if (!modalTech) console.error("Modal JS: #modalTech manquant.");
-     if (!mobileDotsContainer || !desktopDotsContainer) console.warn("Modal JS: Conteneurs indicateurs slides manquants.");
-     if (!likeButton) console.warn("Modal JS: Bouton Like (.modal-actions-bar .like-button) manquant.");
-     if (!modalProjectLinksFooterContainer) console.warn("Modal JS: Conteneur .modal-project-links-footer manquant.");
+    if (!modalImage) console.error("Modal JS: #modalImage manquant.");
+    if (!modalDescription) console.error("Modal JS: #modalDescription manquant.");
+    if (!modalTech) console.error("Modal JS: #modalTech manquant.");
+    if (!mobileDotsContainer || !desktopDotsContainer) console.warn("Modal JS: Conteneurs indicateurs slides manquants.");
+    if (!likeButton) console.warn("Modal JS: Bouton Like (.modal-actions-bar .like-button) manquant.");
+    if (!modalProjectLinksFooterContainer) console.warn("Modal JS: Conteneur .modal-project-links-footer manquant.");
+    if (!modalImageSection) console.warn("Modal JS: Section image modale manquante.");
+    if (!prevModalButton || !nextModalButton) console.warn("Modal JS: Flèches de navigation manquantes.");
 
 
     // === Variables d'état pour le Slider ===
     let currentProjectImages = [];
     let currentImageIndex = 0;
     let projectDataForMedia = {};
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 50; // Distance minimale pour considérer un swipe
 
     // === Fonction pour mettre à jour le média affiché et les dots ===
     function updateModalMedia() {
@@ -65,11 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
             modalImage.src = currentMediaUrl;
             modalImage.alt = `Média ${currentImageIndex + 1} du projet ${projectDataForMedia.title || ''}`;
             updateDots(currentImageIndex, currentProjectImages.length);
+            updateNavigationControls();
         } else {
             const fallbackImage = projectDataForMedia?.image || 'https://via.placeholder.com/600x400';
             modalImage.src = fallbackImage;
             modalImage.alt = `Média principal du projet ${projectDataForMedia.title || ''}`;
             updateDots(0, 0);
+            updateNavigationControls();
         }
         // Gérer flèches si ajoutées
     }
@@ -97,6 +104,44 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         processContainer(mobileContainer);
         processContainer(desktopContainer);
+    }
+
+    function updateNavigationControls() {
+        if (!prevModalButton || !nextModalButton) return;
+
+        const totalImages = currentProjectImages.length;
+
+        if(currentImageIndex > 0 && totalImages > 1) {
+            prevModalButton.style.display = 'flex';
+        } else {
+            prevModalButton.style.display = 'none';
+        }
+        if(currentImageIndex < totalImages - 1 && totalImages > 1) {
+            nextModalButton.style.display = 'flex';
+        }
+        else {
+            nextModalButton.style.display = 'none';
+        }
+    }
+
+    function showNextMedia() {
+        if (currentImageIndex < currentProjectImages.length - 1) {
+            currentImageIndex++;
+            updateModalMedia();
+        }
+        else {
+            console.log("Modal JS: Dernière image atteinte.");
+        }
+    }
+
+    function showPrevMedia() {
+        if (currentImageIndex > 0) {
+            currentImageIndex--;
+            updateModalMedia();
+        }
+        else {
+            console.log("Modal JS: Première image atteinte.");
+        }
     }
 
     // === Fonction pour ouvrir la modale et la remplir ===
@@ -240,5 +285,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else { console.warn("Modal JS: Bouton Like non trouvé via .modal-actions-bar .like-button"); }
 
+    // 6. Gestion swipe (mobile)
+    if (prevModalButton) {
+        prevModalButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPrevMedia();
+        });
+    }
+    if (nextModalButton) {
+        nextModalButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            showNextMedia();
+        });
+    }
+    if (modalImageSection) {
+        modalImageSection.addEventListener('touchstart', (e) => {
+            if(currentProjectImages.length <= 1) return;
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        modalImageSection.addEventListener('touchend', (e) => {
+            if(currentProjectImages.length <= 1 || touchStartX === 0) return;
+            touchEndX = e.changedTouches[0].clientX;
+            const swipeDistance = touchStartX - touchEndX;
+            if(swipeDistance > minSwipeDistance) {
+                console.log("Modal JS: Swipe gauche détecté.");
+                showNextMedia();
+            } else if(swipeDistance < -minSwipeDistance) {
+                console.log("Modal JS: Swipe droite détecté.");
+                showPrevMedia();
+            }
+            touchStartX = 0; // Reset pour éviter les faux positifs
+            touchEndX = 0;
+        }, { passive: true });
+    } else { console.warn("Modal JS: Section image modale non trouvée."); 
+    }
 
 }); // Fin de DOMContentLoaded

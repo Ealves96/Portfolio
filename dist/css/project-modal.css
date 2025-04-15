@@ -42,6 +42,43 @@
     display: flex; /* <<< AJOUT : Nécessaire pour .modal-layout */
 }
 
+/* ========== NAVIGATION SLIDES POSTS ========== */
+.modal-nav-button {
+    position: fixed; /* Fixé par rapport au viewport */
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2); /* Fond semi-transparent clair */
+    color: #ffffff; /* Icône blanche */
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    z-index: 1201; /* Au-dessus de la modale mais sous un éventuel overlay de fermeture ? */
+    display: none; /* Caché par défaut - Sera affiché par JS ET media query */
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    padding: 0;
+    line-height: 1;
+}
+
+.modal-nav-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.modal-nav-button.prev {
+    /* Calcul: 50% viewport - moitié largeur max-width modal-content - espace */
+    /* max-width: 1420px -> moitié = 710px. Espace = 40px */
+    left: calc(50% - 310px - 60px);
+}
+
+.modal-nav-button.next {
+    right: calc(50% - 310px - 60px);
+}
+
+
 /* ========== LAYOUT GLOBAL ========== */
 /* Structure globale : colonnes en desktop, disposition en colonne en mobile */
 .modal-layout {
@@ -368,7 +405,7 @@ img.author-avatar {
      .close-button { display: none; }              /* Cache Bouton Fermer Desktop */
      .modal-actions-bar { display: none; }         /* <<< AJOUT: Cache Actions Desktop */
      .modal-engagement-section { display: none; }   /* <<< AJOUT: Cache Engagement Desktop */
-     /* .modal-footer-link-section { display: none; } */
+     .modal-nav-button { display: none; }           /* <<< AJOUT: Cache Nav Desktop */
 
     /* --- Conteneur & Dimensions Globales --- */
     .modal {
@@ -515,7 +552,19 @@ img.author-avatar {
     }
 }
 
-@media (min-width: 769px) { 
+/* ========== ÉLÉMENTS DESKTOP MASQUÉS (par défaut) ========== */
+@media (min-width: 769px) and (max-width: 1420px) { 
+    .modal-nav-button.prev {
+        /* Calcul: 50% viewport - moitié largeur max-width modal-content - espace */
+        /* max-width: 1420px -> moitié = 710px. Espace = 40px */
+        left: 1px;
+        right: auto;
+    }
+
+    .modal-nav-button.next {
+        right: 1px;
+        left: auto;
+    }
 
     .slide-indicators-desktop {
         display: flex; /* <<< AFFICHE les dots desktop (si .visible) */
@@ -537,4 +586,15 @@ img.author-avatar {
      .modal-mobile-actions { display: none; }
      .modal-mobile-header { display: none; }
      .close-button-mobile { display: none; }
+}
+
+@media (min-width: 1501px) {
+    .modal-nav-button.prev {
+        left: calc(50% - 710px - 60px); /* Ton calcul préféré pour grand écran */
+        right: auto; /* Important d'annuler right */
+    }
+    .modal-nav-button.next {
+        right: calc(50% - 710px - 60px);
+        left: auto; /* Important d'annuler left */
+    }
 }

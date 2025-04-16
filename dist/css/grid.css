@@ -21,6 +21,34 @@
     background-repeat: no-repeat; 
 }
 
+.multi-media-icon {
+    display: none; /* Caché par défaut */
+    position: absolute;
+    top: 10px;      /* Ajuste la distance du haut */
+    right: 10px;     /* Ajuste la distance de la droite */
+    z-index: 3;      /* Assure qu'il est au-dessus de l'overlay (si l'overlay a un z-index inférieur ou pas de z-index) */
+    color: #ffffff;  /* Couleur de l'icône */
+    font-size: 18px; /* Taille de l'icône */
+    /* Ombre pour améliorer la visibilité sur différents fonds */
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* Utilisation d'un pseudo-élément pour afficher l'icône Font Awesome */
+.multi-media-icon::before {
+    /* Assure-toi que Font Awesome est chargé */
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Solid"; /* Vérifie le nom exact */
+    font-weight: 900; /* Nécessaire pour les icônes 'solid' */
+    /* Icône "clone" (deux carrés) ou "layer-group" (trois carrés) */
+    content: "\f24d"; /* Unicode pour fa-clone */
+    /* Ou utilise: content: "\f5fd"; */ /* Unicode pour fa-layer-group */
+    display: inline-block; /* Ou block */
+}
+
+/* Règle pour afficher l'icône QUAND le parent a la classe .has-multiple-media */
+.project-item.has-multiple-media .multi-media-icon {
+    display: inline-block; /* Ou block */
+}
+
 /* Cacher l'image placeholder (ou la laisser en arrière-plan si souhaité) */
 /* Option 1: La cacher complètement */
 .project-item img {

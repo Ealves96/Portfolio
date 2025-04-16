@@ -113,6 +113,27 @@
     font-size: 20px; width: 28px; text-align: center; margin-right: 16px;
     flex-shrink: 0; transition: margin 0.3s ease;
 }
+
+.sidebar-desktop-narrow-view .sidebar-nav li a .nav-icon-wrapper {
+    /* Réutilise la taille et la marge des icônes pour l'alignement */
+    width: 28px;          /* Même largeur que les <i> */
+    height: 28px;         /* Hauteur désirée (peut différer de la largeur) */
+    margin-right: 16px;   /* Même marge que les <i> */
+    flex-shrink: 0;
+    transition: margin 0.3s ease;
+    display: flex;        /* Pour centrer l'image si elle est plus petite */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Image de profil dans la nav desktop/étroit */
+.sidebar-desktop-narrow-view .sidebar-nav li a .nav-profile-pic {
+    width: 100%;         /* Prend la largeur du wrapper (28px) */
+    height: 100%;        /* Prend la hauteur du wrapper (28px) */
+    border-radius: 50%;  /* La rend ronde */
+    object-fit: cover;   /* Assure que l'image couvre bien sans déformation */
+    display: block;      /* Bon pour les images */
+}
 /* Le .nav-text des settings utilise le même style que celui de la nav */
 
 
@@ -143,6 +164,18 @@
     .sidebar-desktop-narrow-view .sidebar-nav li a i,
     .sidebar-desktop-narrow-view .sidebar-settings a i {
         margin-right: 0;
+    }
+    .sidebar-desktop-narrow-view .sidebar-nav li a .nav-icon-wrapper {
+        margin-right: 0; /* Retire la marge en mode étroit */
+        width: 32px;     /* Peut-être un peu plus grande en mode icône seule ? */
+        height: 32px;
+    }
+    .sidebar-desktop-narrow-view .sidebar-nav li a .nav-profile-pic {
+        width: 100%;         /* Prend la largeur du wrapper (28px) */
+        height: 100%;        /* Prend la hauteur du wrapper (28px) */
+        border-radius: 50%;  /* La rend ronde */
+        object-fit: cover;   /* Assure que l'image couvre bien sans déformation */
+        display: block;      /* Bon pour les images */
     }
 }
 
@@ -213,5 +246,13 @@
     }
      .sidebar-mobile-view .sidebar-settings-mobile a:hover { background-color: var(--hover-bg); }
      .sidebar-mobile-view .sidebar-settings-mobile a i { font-size: 22px; margin: 0; }
+     .sidebar-mobile-view .sidebar-nav-mobile li a .nav-profile-pic-mobile {
+        width: 24px;         /* Taille désirée pour la barre mobile */
+        height: 24px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+        /* Pas de marges nécessaires ici car le <a> est centré */
+    }
 
 } /* Fin @media mobile */

@@ -78,6 +78,14 @@
                             <span class="nav-text">Messages</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="../dist/index.html" id="profil-link" title="Profil"> <!-- ID pour desktop -->
+                            <span class="nav-icon-wrapper"> 
+                                <img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic"> <!-- Classe pour desktop -->
+                            </span>
+                            <span class="nav-text">Profil</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
@@ -105,6 +113,11 @@
                  <li><a href="mailto:ealves0996@gmail.com" title="Email"><i class="fas fa-envelope fa-fw"></i></a></li>
                  <li><a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin fa-fw"></i></a></li>
                  <li><a href="#" id="messages-link-mobile" title="Messages"><i class="fa-solid fa-paper-plane fa-fw"></i></a></li>
+                 <li>
+                    <a href="../dist/index.html" id="profil-link-mobile" title="Profil"> 
+                        <img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic-mobile">
+                    </a>
+                </li>
             </ul>
         </nav>
         <div class="sidebar-settings-mobile">
@@ -144,7 +157,7 @@
                 </div>
                 <ul class="profile-stats"> <!-- Stats Desktop -->
                     <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
-                    <li><span class="stat-number">15</span> <span class="stat-label">Compétences</span></li>
+                    <li><span class="stat-number">10</span> <span class="stat-label">Compétences</span></li>
                     <li><span class="stat-number">2+</span> <span class="stat-label">Ecole 42</span></li>
                 </ul>
                 <div class="profile-bio-section-desktop"> <!-- Bio Desktop -->
@@ -180,7 +193,7 @@
             <!-- Stats (utilisant la même classe que desktop pour le style interne) -->
             <ul class="profile-stats">
                 <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
-                <li><span class="stat-number">15</span> <span class="stat-label">Compétences</span></li>
+                <li><span class="stat-number">10</span> <span class="stat-label">Compétences</span></li>
                 <li><span class="stat-number">2+</span> <span class="stat-label">Ecole 42</span></li>
             </ul>
         </div>
@@ -206,15 +219,6 @@
                 <!-- === Inclusion Highlights === -->
                 <section class="highlights-section">
     <ul class="highlights-list">
-       <li class="highlight-item" data-highlight-id="experiences" data-title="Expériences" data-icon="💼" onclick="openHighlightViewer('experiences')">
-           <!-- WRAPPER AUTOUR DU CERCLE -->
-           <div class="highlight-border-wrapper">
-               <div class="highlight-circle">
-                   <span class="highlight-placeholder">💼</span>
-               </div>
-           </div>
-           <p class="highlight-title">Expériences</p>
-       </li>
        <li class="highlight-item" data-highlight-id="competences" data-title="Compétences" data-icon="💡" onclick="openHighlightViewer('competences')">
             <!-- WRAPPER AUTOUR DU CERCLE -->
            <div class="highlight-border-wrapper">
@@ -294,15 +298,17 @@
 <div class="project-grid" aria-live="polite">
 
     <!-- Projet 1: Transcendence (Exemple avec plusieurs images) -->
-    <a href="#" class="project-item" data-category="frontend backend devops" data-title="Transcendence Game" data-image="img/projects/transcendence/transcendence-main.jpg" data-images="[
-            &quot;img/projects/transcendence/transcendence-main.jpg&quot;,
-            &quot;img/projects/transcendence/transcendence-gameplay.png&quot;,
-            &quot;img/projects/transcendence/transcendence-chat.gif&quot;,
-            &quot;img/projects/transcendence/transcendence-docker.png&quot;
-        ]" data-description="Développement d'un jeu de Pong multijoueur en temps réel inspiré du classique Pong.\n\nFonctionnalités :\n- Mode multijoueur via WebSockets (Socket.IO).\n- Système d'authentification sécurisé (JWT, OAuth2 avec l'API 42).\n- Chat global et privé entre utilisateurs.\n- Interface utilisateur réactive construite avec Vue.js.\n- Backend robuste avec NestJS et base de données PostgreSQL.\n- Déploiement containérisé avec Docker et Docker Compose.\n\nCe projet a été réalisé dans le cadre du cursus de l'école 42, mettant l'accent sur le travail d'équipe, la gestion de projet et l'application des technologies web modernes." data-tech="Vue.js, NestJS, TypeScript, PostgreSQL, Socket.IO, Docker, OAuth2, JWT" data-github="https://github.com/Ealves96/transcendence" data-live="#" data-background-image="img/logo42.png">
+    <a href="#" class="project-item" data-category="frontend backend devops" data-title="Transcendence Game" data-image="img/transcendence/transcendence_result.png" data-media='[
+            { "type": "video", "src": "img/transcendence/accueil.webm" },  
+            { "type": "video", "src": "img/transcendence/pong1.webm" }, 
+            { "type": "video", "src": "img/transcendence/pong2.webm" }, 
+            { "type": "video", "src": "img/transcendence/multi.webm" }, 
+            { "type": "image", "src": "img/transcendence/transcendence_result.png" } 
+        ]' data-description="Développement d'un jeu de Pong multijoueur en temps réel inspiré du classique Pong.\n\nFonctionnalités :\n- Mode multijoueur via WebSockets (Socket.IO).\n- Système d'authentification sécurisé (JWT, OAuth2 avec l'API 42).\n- Chat global et privé entre utilisateurs.\n- Interface utilisateur réactive construite avec Vue.js.\n- Backend robuste avec NestJS et base de données PostgreSQL.\n- Déploiement containérisé avec Docker et Docker Compose.\n\nCe projet a été réalisé dans le cadre du cursus de l'école 42, mettant l'accent sur le travail d'équipe, la gestion de projet et l'application des technologies web modernes." data-tech="Vue.js, NestJS, TypeScript, PostgreSQL, Socket.IO, Docker, OAuth2, JWT" data-github="https://github.com/Ealves96/transcendence" data-live="#" data-background-image="img/logo42.png">
         <!-- L'image interne est cachée par CSS, mais utile pour le référencement/fallback -->
         <img src="img/projects/transcendence/transcendence-thumb.jpg" alt="Miniature Transcendence">
         <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
     <!-- Projet 2: Cub3D (Exemple Raycasting) -->
@@ -313,6 +319,7 @@
         ]" data-description="Création d'un moteur graphique simplifié utilisant la technique du raycasting pour afficher une vue 3D à partir d'une carte 2D, similaire aux premiers jeux comme Wolfenstein 3D.\n\nImplémentation en C standard avec la bibliothèque MiniLibX pour l'affichage graphique.\n- Parsing de fichiers de description de scène (.cub).\n- Gestion des textures murales et des couleurs sol/plafond.\n- Mouvements et rotations du joueur dans l'environnement.\n- Optimisation basique des calculs de rayons." data-tech="C, MiniLibX, Raycasting, Parsing" data-github="https://github.com/Ealves96/cub3d" data-live="" data-background-image="img/logo42.png">
         <img src="img/projects/cub3d/cub3d-thumb.jpg" alt="Miniature Cub3D">
         <div class="project-overlay"><span class="project-title-overlay">Cub3D Engine</span></div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
     <!-- Projet 3: Portfolio (Ce site !) -->
@@ -325,6 +332,7 @@
          <div class="project-overlay">
              <span class="project-title-overlay">Portfolio</span>
         </div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
     <!-- Projet 4: Minishell -->
@@ -333,6 +341,7 @@
         <div class="project-overlay">
              <span class="project-title-overlay">Minishell</span>
         </div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
     <!-- Projet 5: Push Swap -->
@@ -341,6 +350,7 @@
          <div class="project-overlay">
              <span class="project-title-overlay">Push Swap</span>
         </div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
     <!-- Projet 6: (Exemple - Ajoutez un vrai projet ici) -->
@@ -349,6 +359,7 @@
          <div class="project-overlay">
              <span class="project-title-overlay">E-commerce UI</span>
         </div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
      <!-- Projet 7: (Exemple - Ajoutez un vrai projet ici) -->
@@ -357,6 +368,7 @@
         <div class="project-overlay">
             <span class="project-title-overlay">Data Dashboard</span>
         </div>
+        <span class="multi-media-icon" aria-hidden="true"></span>
     </a>
 
     <!-- Supprimer l'exemple de structure div vide à la fin -->
@@ -387,6 +399,7 @@
             <!-- Section Image (Gauche Desktop / Haut Mobile) -->
             <div class="modal-image-section">
                 <img id="modalImage" src="https://via.placeholder.com/600x400" alt="Image du projet"> <!-- ID utilisé par JS -->
+                <video id="modalVideo" src="" style="display: none;" muted="" playsinline="" controls=""></video> 
                 <!-- Indicateurs de slide Desktop -->
                 <div class="slide-indicators-desktop"></div> <!-- Classe utilisée par JS/CSS -->
                  <!-- Indicateurs de slide Mobile (positionnés différemment) -->

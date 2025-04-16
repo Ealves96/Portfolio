@@ -99,11 +99,28 @@
     position: relative;
 }
 
-.modal-image {
+#modalImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ou 'cover' */
+    display: block; /* Important */
+    /* S'assurer qu'il est caché si 'display: none' est mis inline par JS */
+}
+
+/* Cibler l'élément VIDEO par son ID */
+#modalVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ou 'cover' - cohérent avec l'image */
+    display: none;  /* Caché PAR DÉFAUT (sera affiché par JS) */
+    background-color: #000; /* Fond noir pendant le chargement si besoin */
+}
+
+/* .modal-image{
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
+} */
 
 /* ========== SECTION INFO ========== */
 /* Zone d'informations (droite en desktop, bas en mobile) */
@@ -384,7 +401,7 @@ img.author-avatar {
 }
 
 .slide-indicators-desktop {
-    bottom: 15px; /* En bas de l'image sur desktop */
+    bottom: 25px; /* En bas de l'image sur desktop */
     /* display: flex; est géré par JS */
 }
 
@@ -588,7 +605,7 @@ img.author-avatar {
      .close-button-mobile { display: none; }
 }
 
-@media (min-width: 1501px) {
+@media (min-width: 1421px) {
     .modal-nav-button.prev {
         left: calc(50% - 710px - 60px); /* Ton calcul préféré pour grand écran */
         right: auto; /* Important d'annuler right */

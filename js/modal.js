@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === Sélection Éléments Internes à la Modale ===
     const modalImage = modal.querySelector('#modalImage');
     const modalVideo = modal.querySelector('#modalVideo');
+    const modalPlayButton = modal.querySelector('#modalPlayButton');
     const modalDescription = modal.querySelector('#modalDescription');
     const modalTech = modal.querySelector('#modalTech');
     const modalProjectLinksFooterContainer = modal.querySelector('.modal-project-links-footer');
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Vérification éléments internes critiques ---
     if (!modalImage) console.error("Modal JS: #modalImage manquant.");
     if (!modalVideo) console.error("Modal JS: #modalVideo manquant.");
+    if (!modalPlayButton) console.warn("Modal JS: #modalPlayButton manquant.");
     if (!modalDescription) console.error("Modal JS: #modalDescription manquant.");
     if (!modalTech) console.error("Modal JS: #modalTech manquant.");
     if (!mobileDotsContainer || !desktopDotsContainer) console.warn("Modal JS: Conteneurs indicateurs slides manquants.");
@@ -63,13 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateModalMedia() {
         // console.log(`updateModalMedia - Appel avec: Index=${currentImageIndex}, totalItems=${currentMediaItems.length}`); // Décommenter pour debug
 
-        if (!modalImage || !modalVideo) { console.error("updateModalMedia - Élément image ou vidéo manquant."); return; }
+        if (!modalImage || !modalVideo || !modalPlayButton) { 
+            console.error("updateModalMedia - Élément image, vidéo ou playButton manquant."); 
+            return; }
 
         modalImage.style.display = 'none';
         modalImage.src = '';
         modalVideo.style.display = 'none';
         modalVideo.pause();
         modalVideo.src = '';
+        modalPlayButton.style.display = 'none'; 
 
         let currentItem = null;
         let totalItems = currentMediaItems.length;
@@ -91,6 +96,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalVideo.src = currentItem.src;
                 modalVideo.style.display = 'block';
                 modalVideo.currentTime = 0;
+                if (modalVideo.paused) {
+                    modalPlayButton.style.display = 'flex';
+                }
             } else {
                 console.warn("Type de média non reconnu:", currentItem.type);
                 modalImage.src = 'https://via.placeholder.com/600x400?text=Erreur+Média';
@@ -109,6 +117,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateDots(currentImageIndex, totalItems);
         updateNavigationControls(totalItems);
     }
+
+    
 
     // === Fonction pour mettre à jour les indicateurs (dots) ===
     function updateDots(currentIndex, totalItems) {
@@ -275,6 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (modalVideo) { modalVideo.pause(); modalVideo.src = ''; }
             if (prevModalButton) prevModalButton.style.display = 'none';
             if (nextModalButton) nextModalButton.style.display = 'none';
+            if (modalPlayButton) modalPlayButton.style.display = 'none';
             console.log("Modal JS: Modale fermée.");
         }
     };
@@ -362,6 +373,60 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     } else { console.warn("Modal JS: Section image modale non trouvée."); }
 
+    if (modalPlayButton && modalVideo) {
+        modalPlayButton.addEventListener('click', (e) => {
+            e.stopPropagation(); // Évite de déclencher le clic sur la zone image (si jamais)
+            console.log("Clic sur Play Overlay");
+            const playPromise = modalVideo.play(); // Essaye de lancer la lecture
+            if (playPromise !== undefined) {
+                 playPromise.then(() => {
+                     // La lecture a démarré avec succès
+                     modalPlayButton.style.display = 'none'; // Cacher le bouton Play
+                     // Optionnel: Ajouter 'controls' si on les avait enlevés
+                     // modalVideo.setAttribute('controls', '');
+                 }).catch(error => {
+                     console.error("Erreur lors du lancement manuel de la vidéo:", error);
+                     // La lecture a échoué (interaction utilisateur non reconnue ? autre ?)
+                     // On pourrait laisser le bouton visible ou afficher un message d'erreur
+                 });
+            } else {
+                // Si playPromise est undefined (navigateurs plus anciens?),
+                // on cache quand même le bouton en supposant que ça a marché.
+                modalPlayButton.style.display = 'none';
+            }
+        });
+    }
+
+    if(modalVideo && modalPlayButton) {
+        // Quand la vidéo commence à jouer (via overlay ou contrôles natifs)
+        modalVideo.addEventListener('play', () => {
+            // console.log("Video event: play");
+            modalPlayButton.style.display = 'none'; // Cacher l'overlay
+        });
+        modalVideo.addEventListener('playing', () => { // Événement alternatif parfois plus fiable
+             // console.log("Video event: playing");
+             modalPlayButton.style.display = 'none';
+        });
+
+        // Quand la vidéo est mise en pause (via contrôles natifs)
+        modalVideo.addEventListener('pause', () => {
+            // console.log("Video event: pause");
+            // Optionnel : Remontrer le bouton Play quand l'utilisateur met en pause ?
+            // Pourrait être perturbant si on veut juste cliquer sur la barre de temps.
+            // Pour l'instant, on ne le remontre PAS sur pause.
+             if (modalVideo.currentTime > 0 && !modalVideo.ended) { // Ne pas montrer si vidéo finie ou au tout début
+                 // modalPlayButton.style.display = 'flex'; // <<< DÉCOMMENTER SI TU VEUX ÇA
+             }
+        });
+
+         // Quand la vidéo se termine
+         modalVideo.addEventListener('ended', () => {
+             // console.log("Video event: ended");
+             // L'overlay doit rester caché, et on va passer au slide suivant (géré par showNextMedia/Swipe/Flèches)
+             // Pas besoin de montrer le bouton ici.
+         });
+    }
+
     // ==================================================================
     // === AJOUT : Initialisation des indicateurs multi-média       ===
     // ==================================================================
@@ -410,9 +475,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Appeler la fonction d'initialisation des indicateurs
     setupMultiMediaIndicators();
-    // ==================================================================
-    // === FIN AJOUT                                                  ===
-    // ==================================================================
-
 
 }); // Fin de DOMContentLoaded

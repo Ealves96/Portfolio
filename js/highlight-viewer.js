@@ -14,13 +14,12 @@ const progressBarContainer = highlightViewer.querySelector('.highlight-progress-
 const highlightData = {
     "experiences": [
         // !! IMPORTANT: Vérifie que ces chemins sont corrects DEPUIS ton fichier index.html !!
-        { type: 'video', src: 'img/competences.mp4' }, // Changé '/img/' en 'img/' (relatif)
-        { type: 'image', src: 'assets/images/exp-placeholder-2.png' },
+        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892761/fhaaehyrpkpiyhf3gmmk.mp4' },
+        { type: 'image', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892782/z4b5pwoptofava324q4u.mp4' },
     ],
     "competences": [
-         // !! IMPORTANT: Vérifie que ces chemins sont corrects DEPUIS ton fichier index.html !!
-        { type: 'video', src: 'img/competences.mp4' }, // Changé '/img/' en 'img/' (relatif)
-        { type: 'video', src: 'img/competences2.mp4' },// Changé '/img/' en 'img/' (relatif)
+        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892761/fhaaehyrpkpiyhf3gmmk.mp4' },
+        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892782/z4b5pwoptofava324q4u.mp4' },
     ],
     "diplomes": [
         { type: 'image', src: 'assets/images/diploma-placeholder.png' }

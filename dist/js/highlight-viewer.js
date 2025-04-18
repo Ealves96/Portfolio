@@ -12,17 +12,16 @@ const progressBarContainer = highlightViewer.querySelector('.highlight-progress-
 
 // --- Données des Highlights ---
 const highlightData = {
-    "experiences": [
-        // !! IMPORTANT: Vérifie que ces chemins sont corrects DEPUIS ton fichier index.html !!
-        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892761/fhaaehyrpkpiyhf3gmmk.mp4' },
-        { type: 'image', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892782/z4b5pwoptofava324q4u.mp4' },
-    ],
+    // "experiences": [
+    //     { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892761/fhaaehyrpkpiyhf3gmmk.mp4' },
+    //     { type: 'image', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892782/z4b5pwoptofava324q4u.mp4' },
+    // ],
     "competences": [
         { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892761/fhaaehyrpkpiyhf3gmmk.mp4' },
         { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892782/z4b5pwoptofava324q4u.mp4' },
     ],
     "diplomes": [
-        { type: 'image', src: 'assets/images/diploma-placeholder.png' }
+        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744983772/dojrodvlmeftspj1x55t.mp4' }
     ]
 };
 
@@ -397,13 +396,10 @@ function initializeHighlightViewer() {
 
     console.log("Highlight Viewer Initialized and Listeners Attached.");
 
-} // <<< FIN DE LA DÉFINITION de initializeHighlightViewer
+}
 
 
 // --- Appel de l'Initialisation ---
-// Assure-toi que le DOM est prêt avant d'appeler l'initialisation
-// Si ce script est chargé à la fin du body ou avec 'defer', c'est généralement ok.
-// Sinon, encapsule l'appel dans un DOMContentLoaded listener :
 if (document.readyState === 'loading') { // Le DOM n'est pas encore prêt
     document.addEventListener('DOMContentLoaded', initializeHighlightViewer);
 } else { // Le DOM est déjà prêt

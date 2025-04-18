@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const backToListBtn = document.getElementById('backToListBtn'); // Bouton retour mobile
     const messageInput = document.getElementById('messageInput'); // Textarea de saisie
     const sendMessageBtn = document.getElementById('sendMessageBtn'); // Bouton envoyer
+    const myUserInfo = { name: "Elisabeth Alves", avatar: "img/photo cv.jpg" };
+
 
     // --- Vérifications Essentielles ---
     // S'assurer que les éléments principaux existent pour éviter des erreurs plus loin
@@ -31,24 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Données exemples (à remplacer par une API plus tard) ---
     const dummyConversations = { // Inclure infos de base sur les conversations
-        '1': { id: '1', name: 'Alice Dubois', avatar: 'img/avatars/avatar1.png', snippet: 'Ok, ça me semble bien ! On fait...', timestamp: '14:32', unread: false },
-        '2': { id: '2', name: 'Projet XYZ', avatar: 'img/avatars/avatar2.png', snippet: 'Vous: Avez-vous reçu le devis ?', timestamp: 'Hier', unread: true },
-        '3': { id: '3', name: 'Bob Martin', avatar: 'img/avatars/avatar3.png', snippet: 'Super, merci !', timestamp: 'Mar', unread: false }
+        'ia-elisabeth': { id: 'ia-elisabeth', name: 'Elisabeth Alves (IA)', avatar: myUserInfo.avatar, snippet: 'Posez-moi une question !', timestamp: 'Maintenant', unread: false },
     };
-    const dummyMessages = {
-        '1': [
-            { id: 'm1', conversationId: '1', sender: 'Alice Dubois', text: 'Salut ! Comment ça va ?', timestamp: '14:30' },
-            { id: 'm2', conversationId: '1', sender: 'me', text: 'Hey Alice ! Super et toi ? Prête pour la démo ?', timestamp: '14:31' },
-            { id: 'm3', conversationId: '1', sender: 'Alice Dubois', text: 'Oui ! Juste une petite question avant.', timestamp: '14:31' },
-            { id: 'm4', conversationId: '1', sender: 'me', text: 'Vas-y ?', timestamp: '14:32' },
-            { id: 'm5', conversationId: '1', sender: 'Alice Dubois', text: 'Ok, ça me semble bien ! On fait comme ça alors.', timestamp: '14:32' }
+    const dummyMessages = { 
+        'ia-elisabeth': [
+            { id:'ia-m1', conversationId: 'ia-elisabeth', sender: 'Elisabeth Alves (IA)', text: 'Bonjour ! Comment puis-je vous aider concernant mon profil ? Vous pouvez me poser des questions sur mes compétences, expériences, ou disponibilités.', timestamp: ''}
         ],
-        '2': [
-            { id: 'm6', conversationId: '2', sender: 'me', text: 'Avez-vous reçu le devis pour le Projet XYZ ?', timestamp: 'Hier' }
-        ],
-        '3': [
-             { id: 'm7', conversationId: '3', sender: 'Bob Martin', text: 'Super, merci !', timestamp: 'Mar' }
-        ]
     };
 
     let currentLoadedConversationId = null; // Garder une trace de la conv affichée
@@ -127,10 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         currentLoadedConversationId = conversationId; // Mettre à jour l'ID courant
+        const isMobile = window.innerWidth <= 768;
 
         // 1. Mettre à jour le header de la vue conversation
-        if (recipientNameEl) recipientNameEl.textContent = conversationData.name;
-        if (recipientAvatarEl) recipientAvatarEl.src = conversationData.avatar || 'img/avatars/default.png';
+        if (isMobile) {
+            // Afficher TES infos en mobile
+            if (recipientNameEl) recipientNameEl.textContent = myUserInfo.name;
+            if (recipientAvatarEl) recipientAvatarEl.src = myUserInfo.avatar || 'img/avatars/default.png';
+        } else {
+            // Afficher les infos du contact en desktop
+            if (recipientNameEl) recipientNameEl.textContent = conversationData.name;
+            if (recipientAvatarEl) recipientAvatarEl.src = conversationData.avatar || 'img/avatars/default.png';
+        }
 
         // 2. Vider la liste de messages précédente
         if (messageList) messageList.innerHTML = '';
@@ -165,20 +163,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 4. Afficher la vue conversation (géré par CSS via la classe sur .messaging-layout)
         if (messagingLayout) {
+            console.log("Tentative d'ajout de la classe viewing-conversation");
             messagingLayout.classList.add('viewing-conversation');
-        } else {
-            // Fallback si .messaging-layout non trouvé (devrait cacher/afficher manuellement)
-            if (conversationPlaceholder) conversationPlaceholder.style.display = 'none';
-            if (conversationContent) conversationContent.style.display = 'flex';
-        }
+            console.log("Classe viewing-conversation ajoutée :", messagingLayout.classList.contains('viewing-conversation'));
+        } 
+        // else {
+        //     // Fallback si .messaging-layout non trouvé (devrait cacher/afficher manuellement)
+        //     if (conversationPlaceholder) conversationPlaceholder.style.display = 'none';
+        //     if (conversationContent) conversationContent.style.display = 'flex';
+        // }
 
         // 5. Mettre à jour l'item actif dans la liste
         setActiveConversationItem(conversationId);
 
         // 6. Donner le focus à l'input de message (utile sur desktop)
-        if (messageInput && window.innerWidth > 768) { // Focus seulement sur desktop
-             messageInput.focus();
-        }
+        if (messageInput && !isMobile) 
+            messageInput.focus(); // Focus seulement sur desktop
     }
 
     /**
@@ -317,12 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Initialisation ---
     populateConversationList(); // Remplir la liste de gauche au chargement
 
-    // Optionnel: Charger la première conversation sur Desktop au démarrage
-    // if (window.innerWidth > 768) {
-    //    const firstItem = conversationList.querySelector('.conversation-preview-item');
-    //    if (firstItem && firstItem.dataset.conversationId) {
-    //        loadConversation(firstItem.dataset.conversationId);
-    //    }
-    // }
+    // loadConversation('ia-elisabeth');
 
 }); // Fin DOMContentLoaded

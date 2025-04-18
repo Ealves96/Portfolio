@@ -281,16 +281,20 @@
     border-bottom: 1px solid var(--border-main);
     flex-shrink: 0; /* Ne rétrécit pas */
     background-color: var(--content-bg); /* Fond pour cacher contenu derrière si sticky */
+    gap: 10px;
 }
 [data-theme="dark"] .conversation-view-header {
     border-bottom-color: var(--border-main-dark, #363636);
+}
+.conversation-view-header .back-to-list-btn {
+    display: none;
 }
 /* Infos du destinataire */
 .recipient-info {
     display: flex;
     align-items: center;
-    gap: 12px; /* Espace avatar/nom */
-    flex-grow: 1; /* Prend l'espace dispo */
+    gap: 10px; /* Espace avatar/nom */
+    /* flex-grow: 1; */
     overflow: hidden; /* Cache nom trop long */
     cursor: pointer; /* Pourrait ouvrir profil plus tard */
 }
@@ -300,6 +304,7 @@
     border-radius: 50%;
     object-fit: cover;
     background-color: var(--placeholder-bg);
+    flex-shrink: 0; /* Pas de rétrécissement */
 }
 .recipient-name {
     font-weight: 600;
@@ -488,6 +493,18 @@
          transform: translateX(-100%); /* Pousse la liste hors écran */
          /* visibility: hidden; */ /* Alternative à display: none */
     }
+    .messaging-layout.viewing-conversation .conversation-view-container {
+         transform: translateX(0); /* Ramène la vue conversation à l'écran */
+         visibility: visible; /* Le rend visible */
+    }
+    .messaging-layout.viewing-conversation .conversation-placeholder {
+        display: none; /* CACHE le placeholder */
+    }
+    .messaging-layout.viewing-conversation .conversation-content {
+         display: flex; /* AFFICHE le contenu de la conversation */
+         flex-direction: column;
+         height: 100%; /* Important pour prendre la hauteur de son parent (.conversation-view-container) */
+    }
 
     .conversation-view-container {
         width: 100%;
@@ -501,13 +518,28 @@
         flex-direction: column;
         background-color: var(--background-color); /* Fond nécessaire */
         transition: transform 0.3s ease-out; /* Animation d'apparition */
-        visibility: hidden; /* Caché par défaut */
     }
-    .messaging-layout.viewing-conversation .conversation-view-container {
-         transform: translateX(0); /* Ramène la vue conversation à l'écran */
-         visibility: visible; /* Le rend visible */
+    .conversation-view-container .conversation-placeholder {
+        display: flex; /* Doit être visible initialement dans son conteneur */
+        flex-grow: 1; /* Assure qu'il prend l'espace */
+        /* ... autres styles du placeholder ... */
+    }
+    /* Par défaut, le contenu de la conversation est caché DANS la vue */
+    .conversation-view-container .conversation-content {
+         display: flex !important; 
+         flex-direction: column;
+         height: 100%;
+         opacity: 0; /* Utiliser l'opacité au lieu de display: none */
+         transition: opacity 0.3s ease;
     }
 
+    .messaging-layout.viewing-conversation .conversation-content {
+        opacity: 1;
+    }
+
+    .messaging-layout.viewing-conversation .conversation-view-container {
+        transform: translateX(0);
+    }
 
     /* --- Ajustements Header Liste --- */
     .list-header { padding: 0 15px; height: 50px; }
@@ -532,25 +564,60 @@
     .conversation-view-header {
         height: 50px;
         padding: 0 10px 0 5px;
+        gap: 8px;
     }
     /* Afficher bouton retour vers liste */
     .conversation-view-header .mobile-only.back-to-list-btn {
         display: inline-flex;
         font-size: 18px;
         padding: 8px;
-        margin-right: 5px;
+        margin-right: 0; /* Pas besoin de marge si gap est utilisé */
+        margin-left: -5px;
+    }
+
+    .recipient-info {
+        /* Pas de flex-grow pour laisser place aux actions */
+        gap: 8px; /* Espace réduit */
     }
     .recipient-avatar { width: 32px; height: 32px; }
-    .recipient-name { font-size: 14px; }
-    .conversation-actions button { font-size: 20px; padding: 5px; margin-left: 5px; }
+    .recipient-name { font-size: 14px; font-weight: 600;}
+    .conversation-actions button { font-size: 20px; padding: 5px; margin-left: 8px; }
 
     /* --- Ajustements Liste Messages --- */
-    .message-list { padding: 15px 10px; gap: 8px; } /* Moins de padding horizontal */
-    .message-bubble { max-width: 80%; font-size: 14px; } /* Bulles un peu plus larges/grandes */
+    .message-list { padding: 10px 10px 5px 10px; gap: 8px; } /* Moins de padding horizontal */
+    .message-bubble { max-width: 75%; font-size: 14px; } /* Bulles un peu plus larges/grandes */
+    .message-timestamp { font-size: 9px; }
 
     /* --- Ajustements Zone de Saisie --- */
-    .message-input-area { padding: 8px 10px; gap: 5px; } /* Moins de padding/gap */
-    .message-input-area button { font-size: 20px; padding: 5px; }
-    .message-input-area textarea { padding: 7px 12px; margin: 0; max-height: 70px; }
+    .message-input-area { 
+        padding: 8px 10px; 
+        gap: 8px; 
+        border-top: 1px solid var(--border-main); /* Garder bordure */
+        background-color: var(--content-bg);
+    } 
+    [data-theme="dark"] .message-input-area {
+        border-top-color: var(--border-main-dark, #363636);
+    }
+    .message-input-area button { 
+        font-size: 22px; /* Garder taille icône */
+        padding: 5px;
+        color: var(--text-primary);
+    }
+    .message-input-area textarea {
+        padding: 7px 12px;
+        margin: 0; /* Pas de marge latérale si gap utilisé */
+        max-height: 70px; /* Limite hauteur */
+         background-color: var(--input-bg, var(--background-color)); /* Fond input */
+    }
+    [data-theme="dark"] .message-input-area textarea {
+         background-color: var(--input-bg-dark, #1e1e1e); /* Fond input sombre */
+         border-color: var(--border-input-dark, #363636);
+    }
+    .message-input-area button.send-btn {
+        color: var(--primary-button-bg);
+    }
+    .message-input-area button.send-btn:disabled {
+         opacity: 0.4;
+    }
 
 }

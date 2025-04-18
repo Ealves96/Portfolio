@@ -1,0 +1,82 @@
+<!-- partials/_messages-content.html (NOUVEAU FICHIER ou contenu de l'ancien _messages.html nettoyé) -->
+
+<div class="messaging-layout">
+
+    <!-- Colonne Gauche - Liste -->
+    <section class="conversation-list-container" id="conversationListContainer">
+        <!-- Header Liste -->
+        <header class="list-header">
+            <div class="list-header-main">
+                <h2>Messages</h2>
+            </div>
+            <button class="new-message-btn" title="Nouveau message">
+                <i class="fas fa-edit"></i>
+            </button>
+        </header>
+        <!-- Liste (ul#conversationList) -->
+        <ul class="conversation-list" id="conversationList">
+             <li class="conversation-preview-item" data-conversation-id="1">
+                <img src="img/avatars/avatar1.png" alt="Avatar" class="conversation-avatar">
+                <div class="conversation-info">
+                    <span class="conversation-name">Alice Dubois</span>
+                    <p class="conversation-snippet">Ok, ça me semble bien ! On fait...</p>
+                </div>
+                <span class="conversation-timestamp">14:32</span>
+             </li>
+             <li class="conversation-preview-item" data-conversation-id="2">
+                 <img src="img/avatars/avatar2.png" alt="Avatar" class="conversation-avatar">
+                 <div class="conversation-info">
+                     <span class="conversation-name">Projet XYZ</span>
+                     <p class="conversation-snippet">Vous: Avez-vous reçu le devis ?</p>
+                 </div>
+                 <span class="conversation-timestamp">Hier</span>
+             </li>
+             <li class="conversation-preview-item" data-conversation-id="3">
+                 <img src="img/avatars/avatar3.png" alt="Avatar" class="conversation-avatar">
+                 <div class="conversation-info">
+                     <span class="conversation-name">Bob Martin</span>
+                     <p class="conversation-snippet">Super, merci !</p>
+                 </div>
+                 <span class="conversation-timestamp">Mar</span>
+             </li>
+        </ul>
+    </section>
+
+    <!-- Colonne Droite - Vue Conv -->
+    <section class="conversation-view-container" id="conversationViewContainer">
+        <!-- Placeholder Initial -->
+        <div class="conversation-placeholder" id="conversationPlaceholder">
+             <i class="far fa-comments"></i>
+             <h3>Vos messages</h3>
+             <p>Sélectionnez une conversation pour commencer.</p>
+             <button class="new-message-btn-placeholder">Envoyer un message</button>
+        </div>
+        <!-- Contenu Conv Active (caché initialement) -->
+        <div class="conversation-content" id="conversationContent" style="display: none;">
+             <!-- Header Conv -->
+            <header class="conversation-view-header">
+                <button class="back-to-list-btn mobile-only" id="backToListBtn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="recipient-info">
+                    <img src="img/avatars/avatar1.png" alt="Avatar" class="recipient-avatar" id="recipientAvatar">
+                     <span class="recipient-name" id="recipientName">Nom Destinataire</span>
+                </div>
+                <div class="conversation-actions">
+                     <button title="Appel vidéo"><i class="fas fa-video"></i></button>
+                     <button title="Informations"><i class="fas fa-info-circle"></i></button>
+                </div>
+            </header>
+            <!-- Liste Messages -->
+            <div class="message-list" id="messageList">
+            </div>
+            <!-- Zone Saisie -->
+            <footer class="message-input-area">
+                 <button class="emoji-btn"><i class="far fa-smile"></i></button>
+                 <textarea placeholder="Message..." rows="1" id="messageInput"></textarea>
+                 <button class="send-btn" id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+            </footer>
+        </div>
+    </section>
+
+</div> <!-- Fin messaging-layout -->

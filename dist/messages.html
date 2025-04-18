@@ -1,20 +1,38 @@
+<!-- messages.html (SOURCE - à la racine) -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon Portfolio</title>
+
+<!-- === GOOGLE FONT (Pacifico) === -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<!-- === BIBLIOTHÈQUE D'ICÔNES (Font Awesome) === -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+<!-- === Favicon === -->
+<link rel="icon" href="img/logo.ico" type="image/x-icon" sizes="32x32">
+
+<!-- === Inclusion des fichiers CSS === -->
+<link rel="stylesheet" href="css/global.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/highlights.css">
+<link rel="stylesheet" href="css/highlight-viewer.css">
+<link rel="stylesheet" href="css/tabs.css">
+<link rel="stylesheet" href="css/grid.css">
+<link rel="stylesheet" href="css/project-modal.css">
+<!-- Optionnel: <link rel="stylesheet" href="css/responsive.css"> -->
+    <link rel="stylesheet" href="css/messages.css"> 
+    <link rel="stylesheet" href="css/sidebar.css">
     <title>Messagerie - Mon Portfolio</title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/global.css">   <!-- Ajuste chemin si besoin -->
-    <link rel="stylesheet" href="css/sidebar.css">  <!-- Ajuste chemin si besoin -->
-    <link rel="stylesheet" href="css/messages.css"> <!-- Ajuste chemin si besoin -->
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
     <div class="app-layout">
-
-        <!-- Inclusion de la Sidebar (si tu la veux ici) -->
         <!-- partials/_sidebar.html -->
 <aside class="sidebar">
 
@@ -54,13 +72,13 @@
                         </a>
                     </li>
                     <li>
-                        <a href="../messages.html" id="messages-link-desktop" class="sidebar-nav-item" title="Messages"> 
+                        <a href="messages.html" id="messages-link-desktop" class="sidebar-nav-item" title="Messages"> 
                             <i class="fa-solid fa-paper-plane fa-fw"></i>
                             <span class="nav-text">Messages</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../dist/index.html" id="profil-link-desktop" class="sidebar-nav-item" title="Profil">
+                        <a href="/" id="profil-link-desktop" class="sidebar-nav-item" title="Profil">
                             <span class="nav-icon-wrapper">
                                 <img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic">
                             </span>
@@ -93,9 +111,9 @@
                  <li><a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github fa-fw"></i></a></li>
                  <li><a href="cv.pdf" title="Mon CV"><i class="fas fa-file-alt fa-fw"></i></a></li>
                  <li><a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin fa-fw"></i></a></li>
-                 <li><a href="../messages.html" id="messages-link-mobile" title="Messages"><i class="fa-solid fa-paper-plane fa-fw"></i></a></li>
+                 <li><a href="messages.html" id="messages-link-mobile" title="Messages"><i class="fa-solid fa-paper-plane fa-fw"></i></a></li>
                  <li>
-                    <a href="../dist/index.html" id="profil-link-mobile" class="sidebar-nav-item" title="Profil">
+                    <a href="/" id="profil-link-mobile" class="sidebar-nav-item" title="Profil">
                         <img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic-mobile">
                     </a>
                 </li>
@@ -106,63 +124,93 @@
         </div>
     </div> <!-- Fin sidebar-mobile-view -->
 
-</aside> <!-- Fin sidebar -->
-        <!-- OU colle le code HTML de la sidebar ici -->
+</aside> <!-- Fin sidebar --> 
+        <main class="main-content messaging-main" id="messagingView">
+             <!-- partials/_messages-content.html (NOUVEAU FICHIER ou contenu de l'ancien _messages.html nettoyé) -->
 
-        <!-- Contenu Principal - La Messagerie -->
-        <main class="main-content messaging-main">
-             <div class="messaging-layout">
+<div class="messaging-layout">
 
-                 <!-- Colonne Gauche - Liste -->
-                 <section class="conversation-list-container" id="conversationListContainer">
-                     <!-- Header Liste -->
-                     <header class="list-header">
-                         <div class="list-header-main">
-                             <!-- Le bouton retour portfolio n'est plus utile ici, on est sur une autre page -->
-                             <!-- <button class="back-to-portfolio-btn mobile-only" ...></button> -->
-                             <h2>Messages</h2>
-                         </div>
-                         <button class="new-message-btn" title="Nouveau message">
-                             <i class="fas fa-edit"></i>
-                         </button>
-                     </header>
-                     <!-- Liste (ul#conversationList) -->
-                     <ul class="conversation-list" id="conversationList">
-                         <!-- Items exemples -->
-                         <li class="conversation-preview-item" data-conversation-id="1">...</li>
-                         <li class="conversation-preview-item" data-conversation-id="2">...</li>
-                         <li class="conversation-preview-item" data-conversation-id="3">...</li>
-                     </ul>
-                 </section>
+    <!-- Colonne Gauche - Liste -->
+    <section class="conversation-list-container" id="conversationListContainer">
+        <!-- Header Liste -->
+        <header class="list-header">
+            <div class="list-header-main">
+                <h2>Messages</h2>
+            </div>
+            <button class="new-message-btn" title="Nouveau message">
+                <i class="fas fa-edit"></i>
+            </button>
+        </header>
+        <!-- Liste (ul#conversationList) -->
+        <ul class="conversation-list" id="conversationList">
+             <li class="conversation-preview-item" data-conversation-id="1">
+                <img src="img/avatars/avatar1.png" alt="Avatar" class="conversation-avatar">
+                <div class="conversation-info">
+                    <span class="conversation-name">Alice Dubois</span>
+                    <p class="conversation-snippet">Ok, ça me semble bien ! On fait...</p>
+                </div>
+                <span class="conversation-timestamp">14:32</span>
+             </li>
+             <li class="conversation-preview-item" data-conversation-id="2">
+                 <img src="img/avatars/avatar2.png" alt="Avatar" class="conversation-avatar">
+                 <div class="conversation-info">
+                     <span class="conversation-name">Projet XYZ</span>
+                     <p class="conversation-snippet">Vous: Avez-vous reçu le devis ?</p>
+                 </div>
+                 <span class="conversation-timestamp">Hier</span>
+             </li>
+             <li class="conversation-preview-item" data-conversation-id="3">
+                 <img src="img/avatars/avatar3.png" alt="Avatar" class="conversation-avatar">
+                 <div class="conversation-info">
+                     <span class="conversation-name">Bob Martin</span>
+                     <p class="conversation-snippet">Super, merci !</p>
+                 </div>
+                 <span class="conversation-timestamp">Mar</span>
+             </li>
+        </ul>
+    </section>
 
-                 <!-- Colonne Droite - Vue Conv -->
-                 <section class="conversation-view-container" id="conversationViewContainer">
-                     <!-- Placeholder Initial -->
-                     <div class="conversation-placeholder" id="conversationPlaceholder">...</div>
-                     <!-- Contenu Conv Active (caché initialement) -->
-                     <div class="conversation-content" id="conversationContent" style="display: none;">
-                          <!-- Header Conv -->
-                         <header class="conversation-view-header">
-                             <button class="back-to-list-btn mobile-only" id="backToListBtn">
-                                 <i class="fas fa-arrow-left"></i>
-                             </button>
-                             <div class="recipient-info">...</div>
-                             <div class="conversation-actions">...</div>
-                         </header>
-                         <!-- Liste Messages -->
-                         <div class="message-list" id="messageList">...</div>
-                         <!-- Zone Saisie -->
-                         <footer class="message-input-area">...</footer>
-                     </div>
-                 </section>
+    <!-- Colonne Droite - Vue Conv -->
+    <section class="conversation-view-container" id="conversationViewContainer">
+        <!-- Placeholder Initial -->
+        <div class="conversation-placeholder" id="conversationPlaceholder">
+             <i class="far fa-comments"></i>
+             <h3>Vos messages</h3>
+             <p>Sélectionnez une conversation pour commencer.</p>
+             <button class="new-message-btn-placeholder">Envoyer un message</button>
+        </div>
+        <!-- Contenu Conv Active (caché initialement) -->
+        <div class="conversation-content" id="conversationContent" style="display: none;">
+             <!-- Header Conv -->
+            <header class="conversation-view-header">
+                <button class="back-to-list-btn mobile-only" id="backToListBtn">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <div class="recipient-info">
+                    <img src="img/avatars/avatar1.png" alt="Avatar" class="recipient-avatar" id="recipientAvatar">
+                     <span class="recipient-name" id="recipientName">Nom Destinataire</span>
+                </div>
+                <div class="conversation-actions">
+                     <button title="Appel vidéo"><i class="fas fa-video"></i></button>
+                     <button title="Informations"><i class="fas fa-info-circle"></i></button>
+                </div>
+            </header>
+            <!-- Liste Messages -->
+            <div class="message-list" id="messageList">
+            </div>
+            <!-- Zone Saisie -->
+            <footer class="message-input-area">
+                 <button class="emoji-btn"><i class="far fa-smile"></i></button>
+                 <textarea placeholder="Message..." rows="1" id="messageInput"></textarea>
+                 <button class="send-btn" id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+            </footer>
+        </div>
+    </section>
 
-             </div> <!-- Fin messaging-layout -->
+</div> <!-- Fin messaging-layout --> 
         </main>
-
-    </div> <!-- Fin app-layout -->
-
-    <!-- Scripts (Charge ceux nécessaires pour CETTE page) -->
-    <script src="js/sidebar.js"></script>  <!-- Pour le thème et état actif sidebar -->
-    <script src="js/messages.js"></script> <!-- Logique de la messagerie -->
+    </div>
+    <script src="js/sidebar.js"></script>
+    <script src="js/messages.js"></script>
 </body>
 </html>

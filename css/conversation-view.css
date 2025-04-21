@@ -279,10 +279,14 @@
 /* ================================= */
 /* == AJUSTEMENTS THEME SOMBRE     == */
 /* ================================= */
-[data-theme="dark"] .conversation-view-header { border-bottom-color: var(--border-main-dark, #363636); }
-[data-theme="dark"] .message-input-area { border-top-color: var(--border-main-dark, #363636); }
+[data-theme="dark"] .message-list { background-color: var(--background-color-dark, #000); border-color: var(--border-input-dark, #363636); }
+[data-theme="dark"] .conversation-view-container { border-bottom-color: var(--border-main-dark, #535151); }
+[data-theme="dark"] .conversation-placeholder { background-color: var(--background-color-dark, #000); border-bottom-color: var(--border-main-dark, #535151); }
+[data-theme="dark"] .conversation-content { background-color: var(--background-color-dark, #000); border-bottom-color: var(--border-main-dark, #535151); }
+[data-theme="dark"] .conversation-view-header { background-color: var(--background-color-dark, #000); border-bottom-color: var(--border-main-dark, #535151); }
+[data-theme="dark"] .message-input-area { background-color: var(--background-color-dark, #000); border-top-color: var(--border-main-dark, #535151); }
 [data-theme="dark"] .message-input-area textarea { background-color: var(--background-color-dark, #000); border-color: var(--border-input-dark, #363636); }
-[data-theme="dark"] .message-bubble.received { background-color: var(--message-received-bg-dark, #262626); }
+[data-theme="dark"] .message-bubble.received { background-color: var(--message-received-bg-dark, #535151); }
 [data-theme="dark"] .message-bubble.sent { background-color: var(--message-sent-bg-dark, #3797f0); color: #ffffff; }
 
 
@@ -317,11 +321,21 @@
         background-color: var(--background-color); /* Fond nécessaire */
         transition: transform 0.3s ease-out; /* Animation d'apparition */
     }
+    [data-theme="dark"] .conversation-view-container {
+        background-color: var(--input-bg-dark, #000);
+        border-top-color: var(--border-main-dark, #363636);
+    }
+
     .conversation-view-container .conversation-placeholder {
         display: flex; /* Doit être visible initialement dans son conteneur */
         flex-grow: 1; /* Assure qu'il prend l'espace */
         /* ... autres styles du placeholder ... */
     }
+    [data-theme="dark"] .conversation-placeholder {
+        background-color: var(--input-bg-dark, #000);
+        border-top-color: var(--border-main-dark, #363636);
+    }
+
     /* Par défaut, le contenu de la conversation est caché DANS la vue */
     .conversation-view-container .conversation-content {
          display: flex !important; 
@@ -391,7 +405,7 @@
         position: fixed; /* Fixé en bas */
         left: 10px; 
         right: 5px; 
-        width: 98%; 
+        width: 95%; 
         box-sizing: border-box; 
         border-radius: 100px; /* Arrondir les bords */
         gap: 8px; 
@@ -416,7 +430,7 @@
          background-color: var(--input-bg, var(--background-color)); /* Fond input */
     }
     [data-theme="dark"] .message-input-area textarea {
-         background-color: var(--input-bg-dark, #1e1e1e); /* Fond input sombre */
+         background-color: var(--input-bg-dark, #000); /* Fond input sombre */
          border-color: var(--border-input-dark, #363636);
     }
     .message-input-area button.send-btn {

@@ -182,6 +182,7 @@
     border-top-right-radius: 4px;
     align-self: flex-end;
     margin-left: auto;
+    margin-bottom: 60px;
 }
 .message-timestamp {
     display: block;

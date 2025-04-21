@@ -58,7 +58,7 @@
         bottom: 60px; /* Ajuster selon la hauteur de votre message-input-area */
         left: 0;
         right: 0;
-        margin-bottom: 0; /* Supprimer la marge qui peut causer des problèmes */
+        margin-bottom: 15px; /* Supprimer la marge qui peut causer des problèmes */
         overflow-x: auto;
         flex-wrap: nowrap;
         justify-content: flex-start;

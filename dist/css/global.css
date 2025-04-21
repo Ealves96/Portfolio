@@ -82,6 +82,7 @@ body {
     background-color: var(--background-color);
     color: var(--primary-text-color);
     font-size: 14px; /* Taille de base d'Instagram */
+    height: 90vh;
     line-height: 1.6;
     background-color: var(--content-bg); /* Utilise la variable */
     color: var(--text-primary);

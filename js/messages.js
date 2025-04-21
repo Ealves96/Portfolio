@@ -37,8 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     const dummyMessages = { 
         'ia-elisabeth': [
-            { id:'ia-m1', conversationId: 'ia-elisabeth', sender: 'Elisabeth Alves (IA)', text: 'Bonjour ! Comment puis-je vous aider concernant mon profil ? Vous pouvez me poser des questions sur mes compétences, expériences, ou disponibilités.', timestamp: ''}
+            { 
+                id: 'ia-m1', 
+                conversationId: 'ia-elisabeth', 
+                sender: 'Elisabeth Alves (IA)', 
+                text: 'Bonjour ! Je suis l\'IA d\'Elisabeth. Que souhaitez-vous savoir sur son profil ?', 
+                timestamp: '',
+                quickReplies: ['Compétences', 'Projets', 'Formation', 'Disponibilité']
+            }
         ],
+    };
+
+    const iaResponses = {
+        'competences': {
+            text: "Mes principales compétences techniques sont :\n- Frontend: HTML, CSS, JavaScript, React\n- Backend: Node.js, Express\n- Base de données: MongoDB, PostgreSQL\n- Outils: Git, VS Code, Figma",
+            quickReplies: ['Projets', 'Formation', 'Expérience']
+        },
+        'projets': {
+            text: "J'ai réalisé plusieurs projets dont :\n- Ce portfolio interactif\n- Une application de gestion de tâches\n- Un site e-commerce\n\nSouhaitez-vous plus de détails sur l'un d'entre eux ?",
+            quickReplies: ['Portfolio', 'App ToDo', 'E-commerce']
+        },
+        'formation': {
+            text: "J'ai suivi une formation intensive en développement web fullstack à la Wild Code School, complétée par une formation autodidacte continue via des plateformes comme OpenClassrooms.",
+            quickReplies: ['Compétences', 'Projets', 'Disponibilité']
+        },
+        'disponibilite': {
+            text: "Je suis actuellement à la recherche d'opportunités en tant que développeuse web fullstack. Je suis disponible immédiatement pour un poste en CDI.",
+            quickReplies: ['Contact', 'CV', 'LinkedIn']
+        }
     };
 
     let currentLoadedConversationId = null; // Garder une trace de la conv affichée
@@ -179,6 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // 6. Donner le focus à l'input de message (utile sur desktop)
         if (messageInput && !isMobile) 
             messageInput.focus(); // Focus seulement sur desktop
+
+        // Après l'affichage des messages, ajouter les quick replies initiaux
+        const initialReplies = ['Compétences', 'Projets', 'Formation', 'Disponibilité'];
+        addQuickReplies(initialReplies);
     }
 
     /**
@@ -207,48 +237,92 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * Simule l'envoi d'un message et l'ajoute à la liste.
+     * Remplacer la fonction sendMessage() existante par :
      */
     function sendMessage() {
-         if (!messageInput || !messageList || !currentLoadedConversationId) {
-              console.warn("Impossible d'envoyer le message: input, liste ou conversation non définie.");
-              return;
-         }
-         const text = messageInput.value.trim();
-         if (text === '') return;
+        if (!messageInput || messageInput.value.trim() === '') return;
 
-         // 1. Créer la bulle et l'ajouter localement
-         const bubble = document.createElement('div');
-         bubble.classList.add('message-bubble', 'sent');
-         const textEl = document.createElement('p');
-         textEl.textContent = text;
-         bubble.appendChild(textEl);
-         const time = document.createElement('span');
-         time.classList.add('message-timestamp');
-         const now = new Date();
-         time.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
-         bubble.appendChild(time);
+        const userMessage = messageInput.value.trim();
+        
+        // Créer et ajouter la bulle du message utilisateur
+        const userBubble = document.createElement('div');
+        userBubble.classList.add('message-bubble', 'sent');
+        userBubble.innerHTML = `<p>${userMessage}</p>`;
+        messageList.appendChild(userBubble);
 
-         // S'assurer que le message "Aucun message..." est retiré s'il existe
-         const emptyMsg = messageList.querySelector('.empty-chat-message');
-         if (emptyMsg) emptyMsg.remove();
+        // Vider l'input et réajuster sa hauteur
+        messageInput.value = '';
+        adjustTextareaHeight();
+        checkSendButtonState();
 
-         messageList.appendChild(bubble);
+        // Faire défiler jusqu'en bas
+        messageList.scrollTop = messageList.scrollHeight;
 
-         // 2. Vider l'input et ajuster
-         messageInput.value = '';
-         messageInput.style.height = 'auto';
-         messageInput.focus(); // Garder le focus
-         checkSendButtonState(); // Vérifier si bouton doit être désactivé
+        // Vérifier si le message correspond à une des options
+        const matchingResponse = findMatchingResponse(userMessage);
 
-         // 3. Scroller en bas
-         messageList.scrollTop = messageList.scrollHeight;
+        // Simuler la réponse de l'IA après un délai
+        setTimeout(() => {
+            if (matchingResponse) {
+                // Si une correspondance est trouvée, utiliser la réponse appropriée
+                const responseBubble = document.createElement('div');
+                responseBubble.classList.add('message-bubble', 'received');
+                responseBubble.innerHTML = `<p>${matchingResponse.text}</p>`;
+                messageList.appendChild(responseBubble);
 
-         console.log(`Message envoyé (simulation) dans conv ${currentLoadedConversationId}:`, text);
+                // Ajouter les nouveaux quick replies correspondants
+                if (matchingResponse.quickReplies) {
+                    addQuickReplies(matchingResponse.quickReplies);
+                }
+            } else {
+                // Si aucune correspondance, utiliser le message par défaut
+                handleUnknownMessage();
+            }
 
-         // 4. TODO: Envoyer le message au backend ici
-         // 5. TODO: Mettre à jour le snippet dans la liste à gauche
-         // updateConversationSnippet(currentLoadedConversationId, `Vous: ${text}`, time.textContent);
+            messageList.scrollTop = messageList.scrollHeight;
+        }, 1000);
+    }
+
+    /**
+     * Ajouter cette nouvelle fonction après sendMessage()
+     */
+    function handleUnknownMessage() {
+        const defaultResponse = {
+            text: "Je ne comprends pas votre demande. Pour mieux vous aider, veuillez choisir l'une des options suivantes :",
+            quickReplies: ['Compétences', 'Projets', 'Formation', 'Disponibilité']
+        };
+
+        // Créer et ajouter la bulle de réponse de l'IA
+        const aiBubble = document.createElement('div');
+        aiBubble.classList.add('message-bubble', 'received');
+        aiBubble.innerHTML = `<p>${defaultResponse.text}</p>`;
+        messageList.appendChild(aiBubble);
+
+        // Ajouter les quick replies après la réponse
+        addQuickReplies(defaultResponse.quickReplies);
+
+        // Faire défiler jusqu'en bas
+        messageList.scrollTop = messageList.scrollHeight;
+    }
+
+    /**
+     * Ajouter cette fonction helper en haut du fichier après les déclarations des constantes
+     */
+    function findMatchingResponse(userInput) {
+        // Convertir l'entrée utilisateur en minuscules et supprimer les accents
+        const normalizedInput = userInput.toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '');
+        
+        // Chercher une correspondance dans les clés de iaResponses
+        const match = Object.keys(iaResponses).find(key => {
+            const normalizedKey = key.toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+            return normalizedInput.includes(normalizedKey);
+        });
+
+        return match ? iaResponses[match] : null;
     }
 
     /**
@@ -272,6 +346,51 @@ document.addEventListener('DOMContentLoaded', () => {
         messageInput.style.height = `${newHeight}px`;
          // Activer/Désactiver le bouton Envoyer
         checkSendButtonState();
+    }
+
+    function addQuickReplies(replies) {
+        const quickRepliesContainer = document.createElement('div');
+        quickRepliesContainer.classList.add('quick-replies-container');
+        
+        replies.forEach(reply => {
+            const button = document.createElement('button');
+            button.classList.add('quick-reply-btn');
+            button.textContent = reply;
+            button.addEventListener('click', () => handleQuickReply(reply));
+            quickRepliesContainer.appendChild(button);
+        });
+        
+        messageList.appendChild(quickRepliesContainer);
+        messageList.scrollTop = messageList.scrollHeight;
+    }
+
+    function handleQuickReply(reply) {
+        // Ajouter le message de l'utilisateur
+        const bubble = document.createElement('div');
+        bubble.classList.add('message-bubble', 'sent');
+        bubble.innerHTML = `<p>${reply}</p>`;
+        messageList.appendChild(bubble);
+
+        // Simuler la réponse de l'IA
+        setTimeout(() => {
+            const response = iaResponses[reply.toLowerCase()] || {
+                text: "Je ne peux pas répondre à cette demande pour le moment.",
+                quickReplies: ['Compétences', 'Projets', 'Formation']
+            };
+
+            // Ajouter la réponse de l'IA
+            const responseBubble = document.createElement('div');
+            responseBubble.classList.add('message-bubble', 'received');
+            responseBubble.innerHTML = `<p>${response.text}</p>`;
+            messageList.appendChild(responseBubble);
+
+            // Ajouter les nouveaux quick replies
+            if (response.quickReplies) {
+                addQuickReplies(response.quickReplies);
+            }
+
+            messageList.scrollTop = messageList.scrollHeight;
+        }, 1000);
     }
 
 

@@ -49,25 +49,6 @@
     /*    On va surcharger la couleur des onglets inactifs */
     /*    La couleur de l'onglet actif utilise déjà --text-primary (qui est blanc) */
     --tabs-text-inactive-dark: #a8a8a8; /* Même que secondary, ou un blanc moins vif ? */
-
-    /* 3. Barre des Onglets (Section .tabs-section) */
-    /*    On utilise --border-main déjà défini (gris très foncé) pour les bordures globales */
-    /*    Mais on peut définir une couleur spécifique si besoin */
-    /*    --tabs-section-border-dark: #363636; (Utilise déjà --border-main) */
-
-    /* 4. Indicateur Onglet Actif */
-    /*    La bordure active utilise déjà --text-primary (qui est blanc) */
-    /*    Donc pas besoin de variable supplémentaire ici normalement */
-    /*    --tabs-active-indicator-dark: #ffffff; (Utilise déjà --text-primary) */
-
-    /* --- Fin Ajouts/Modifications --- */
-
-    /* Adaptez d'autres variables si nécessaire (ex: fond de la modale...) */
-    /* --button-background: #2c2c2c; /* Fond bouton générique ? */ */
-    /* --button-background-hover: #3a3a3a; */
-    /* --button-text-color: #ffffff; */
-
-     /* --link-color: #4a90e2; /* Couleur des liens dans la bio en sombre ? */ */
 }
 
 /* Reset simple et styles globaux */

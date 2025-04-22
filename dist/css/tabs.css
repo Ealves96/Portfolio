@@ -39,6 +39,10 @@
     color: var(--text-primary); 
 }
 
+.tabs-list-mobile {
+    display: none; 
+}
+
 /* --- Responsive pour les Onglets --- */
 @media (max-width: 768px) {
     .tab-list,

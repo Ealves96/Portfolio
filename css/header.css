@@ -170,31 +170,35 @@
 
     /* Stats Mobile (celles dans la structure mobile) */
     .profile-header-mobile-view .profile-stats {
-        width: auto; /* Largeur s'adapte au contenu */
-        flex-grow: 1; /* Prend l'espace dispo à droite de la photo */
+        width: auto;
+        flex-grow: 1;
         display: flex;
         flex-direction: row;
-        /* justify-content: space-between; */ /* <<< CHANGÉ */
-        justify-content: flex-start;        /* <<< NOUVEAU: Aligne à gauche */
-        /* Ou essayez : justify-content: center; pour centrer le groupe */
-        gap: 40px; /* <<< AJUSTEZ CETTE VALEUR (ex: 10px, 15px, 20px) pour l'espacement voulu */
-        padding: 0; border: none; margin: 0;
-        /* font-size: 13px; Pas nécessaire ici */
-        flex-wrap: nowrap; align-items: center;
-        /* overflow: hidden; */ /* <<< COMMENTEZ/SUPPRIMEZ pour voir si ça déborde */
+        justify-content: flex-start;
+        gap: 30px;
+        padding: 0; 
+        border: none; 
+        margin: 0;
+        flex-wrap: nowrap; 
     }
     .profile-header-mobile-view .profile-stats li {
-        display: flex; flex-direction: column; align-items: center;
-        line-height: 1.2; text-align: center;
-        /* flex-shrink: 1; */ /* Mis à 0 car on ne veut pas qu'ils rétrécissent forcément */
+        display: flex; 
+        flex-direction: column; 
+        align-items: flex-start;
+        line-height: 1.2; 
+        text-align: center;
         flex-shrink: 0;
-        /* flex-basis: 0; */ /* Moins pertinent avec flex-start */
-        /* min-width: 0; */ /* Moins pertinent avec flex-start */
-        padding: 0; /* <<< IMPORTANT: Assurer 0 padding */
+        padding: 0;
     }
-    .profile-header-mobile-view .stat-number { font-weight: 600; font-size: 14px; white-space: nowrap; }
+    .profile-header-mobile-view .stat-number { 
+        font-weight: 600; 
+        font-size: 13px;
+        justify-content: left;
+        /* margin-left: -20px; */
+        white-space: nowrap;
+    }
     .profile-header-mobile-view .stat-label { 
-        font-size: 13px; 
+        font-size: 12px; 
         color: black; 
         display: block; 
         margin: 0; 
@@ -205,14 +209,19 @@
     /* 3. Bio Mobile */
     .profile-header-mobile-view .profile-bio-section-mobile {
         display: block; /* Assure visibilité */
-        width: 100%; text-align: left; margin-bottom: 15px; padding: 0;
+        width: 100%; 
+        text-align: left;
+        margin-bottom: 15px; 
+        padding: 0;
     }
     .profile-header-mobile-view .profile-bio-section-mobile .profile-real-name {
-        font-size: 14px; font-weight: 600; margin-bottom: 3px;
+        font-size: 12px; 
+        font-weight: 600; 
+        margin-bottom: 3px;
         margin-left: -10px;
     }
     .profile-header-mobile-view .profile-bio-section-mobile .profile-bio {
-        font-size: 14px;
+        font-size: 12px;
         margin-left: -10px;
     }
     .profile-header-mobile-view .profile-bio-section-mobile .profile-bio p {
@@ -222,12 +231,20 @@
     /* 4. Boutons Mobile */
     .profile-header-mobile-view .profile-actions-mobile {
         display: flex; /* Afficher */
-        width: 100%; gap: 8px; margin-top: 0; padding: 0;
+        width: 90%;
+        gap: 8px;
+        margin-top: 0;
+        padding: 0;
         margin-left: -20px;
-        height: 38px;
+        height: 30px;
     }
     .profile-header-mobile-view .profile-actions-mobile .button {
-        flex-grow: 1; text-align: center; font-size: 14px; padding: 8px 10px;
+        flex-grow: 1; 
+        display: flex;
+        align-items: center;
+        justify-content: center;    /* Ajout pour centrer horizontalement */
+        font-size: 12px; 
+        padding: 8px 10px;
         background-color: var(--button-header-bg, #efefef); /* Fallback gris clair */
         color: var(--button-header-text, var(--primary-text-color));
     }

@@ -41,6 +41,10 @@
 
 /* --- Responsive pour les Onglets --- */
 @media (max-width: 768px) {
+    .tab-list,
+    .tab-item{
+        display: none;
+    }
     .tabs-section {
         /* Sur mobile, les onglets prennent toute la largeur */
         justify-content: space-around; /* Répartit l'espace */
@@ -48,26 +52,28 @@
         border-top: none;
         margin-top: -40px;
     }
-    .tabs-list {
+    .tabs-list-mobile {
+        display: flex;
         width: 100%;
         justify-content: space-around;
         gap: 5px; /* Réduit l'écart */
     }
-    .tab-item {
-        font-size: 10px; 
+    .tab-item-mobile {
+        font-size: 11px; 
         letter-spacing: 0;
         text-transform: none; /* Pas forcément majuscule sur mobile */
         flex-grow: 1; /* Les onglets prennent la même largeur */
-        text-align: center;
+        text-align: left;
         padding: 12px 5px;
         /* La barre active pourrait être en dessous ou différente sur mobile */
          border-top: none;
          border-bottom: 2px solid transparent;
          margin-top: 0;
          margin-bottom: -2px;
+         cursor: pointer;
          /* border-bottom-color: var(--text-primary);  */
     }
-    .tab-item.active {
+    .tab-item-mobile.active {
         border-top-color: transparent; /*Annule la barre sup*/
         border-bottom-color: var(--text-primary); 
     }

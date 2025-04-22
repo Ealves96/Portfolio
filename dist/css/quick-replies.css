@@ -9,7 +9,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    justify-content: center;
+    justify-content: left;
     position: relative;
     z-index: 3; /* S'assurer que les boutons restent cliquables */
     background-color: var(--content-bg); /* Fond pour éviter la transparence */

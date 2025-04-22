@@ -33,37 +33,81 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Données exemples (à remplacer par une API plus tard) ---
     const dummyConversations = { // Inclure infos de base sur les conversations
-        'ia-elisabeth': { id: 'ia-elisabeth', name: 'Elisabeth Alves (IA)', avatar: myUserInfo.avatar, snippet: 'Posez-moi une question !', timestamp: 'Maintenant', unread: false },
+        'ia-elisabeth': { id: 'ia-elisabeth', name: 'Elisabeth Alves (ChatBot)', avatar: myUserInfo.avatar, snippet: 'Posez-moi une question !', timestamp: 'Maintenant', unread: false },
     };
     const dummyMessages = { 
         'ia-elisabeth': [
             { 
                 id: 'ia-m1', 
                 conversationId: 'ia-elisabeth', 
-                sender: 'Elisabeth Alves (IA)', 
-                text: 'Bonjour ! Je suis l\'IA d\'Elisabeth. Que souhaitez-vous savoir sur son profil ?', 
+                sender: 'Elisabeth Alves (ChatBot)', 
+                text: 'Bonjour ! Je suis le ChatBot d\'Elisabeth. Que souhaitez-vous savoir sur son profil ?', 
                 timestamp: '',
-                quickReplies: ['Compétences', 'Projets', 'Formation', 'Disponibilité']
+                quickReplies: ['Free-lance', 'Stage']
             }
         ],
     };
 
     const iaResponses = {
-        'competences': {
-            text: "Mes principales compétences techniques sont :\n- Frontend: HTML, CSS, JavaScript, React\n- Backend: Node.js, Express\n- Base de données: MongoDB, PostgreSQL\n- Outils: Git, VS Code, Figma",
-            quickReplies: ['Projets', 'Formation', 'Expérience']
+        "free-lance": {
+            text: "Je suis actuellement free-lance et je travaille sur divers projets de développement web. Je suis ouverte à de nouvelles opportunités.",
+            quickReplies: ['Compétences', 'Projets', 'Formations', 'À propos de moi'],
+            sub: { 
+                "competences": {
+                    text: "Mes principales compétences techniques sont :\n- Frontend: HTML, CSS, JavaScript, Three.js\n- Backend: Node.js, Express\n- Base de données: MongoDB, PostgreSQL\n- Outils: Git, VS Code, Figma",
+                    quickReplies: ['Projets', 'Formations', 'À propos de moi']
+                },
+                "projets": {
+                    text: "J'ai réalisé plusieurs projets dont :\n- Ce portfolio interactif\n- Une application de gestion de tâches\n- Un site e-commerce\n\nSouhaitez-vous plus de détails sur l'un d'entre eux ?",
+                    quickReplies: ['Portfolio', 'App ToDo', 'E-commerce']
+                },
+                "formations": {
+                    text: "J'ai suivi une formation intensive en développement web fullstack à la Wild Code School, complétée par une formation autodidacte continue via des plateformes comme OpenClassrooms.",
+                    quickReplies: ['Compétences', 'Projets', 'À propos de moi']
+                },
+                "a propos de moi": {
+                    text: "J'ai suivi une formation intensive en développement web fullstack à la Wild Code School, complétée par une formation autodidacte continue via des plateformes comme OpenClassrooms.",
+                    quickReplies: ['Compétences', 'Projets', 'Formations']
+                }
+            }
         },
-        'projets': {
-            text: "J'ai réalisé plusieurs projets dont :\n- Ce portfolio interactif\n- Une application de gestion de tâches\n- Un site e-commerce\n\nSouhaitez-vous plus de détails sur l'un d'entre eux ?",
-            quickReplies: ['Portfolio', 'App ToDo', 'E-commerce']
-        },
-        'formation': {
-            text: "J'ai suivi une formation intensive en développement web fullstack à la Wild Code School, complétée par une formation autodidacte continue via des plateformes comme OpenClassrooms.",
-            quickReplies: ['Compétences', 'Projets', 'Disponibilité']
-        },
-        'disponibilite': {
-            text: "Je suis actuellement à la recherche d'opportunités en tant que développeuse web fullstack. Je suis disponible immédiatement pour un poste en CDI.",
-            quickReplies: ['Contact', 'CV', 'LinkedIn']
+        "stage": { 
+            text: `Je recherche un stage DevOps de 6 mois, motivée par l’envie de :\n
+            Industrialiser les projets : concevoir des pipelines CI/CD fiables et automatiser les déploiements.\n
+            Optimiser l’exploitation : conteneuriser avec Docker, monitorer et sécuriser les environnements Linux/cloud.\n
+            Apprendre en profondeur : confronter mes bases techniques à des problématiques réelles de performance et de scalabilité.\n
+            Le DevOps m’enthousiasme car il réunit tout ce que j’aime : la rigueur de l’infrastructure, la culture de la collaboration et l’amélioration continue au service des équipes de développement.`,
+            quickReplies: ['Compétences', 'Projets', 'Formations', 'À propos de moi'],
+            sub: {
+                "competences": {
+                    text: `DevOps & Cloud\n
+                            • Docker / Compose, notions Kubernetes\n
+                            • CI/CD : GitHub Actions, GitLab CI\n
+                            • Linux, Bash, Nginx\n
+                            • Monitoring : Prometheus + Grafana\n
+                            • Bases AWS (EC2, S3) & GCP\n\n
+
+                            Code & Tests\n
+                            • Python pour scripts d'automatisation\n
+                            • Git, GitFlow, tests intégrés au pipeline\n\n
+
+                            Soft skills 42\n
+                            • Adaptation rapide : un nouveau service ? Je le POC, je documente, je déploie.`,
+                    quickReplies: ['Projets', 'Formations', 'À propos de moi']
+                },
+                "projets": {
+                    text: "J'ai réalisé plusieurs projets dont :\n- Ce portfolio interactif\n- Une application de gestion de tâches\n- Un site e-commerce\n\nSouhaitez-vous plus de détails sur l'un d'entre eux ?",
+                    quickReplies: ['Portfolio', 'App ToDo', 'E-commerce']
+                },
+                "formations": {
+                    text: "J'ai suivi une formation intensive en développement web fullstack à la Wild Code School, complétée par une formation autodidacte continue via des plateformes comme OpenClassrooms.",
+                    quickReplies: ['Compétences', 'Projets', 'À propos de moi']
+                },
+                "a propos de moi": {
+                    text: "J'ai suivi une formation intensive en développement web fullstack à la Wild Code School, complétée par une formation autodidacte continue via des plateformes comme OpenClassrooms.",
+                    quickReplies: ['Compétences', 'Projets', 'Formations']
+                }
+            }
         }
     };
 
@@ -207,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             messageInput.focus(); // Focus seulement sur desktop
 
         // Après l'affichage des messages, ajouter les quick replies initiaux
-        const initialReplies = ['Compétences', 'Projets', 'Formation', 'Disponibilité'];
+        const initialReplies = ['Free-lance', 'Stage'];
         addQuickReplies(initialReplies);
     }
 
@@ -267,7 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Si une correspondance est trouvée, utiliser la réponse appropriée
                 const responseBubble = document.createElement('div');
                 responseBubble.classList.add('message-bubble', 'received');
-                responseBubble.innerHTML = `<p>${matchingResponse.text}</p>`;
+                // Remplacer les \n par des <br>
+                responseBubble.innerHTML = `<p>${matchingResponse.text.replace(/\n/g, '<br>')}</p>`;
                 messageList.appendChild(responseBubble);
 
                 // Ajouter les nouveaux quick replies correspondants
@@ -289,7 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUnknownMessage() {
         const defaultResponse = {
             text: "Je ne comprends pas votre demande. Pour mieux vous aider, veuillez choisir l'une des options suivantes :",
-            quickReplies: ['Compétences', 'Projets', 'Formation', 'Disponibilité']
+            quickReplies: ['Compétences', 'Projets', 'Formations', 'À propos de moi']
         };
 
         // Créer et ajouter la bulle de réponse de l'IA
@@ -365,26 +410,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleQuickReply(reply) {
-        // Ajouter le message de l'utilisateur
         const bubble = document.createElement('div');
         bubble.classList.add('message-bubble', 'sent');
         bubble.innerHTML = `<p>${reply}</p>`;
         messageList.appendChild(bubble);
 
-        // Simuler la réponse de l'IA
         setTimeout(() => {
-            const response = iaResponses[reply.toLowerCase()] || {
-                text: "Je ne peux pas répondre à cette demande pour le moment.",
-                quickReplies: ['Compétences', 'Projets', 'Formation']
-            };
+            let response;
+            const normalizedReply = reply.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            
+            if (currentLoadedConversationId === 'ia-elisabeth') {
+                // Premier niveau : chercher dans les réponses principales
+                response = iaResponses[normalizedReply];
+                if (response) {
+                    currentLoadedConversationId = `ia-${normalizedReply}`;
+                }
+            } else {
+                // Nous sommes dans un sous-contexte (free-lance ou stage)
+                const currentContext = currentLoadedConversationId.split('-')[1];
+                
+                // Chercher dans les sous-réponses du contexte actuel en normalisant les clés
+                const contextData = iaResponses[currentContext];
+                if (contextData && contextData.sub) {
+                    // Chercher la clé correspondante en ignorant la casse
+                    const matchingKey = Object.keys(contextData.sub).find(key => 
+                        key.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '') === normalizedReply
+                    );
+                    if (matchingKey) {
+                        response = contextData.sub[matchingKey];
+                    }
+                }
+            }
 
-            // Ajouter la réponse de l'IA
+            // Si toujours pas trouvé, utiliser la réponse par défaut
+            if (!response) {
+                response = {
+                    text: "Je ne comprends pas votre demande. Pour mieux vous aider, veuillez choisir l'une des options suivantes :",
+                    quickReplies: ['Compétences', 'Projets', 'Formations', 'À propos de moi']
+                };
+            }
+
             const responseBubble = document.createElement('div');
             responseBubble.classList.add('message-bubble', 'received');
-            responseBubble.innerHTML = `<p>${response.text}</p>`;
+            // Remplacer les \n par des <br>
+            responseBubble.innerHTML = `<p>${response.text.replace(/\n/g, '<br>')}</p>`;
             messageList.appendChild(responseBubble);
 
-            // Ajouter les nouveaux quick replies
             if (response.quickReplies) {
                 addQuickReplies(response.quickReplies);
             }

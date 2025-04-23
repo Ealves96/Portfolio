@@ -96,8 +96,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalVideo.src = currentItem.src;
                 modalVideo.style.display = 'block';
                 modalVideo.currentTime = 0;
-                if (modalVideo.paused) {
-                    modalPlayButton.style.display = 'flex';
+                // Ajouter ces lignes pour l'autoplay
+                modalPlayButton.style.display = 'none';
+                const playPromise = modalVideo.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.warn("Autoplay prevented:", error);
+                        // Si l'autoplay échoue, on affiche le bouton play
+                        modalPlayButton.style.display = 'flex';
+                    });
                 }
             } else {
                 console.warn("Type de média non reconnu:", currentItem.type);

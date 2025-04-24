@@ -12,7 +12,7 @@
     display: none; /* Caché par défaut - sera 'flex' quand actif */
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Empêche le scroll de la page derrière */
+    /* overflow: hidden;  */
 }
 
 .highlight-viewer-overlay {
@@ -107,19 +107,8 @@
 .highlight-media-container img,
 .highlight-media-container video {
     display: block;
-
-    /* Supprime les anciennes règles de dimensionnement automatique/max */
-    /* max-width: 100%; */
-    /* max-height: 100%; */
-    /* width: auto; */
-    /* height: auto; */
-
-    /* Force l'élément image/vidéo à remplir son conteneur */
     width: 100%;
     height: 100%;
-
-    /* Change contain en cover */
-    /* object-fit: cover; Assure que tout est visible, sans déformation */
 }
 
 /* Styles pour les boutons de navigation Précédent/Suivant */

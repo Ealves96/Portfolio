@@ -146,7 +146,7 @@
         <div class="profile-header-top">
             <div class="profile-pic-container">
                 <div class="profile-pic-border-wrapper">
-                    <img src="img/photo cv.jpg" alt="Photo de profil">
+                    <img src="img/photo cv.jpg" alt="Photo de profil" class="profile-pic" onclick="openStories()">
                 </div>
             </div>
             <div class="profile-info-top">
@@ -158,7 +158,7 @@
                     </div>
                 </div>
                 <ul class="profile-stats"> <!-- Stats Desktop -->
-                    <li><span class="stat-number">12</span> <span class="stat-label">Projets</span></li>
+                    <li><span class="stat-number">10</span> <span class="stat-label">Projets</span></li>
                     <li><span class="stat-number">10</span> <span class="stat-label">Compétences</span></li>
                     <li><span class="stat-number">2+</span> <span class="stat-label">Ecole 42</span></li>
                 </ul>
@@ -523,6 +523,59 @@
 
 </div>
 
+                <!-- _stories-viewer.html (Fichier HTML Complet) -->
+
+<!-- Inclusion du CSS spécifique (peut être fait dans le <head> principal aussi) -->
+    <link rel="stylesheet" href="css/profile-stories.css">
+
+    <!-- Conteneur principal du viewer de stories, caché par défaut -->
+    <div class="stories-viewer" id="storiesViewer" style="display: none;">
+    
+        <!-- Overlay semi-transparent derrière le contenu (optionnel) -->
+        <div class="stories-viewer-overlay"></div>
+    
+        <!-- Conteneur du contenu visible de la story (taille et ratio gérés par CSS) -->
+        <div class="stories-viewer-content">
+    
+            <!-- Header de la Story (Positionné en Absolu) -->
+            <div class="stories-header">
+       
+                <div class="stories-user-info">
+                    <img src="img/photo cv.jpg" alt="Profile" class="stories-user-avatar">
+                    <span class="stories-username">Elisabeth Alves</span>
+                </div>
+
+                <button class="stories-close-button" aria-label="Fermer">×</button>
+            </div>
+    
+            <!-- Conteneur pour le média (Image ou Vidéo) -->
+
+            <div class="stories-media-container">
+
+                <video src="" id="storyVideoContent" muted="" playsinline="" style="display: block;"></video>
+                <img src="" alt="Story Image" id="storyImageContent" style="display: none;">
+            </div>
+    
+            <!-- Conteneur pour les barres de progression (Positionné en Absolu) -->
+            <div class="stories-progress-container">
+                <div class="stories-progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+    
+        </div> <!-- Fin .stories-viewer-content -->
+
+        <button class="stories-nav-button prev desktop-only" id="storyPrevButton" aria-label="Précédent" style="display: none;">
+            <i class="fas fa-chevron-left"></i> 
+        </button>
+        <button class="stories-nav-button next desktop-only" id="storyNextButton" aria-label="Suivant" style="display: none;">
+             <i class="fas fa-chevron-right"></i> 
+        </button>
+
+    
+    </div> <!-- Fin .stories-viewer -->
+
+
             </div> <!-- Fin profile-container -->
         </main> <!-- Fin main-content -->
 
@@ -535,6 +588,7 @@
 <script src="js/tabs.js"></script>
 <script src="js/main.js"></script>
 <script src="js/sidebar.js"></script> <!-- << NOUVEAU JS pour la sidebar/thème -->
+    <script src="js/header.js"></script>
 
 </body>
 </html>

@@ -29,6 +29,15 @@
      padding-right: 20px; /* Padding droit Desktop */
 }
 
+.profile-pic {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.profile-pic:hover {
+    opacity: 0.9;
+}
+
 /* Conteneur Photo Desktop */
 .profile-header-desktop-view .profile-pic-container {
     width: 150px;

@@ -2,16 +2,16 @@
 // ==      DONNÉES DES STORIES           ==
 // ========================================
 const profilePhotos = [
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storieTranscendence_quvhxx.mp4", alt: "Transcendence" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storiePortfolio_kla6jd.mp4", alt: "Portfolio" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieLatribu_a0ryiy.mp4", alt: "La Tribu" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieWebserv_owajmx.mp4", alt: "WebServ" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieNetpractice_fbjxrv.mp4", alt: "NetPractice" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storieBorn2beroot_y95jlf.mp4", alt: "Born2beroot" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storieInception_y0wjp2.mp4", alt: "Inception" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieCub3d_cgpied.mp4", alt: "Cub3d" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storiePushswap_m0ij8l.mp4", alt: "PushSwap" },
-    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieDslr_scdl9g.mp4", alt: "DSLR" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storieTranscendence_quvhxx.mp4", alt: "Transcendence", postLink:"#post-transcendence" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storiePortfolio_kla6jd.mp4", alt: "Portfolio", postLink:"#post-portfolio" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieLatribu_a0ryiy.mp4", alt: "La Tribu", postLink:"#post-latribu" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieWebserv_owajmx.mp4", alt: "WebServ", postLink:"#post-webserv" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieNetpractice_fbjxrv.mp4", alt: "NetPractice", postLink:"#post-netpractice" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storieBorn2beroot_y95jlf.mp4", alt: "Born2beroot", postLink:"#post-born2beroot" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storieInception_y0wjp2.mp4", alt: "Inception", postLink:"#post-inception" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieCub3d_cgpied.mp4", alt: "Cub3d", postLink:"#post-cub3d" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498369/storiePushswap_m0ij8l.mp4", alt: "PushSwap", postLink:"#post-pushswap" },
+    { type: 'video', src: "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745498368/storieDslr_scdl9g.mp4", alt: "DSLR", postLink:"#post-dslr" },
 ];
 
 // ========================================
@@ -201,6 +201,37 @@ function showStory(index) {
             playPromise.catch(error => console.error("Erreur autoplay vidéo:", error));
         }
         currentVideoElement = videoElement;
+
+        // Ajouter la gestion du clic sur la story
+        const videoWrapper = viewer.querySelector('.story-video-wrapper');
+        const linkOverlay = viewer.querySelector('.story-link-overlay');
+        
+        if (videoWrapper && storyData.postLink) {
+            videoWrapper.onclick = (e) => {
+                // Vérifier si le clic n'est pas sur les boutons de navigation
+                if (!e.target.closest('.stories-nav-button')) {
+                    // Pause la vidéo
+                    if (currentVideoElement) {
+                        currentVideoElement.pause();
+                    }
+                    
+                    // Fermer le viewer
+                    closeStories();
+                    
+                    // Trouver l'élément du projet correspondant
+                    const projectElement = document.querySelector(storyData.postLink);
+                    if (projectElement) {
+                        // Simuler un clic sur le projet
+                        projectElement.click();
+                    }
+                }
+            };
+
+            // Mettre à jour le texte du lien si besoin
+            if (linkOverlay) {
+                linkOverlay.textContent = `Voir le projet ${storyData.alt}`;
+            }
+        }
 
     } else if (storyData.type === 'image') {
          // ... (Logique image commentée) ...
@@ -396,7 +427,12 @@ function openStories() {
                 <button class="stories-close-button" aria-label="Fermer">×</button>
             </div>
             <div class="stories-media-container">
-                <video src="" id="storyVideoContent" muted playsinline style="display: block;"></video>
+                <div class="story-video-wrapper">
+                    <video src="" id="storyVideoContent" muted playsinline style="display: block;"></video>
+                    <div class="story-link-overlay">
+                        <span class="story-link-text">Voir le projet</span>
+                    </div>
+                </div>
                 <button class="stories-nav-button prev" id="storyPrevButton" aria-label="Précédent">&lt;</button>
                 <button class="stories-nav-button next" id="storyNextButton" aria-label="Suivant">&gt;</button>
             </div>
@@ -463,4 +499,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function preventScroll(e) {
     e.preventDefault();
+}
+
+function scrollToPost(postId) {
+    const element = document.querySelector(postId);
+    if (element) {
+        element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+        });
+        // Option : Ajouter un effet de highlight
+        element.classList.add('highlight-post');
+        setTimeout(() => {
+            element.classList.remove('highlight-post');
+        }, 2000);
+    }
 }

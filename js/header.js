@@ -1,5 +1,3 @@
-// header.js (Complet - Version Corrigée pour ouvrir les Stories au clic sur la photo de profil)
-
 // ========================================
 // ==      DONNÉES DES STORIES           ==
 // ========================================
@@ -167,8 +165,10 @@ function showStory(index) {
         videoElement.src = storyData.src;
         videoElement.style.display = 'block';
         videoElement.currentTime = 0;
+        videoElement.setAttribute('playsinline', '');
+        videoElement.setAttribute('webkit-playsinline', '');
         videoElement.muted = true;
-        videoElement.playsInline = true;
+        videoElement.setAttribute('autoplay', '');
 
         videoElement.onended = () => {
             console.log(`Vidéo ${currentProfilePhotoIndex} terminée.`); // Utilise l'index global

@@ -523,26 +523,12 @@
 
 </div>
 
-                <!-- _stories-viewer.html (Fichier HTML Complet) -->
+                <link rel="stylesheet" href="css/profile-stories.css">
 
-<!-- Inclusion du CSS spécifique (peut être fait dans le <head> principal aussi) -->
-    <link rel="stylesheet" href="css/profile-stories.css">
-
-    <!-- Conteneur principal du viewer de stories, caché par défaut -->
     <div class="stories-viewer" id="storiesViewer" style="display: none;">
-    
-        <!-- Overlay semi-transparent derrière le contenu (optionnel) -->
         <div class="stories-viewer-overlay"></div>
     
-        <!-- Conteneur du contenu visible de la story (taille et ratio gérés par CSS) -->
         <div class="stories-viewer-content">
-    
-            <!-- Ajouter la barre de progression comme dans highlight-viewer -->
-            <div class="stories-progress-container">
-                <!-- Les barres seront ajoutées dynamiquement par JS -->
-            </div>
-
-            <!-- Header de la Story (Positionné en Absolu) -->
             <div class="stories-header">
        
                 <div class="stories-user-info">
@@ -553,30 +539,16 @@
                 <!-- Ajouter l'onclick -->
                 <button class="stories-close-button" onclick="closeStoriesViewer()" aria-label="Fermer">×</button>
             </div>
-    
-            <!-- Conteneur pour le média (Image ou Vidéo) -->
-
             <div class="stories-media-container">
 
                 <video src="" id="storyVideoContent" style="display: none;" autoplay="" muted="" loop="" playsinline=""></video>
                 <img src="" alt="Story Image" id="storyImageContent" style="display: none;">
             </div>
-    
-            <!-- Conteneur pour les barres de progression (Positionné en Absolu) -->
-            <div class="stories-progress-container">
-                <div class="stories-progress-bar">
-                    <div class="progress"></div>
-                </div>
-            </div>
-    
-        </div> <!-- Fin .stories-viewer-content -->
+        </div> 
 
-        <!-- Simplifier les boutons de navigation -->
         <button class="stories-nav-button prev" id="storyPrevButton" style="display: none;"><</button>
         <button class="stories-nav-button next" id="storyNextButton" style="display: none;">></button>
-
-    
-    </div> <!-- Fin .stories-viewer -->
+    </div> 
 
 
             </div> <!-- Fin profile-container -->

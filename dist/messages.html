@@ -128,7 +128,45 @@
         </div>
     </div> <!-- Fin sidebar-mobile-view -->
 
-</aside> <!-- Fin sidebar --> 
+</aside> <!-- Fin sidebar -->
+
+<div class="development-message" id="devMessage">
+    <i class="fas fa-tools"></i>
+    <span>En cours de développement</span>
+</div>
+
+<!-- <script>
+    // addEventListener to all sidebar links
+    document.getElementById("messages-link-desktop").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent default action
+       alert("En cours de développement !"); // Alert message
+    });
+</script> -->
+
+
+<script>
+    document.getElementById("messages-link-desktop").addEventListener("click", function(event) {
+        event.preventDefault();
+        
+        const devMessage = document.getElementById("devMessage");
+        devMessage.classList.add("show");
+        
+        // Cacher le message après 3 secondes
+        setTimeout(() => {
+            devMessage.classList.remove("show");
+        }, 3000);
+    });
+
+    // Ajouter aussi pour la version mobile
+    document.getElementById("messages-link-mobile").addEventListener("click", function(event) {
+        event.preventDefault();
+        const devMessage = document.getElementById("devMessage");
+        devMessage.classList.add("show");
+        setTimeout(() => {
+            devMessage.classList.remove("show");
+        }, 3000);
+    });
+</script> 
         <main class="main-content messaging-main" id="messagingView">
              <!-- partials/_messages-content.html (NOUVEAU FICHIER ou contenu de l'ancien _messages.html nettoyé) -->
 

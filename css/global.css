@@ -11,12 +11,12 @@
     --button-text-color: #ffffff;
     --link-color: #00376b;         /* Liens dans la bio */
     --highlight-border: #c7c7c7;   /* Bordure simple pour les highlights */
-    --sidebar-width-wide: 244px; /* Largeur type Instagram desktop */
+    --sidebar-width-wide: 344px; /* Largeur type Instagram desktop */
     --sidebar-width-narrow: 72px;  /* Largeur réduite */
     --bottom-nav-height: 50px; /*barre mobile*/
     /* Thème Clair (Défaut) */
     --sidebar-bg: #ffffff;
-    --content-bg: #fafafa; /* ou #ffffff si vous préférez */
+    --content-bg: #ffffff;
     --text-primary: #262626;
     --text-secondary: #8e8e8e;
     --border-main: #dbdbdb;

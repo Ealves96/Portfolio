@@ -12,6 +12,11 @@
         <!-- Conteneur du contenu visible de la story (taille et ratio gérés par CSS) -->
         <div class="stories-viewer-content">
     
+            <!-- Ajouter la barre de progression comme dans highlight-viewer -->
+            <div class="stories-progress-container">
+                <!-- Les barres seront ajoutées dynamiquement par JS -->
+            </div>
+
             <!-- Header de la Story (Positionné en Absolu) -->
             <div class="stories-header">
        
@@ -20,7 +25,8 @@
                     <span class="stories-username">Elisabeth Alves</span>
                 </div>
 
-                <button class="stories-close-button" aria-label="Fermer">×</button>
+                <!-- Ajouter l'onclick -->
+                <button class="stories-close-button" onclick="closeStoriesViewer()" aria-label="Fermer">×</button>
             </div>
     
             <!-- Conteneur pour le média (Image ou Vidéo) -->
@@ -40,12 +46,9 @@
     
         </div> <!-- Fin .stories-viewer-content -->
 
-        <button class="stories-nav-button prev desktop-only" id="storyPrevButton" aria-label="Précédent" style="display: none;">
-            <i class="fas fa-chevron-left"></i> 
-        </button>
-        <button class="stories-nav-button next desktop-only" id="storyNextButton" aria-label="Suivant" style="display: none;">
-             <i class="fas fa-chevron-right"></i> 
-        </button>
+        <!-- Simplifier les boutons de navigation -->
+        <button class="stories-nav-button prev" id="storyPrevButton" style="display: none;"><</button>
+        <button class="stories-nav-button next" id="storyNextButton" style="display: none;">></button>
 
     
     </div> <!-- Fin .stories-viewer -->

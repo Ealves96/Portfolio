@@ -64,6 +64,9 @@ function closeStories() {
          document.body.style.overflow = ''; // Rétablit la valeur par défaut (souvent 'auto' ou 'visible')
     }
     console.log("[closeStories] Fermeture terminée.");
+    // Réactiver le scroll
+    document.body.style.overflow = '';
+    document.body.removeEventListener('touchmove', preventScroll);
     // Réinitialiser l'index pour la prochaine ouverture
     currentProfilePhotoIndex = 0;
     storyPrevButton = null;
@@ -169,6 +172,9 @@ function showStory(index) {
         videoElement.setAttribute('webkit-playsinline', '');
         videoElement.muted = true;
         videoElement.setAttribute('autoplay', '');
+        videoElement.preload = 'metadata';
+        videoElement.setAttribute('poster', ''); // Ajouter un poster si disponible
+        videoElement.load();
 
         videoElement.onended = () => {
             console.log(`Vidéo ${currentProfilePhotoIndex} terminée.`); // Utilise l'index global
@@ -322,6 +328,38 @@ function setupStoryControls() {
     }
 
      console.log("Écouteurs de contrôle des stories configurés.");
+
+    // Ajouter support tactile
+    contentArea.addEventListener('touchstart', handleTouchStart);
+    contentArea.addEventListener('touchend', handleTouchEnd);
+    
+    let touchStartX = 0;
+    
+    function handleTouchStart(e) {
+        touchStartX = e.touches[0].clientX;
+    }
+    
+    function handleTouchEnd(e) {
+        const touchEndX = e.changedTouches[0].clientX;
+        const deltaX = touchEndX - touchStartX;
+        
+        // Swipe gauche/droite
+        if (Math.abs(deltaX) > 50) { // Seuil de sensibilité
+            if (deltaX > 0) {
+                // Swipe droite -> précédent
+                if (currentProfilePhotoIndex > 0) {
+                    showStory(currentProfilePhotoIndex - 1);
+                }
+            } else {
+                // Swipe gauche -> suivant
+                if (currentProfilePhotoIndex < profilePhotos.length - 1) {
+                    showStory(currentProfilePhotoIndex + 1);
+                } else {
+                    closeStories();
+                }
+            }
+        }
+    }
 }
 
 
@@ -369,6 +407,7 @@ function openStories() {
     // Ajouter au body et bloquer scroll
     document.body.appendChild(viewer);
     document.body.style.overflow = 'hidden';
+    document.body.addEventListener('touchmove', preventScroll, { passive: false });
 
     // Afficher la première story ET configurer les contrôles
     // Il faut que les éléments soient DANS le DOM avant de configurer les contrôles
@@ -421,3 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
            console.warn("Photo profil Mobile non trouvée avec le sélecteur fourni.");
       }
 });
+
+function preventScroll(e) {
+    e.preventDefault();
+}

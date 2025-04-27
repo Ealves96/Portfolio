@@ -33,6 +33,7 @@ let autoAdvanceTimer = null;
 let highlightTouchStartX = 0;
 let highlightTouchEndX = 0;
 const highlightMinSwipeDistance = 50;
+let isHighlightOpen = false;
 
 // --- Fonctions ---
 
@@ -54,9 +55,15 @@ function openHighlightViewer(highlightId) {
     highlightViewerTitle.textContent = title;
     highlightViewerIcon.textContent = icon;
 
-    // Ajouter un état dans l'historique
-    window.historyManager.register('highlight', closeHighlightViewer);
-    window.historyManager.push('highlight', { highlightId });
+    // S'assurer que l'historique n'est enregistré qu'une fois
+    if (!isHighlightOpen) {
+        window.historyManager.register('highlight', () => {
+            console.log("Fermeture via historique");
+            closeHighlightViewer();
+        });
+        window.historyManager.push('highlight', { highlightId });
+        isHighlightOpen = true;
+    }
 
     highlightViewer.style.display = 'flex';
     document.body.style.overflow = 'hidden';
@@ -84,6 +91,9 @@ function closeHighlightViewer() {
         return; // Déjà fermée ou jamais ouverte
     }
 
+    // À la place, simplement mettre à jour l'état
+    isHighlightOpen = false;
+
     highlightViewer.style.display = 'none';
     document.body.style.overflow = '';
 
@@ -104,8 +114,6 @@ function closeHighlightViewer() {
     if (progressBarContainer) {
          progressBarContainer.innerHTML = '';
     }
-
-    window.historyManager.back();
 
     currentHighlightId = null;
     currentItemIndex = 0;

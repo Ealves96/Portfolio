@@ -31,12 +31,20 @@ let closingFromPopstate = false;
 // ========================================
 function closeStories() {
     console.log("[closeStories] Tentative de fermeture...");
-    const viewer = document.querySelector('.stories-viewer'); // Sélectionne au moment de fermer
+    
+    // Gérer l'état avant tout
+    if (isStoriesOpen) {
+        isStoriesOpen = false;
+        window.historyManager?.notifyStateClosed('stories');
+    }
+
+    const viewer = document.querySelector('.stories-viewer');
     if (!viewer) {
         console.log("[closeStories] Viewer non trouvé.");
         return;
     }
 
+    // Nettoyer la vidéo en cours
     if (currentVideoElement) {
         console.log("[closeStories] Pause vidéo.");
         currentVideoElement.pause();
@@ -49,26 +57,26 @@ function closeStories() {
         try { currentVideoElement.load(); } catch (e) {}
         currentVideoElement = null;
     }
-    clearTimeout(storyTimer); storyTimer = null;
 
-    console.log("[closeStories] Suppression de l'élément viewer.");
+    // Nettoyer les timers
+    clearTimeout(storyTimer); 
+    storyTimer = null;
+
+    // Supprimer le viewer
     try {
-        viewer.remove(); // On garde remove() car c'est ce que faisait ton code
-        console.log("[closeStories] viewer.remove() exécuté.");
+        viewer.remove();
+        console.log("[closeStories] viewer supprimé.");
     } catch (err) {
-        console.error("[closeStories] Erreur lors de viewer.remove():", err);
+        console.error("[closeStories] Erreur lors de la suppression:", err);
     }
 
-    if (document.body.style.overflow === 'hidden') {
-         console.log("[closeStories] Restauration scroll body.");
-         document.body.style.overflow = '';
-    }
-    // Retirer l'écouteur touchmove s'il a été ajouté
+    // Restaurer le scroll
+    document.body.style.overflow = '';
     document.body.removeEventListener('touchmove', preventScroll);
 
-    console.log("[closeStories] Fermeture terminée.");
+    // Réinitialiser l'état
     currentProfilePhotoIndex = 0;
-    storyPrevButton = null; // Réinitialiser les refs des boutons
+    storyPrevButton = null;
     storyNextButton = null;
 }
 
@@ -399,23 +407,26 @@ function setupStoryControls() {
 function openStories() {
     console.log("Ouverture du viewer de stories...");
     
-    // Vérifier que historyManager existe
     if (!window.historyManager) {
         console.error("HistoryManager n'est pas initialisé!");
         return;
     }
 
+    // Vérifier si déjà ouvert
+    if (isStoriesOpen) {
+        console.warn("Stories déjà ouvertes.");
+        return;
+    }
+
+    // Enregistrer dans l'historique
+    window.historyManager.register('stories', closeStories);
+    window.historyManager.push('stories');
+    isStoriesOpen = true;
+
     const existingViewer = document.querySelector('.stories-viewer');
     if (existingViewer) {
          console.warn("Un viewer de stories existe déjà. Tentative de fermeture avant réouverture...");
          closeStories();
-    }
-
-    // Ajouter l'état dans l'historique
-    if (!isStoriesOpen) {
-        window.historyManager.register('stories', closeStories);
-        window.historyManager.push('stories');
-        isStoriesOpen = true;
     }
 
     // Créer l'élément viewer

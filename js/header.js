@@ -32,12 +32,6 @@ let closingFromPopstate = false;
 function closeStories() {
     console.log("[closeStories] Tentative de fermeture...");
     
-    // Gérer l'état avant tout
-    if (isStoriesOpen) {
-        isStoriesOpen = false;
-        window.historyManager?.notifyStateClosed('stories');
-    }
-
     const viewer = document.querySelector('.stories-viewer');
     if (!viewer) {
         console.log("[closeStories] Viewer non trouvé.");
@@ -51,8 +45,6 @@ function closeStories() {
         currentVideoElement.onended = null;
         currentVideoElement.ontimeupdate = null;
         currentVideoElement.onerror = null;
-        currentVideoElement.onloadedmetadata = null;
-        currentVideoElement.oncanplay = null;
         currentVideoElement.src = "";
         try { currentVideoElement.load(); } catch (e) {}
         currentVideoElement = null;
@@ -62,19 +54,20 @@ function closeStories() {
     clearTimeout(storyTimer); 
     storyTimer = null;
 
-    // Supprimer le viewer
-    try {
-        viewer.remove();
-        console.log("[closeStories] viewer supprimé.");
-    } catch (err) {
-        console.error("[closeStories] Erreur lors de la suppression:", err);
-    }
-
-    // Restaurer le scroll
+    // Supprimer le viewer et restaurer le scroll
+    viewer.remove();
     document.body.style.overflow = '';
     document.body.removeEventListener('touchmove', preventScroll);
 
     // Réinitialiser l'état
+    if (isStoriesOpen) {
+        isStoriesOpen = false;
+        if (window.historyManager && !window.historyManager.isPopping) {
+            window.historyManager.back();
+        }
+    }
+
+    // Réinitialiser les autres états
     currentProfilePhotoIndex = 0;
     storyPrevButton = null;
     storyNextButton = null;
@@ -424,16 +417,19 @@ function openStories() {
         return;
     }
 
-    // Enregistrer dans l'historique
-    window.historyManager.register('stories', closeStories);
-    window.historyManager.push('stories');
-    isStoriesOpen = true;
-
+    // Nettoyer un viewer existant si présent
     const existingViewer = document.querySelector('.stories-viewer');
     if (existingViewer) {
-         console.warn("Un viewer de stories existe déjà. Tentative de fermeture avant réouverture...");
-         closeStories();
+        existingViewer.remove();
     }
+
+    // Enregistrer dans l'historique
+    window.historyManager.register('stories', () => {
+        console.log("Fermeture via historique");
+        closeStories();
+    });
+    window.historyManager.push('stories');
+    isStoriesOpen = true;
 
     // Créer l'élément viewer
     const viewer = document.createElement('div');

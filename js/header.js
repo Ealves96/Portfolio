@@ -24,60 +24,52 @@ let storyTimer = null;            // Pour gérer l'avance auto ou la durée d'af
 let storyPrevButton = null;
 let storyNextButton = null;
 let isStoriesOpen = false;
+let closingFromPopstate = false; 
 
 // ========================================
 // == FONCTION POUR FERMER LES STORIES ==
 // ========================================
 function closeStories() {
-    console.log("Tentative de fermeture des stories...");
-    const viewer = document.querySelector('.stories-viewer');
+    console.log("[closeStories] Tentative de fermeture...");
+    const viewer = document.querySelector('.stories-viewer'); // Sélectionne au moment de fermer
     if (!viewer) {
-        console.log("[closeStories] Viewer non trouvé, fermeture annulée.");
-         return;
+        console.log("[closeStories] Viewer non trouvé.");
+        return;
     }
 
-    // Arrêter la vidéo et nettoyer
     if (currentVideoElement) {
-        console.log("Pause de la vidéo en cours.");
+        console.log("[closeStories] Pause vidéo.");
         currentVideoElement.pause();
         currentVideoElement.onended = null;
-        currentVideoElement.ontimeupdate = null; // Nettoyer si utilisé pour la barre
-        currentVideoElement.src = ""; // Vider source pour libérer ressources
+        currentVideoElement.ontimeupdate = null;
+        currentVideoElement.onerror = null;
+        currentVideoElement.onloadedmetadata = null;
+        currentVideoElement.oncanplay = null;
+        currentVideoElement.src = "";
+        try { currentVideoElement.load(); } catch (e) {}
         currentVideoElement = null;
     }
-    console.log("[closeStories] Appel de viewer.remove()...");
-    // Annuler timer si image fixe
-    clearTimeout(storyTimer);
-    storyTimer = null;
+    clearTimeout(storyTimer); storyTimer = null;
 
-    // Supprimer le viewer du DOM
-    console.log("Suppression de l'élément viewer.");
+    console.log("[closeStories] Suppression de l'élément viewer.");
     try {
-        viewer.remove();
-        console.log("[closeStories] viewer.remove() exécuté."); // LOG D
-   } catch (err) {
-        console.error("[closeStories] Erreur lors de viewer.remove():", err); // LOG E
-   }
+        viewer.remove(); // On garde remove() car c'est ce que faisait ton code
+        console.log("[closeStories] viewer.remove() exécuté.");
+    } catch (err) {
+        console.error("[closeStories] Erreur lors de viewer.remove():", err);
+    }
 
-    // Restaurer le scroll du body
     if (document.body.style.overflow === 'hidden') {
-         console.log("Restauration du scroll body.");
-         document.body.style.overflow = ''; // Rétablit la valeur par défaut (souvent 'auto' ou 'visible')
+         console.log("[closeStories] Restauration scroll body.");
+         document.body.style.overflow = '';
     }
-    console.log("[closeStories] Fermeture terminée.");
-    // Réactiver le scroll
-    document.body.style.overflow = '';
+    // Retirer l'écouteur touchmove s'il a été ajouté
     document.body.removeEventListener('touchmove', preventScroll);
-    // Réinitialiser l'index pour la prochaine ouverture
-    currentProfilePhotoIndex = 0;
-    storyPrevButton = null;
-    storyNextButton = null;
 
-    // Si fermeture manuelle (via le bouton X), faire un retour dans l'historique
-    if (isStoriesOpen) {
-        window.historyManager.back();
-        isStoriesOpen = false;
-    }
+    console.log("[closeStories] Fermeture terminée.");
+    currentProfilePhotoIndex = 0;
+    storyPrevButton = null; // Réinitialiser les refs des boutons
+    storyNextButton = null;
 }
 
 // ========================================
@@ -407,6 +399,12 @@ function setupStoryControls() {
 function openStories() {
     console.log("Ouverture du viewer de stories...");
     
+    // Vérifier que historyManager existe
+    if (!window.historyManager) {
+        console.error("HistoryManager n'est pas initialisé!");
+        return;
+    }
+
     const existingViewer = document.querySelector('.stories-viewer');
     if (existingViewer) {
          console.warn("Un viewer de stories existe déjà. Tentative de fermeture avant réouverture...");

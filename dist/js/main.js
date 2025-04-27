@@ -3,10 +3,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Portfolio Instagram prêt !");
 
-    // Initialiser le gestionnaire d'historique global
+    // Vérifier que le gestionnaire d'historique est bien initialisé
     if (!window.historyManager) {
-        window.historyManager = new HistoryManager();
-        console.log("History Manager initialisé");
+        console.error("HistoryManager n'est pas initialisé !");
+        return;
     }
 
     // --- Début: Code pour remplir les titres des projets dans la grille ---
@@ -53,31 +53,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialisation d'autres modules (modal.js, tabs.js se chargent eux-mêmes)
 
 }); // Fin de DOMContentLoaded
-
-// Gestionnaire d'historique global pour tout le site
-class HistoryManager {
-    constructor() {
-        this.states = new Map();
-        this.init();
-    }
-
-    init() {
-        window.onpopstate = (event) => {
-            if (event.state && this.states.has(event.state.type)) {
-                this.states.get(event.state.type)();
-            }
-        };
-    }
-
-    register(type, closeHandler) {
-        this.states.set(type, closeHandler);
-    }
-
-    push(type, data = {}) {
-        window.history.pushState({ type, ...data }, '');
-    }
-
-    back() {
-        window.history.back();
-    }
-}

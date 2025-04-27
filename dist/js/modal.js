@@ -294,12 +294,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================================
     const closeModal = () => {
         if (modal && modal.classList.contains('active')) {
-            // Si fermeture manuelle, faire un retour dans l'historique
-            if (isModalOpen) {
-                window.historyManager.back();
-                isModalOpen = false;
-            }
-
             modal.classList.remove('active');
             document.body.style.overflow = '';
             if (modalVideo) { 
@@ -309,7 +303,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (prevModalButton) prevModalButton.style.display = 'none';
             if (nextModalButton) nextModalButton.style.display = 'none';
             if (modalPlayButton) modalPlayButton.style.display = 'none';
-            console.log("Modal JS: Modale fermée.");
+            
+            // Ne faire le retour historique que si c'est une fermeture manuelle
+            if (isModalOpen) {
+                isModalOpen = false;
+                window.historyManager.back();
+            }
         }
     };
 

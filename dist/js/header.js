@@ -424,12 +424,6 @@ function openStories() {
         return;
     }
 
-    // Vérifier et nettoyer un viewer existant
-    const existingViewer = document.querySelector('.stories-viewer');
-    if (existingViewer) {
-        existingViewer.remove();
-    }
-
     // Enregistrer dans l'historique
     window.historyManager.register('stories', closeStories);
     window.historyManager.push('stories');

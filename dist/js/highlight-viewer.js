@@ -1,14 +1,19 @@
-// Références aux éléments de la modale
-const highlightViewer = document.getElementById('highlightViewer');
-const highlightViewerContent = highlightViewer.querySelector('.highlight-viewer-content');
-const highlightViewerIcon = highlightViewer.querySelector('.highlight-viewer-icon');
-const highlightViewerTitle = highlightViewer.querySelector('.highlight-viewer-title');
-const highlightMediaContainer = highlightViewer.querySelector('.highlight-media-container');
-const highlightImageEl = document.getElementById('highlightMediaContent');
-const highlightVideoEl = document.getElementById('highlightVideoContent');
-const prevButton = document.getElementById('highlightPrevButton');
-const nextButton = document.getElementById('highlightNextButton');
-const progressBarContainer = highlightViewer.querySelector('.highlight-progress-bar-container');
+// Déclarer les variables une seule fois avec 'let'
+let highlightViewer = null,
+    highlightViewerContent = null,
+    highlightViewerIcon = null,
+    highlightViewerTitle = null,
+    highlightMediaContainer = null,
+    highlightImageEl = null,
+    highlightVideoEl = null,
+    prevButton = null,
+    nextButton = null,
+    progressBarContainer = null,
+    currentHighlightId = null,
+    currentItemIndex = 0,
+    itemsInCurrentHighlight = [],
+    isHighlightOpen = false,
+    autoAdvanceTimer = null;
 
 // --- Données des Highlights ---
 const highlightData = {
@@ -26,14 +31,9 @@ const highlightData = {
 };
 
 // --- Variables d'état ---
-let currentHighlightId = null;
-let currentItemIndex = 0;
-let itemsInCurrentHighlight = [];
-let autoAdvanceTimer = null;
 let highlightTouchStartX = 0;
 let highlightTouchEndX = 0;
 const highlightMinSwipeDistance = 50;
-let isHighlightOpen = false;
 
 // --- Fonctions ---
 
@@ -326,6 +326,17 @@ function handleHighlightTouchEnd(e) {
 // --- Fonction d'Initialisation Globale ---
 // Met tout le code qui dépend du DOM ou qui ajoute des écouteurs ici
 function initializeHighlightViewer() {
+    // Initialiser les références DOM
+    highlightViewer = document.getElementById('highlightViewer');
+    highlightViewerContent = highlightViewer?.querySelector('.highlight-viewer-content');
+    highlightViewerIcon = highlightViewer?.querySelector('.highlight-viewer-icon');
+    highlightViewerTitle = highlightViewer?.querySelector('.highlight-viewer-title');
+    highlightMediaContainer = highlightViewer?.querySelector('.highlight-media-container');
+    highlightImageEl = document.getElementById('highlightMediaContent');
+    highlightVideoEl = document.getElementById('highlightVideoContent');
+    prevButton = document.getElementById('highlightPrevButton');
+    nextButton = document.getElementById('highlightNextButton');
+    progressBarContainer = highlightViewer?.querySelector('.highlight-progress-bar-container');
 
     // === Vérification initiale des éléments principaux ===
     if (!highlightViewer || !highlightMediaContainer) {

@@ -205,7 +205,13 @@ function showStory(index) {
 
         const playPromise = videoElement.play();
         if (playPromise !== undefined) {
-            playPromise.catch(error => console.error("Erreur autoplay vidéo:", error));
+            playPromise.catch(error => {
+                if (error.name === 'AbortError') {
+                    // Ignorer cette erreur spécifique
+                    return;
+                }
+                console.warn("Autoplay prevented:", error);
+            });
         }
         currentVideoElement = videoElement;
 
@@ -416,6 +422,12 @@ function openStories() {
     if (isStoriesOpen) {
         console.warn("Stories déjà ouvertes.");
         return;
+    }
+
+    // Vérifier et nettoyer un viewer existant
+    const existingViewer = document.querySelector('.stories-viewer');
+    if (existingViewer) {
+        existingViewer.remove();
     }
 
     // Enregistrer dans l'historique

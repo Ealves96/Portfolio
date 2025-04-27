@@ -54,6 +54,10 @@ function openHighlightViewer(highlightId) {
     highlightViewerTitle.textContent = title;
     highlightViewerIcon.textContent = icon;
 
+    // Ajouter un état dans l'historique
+    window.historyManager.register('highlight', closeHighlightViewer);
+    window.historyManager.push('highlight', { highlightId });
+
     highlightViewer.style.display = 'flex';
     document.body.style.overflow = 'hidden';
 
@@ -101,6 +105,7 @@ function closeHighlightViewer() {
          progressBarContainer.innerHTML = '';
     }
 
+    window.historyManager.back();
 
     currentHighlightId = null;
     currentItemIndex = 0;
@@ -154,7 +159,14 @@ function loadHighlightItem(index) {
         highlightVideoEl.currentTime = 0;
         const playPromise = highlightVideoEl.play();
         if (playPromise !== undefined) {
-            playPromise.catch(error => console.error("Highlight video autoplay prevented:", error));
+            playPromise
+                .then(() => {
+                    console.log("Autoplay started successfully");
+                })
+                .catch(error => {
+                    console.error("Autoplay prevented:", error);
+                    // Fallback : montrer un bouton play manuel par exemple
+                });
         }
         highlightVideoEl.onended = () => {
             console.log("Highlight video ended, advancing...");

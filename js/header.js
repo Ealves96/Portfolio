@@ -23,6 +23,7 @@ let storyTimer = null;            // Pour gérer l'avance auto ou la durée d'af
 
 let storyPrevButton = null;
 let storyNextButton = null;
+let isStoriesOpen = false;
 
 // ========================================
 // == FONCTION POUR FERMER LES STORIES ==
@@ -71,6 +72,12 @@ function closeStories() {
     currentProfilePhotoIndex = 0;
     storyPrevButton = null;
     storyNextButton = null;
+
+    // Si fermeture manuelle (via le bouton X), faire un retour dans l'historique
+    if (isStoriesOpen) {
+        window.historyManager.back();
+        isStoriesOpen = false;
+    }
 }
 
 // ========================================
@@ -405,12 +412,13 @@ function openStories() {
          console.warn("Un viewer de stories existe déjà. Tentative de fermeture avant réouverture...");
          closeStories();
     }
-    // if (document.querySelector('.stories-viewer')) {
-    //      console.warn("Un viewer de stories existe déjà.");
-    //      // Optionnel : forcer la fermeture de l'ancien avant d'ouvrir ?
-    //      // closeStories();
-    //      return;
-    // }
+
+    // Ajouter l'état dans l'historique
+    if (!isStoriesOpen) {
+        window.historyManager.register('stories', closeStories);
+        window.historyManager.push('stories');
+        isStoriesOpen = true;
+    }
 
     // Créer l'élément viewer
     const viewer = document.createElement('div');

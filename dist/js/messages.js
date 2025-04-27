@@ -236,6 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("Tentative d'ajout de la classe viewing-conversation");
             messagingLayout.classList.add('viewing-conversation');
             console.log("Classe viewing-conversation ajoutée :", messagingLayout.classList.contains('viewing-conversation'));
+            // Ajouter l'état dans l'historique
+            window.historyManager.register('messages', showConversationList);
+            window.historyManager.push('messages', { conversationId });
         } 
         // else {
         //     // Fallback si .messaging-layout non trouvé (devrait cacher/afficher manuellement)
@@ -273,6 +276,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Retour à la liste des conversations.");
         if (messagingLayout) {
             messagingLayout.classList.remove('viewing-conversation');
+            // Si on ferme manuellement, on fait un retour dans l'historique
+            window.historyManager.back();
         }
         // Optionnel: Déselectionner visuellement l'item actif
         const activeItem = conversationList?.querySelector('.conversation-preview-item.active');

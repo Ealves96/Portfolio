@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let touchStartX = 0;
     let touchEndX = 0;
     const minSwipeDistance = 50;
+    let isModalOpen = false;
 
     // ==================================================================
     // === FONCTIONS UTILES (updateModalMedia, updateDots, etc.)      ===
@@ -182,7 +183,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================================
     function openModal(projectData) {
         console.log("Modal JS: Appel de openModal pour", projectData?.title);
-        projectDataForMedia = projectData || {};
+        
+        // Ajouter l'état dans l'historique
+        if (!isModalOpen) {
+            window.historyManager.register('modal', closeModal);
+            window.historyManager.push('modal', { projectId: projectData?.title });
+            isModalOpen = true;
+        }
 
         // --- Remplir Description, Tech, Auteurs, Liens Footer ---
         if (modalDescription) {
@@ -287,9 +294,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==================================================================
     const closeModal = () => {
         if (modal && modal.classList.contains('active')) {
+            // Si fermeture manuelle, faire un retour dans l'historique
+            if (isModalOpen) {
+                window.historyManager.back();
+                isModalOpen = false;
+            }
+
             modal.classList.remove('active');
             document.body.style.overflow = '';
-            if (modalVideo) { modalVideo.pause(); modalVideo.src = ''; }
+            if (modalVideo) { 
+                modalVideo.pause(); 
+                modalVideo.src = ''; 
+            }
             if (prevModalButton) prevModalButton.style.display = 'none';
             if (nextModalButton) nextModalButton.style.display = 'none';
             if (modalPlayButton) modalPlayButton.style.display = 'none';

@@ -216,6 +216,9 @@ function showStory(index) {
             videoWrapper.onclick = (e) => {
                 // Vérifier si le clic n'est pas sur les boutons de navigation
                 if (!e.target.closest('.stories-nav-button')) {
+                    e.preventDefault(); // Empêcher le comportement par défaut
+                    e.stopPropagation(); // Empêcher la propagation
+                    
                     // Pause la vidéo
                     if (currentVideoElement) {
                         currentVideoElement.pause();
@@ -224,12 +227,21 @@ function showStory(index) {
                     // Fermer le viewer
                     closeStories();
                     
-                    // Trouver l'élément du projet correspondant
-                    const projectElement = document.querySelector(storyData.postLink);
-                    if (projectElement) {
-                        // Simuler un clic sur le projet
-                        projectElement.click();
-                    }
+                    // Trouver l'élément du projet correspondant et simuler le clic
+                    setTimeout(() => {
+                        const projectElement = document.querySelector(storyData.postLink);
+                        if (projectElement) {
+                            // Simuler un clic sur le projet pour ouvrir la modale
+                            const clickEvent = new MouseEvent('click', {
+                                bubbles: true,
+                                cancelable: true,
+                                view: window
+                            });
+                            projectElement.dispatchEvent(clickEvent);
+                        } else {
+                            console.error(`Élément projet non trouvé: ${storyData.postLink}`);
+                        }
+                    }, 100); // Petit délai pour laisser le temps à la story de se fermer
                 }
             };
 

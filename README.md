@@ -7,6 +7,8 @@
     <img src="https://res.cloudinary.com/dzo1cimyr/image/upload/v1746302781/portfolio_rzkrcm.gif" width="800">
 </p>
 
+## 💜 Site en ligne : [Mon Portfolio](https://elisabeth-alves-portfolio.netlify.app)
+
 ## 📝 Description
 Bienvenue sur mon portfolio inspiré d'Instagram ! Ce site web présente mes projets et compétences sous forme d'un profil Instagram moderne, offrant une expérience utilisateur familière et intuitive.
 
@@ -32,8 +34,6 @@ Ce portfolio est déployé sur Netlify, offrant :
 - ⚡️ CDN global pour une performance optimale
 - 🔒 SSL/TLS automatique
 - 📱 Prévisualisation des déploiements
-
-## 💜 Site en ligne : [Mon Portfolio](https://elisabeth-alves-portfolio.netlify.app)
 
 ## 📦 Structure du Projet
 ```Portfolio/

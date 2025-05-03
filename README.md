@@ -33,11 +33,10 @@ Ce portfolio est déployé sur Netlify, offrant :
 - 🔒 SSL/TLS automatique
 - 📱 Prévisualisation des déploiements
 
-🌐 **Site en ligne :** [Mon Portfolio](https://elisabeth-alves-portfolio.netlify.app)
+## 💜 Site en ligne : [Mon Portfolio](https://elisabeth-alves-portfolio.netlify.app)
 
 ## 📦 Structure du Projet
-```
-Portfolio/
+```Portfolio/
 ├── css/          # Styles et animations
 ├── js/           # Scripts et interactions
 ├── img/          # Photos
@@ -48,3 +47,5 @@ Portfolio/
 ## 📞 Contact
 - 📧 Email : ealves0996@gmail.com
 - 💼 LinkedIn : https://www.linkedin.com/in/elisabeth-alves-b52b8b279/
+
+

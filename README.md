@@ -33,6 +33,8 @@ Ce portfolio est déployé sur Netlify, offrant :
 - 🔒 SSL/TLS automatique
 - 📱 Prévisualisation des déploiements
 
+🌐 **Site en ligne :** [Mon Portfolio](https://elisabeth-alves-portfolio.netlify.app)
+
 ## 📦 Structure du Projet
 ```
 Portfolio/

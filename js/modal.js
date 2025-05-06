@@ -374,6 +374,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     } else { console.warn("Modal JS: Bouton Like non trouvé."); }
 
+    // Sélectionnez tous les boutons "like" dans la modale
+    const likeButtons = modal.querySelectorAll('.like-button');
+
+    // Ajoutez un événement de clic à chaque bouton
+    likeButtons.forEach(button => {
+        button.addEventListener('click', (event) => {
+            button.classList.toggle('liked');
+            const icon = button.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('far');
+                icon.classList.toggle('fas');
+            }
+        });
+    });
+
     // 6. Écouteurs Flèches Navigation
     if (prevModalButton) { prevModalButton.addEventListener('click', (e) => { e.stopPropagation(); showPrevMedia(); }); }
     if (nextModalButton) { nextModalButton.addEventListener('click', (e) => { e.stopPropagation(); showNextMedia(); }); }

@@ -13,8 +13,6 @@
     align-items: center;   /* Centrage vertical */
     justify-content: center; /* Centrage horizontal */
     padding: 40px; /* <<< AJOUT : Marge extérieure globale (desktop)
-                   Ajustez 40px selon la marge désirée
-                   Peut être mis à 0 dans la media query mobile */
     box-sizing: border-box; /* Inclut padding dans 100% width/height */
     overflow-y: auto; /* Permet scroll SI modal-content > espace après padding */
 }

@@ -23,7 +23,7 @@ const highlightData = {
     // ],
     "competences": [
         { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892761/fhaaehyrpkpiyhf3gmmk.mp4' },
-        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892782/z4b5pwoptofava324q4u.mp4' },
+        { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1746574327/MES_SKILLS_TECH_umetv0.mp4' },
     ],
     "diplomes": [
         { type: 'video', src: 'https://res.cloudinary.com/dzo1cimyr/video/upload/v1744983772/dojrodvlmeftspj1x55t.mp4' }

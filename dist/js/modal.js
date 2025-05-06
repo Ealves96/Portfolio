@@ -365,15 +365,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 5. Gestion Like
-    // if (likeButton) {
-    //      likeButton.addEventListener('click', (event) => {
-    //          const button = event.currentTarget;
-    //          button.classList.toggle('liked');
-    //          const icon = button.querySelector('i');
-    //          if (icon) { icon.classList.toggle('far'); icon.classList.toggle('fas'); }
-    //     });
-    // } else { console.warn("Modal JS: Bouton Like non trouvé."); }
-
     // Sélectionnez tous les boutons "like" dans la modale
     const likeButtons = modal.querySelectorAll('.like-button');
 

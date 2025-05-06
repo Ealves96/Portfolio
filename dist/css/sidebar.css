@@ -1,14 +1,4 @@
 /* ============================================ */
-/* ==          css/sidebar.css               == */
-/* ============================================ */
-
-/* ============================================ */
-/* == STYLES COMMUNS (Variables, etc.)       == */
-/* ============================================ */
-/* Utilise les variables définies dans global.css (:root) */
-
-
-/* ============================================ */
 /* == STYLES DESKTOP (ET BASE POUR ÉTROITE)  == */
 /* ============================================ */
 
@@ -248,6 +238,8 @@
         list-style: none;
         margin: 0;
         padding: 0;
+        justify-content: center;
+        align-items: center;
         height: 100%;
     }
     /* Chaque item LI dans la nav mobile */
@@ -260,12 +252,12 @@
     /* Style commun pour TOUS les liens <a> mobiles (Nav + Settings) */
     .sidebar-mobile-view .sidebar-nav-mobile li a,
     .sidebar-mobile-view .sidebar-settings-mobile a {
-        flex-grow: 1; /* Remplit l'espace du LI ou du conteneur settings */
         display: flex; /* Pour centrer l'icône/image */
+        height:1 100%;
         justify-content: center; /* Centre horizontalement */
         align-items: center; /* Centre verticalement */
         color: var(--link-color-sidebar); /* Couleur par défaut */
-        padding: 0 5px; /* Petit padding horizontal */
+        padding: 0 10px; /* Petit padding horizontal */
         text-decoration: none;
         transition: background-color 0.2s ease, color 0.2s ease;
         position: relative; /* Pour l'indicateur actif optionnel */
@@ -285,24 +277,14 @@
         /* background-color: var(--active-bg-mobile); */
     }
 
-
     /* Style commun pour les icônes FontAwesome mobiles */
     .sidebar-mobile-view .sidebar-nav-mobile li a i,
     .sidebar-mobile-view .sidebar-settings-mobile a i {
-        font-size: 24px; /* Taille des icônes mobiles */
-        margin: 0; /* Pas de marge nécessaire */
-    }
-
-    /* Style spécifique pour l'IMAGE de profil mobile */
-    .sidebar-mobile-view .sidebar-nav-mobile li a .nav-profile-pic-mobile {
-        width: 26px;  /* Taille de l'image */
-        height: 26px;
-        border-radius: 50%; /* Ronde */
-        object-fit: cover;
-        display: block;
-        border: 1.5px solid transparent; /* Bordure transparente par défaut */
-        transition: border-color 0.2s ease; /* Pour animer la bordure active */
-        box-sizing: border-box; /* Inclut la bordure dans la taille */
+        font-size: 24px; /* Taille des icônes */
+        width: 28px; /* Largeur fixe pour alignement */
+        height: 28px; /* Hauteur fixe pour alignement */
+        text-align: center; /* Centre horizontalement */
+        line-height: 28px; /* Centre verticalement */
     }
 
     /* Style état ACTIF spécifique pour la photo mobile (ajoute une bordure) */
@@ -312,15 +294,49 @@
 
     /* Conteneur Settings mobile */
     .sidebar-mobile-view .sidebar-settings-mobile {
-        /* flex: 1 1 0; */ /* Si tu veux la même taille que les autres */
-        flex: 0 0 60px; /* Ou une largeur fixe (ajuste selon tes besoins) */
+        flex: 0 0 60px; /* Largeur fixe (ajuste selon tes besoins) */
         display: flex;
         align-items: stretch;
     }
+
+    /* Style des liens dans le conteneur Settings mobile */
+    .sidebar-mobile-view .sidebar-settings-mobile a {
+        flex-grow: 1; /* Remplit l'espace du LI ou du conteneur settings */
+        display: flex; /* Pour centrer l'icône/image */
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        color: var(--link-color-sidebar); /* Couleur par défaut */
+        padding: 0 5px; /* Petit padding horizontal */
+        text-decoration: none;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        position: relative; /* Pour l'indicateur actif optionnel */
+        -webkit-tap-highlight-color: transparent; /* Enlève surbrillance au toucher */
+    }
+
     /* Les styles pour le lien et l'icône des settings sont déjà couverts par les règles communes mobiles */
 
-} /* Fin @media mobile */
+    /* Styles spécifiques pour l'image de profil mobile */
+    .sidebar-mobile-view .nav-profile-pic-mobile {
+        width: 28px; /* Ajustez la taille selon vos besoins */
+        height: 28px; /* Assurez-vous que la hauteur est égale à la largeur */
+        border-radius: 50% !important; /* Rend l'image ronde */
+        object-fit: cover; /* Remplit le cercle sans déformer l'image */
+        display: flex; /* Comportement standard pour les images */
+        box-sizing: border-box; /* Inclut la bordure dans la taille */
+        vertical-align: middle; 
+        align-items: center;
+        justify-content: center;
+    }
 
+    .sidebar-mobile-view .sidebar-nav-mobile li a .nav-icon-wrapper {
+        display: flex; /* Pour aligner l'image */
+        justify-content: center; /* Centre horizontalement */
+        align-items: center; /* Centre verticalement */
+        width: 28px; /* Taille du wrapper */
+        height: 28px; /* Taille du wrapper */
+    }
+
+} /* Fin @media mobile */
 
 
 .development-message {

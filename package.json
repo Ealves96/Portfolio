@@ -1,22 +1,22 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rm -rf dist/* && rm -rf node_modules/.cache",
-    "prebuild": "npm run clean",
-    "build": "node build.js",
-    "postbuild": "cp -r css js img dist/",
-    "start": "npm run build && cd dist && live-server"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "posthtml": "^0.16.6",
-    "posthtml-include": "^2.0.1",
-    "posthtml-load-config": "^2.0.0"
-  }
+	"name": "portfolio",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"clean": "rm -rf dist/* && rm -rf node_modules/.cache",
+		"prebuild": "npm run clean",
+		"build": "node build.js",
+		"postbuild": "cp -r css js img dist/",
+		"start": "npm run build && cd dist && live-server"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"posthtml": "^0.16.6",
+		"posthtml-include": "^2.0.1",
+		"posthtml-load-config": "^2.0.0"
+	}
 }

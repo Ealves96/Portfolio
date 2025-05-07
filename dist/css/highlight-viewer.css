@@ -1,231 +1,210 @@
-/* --- Highlight Viewer Styles --- */
-
 .highlight-viewer {
-    position: fixed; /* Reste en place même si on scrolle */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    /* Sur mobile, le fond du contenu est le fond du viewer */
-    background-color: #1a1a1a; /* Fond sombre par défaut (pour mobile ou si overlay échoue) */
-    z-index: 1000; /* Au-dessus de tout */
-    display: none; /* Caché par défaut - sera 'flex' quand actif */
-    align-items: center;
-    justify-content: center;
-    /* overflow: hidden;  */
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #1a1a1a; 
+	z-index: 1000; 
+	display: none;
+	align-items: center;
+	justify-content: center;
 }
 
 .highlight-viewer-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #1a1a1a; /* Fond sombre semi-transparent pour desktop */
-    display: none; /* Caché par défaut, visible seulement sur desktop */
-    cursor: pointer; /* Pour indiquer qu'on peut cliquer pour fermer */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #1a1a1a; 
+	display: none; 
+	cursor: pointer;
 }
 
 .highlight-viewer-content {
-    position: relative; /* Pour positionner les enfants (boutons, header) */
-    background-color: #1a1a1a; /* Fond du contenu (peut être #fff si tu préfères) */
-    color: #fff; /* Couleur du texte par défaut dans le viewer */
-    display: flex;
-    flex-direction: column;
-    overflow: hidden; /* Cache ce qui dépasse */
-    z-index: 1001; /* Au-dessus de l'overlay */
-
-    /* --- Styles Mobile (par défaut : plein écran) --- */
-    width: 100%;
-    height: 100%;
-
-    /* Empêcher la sélection de texte involontaire sur mobile */
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+	position: relative; 
+	background-color: #1a1a1a; 
+	color: #fff; 
+	display: flex;
+	flex-direction: column;
+	overflow: hidden; 
+	z-index: 1001; 
+	width: 100%;
+	height: 100%;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
 }
 
 .highlight-viewer-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 25px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1003; /* Au-dessus du média */
-    /* Dégradé subtil en haut pour la lisibilité du texte */
-    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
-    box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 25px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 1003; 
+	background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0));
+	box-sizing: border-box;
 }
 
 .highlight-info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
 }
 
 .highlight-viewer-icon {
-    font-size: 1.2em;
+	font-size: 1.2em;
 }
 
 .highlight-viewer-title {
-    font-size: 0.9em;
-    font-weight: 600;
-    color: #f1f1f1;
+	font-size: 0.9em;
+	font-weight: 600;
+	color: #f1f1f1;
 }
 
 .highlight-close-button {
-    background: none;
-    border: none;
-    color: #f1f1f1;
-    font-size: 30px;
-    line-height: 1;
-    cursor: pointer;
-    padding: 0 5px;
-    font-weight: 300;
+	background: none;
+	border: none;
+	color: #f1f1f1;
+	font-size: 30px;
+	line-height: 1;
+	cursor: pointer;
+	padding: 0 5px;
+	font-weight: 300;
 }
 .highlight-close-button:hover {
-    color: #ccc;
+	color: #ccc;
 }
 
 .highlight-media-container {
-    width: 100%;
-    height: 100%; /* Prend toute la hauteur dispo */
-    flex-grow: 1; /* Prend l'espace restant */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; /* Empêche l'image/vidéo de déborder */
-    /* padding-top: 60px; Espace pour le header */
-    box-sizing: border-box;
+	width: 100%;
+	height: 100%; 
+	flex-grow: 1; 
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	box-sizing: border-box;
 }
 
 .highlight-media-container img,
 .highlight-media-container video {
-    display: block;
-    width: 100%;
-    height: 100%;
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 
-/* Styles pour les boutons de navigation Précédent/Suivant */
 .highlight-nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #1a1a1a;
-    border: none;
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 1002;
-    display: flex; /* Pour centrer le chevron */
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s ease;
-    display: none; /* Cachés par défaut, affichés par JS si besoin */
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(255, 255, 255, 0.3);
+	color: #1a1a1a;
+	border: none;
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+	font-size: 20px;
+	font-weight: bold;
+	cursor: pointer;
+	z-index: 1002;
+	display: flex; 
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.2s ease;
+	display: none;
 }
 .highlight-nav-button:hover {
-    background-color: rgba(255, 255, 255, 0.6);
+	background-color: rgba(255, 255, 255, 0.6);
 }
 .highlight-nav-button.prev {
-    left: 15px;
+	left: 15px;
 }
 .highlight-nav-button.next {
-    right: 15px;
+	right: 15px;
 }
 
 
-/* --- Styles Desktop (via Media Query) --- */
 @media (min-width: 969px) {
-    .highlight-viewer-overlay {
-        display: block; /* Afficher l'overlay sombre */
-    }
+	.highlight-viewer-overlay {
+		display: block; 
+	}
 
-    .highlight-viewer-content {
-        /* Format portrait centré */
-        width: 510px; /* Largeur type mobile */
-        height: calc(100vh - 25px); /* Hauteur max, laissant de la marge */
-        max-height: 870px; /* Limite de hauteur */
-        box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    }
+	.highlight-viewer-content {
+		width: 510px; 
+		height: calc(100vh - 25px); 
+		max-height: 870px; 
+		box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+	}
 
-    .highlight-media-container {
-         /* Pas besoin de padding-top si header est absolu et contenu média centré */
-        padding-top: 0; /* Annuler le padding mobile */
-    }
+	.highlight-media-container {
+		padding-top: 0; 
+	}
 
-     /* Optionnel: Rendre les boutons de nav un peu plus visibles sur desktop */
-    .highlight-nav-button {
-        position: fixed; /* Les sort du flux du .highlight-viewer-content */
-        top: 50%;
-        transform: translateY(-50%); /* Centre verticalement */
-        /* Apparence pour desktop (plus discret, plus grand?) */
-        background-color: rgba(115, 111, 111, 0.6); /* Fond plus sombre/subtil */
-        color: #1a1a1a; /* Couleur icône plus claire */
-        width: 25px;    /* Un peu plus grand */
-        height: 25px;
-        font-size: 18px; /* Taille du chevron */
-        border-radius: 50%;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        z-index: 1005;
-    }
-    .highlight-nav-button:hover {
-        background-color: white; /* Fond plus visible au survol */
-        color: #1a1a1a;
-    }
-    .highlight-nav-button.prev {
-        /* Calcul: 50% du viewport - la moitié de la largeur du contenu - un espace (gap) */
-        /* 480px / 2 = 240px. Ajoutons un gap de 40px */
-        left: calc(50% - 225px - 75px);
-        right: auto; /* Annule le 'right: 15px' du style mobile */
-    }
+	.highlight-nav-button {
+		position: fixed;
+		top: 50%;
+		transform: translateY(-50%);
+		background-color: rgba(115, 111, 111, 0.6);
+		color: #1a1a1a;
+		width: 25px;
+		height: 25px;
+		font-size: 18px; 
+		border-radius: 50%;
+		transition: background-color 0.2s ease, color 0.2s ease;
+		z-index: 1005;
+	}
+	.highlight-nav-button:hover {
+		background-color: white; 
+		color: #1a1a1a;
+	}
+	.highlight-nav-button.prev {
+		left: calc(50% - 225px - 75px);
+		right: auto; 
+	}
 
-    /* Positionnement spécifique pour la flèche Suivant */
-    .highlight-nav-button.next {
-        /* Calcul symétrique avec 'right' */
-        right: calc(50% - 225px - 75px);
-        left: auto; /* Annule le 'left: 15px' du style mobile */
-    }
+	.highlight-nav-button.next {
+		right: calc(50% - 225px - 75px);
+		left: auto;
+	}
 }
 
-/* --- Styles Barre de Progression (Optionnel) --- */
 .highlight-progress-bar-container {
-    position: absolute;
-    top: 8px; /* Légèrement sous le bord */
-    left: 10px;
-    right: 10px; /* Prend presque toute la largeur */
-    display: flex;
-    margin-top: 10px;
-    gap: 4px;
-    z-index: 1004; /* Au-dessus du header pour être bien visible */
-    height: 2.5px; /* Hauteur fine */
-    padding: 0 5px; /* Petit espace sur les côtés */
-    pointer-events: none; /* Ne pas intercepter les clics */
+	position: absolute;
+	top: 8px; 
+	left: 10px;
+	right: 10px; 
+	display: flex;
+	margin-top: 10px;
+	gap: 4px;
+	z-index: 1004;
+	height: 2.5px;
+	padding: 0 5px;
+	pointer-events: none;
 }
 
 .highlight-progress-bar {
-    flex-grow: 1; /* Chaque barre prend une part égale */
-    background-color: rgba(255, 255, 255, 0.4); /* Couleur de fond de la barre */
-    height: 100%;
-    border-radius: 2px;
-    overflow: hidden; /* Pour le remplissage */
+	flex-grow: 1; 
+	background-color: rgba(255, 255, 255, 0.4);
+	height: 100%;
+	border-radius: 2px;
+	overflow: hidden; 
 }
 
 .highlight-progress-bar .progress {
-    width: 0%; /* Commence vide */
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.9); /* Couleur de remplissage */
-    border-radius: 2px;
-    transition: width 0.1s linear; /* Transition douce pour le remplissage */
+	width: 0%; 
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.9); 
+	border-radius: 2px;
+	transition: width 0.1s linear;
 }
 
 .highlight-progress-bar.completed .progress {
-    width: 100%; /* Barre pleine pour les vues précédentes */
+	width: 100%;
 }

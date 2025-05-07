@@ -1,121 +1,107 @@
-/* Dans css/header.css */
-
-/* ======================================== */
-/* ==         STYLES DESKTOP             == */
-/* ======================================== */
-
-/* Cacher la vue mobile par défaut */
 .profile-header-mobile-view {
-    display: none;
+	display: none;
 }
 
-/* Assurer que la vue desktop est visible */
 .profile-header-desktop-view {
-    display: block; /* Conteneur principal desktop */
+	display: block;
 }
 
-/* Styles spécifiques pour les éléments DANS .profile-header-desktop-view */
 .profile-header-desktop-view .profile-header-desktop {
-    /* Cette classe peut être redondante si c'est le seul enfant, mais gardons-la pour l'instant */
-    display: flex; /* Réappliquer le flex column si nécessaire pour la structure interne */
-    flex-direction: column;
-    margin-bottom: 20px;
-    padding-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20px;
+	padding-bottom: 30px;
 }
 .profile-header-desktop-view .profile-header-top {
-     display: flex;
-     align-items: flex-start;
-     padding-left: 40px; /* Padding gauche Desktop */
-     padding-right: 20px; /* Padding droit Desktop */
+	 display: flex;
+	 align-items: flex-start;
+	 padding-left: 40px;
+	 padding-right: 20px;
 }
 
 .profile-pic {
-    cursor: pointer;
-    transition: opacity 0.3s ease;
+	cursor: pointer;
+	transition: opacity 0.3s ease;
 }
 
 .profile-pic:hover {
-    opacity: 0.9;
+	opacity: 0.9;
 }
 
-/* Conteneur Photo Desktop */
 .profile-header-desktop-view .profile-pic-container {
-    width: 150px;
-    height: 150px;
-    margin-right: 80px;
-    margin-top: 25px;
-    flex-shrink: 0;
+	width: 150px;
+	height: 150px;
+	margin-right: 80px;
+	margin-top: 25px;
+	flex-shrink: 0;
 }
-/* Wrapper Bordure Photo Desktop */
+
 .profile-header-desktop-view .profile-pic-border-wrapper {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #f2c7ea, #8a39d6);
-    padding: 3px; /* Bordure épaisse desktop */
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	background: linear-gradient(135deg, #f2c7ea, #8a39d6);
+	padding: 3px; 
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
-/* Image Photo Desktop */
+
 .profile-header-desktop-view .profile-pic-border-wrapper img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 50%;
 }
 
-/* Conteneur Infos Droite Desktop */
 .profile-header-desktop-view .profile-info-top {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    padding-top: 10px;
-}
-/* Barre Supérieure (Nom + Boutons) Desktop */
-.profile-header-desktop-view .profile-top-bar {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-}
-/* Nom Desktop */
-.profile-header-desktop-view .profile-username {
-    margin-right: 20px; /* Pousse les boutons */
-    font-size: 22px; /* Assurez la taille desktop */
-    font-weight: 400; /* Ou le poids que vous aviez */
-}
-/* Boutons Desktop */
-.profile-header-desktop-view .profile-actions-desktop {
-    display: flex; /* Afficher les boutons desktop */
-    gap: 10px;
-}
-/* Style Boutons Desktop */
-.profile-header-desktop-view .profile-actions-desktop .button {
-    padding: 4px 12px;
-    font-size: 13px;
-    margin-left: 0;
-    background-color: var(--button-header-bg, #efefef); /* Fallback gris clair */
-    color: var(--button-header-text, var(--primary-text-color));
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	padding-top: 10px;
 }
 
-/* Stats Desktop */
+.profile-header-desktop-view .profile-top-bar {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.profile-header-desktop-view .profile-username {
+	margin-right: 20px; 
+	font-size: 22px;
+	font-weight: 400; 
+}
+
+.profile-header-desktop-view .profile-actions-desktop {
+	display: flex;
+	gap: 10px;
+}
+
+.profile-header-desktop-view .profile-actions-desktop .button {
+	padding: 4px 12px;
+	font-size: 13px;
+	margin-left: 0;
+	background-color: var(--button-header-bg, #efefef); 
+	color: var(--button-header-text, var(--primary-text-color));
+}
+
 .profile-header-desktop-view .profile-stats {
-    display: flex;
-    gap: 40px;
-    font-size: 16px;
-    margin-bottom: 15px;
+	display: flex;
+	gap: 40px;
+	font-size: 16px;
+	margin-bottom: 15px;
 }
 .profile-header-desktop-view .profile-stats li { color: var(--text-primary); }
-.profile-header-desktop-view .stat-number { font-weight: 600; } /* Poids desktop */
-.profile-header-desktop-view .stat-label { color: var(--text-primary); font-size: 16px; } /* Taille desktop */
+.profile-header-desktop-view .stat-number { font-weight: 600; }
+.profile-header-desktop-view .stat-label { color: var(--text-primary); font-size: 16px; }
 
-/* Bio Desktop */
 .profile-header-desktop-view .profile-bio-section-desktop {
-     padding-right: 20px;
-     padding-top: 10px;
-     display: block; /* S'assurer qu'elle est visible sur desktop */
+	 padding-right: 20px;
+	 padding-top: 10px;
+	 display: block;
 }
 .profile-header-desktop-view .profile-real-name { font-weight: 600; font-size: 14px; margin-bottom: 5px; }
 .profile-header-desktop-view .profile-bio { font-size: 14px; }
@@ -123,144 +109,137 @@
 
 
 /* ======================================== */
-/* ==          STYLES MOBILE             == */
+/* ==		  STYLES MOBILE			 == */
 /* ======================================== */
 @media (max-width: 768px) {
 
-    /* Cacher la vue desktop */
-    .profile-header-desktop-view {
-        display: none;
-    }
+	.profile-header-desktop-view {
+		display: none;
+	}
 
-    /* Afficher la vue mobile */
-    .profile-header-mobile-view {
-        display: block; /* Conteneur principal mobile */
-        padding: 0 15px; /* Padding latéral global mobile */
-        box-sizing: border-box;
-        margin-bottom: 20px; /* Espace avant highlights */
-    }
+	.profile-header-mobile-view {
+		display: block; 
+		padding: 0 15px; 
+		box-sizing: border-box;
+		margin-bottom: 20px; 
+	}
 
-    /* --- Styles pour les éléments DANS .profile-header-mobile-view --- */
+	.profile-header-mobile-view .profile-username-mobile {
+		display: flex; align-items: center;
+		font-size: 16px; font-weight: 600;
+		margin: 0 0 15px 0; padding: 10px 0 0 0; 
+	}
 
-    /* 1. Nom Mobile */
-    .profile-header-mobile-view .profile-username-mobile {
-        display: flex; align-items: center;
-        font-size: 16px; font-weight: 600;
-        margin: 0 0 15px 0; padding: 10px 0 0 0; /* Padding haut seulement */
-    }
-    .profile-header-mobile-view .username-dropdown-icon {
-        font-size: 14px; margin-left: 8px; color: var(--primary-text-color); cursor: pointer;
-        transition: transform 0.2s ease;
-    }
+	.profile-header-mobile-view .username-dropdown-icon {
+		font-size: 14px; margin-left: 8px; color: var(--primary-text-color); cursor: pointer;
+		transition: transform 0.2s ease;
+	}
 
-    /* 2. Ligne Photo | Stats */
-    .profile-header-mobile-view .photo-stats-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        margin-bottom: 15px; /* Espace avant la bio mobile */
-        margin-top: 35px;
-    }
-    /* Conteneur Photo Mobile */
-    .profile-header-mobile-view .profile-pic-container {
-        width: 90px; height: 90px; flex-shrink: 0; margin: 0 15px 0 0; margin-left: -15px;
-    }
-    /* Wrapper Bordure Photo Mobile */
-    .profile-header-mobile-view .profile-pic-border-wrapper {
-        width: 100%; height: 100%; border-radius: 50%;
-        background: linear-gradient(135deg, #f2c7ea, #8a39d6);
-        padding: 2px; /* Bordure fine mobile */
-        box-sizing: border-box; display: flex; align-items: center; justify-content: center;
-    }
-    /* Image Photo Mobile */
-     .profile-header-mobile-view .profile-pic-border-wrapper img {
-        display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
-     }
+	.profile-header-mobile-view .photo-stats-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		margin-bottom: 15px; 
+		margin-top: 35px;
+	}
+	
+	.profile-header-mobile-view .profile-pic-container {
+		width: 90px; height: 90px; flex-shrink: 0; margin: 0 15px 0 0; margin-left: -15px;
+	}
+	
+	.profile-header-mobile-view .profile-pic-border-wrapper {
+		width: 100%; height: 100%; border-radius: 50%;
+		background: linear-gradient(135deg, #f2c7ea, #8a39d6);
+		padding: 2px; /* Bordure fine mobile */
+		box-sizing: border-box; display: flex; align-items: center; justify-content: center;
+	}
+	
+	 .profile-header-mobile-view .profile-pic-border-wrapper img {
+		display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+	 }
 
-    /* Stats Mobile (celles dans la structure mobile) */
-    .profile-header-mobile-view .profile-stats {
-        width: auto;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 30px;
-        padding: 0; 
-        border: none; 
-        margin: 0;
-        flex-wrap: nowrap; 
-    }
-    .profile-header-mobile-view .profile-stats li {
-        display: flex; 
-        flex-direction: column; 
-        align-items: flex-start;
-        line-height: 1.2; 
-        text-align: center;
-        flex-shrink: 0;
-        padding: 0;
-    }
-    .profile-header-mobile-view .stat-number { 
-        font-weight: 600; 
-        font-size: 13px;
-        justify-content: left;
-        /* margin-left: -20px; */
-        white-space: nowrap;
-    }
-    .profile-header-mobile-view .stat-label { 
-        font-size: 12px; 
-        color: black; 
-        display: block; 
-        margin: 0; 
-        white-space: nowrap;
-        color: var(--text-primary); }
+	.profile-header-mobile-view .profile-stats {
+		width: auto;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+		gap: 30px;
+		padding: 0; 
+		border: none; 
+		margin: 0;
+		flex-wrap: nowrap; 
+	}
+	.profile-header-mobile-view .profile-stats li {
+		display: flex; 
+		flex-direction: column; 
+		align-items: flex-start;
+		line-height: 1.2; 
+		text-align: center;
+		flex-shrink: 0;
+		padding: 0;
+	}
+	.profile-header-mobile-view .stat-number { 
+		font-weight: 600; 
+		font-size: 13px;
+		justify-content: left;
+		white-space: nowrap;
+	}
+	.profile-header-mobile-view .stat-label { 
+		font-size: 12px; 
+		color: black; 
+		display: block; 
+		margin: 0; 
+		white-space: nowrap;
+		color: var(--text-primary); }
 
+	.profile-header-mobile-view .profile-bio-section-mobile {
+		display: block; 
+		width: 100%; 
+		text-align: left;
+		margin-bottom: 15px; 
+		padding: 0;
+	}
 
-    /* 3. Bio Mobile */
-    .profile-header-mobile-view .profile-bio-section-mobile {
-        display: block; /* Assure visibilité */
-        width: 100%; 
-        text-align: left;
-        margin-bottom: 15px; 
-        padding: 0;
-    }
-    .profile-header-mobile-view .profile-bio-section-mobile .profile-real-name {
-        font-size: 12px; 
-        font-weight: 600; 
-        margin-bottom: 3px;
-        margin-left: -10px;
-    }
-    .profile-header-mobile-view .profile-bio-section-mobile .profile-bio {
-        font-size: 12px;
-        margin-left: -10px;
-    }
-    .profile-header-mobile-view .profile-bio-section-mobile .profile-bio p {
-         margin-bottom: 3px; /* Assurer l'espacement */
-    }
+	.profile-header-mobile-view .profile-bio-section-mobile .profile-real-name {
+		font-size: 12px; 
+		font-weight: 600; 
+		margin-bottom: 3px;
+		margin-left: -10px;
+	}
 
-    /* 4. Boutons Mobile */
-    .profile-header-mobile-view .profile-actions-mobile {
-        display: flex; /* Afficher */
-        width: 90%;
-        gap: 8px;
-        margin-top: 0;
-        padding: 0;
-        margin-left: -20px;
-        height: 30px;
-    }
-    .profile-header-mobile-view .profile-actions-mobile .button {
-        flex-grow: 1; 
-        display: flex;
-        align-items: center;
-        justify-content: center;    /* Ajout pour centrer horizontalement */
-        font-size: 12px; 
-        padding: 8px 10px;
-        background-color: var(--button-header-bg, #efefef); /* Fallback gris clair */
-        color: var(--button-header-text, var(--primary-text-color));
-    }
+	.profile-header-mobile-view .profile-bio-section-mobile .profile-bio {
+		font-size: 12px;
+		margin-left: -10px;
+	}
 
-    /* Cache la Bio version desktop sur mobile */
-     .profile-bio-section-desktop {
-         display: none;
-     }
+	.profile-header-mobile-view .profile-bio-section-mobile .profile-bio p {
+		 margin-bottom: 3px;
+	}
 
-} /* Fin @media */
+	.profile-header-mobile-view .profile-actions-mobile {
+		display: flex; 
+		width: 90%;
+		gap: 8px;
+		margin-top: 0;
+		padding: 0;
+		margin-left: -20px;
+		height: 30px;
+	}
+
+	.profile-header-mobile-view .profile-actions-mobile .button {
+		flex-grow: 1; 
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 12px; 
+		padding: 8px 10px;
+		background-color: var(--button-header-bg, #efefef);
+		color: var(--button-header-text, var(--primary-text-color));
+	}
+
+	 .profile-bio-section-desktop {
+		 display: none;
+	 }
+
+}

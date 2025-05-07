@@ -1,85 +1,73 @@
-/* Styles pour la section des onglets */
 .tabs-section {
-    border-top: 1px solid var(--border-main); 
-    /* border-bottom: 1px solid var(--border-color); */
-    /* Sur Instagram Desktop, les onglets sont centrés */
-    display: flex;
-    justify-content: center;
-    margin-bottom: -1px; /* Compense la bordure de la grille pour un look connecté */
+	border-top: 1px solid var(--border-main); 
+	display: flex;
+	justify-content: center;
+	margin-bottom: -1px;
 }
 
 .tabs-list {
-    display: flex;
-    gap: 60px; /* Espace entre les onglets */
+	display: flex;
+	gap: 60px;
 }
 
 .tab-item {
-    padding: 15px 0;
-    font-size: 10px;
-    font-weight: 500; /* Texte un peu plus gras */
-    letter-spacing: 1px; /* Espacement des lettres */
-    text-transform: uppercase; /* Texte en majuscules */
-    /* color: var(--secondary-text-color); Couleur inactive par défaut */
-    /* color: var(--tabs-text-inactive-dark, var(--secondary-text-color)); */
-    cursor: pointer;
-    position: relative; /* Pour la barre active */
-    border-top: 1px solid transparent; /*Espace pour la barre active*/
-    margin-top: -1px; /* Remonte pour que la barre touche la bordure sup */
-    transition: color 0.2s ease, border-top-color 0.2s ease;
+	padding: 15px 0;
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	cursor: pointer;
+	position: relative;
+	border-top: 1px solid transparent; 
+	margin-top: -1px; 
+	transition: color 0.2s ease, border-top-color 0.2s ease;
 }
 
-/* Style de l'onglet actif */
 .tab-item.active {
-    color: var(--text-primary);
-    border-top-color: var(--text-primary); 
+	color: var(--text-primary);
+	border-top-color: var(--text-primary); 
 }
 
-/* Petit effet au survol pour les onglets inactifs */
 .tab-item:not(.active):hover {
-    color: var(--text-primary); 
+	color: var(--text-primary); 
 }
 
 .tabs-list-mobile {
-    display: none; 
+	display: none; 
 }
 
-/* --- Responsive pour les Onglets --- */
 @media (max-width: 768px) {
-    .tab-list,
-    .tab-item{
-        display: none;
-    }
-    .tabs-section {
-        /* Sur mobile, les onglets prennent toute la largeur */
-        justify-content: space-around; /* Répartit l'espace */
-        margin-bottom: 1px; /* Pas besoin de compenser */
-        border-top: none;
-        margin-top: -40px;
-    }
-    .tabs-list-mobile {
-        display: flex;
-        width: 100%;
-        justify-content: space-around;
-        gap: 5px; /* Réduit l'écart */
-    }
-    .tab-item-mobile {
-        font-size: 11px; 
-        letter-spacing: 0;
-        text-transform: none; /* Pas forcément majuscule sur mobile */
-        flex-grow: 1; /* Les onglets prennent la même largeur */
-        text-align: left;
-        padding: 12px 5px;
-        /* La barre active pourrait être en dessous ou différente sur mobile */
-         border-top: none;
-         border-bottom: 2px solid transparent;
-         margin-top: 0;
-         margin-bottom: -2px;
-         cursor: pointer;
-         /* border-bottom-color: var(--text-primary);  */
-    }
-    .tab-item-mobile.active {
-        border-top-color: transparent; /*Annule la barre sup*/
-        border-bottom-color: var(--text-primary); 
-    }
-    /* Ici, on pourrait remplacer le texte par des icônes */
+	.tab-list,
+	.tab-item{
+		display: none;
+	}
+	.tabs-section {
+		justify-content: space-around; 
+		margin-bottom: 1px;
+		border-top: none;
+		margin-top: -40px;
+	}
+	.tabs-list-mobile {
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+		gap: 5px; 
+	}
+	.tab-item-mobile {
+		font-size: 11px; 
+		letter-spacing: 0;
+		text-transform: none;
+		flex-grow: 1; 
+		text-align: left;
+		padding: 12px 5px;
+		 border-top: none;
+		 border-bottom: 2px solid transparent;
+		 margin-top: 0;
+		 margin-bottom: -2px;
+		 cursor: pointer;
+	}
+	.tab-item-mobile.active {
+		border-top-color: transparent;
+		border-bottom-color: var(--text-primary); 
+	}
 }

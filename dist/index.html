@@ -1,23 +1,18 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Inclut le contenu de _head.html -->
-    <meta charset="UTF-8">
+	<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mon Portfolio</title>
 
-<!-- === GOOGLE FONT (Pacifico) === -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
-<!-- === BIBLIOTHÈQUE D'ICÔNES (Font Awesome) === -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-<!-- === Favicon === -->
 <link rel="icon" href="img/logo.ico" type="image/x-icon" sizes="32x32">
 
-<!-- === Inclusion des fichiers CSS === -->
 <link rel="stylesheet" href="css/global.css">
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/header.css">
@@ -26,656 +21,542 @@
 <link rel="stylesheet" href="css/tabs.css">
 <link rel="stylesheet" href="css/grid.css">
 <link rel="stylesheet" href="css/project-modal.css">
-<!-- Optionnel: <link rel="stylesheet" href="css/responsive.css"> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
+	<div class="app-layout">
+		<aside class="sidebar">
 
-    <!-- ======================= Nouvelle Structure Globale ======================= -->
-    <div class="app-layout">
+<!-- ========================== -->
+<!-- == DESKTOP & ETROITE	== -->
+<!-- ========================== -->
+	<div class="sidebar-view sidebar-desktop-narrow-view">
+		<div class="sidebar-content">
+			<h1 class="sidebar-logo">
+				<span class="logo-icon"></span>
+				<span class="logo-text">Portfolio</span>
+			</h1>
+			<nav class="sidebar-nav">
+				<ul>
+					<li>
+						<a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub">
+							<i class="fab fa-github fa-fw"></i>
+							<span class="nav-text">GitHub</span>
+						</a>
+					</li>
+					<li>
+						<a href="img/CV Alves Elisabeth.pdf" title="Mon CV">
+							<i class="fas fa-file-alt fa-fw"></i>
+							<span class="nav-text">Mon CV</span>
+						</a>
+					</li>
+					<li>
+						<a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+							<i class="fab fa-linkedin fa-fw"></i>
+							<span class="nav-text">LinkedIn</span>
+						</a>
+					</li>
+					<li>
+						<a href="messages.html" id="messages-link-desktop" class="sidebar-nav-item" title="Messages"> 
+							<i class="fa-solid fa-paper-plane fa-fw"></i>
+							<span class="nav-text">Messages</span>
+						</a>
+					</li>
+					<li>
+						<a href="/" id="profil-link-desktop" class="sidebar-nav-item" title="Profil">
+							<span class="nav-icon-wrapper">
+								<img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic">
+							</span>
+							<span class="nav-text">Profil</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="sidebar-settings">
+				 <a href="#" id="settings-link" title="Apparence / Thème">
+					<i class="fa-solid fa-circle-half-stroke fa-fw"></i>
+					<span class="nav-text">Apparence</span>
+				</a>
+			</div>
 
-        <!-- === Inclusion Sidebar === -->
-        <!-- partials/_sidebar.html -->
-<aside class="sidebar">
-
-    <!-- ============================================ -->
-    <!-- == STRUCTURE POUR DESKTOP & ÉTROITE       == -->
-    <!-- == (Cachée sur mobile via CSS)           == -->
-    <!-- ============================================ -->
-    <div class="sidebar-view sidebar-desktop-narrow-view">
-        <div class="sidebar-content"> <!-- Conteneur interne pour flex column -->
-
-            <!-- Logo/Titre -->
-            <h1 class="sidebar-logo">
-                <span class="logo-icon"></span> <!-- Icône exemple (à ajouter si vous voulez une icône logo) -->
-                <span class="logo-text">Portfolio</span>
-            </h1>
-
-            <!-- Navigation Principale Desktop/Étroite -->
-            <nav class="sidebar-nav">
-                <ul>
-                    <li>
-                        <a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub">
-                            <i class="fab fa-github fa-fw"></i>
-                            <span class="nav-text">GitHub</span>
-                        </a>
-                    </li>
-                    <li>
-                        <!-- mettre mon CV PDF ici a la place du mail-->
-                        <a href="img/CV Alves Elisabeth.pdf" title="Mon CV">
-                            <i class="fas fa-file-alt fa-fw"></i>
-                            <span class="nav-text">Mon CV</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                            <i class="fab fa-linkedin fa-fw"></i>
-                            <span class="nav-text">LinkedIn</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="messages.html" id="messages-link-desktop" class="sidebar-nav-item" title="Messages"> 
-                            <i class="fa-solid fa-paper-plane fa-fw"></i>
-                            <span class="nav-text">Messages</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/" id="profil-link-desktop" class="sidebar-nav-item" title="Profil">
-                        <!-- <a href="/dist/index.html" id="profil-link-desktop" class="sidebar-nav-item" title="Profil"> -->
-                            <span class="nav-icon-wrapper">
-                                <img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic">
-                            </span>
-                            <span class="nav-text">Profil</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- Paramètres / Actions du bas Desktop/Étroite -->
-            <div class="sidebar-settings">
-                 <a href="#" id="settings-link" title="Apparence / Thème">
-                    <i class="fa-solid fa-circle-half-stroke fa-fw"></i>
-                    <span class="nav-text">Apparence</span>
-                </a>
-            </div>
-
-        </div> <!-- Fin sidebar-content -->
-    </div> <!-- Fin sidebar-desktop-narrow-view -->
+		</div>
+	</div>
 
 
-    <!-- ============================================ -->
-    <!-- ==   STRUCTURE MOBILE (BARRE EN BAS)      == -->
-    <!-- == (Cachée sur desktop/étroite via CSS)  == -->
-    <!-- ============================================ -->
-    <div class="sidebar-view sidebar-mobile-view">
-        <!-- Contient directement la nav et les settings pour une barre simple -->
-        <nav class="sidebar-nav-mobile">
-            <ul>
-                 <li><a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github fa-fw"></i></a></li>
-                 <li><a href="img/CV Alves Elisabeth.pdf" title="Mon CV"><i class="fas fa-file-alt fa-fw"></i></a></li>
-                 <li><a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin fa-fw"></i></a></li>
-                 <li><a href="messages.html" id="messages-link-mobile" title="Messages"><i class="fa-solid fa-paper-plane fa-fw"></i></a></li>
-                 <li>
-                    <a href="/" id="profil-link-mobile" class="sidebar-nav-item" title="Profil">
-                    <!-- <a href="/dist/index.html" id="profil-link-mobile" class="sidebar-nav-item" title="Profil"> -->
-                        <img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic-mobile">
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="sidebar-settings-mobile">
-             <a href="#" id="settings-link-mobile" title="Apparence"><i class="fa-solid fa-circle-half-stroke fa-fw"></i></a>
-        </div>
-    </div> <!-- Fin sidebar-mobile-view -->
-
-</aside> <!-- Fin sidebar -->
+<!-- =============== -->
+<!-- ==   MOBILE  == -->
+<!-- ===============-->
+	<div class="sidebar-view sidebar-mobile-view">
+		<nav class="sidebar-nav-mobile">
+			<ul>
+				 <li><a href="https://github.com/Ealves96" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github fa-fw"></i></a></li>
+				 <li><a href="img/CV Alves Elisabeth.pdf" title="Mon CV"><i class="fas fa-file-alt fa-fw"></i></a></li>
+				 <li><a href="https://linkedin.com/in/elisabeth-alves-b52b8b279/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin fa-fw"></i></a></li>
+				 <li><a href="messages.html" id="messages-link-mobile" title="Messages"><i class="fa-solid fa-paper-plane fa-fw"></i></a></li>
+				 <li>
+					<a href="/" id="profil-link-mobile" class="sidebar-nav-item" title="Profil">
+						<img src="img/photo cv.jpg" alt="Aller au profil" class="nav-profile-pic-mobile">
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="sidebar-settings-mobile">
+			 <a href="#" id="settings-link-mobile" title="Apparence"><i class="fa-solid fa-circle-half-stroke fa-fw"></i></a>
+		</div>
+	</div>
+</aside> 
 
 <div class="development-message" id="devMessage">
-    <i class="fas fa-tools"></i>
-    <span>En cours de développement</span>
+	<i class="fas fa-tools"></i>
+	<span>En cours de développement</span>
 </div>
-
-<!-- <script>
-    // addEventListener to all sidebar links
-    document.getElementById("messages-link-desktop").addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default action
-       alert("En cours de développement !"); // Alert message
-    });
-</script> -->
-
 
 <script>
-    document.getElementById("messages-link-desktop").addEventListener("click", function(event) {
-        event.preventDefault();
-        
-        const devMessage = document.getElementById("devMessage");
-        devMessage.classList.add("show");
-        
-        // Cacher le message après 3 secondes
-        setTimeout(() => {
-            devMessage.classList.remove("show");
-        }, 3000);
-    });
+	document.getElementById("messages-link-desktop").addEventListener("click", function(event) {
+		event.preventDefault();
+		
+		const devMessage = document.getElementById("devMessage");
+		devMessage.classList.add("show");
+		
+		setTimeout(() => {
+			devMessage.classList.remove("show");
+		}, 3000);
+	});
 
-    // Ajouter aussi pour la version mobile
-    document.getElementById("messages-link-mobile").addEventListener("click", function(event) {
-        event.preventDefault();
-        const devMessage = document.getElementById("devMessage");
-        devMessage.classList.add("show");
-        setTimeout(() => {
-            devMessage.classList.remove("show");
-        }, 3000);
-    });
+	document.getElementById("messages-link-mobile").addEventListener("click", function(event) {
+		event.preventDefault();
+		const devMessage = document.getElementById("devMessage");
+		devMessage.classList.add("show");
+		setTimeout(() => {
+			devMessage.classList.remove("show");
+		}, 3000);
+	});
 </script>
+		
+		<main class="main-content">
+			<div class="profile-container">
+				<header class="profile-header">
 
-        <!-- ======================= Contenu Principal ======================= -->
-        <main class="main-content">
-            <div class="profile-container">
-
-                <!-- === Inclusion Header === -->
-                <!-- partials/_header.html -->
-
-<header class="profile-header"> <!-- Classe générique pour le header -->
-
-    <!-- ======================================== -->
-    <!-- ==    STRUCTURE POUR LE DESKTOP       == -->
-    <!-- == (Sera cachée sur mobile via CSS)  == -->
-    <!-- ======================================== -->
-    <div class="profile-header-section profile-header-desktop-view">
-        <div class="profile-header-top">
-            <div class="profile-pic-container">
-                <div class="profile-pic-border-wrapper">
-                    <img src="img/photo cv.jpg" alt="Photo de profil" class="profile-pic" onclick="openStories()">
-                </div>
-            </div>
-            <div class="profile-info-top">
-                <div class="profile-top-bar">
-                    <h2 class="profile-username">Elisabeth Alves</h2> <!-- Nom Desktop -->
-                    <div class="profile-actions-desktop"> <!-- Boutons Desktop -->
-                        <a href="mailto:ealves0996@gmail.com" class="button">Email</a>
-                        <a href="https://calendly.com/ealves0996/entretien" class="button" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
-                    </div>
-                </div>
-                <ul class="profile-stats"> <!-- Stats Desktop -->
-                    <li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
-                    <li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
-                    <li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
-                </ul>
-                <div class="profile-bio-section-desktop"> <!-- Bio Desktop -->
-                    <p class="profile-real-name">📍 Looking for a DevOps internship</p>
-                    <div class="profile-bio">
-                        <p> 🎓 Common core done<br>
-                            🔧 DevOps trainee – 42 Paris<br>
-                            🐧 Linux · Docker · C++ web server<br>
-                            🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
-                    </div>
-                </div>
-            </div> <!-- Fin profile-info-top -->
-        </div> <!-- Fin profile-header-top -->
-    </div> <!-- Fin profile-header-desktop-view -->
+	<!-- ==================== -->
+	<!-- ==		DESKTOP	   == -->
+	<!-- ==================== -->
+	<div class="profile-header-section profile-header-desktop-view">
+		<div class="profile-header-top">
+			<div class="profile-pic-container">
+				<div class="profile-pic-border-wrapper">
+					<img src="img/photo cv.jpg" alt="Photo de profil" class="profile-pic" onclick="openStories()">
+				</div>
+			</div>
+			<div class="profile-info-top">
+				<div class="profile-top-bar">
+					<h2 class="profile-username">Elisabeth Alves</h2> 
+					<div class="profile-actions-desktop"> <
+						<a href="mailto:ealves0996@gmail.com" class="button">Email</a>
+						<a href="https://calendly.com/ealves0996/entretien" class="button" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
+					</div>
+				</div>
+				<ul class="profile-stats"> 
+					<li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
+					<li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
+					<li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
+				</ul>
+				<div class="profile-bio-section-desktop"> 
+					<p class="profile-real-name">📍 Looking for a DevOps internship</p>
+					<div class="profile-bio">
+						<p> 🎓 Common core done<br>
+							🔧 DevOps trainee – 42 Paris<br>
+							🐧 Linux · Docker · C++ web server<br>
+							🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
+					</div>
+				</div>
+			</div> 
+		</div> 
+	</div> 
 
 
-    <!-- ======================================== -->
-    <!-- ==     STRUCTURE POUR LE MOBILE       == -->
-    <!-- == (Sera cachée sur desktop via CSS) == -->
-    <!-- ======================================== -->
-    <div class="profile-header-section profile-header-mobile-view">
-
-        <!-- 1. Nom Mobile -->
-        <h2 class="profile-username-mobile">
-            <span>Elisabeth Alves</span>
-            <i class="fa-solid fa-chevron-down username-dropdown-icon"></i>
-        </h2>
-
-        <!-- 2. Ligne Photo | Stats (Structure qui fonctionnait) -->
-        <div class="photo-stats-container">
-            <div class="profile-pic-container">
-                <div class="profile-pic-border-wrapper">
-                    <img src="img/photo cv.jpg" alt="Photo de profil">
-                </div>
-            </div>
-            <!-- Stats (utilisant la même classe que desktop pour le style interne) -->
-            <ul class="profile-stats">
-                <li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
-                <li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
-                <li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
-            </ul>
-        </div>
-
-        <!-- 3. Bio Mobile -->
-        <div class="profile-bio-section-mobile">
-            <p class="profile-real-name">📍 Looking for a DevOps internship</p>
-            <div class="profile-bio">
-                <p> 🎓 Common core done<br>
-                    🔧 DevOps trainee – 42 Paris<br>
-                    🐧 Linux · Docker · C++ web server<br>
-                    🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
-            </div>
-        </div>
-
-        <!-- 4. Boutons Mobile -->
-        <div class="profile-actions-mobile">
-            <a href="mailto:ealves0996@gmail.com" class="button">Email</a>
-            <a href="https://calendly.com/ealves0996/entretien" class="button" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
-       </div>
-
-    </div> <!-- Fin profile-header-mobile-view -->
-
+	<!-- ==================== -->
+	<!-- ==		MOBILE	   == -->
+	<!-- ====================-->
+	<div class="profile-header-section profile-header-mobile-view">
+		<h2 class="profile-username-mobile">
+			<span>Elisabeth Alves</span>
+			<i class="fa-solid fa-chevron-down username-dropdown-icon"></i>
+		</h2>
+		<div class="photo-stats-container">
+			<div class="profile-pic-container">
+				<div class="profile-pic-border-wrapper">
+					<img src="img/photo cv.jpg" alt="Photo de profil">
+				</div>
+			</div>
+			<ul class="profile-stats">
+				<li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
+				<li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
+				<li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
+			</ul>
+		</div>
+		<div class="profile-bio-section-mobile">
+			<p class="profile-real-name">📍 Looking for a DevOps internship</p>
+			<div class="profile-bio">
+				<p> 🎓 Common core done<br>
+					🔧 DevOps trainee – 42 Paris<br>
+					🐧 Linux · Docker · C++ web server<br>
+					🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
+			</div>
+		</div>
+		<div class="profile-actions-mobile">
+			<a href="mailto:ealves0996@gmail.com" class="button">Email</a>
+			<a href="https://calendly.com/ealves0996/entretien" class="button" target="_blank" rel="noopener noreferrer">Prendre RDV</a>
+	   </div>
+	</div>
 </header>
-
-                <!-- === Inclusion Highlights === -->
-                <section class="highlights-section">
-    <ul class="highlights-list">
-       <li class="highlight-item" data-highlight-id="competences" data-title="Compétences" data-icon="💡" onclick="openHighlightViewer('competences')">
-            <!-- WRAPPER AUTOUR DU CERCLE -->
-           <div class="highlight-border-wrapper">
-               <div class="highlight-circle">
-                   <span class="highlight-placeholder">💡</span>
-               </div>
-           </div>
-           <p class="highlight-title">Compétences</p>
-       </li>
-       <li class="highlight-item" data-highlight-id="diplomes" data-title="Diplômes" data-icon="🎓" onclick="openHighlightViewer('diplomes')">
-            <!-- WRAPPER AUTOUR DU CERCLE -->
-           <div class="highlight-border-wrapper">
-               <div class="highlight-circle">
-                   <span class="highlight-placeholder">🎓</span>
-               </div>
-           </div>
-           <p class="highlight-title">Diplômes</p>
-       </li>
-   </ul>
+				<section class="highlights-section">
+	<ul class="highlights-list">
+	   <li class="highlight-item" data-highlight-id="competences" data-title="Compétences" data-icon="💡" onclick="openHighlightViewer('competences')">
+		   <div class="highlight-border-wrapper">
+			   <div class="highlight-circle">
+				   <span class="highlight-placeholder">💡</span>
+			   </div>
+		   </div>
+		   <p class="highlight-title">Compétences</p>
+	   </li>
+	   <li class="highlight-item" data-highlight-id="diplomes" data-title="Diplômes" data-icon="🎓" onclick="openHighlightViewer('diplomes')">
+		   <div class="highlight-border-wrapper">
+			   <div class="highlight-circle">
+				   <span class="highlight-placeholder">🎓</span>
+			   </div>
+		   </div>
+		   <p class="highlight-title">Diplômes</p>
+	   </li>
+	</ul>
 </section>
 
-                
-                <!-- === Inclusion Highlights Viewer === -->
-                <!-- ================== HIGHLIGHT VIEWER MODAL ================== -->
-<div class="highlight-viewer" id="highlightViewer" style="display: none;">
-    <!-- Overlay sombre (pour desktop) -->
-    <div class="highlight-viewer-overlay"></div>
+				<div class="highlight-viewer" id="highlightViewer" style="display: none;">
+	<div class="highlight-viewer-overlay"></div>
+	<div class="highlight-viewer-content">
+		<div class="highlight-progress-bar-container"></div>
+		<div class="highlight-viewer-header">
+			<div class="highlight-info">
+				 <span class="highlight-viewer-icon">❓</span>
+				 <span class="highlight-viewer-title">Highlight</span>
+			</div>
+			<button class="highlight-close-button" onclick="closeHighlightViewer()" aria-label="Fermer">×</button>
+		</div>
+		<div class="highlight-media-container">
+			<img src="" alt="Highlight Content" id="highlightMediaContent" style="display: none;">
+			 <video src="" id="highlightVideoContent" style="display: none;" autoplay="" muted="" loop="" playsinline=""></video>
+		</div>
+		<button class="highlight-nav-button prev" id="highlightPrevButton" style="display: none;"><</button>
+		<button class="highlight-nav-button next" id="highlightNextButton" style="display: none;">></button>
 
-    <!-- Conteneur principal du contenu -->
-    <div class="highlight-viewer-content">
-
-        <!-- Barre de progression (similaire à Insta) - Optionnel -->
-        <div class="highlight-progress-bar-container">
-            <!-- Les barres seront ajoutées dynamiquement par JS si plusieurs slides -->
-            <!-- <div class="highlight-progress-bar"><div class="progress"></div></div> -->
-        </div>
-
-        <!-- Header (Titre du highlight + Bouton Fermer) -->
-        <div class="highlight-viewer-header">
-            <div class="highlight-info">
-                <!-- Peut-être afficher l'icône et le titre du highlight cliqué -->
-                 <span class="highlight-viewer-icon">❓</span> <!-- Sera remplacé par JS -->
-                 <span class="highlight-viewer-title">Highlight</span> <!-- Sera remplacé par JS -->
-            </div>
-            <button class="highlight-close-button" onclick="closeHighlightViewer()" aria-label="Fermer">×</button>
-        </div>
-
-        <!-- Zone d'affichage du média (Image/Vidéo/Texte) -->
-        <div class="highlight-media-container">
-            <!-- Le contenu (image/vidéo) sera injecté ici par JS -->
-            <img src="" alt="Highlight Content" id="highlightMediaContent" style="display: none;">
-             <video src="" id="highlightVideoContent" style="display: none;" autoplay="" muted="" loop="" playsinline=""></video>
-             <!-- <div id="highlightTextContent" style="display: none;"></div> -->
-        </div>
-
-        <!-- Boutons de navigation (Précédent/Suivant) -->
-        <button class="highlight-nav-button prev" id="highlightPrevButton" style="display: none;"><</button>
-        <button class="highlight-nav-button next" id="highlightNextButton" style="display: none;">></button>
-
-    </div>
+	</div>
 </div>
-<!-- ================= END HIGHLIGHT VIEWER MODAL ================== -->
-
-                <!-- === Inclusion Tabs === -->
-                <section class="tabs-section" aria-label="Catégories de projets">
-    <ul class="tabs-list">
-       <li class="tab-item active" data-category="frontend">🖥️ Front‑end</li>
-       <li class="tab-item" data-category="backend">🌐 Back‑end & Réseau</li>
-       <li class="tab-item" data-category="devops">🐳 DevOps/Système </li>
-       <!-- <li class="tab-item" data-category="network">📡 Network</li> -->
-       <li class="tab-item" data-category="algo">🧠 Algorithmes</li>
-       <li class="tab-item" data-category="data">📈 Data Science</li>
-   </ul>
-   <ul class="tabs-list-mobile">
-    <li class="tab-item-mobile active" data-category="frontend">🖥️ Front</li>
-    <li class="tab-item-mobile" data-category="backend">🌐 Back</li>
-    <li class="tab-item-mobile" data-category="devops">🐳 DevOps </li>
-    <!-- <li class="tab-item-mobile" data-category="network">📡 Network</li> -->
-    <li class="tab-item-mobile" data-category="algo">🧠 Algo</li>
-    <li class="tab-item-mobile" data-category="data">📈 Data</li>
-    </ul>
+				<section class="tabs-section" aria-label="Catégories de projets">
+	<ul class="tabs-list">
+		<li class="tab-item active" data-category="frontend">🖥️ Front‑end</li>
+		<li class="tab-item" data-category="backend">🌐 Back‑end & Réseau</li>
+		<li class="tab-item" data-category="devops">🐳 DevOps/Système </li>
+		<li class="tab-item" data-category="algo">🧠 Algorithmes</li>
+		<li class="tab-item" data-category="data">📈 Data Science</li>
+	</ul>
+	<ul class="tabs-list-mobile">
+		<li class="tab-item-mobile active" data-category="frontend">🖥️ Front</li>
+		<li class="tab-item-mobile" data-category="backend">🌐 Back</li>
+		<li class="tab-item-mobile" data-category="devops">🐳 DevOps </li>
+		<li class="tab-item-mobile" data-category="algo">🧠 Algo</li>
+		<li class="tab-item-mobile" data-category="data">📈 Data</li>
+	</ul>
 </section>
+				<div class="project-grid" aria-live="polite">
 
-                <!-- === Inclusion Project Grid === -->
-                <!-- partials/_project-grid.html -->
-<div class="project-grid" aria-live="polite">
+	<!-- Projet 1: Transcendence -->
+	<a href="#" class="project-item" id="post-transcendence" data-category="frontend" data-title="TRANSCENDENCE" data-image="img/transcendence/transcendence_result.png" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892790/f5ahjr6lmojhnt9l0q9x.webm" },  
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892797/iun53idgpdpgublcav7r.webm" }, 
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892804/qpezhdrk00bujrfjxd4r.webm" }, 
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892796/tvjmyovjqrvy0epdromm.webm" }, 
+			{ "type": "image", "src": "img/transcendence/transcendence_result.png" } 
+		]' data-description="🎮 Transcendence – 42
+		👩‍💻 Front‑end & jeu 3D
+		• SPA vanilla JS + WebSockets
+		• Pong 3D (1,2 & 4 joueurs) sous Three.js
+		• UI responsive, accessible & 60 FPS
+		✨ Pixel‑perfect, fun garanti !
+		Pour en savoir plus, consultez le lien GitHub 🐙!" data-tech="FrontEnd, ThreeJS, JavaScript, 42Paris, WebDev, GameDev" data-github="https://github.com/Ealves96/transcendence" data-live="#"><img src="img/pong.png" alt="Miniature 42">
+		<div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 1: Transcendence (Exemple avec plusieurs images) -->
-    <a href="#" class="project-item" id="post-transcendence" data-category="frontend" data-title="TRANSCENDENCE" data-image="img/transcendence/transcendence_result.png" data-media='[
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892790/f5ahjr6lmojhnt9l0q9x.webm" },  
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892797/iun53idgpdpgublcav7r.webm" }, 
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892804/qpezhdrk00bujrfjxd4r.webm" }, 
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1744892796/tvjmyovjqrvy0epdromm.webm" }, 
-            { "type": "image", "src": "img/transcendence/transcendence_result.png" } 
-        ]' data-description="🎮 Transcendence – 42
-        👩‍💻 Front‑end & jeu 3D
-        • SPA vanilla JS + WebSockets
-        • Pong 3D (1,2 & 4 joueurs) sous Three.js
-        • UI responsive, accessible & 60 FPS
-        ✨ Pixel‑perfect, fun garanti !
-        Pour en savoir plus, consultez le lien GitHub 🐙!" data-tech="FrontEnd, ThreeJS, JavaScript, 42Paris, WebDev, GameDev" data-github="https://github.com/Ealves96/transcendence" data-live="#"><img src="img/pong.png" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">Transcendence</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 2: Cub3D (Exemple Raycasting) -->
+	 <a href="#" class="project-item" id="post-cub3d" data-category="algo" data-title="CUB3D" data-image="img/cub3d_result.png" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745430390/cub3d_mwqwzb.webm" },
+			{ "type": "image", "src": "img/cub3d_result.png" }
+		]' data-description="🕹️ Cub3D – Mon premier raycaster en C
+		🎮 Projet 42 inspiré de Wolfenstein3D
+		• Raycasting pour un rendu 3D immersif
+		• Parsing de cartes .cub & textures murales
+		• Déplacement fluide & détection de collisions
+		• Fenêtre interactive via la minilibX
+		🚀 From 2D map to 3D FPS... en pur C !" data-tech="Raycasting, GameDev, CProgramming, MiniLibX, 42Paris, Graphics, Wolf3D, Cub3D" data-github="https://github.com/Ealves96/cub3d" data-live="#"><img src="img/cub3d.png" alt="Miniature 42">
+		<div class="project-overlay"><span class="project-title-overlay">Cub3D</span></div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+		</a>
 
-    <!-- Projet 2: Cub3D (Exemple Raycasting) -->
-     <a href="#" class="project-item" id="post-cub3d" data-category="algo" data-title="CUB3D" data-image="img/cub3d_result.png" data-media='[
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745430390/cub3d_mwqwzb.webm" },
-            { "type": "image", "src": "img/cub3d_result.png" }
-        ]' data-description="🕹️ Cub3D – Mon premier raycaster en C
-        🎮 Projet 42 inspiré de Wolfenstein3D
-        • Raycasting pour un rendu 3D immersif
-        • Parsing de cartes .cub & textures murales
-        • Déplacement fluide & détection de collisions
-        • Fenêtre interactive via la minilibX
-        🚀 From 2D map to 3D FPS... en pur C !" data-tech="Raycasting, GameDev, CProgramming, MiniLibX, 42Paris, Graphics, Wolf3D, Cub3D" data-github="https://github.com/Ealves96/cub3d" data-live="#"><img src="img/cub3d.png" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">Cub3D</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-        </a>
+	<!-- Projet 3: Portfolio -->
+	 <a href="#" class="project-item" id="post-portfolio" data-category="frontend" data-title="MON PORTFOLIO" data-image="img/projects/portfolio/portfolio-main.png" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1746575029/portfolioweb_la7vi2.webm" },
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1746576335/ScreenRecording_05-07-2025-01-48-48_1_sqw6fj.webm" }
+		]' data-description="📸 Mon Portfolio – Style Instagram
+		👩‍🎨 UI moderne & navigation intuitive
+		• Stories & posts façon Insta
+		• Filtres, likes & commentaires intégrés
+		• Dark/light mode & responsive design
+		🛠️ HTML, CSS, JavaScript pur
+		🚀 Déployé sur Netlify avec déploiement continu
+		Explore mon univers pro comme sur Insta !" data-tech="PortfolioDev, WebDesign, JavaScript, FrontEnd, Netlify, UIDesign, WomenInTech" data-github="https://github.com/Ealves96/Portfolio" data-live="#">
+		<img src="img/logoEA_rbg.png" alt="Miniature 42">
+		 <div class="project-overlay">
+			 <span class="project-title-overlay">Portfolio</span>
+		</div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 3: Portfolio -->
-     <a href="#" class="project-item" id="post-portfolio" data-category="frontend" data-title="MON PORTFOLIO" data-image="img/projects/portfolio/portfolio-main.png" data-media='[
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1746575029/portfolioweb_la7vi2.webm" },
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1746576335/ScreenRecording_05-07-2025-01-48-48_1_sqw6fj.webm" }
-        ]' data-description="📸 Mon Portfolio – Style Instagram
-        👩‍🎨 UI moderne & navigation intuitive
-        • Stories & posts façon Insta
-        • Filtres, likes & commentaires intégrés
-        • Dark/light mode & responsive design
-        🛠️ HTML, CSS, JavaScript pur
-        🚀 Déployé sur Netlify avec déploiement continu
-        Explore mon univers pro comme sur Insta !" data-tech="PortfolioDev, WebDesign, JavaScript, FrontEnd, Netlify, UIDesign, WomenInTech" data-github="https://github.com/Ealves96/Portfolio" data-live="#">
-        <img src="img/logoEA_rbg.png" alt="Miniature 42">
-         <div class="project-overlay">
-             <span class="project-title-overlay">Portfolio</span>
-        </div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 4: Born2beroot -->
+	<a href="#" class="project-item" id="post-born2beroot" data-category="devops" data-title="BORN2BEROOT" data-image="img/projects/minishell/minishell-main.png" data-media='[
+			{ "type": "image", "src": "img/script.png" },
+			{ "type": "image", "src": "img/born1.png" },
+			{ "type": "image", "src": "img/born2.png" },
+			{ "type": "image", "src": "img/born2beroot_result.png" }
+		]' data-description="🛡️ Born2beRoot – Serveur Linux sécurisé
+		📦 VM Debian sans interface graphique
+		• Partitions chiffrées avec LVM
+		• SSH sécurisé (port 4242 + no root login)
+		• Politique de mot de passe stricte & sudo verrouillé
+		• UFW, AppArmor, Cron, monitoring toutes les 10 min
+		⚙️ Projet système pour comprendre la virtualisation, la sécurité et l'administration Debian
+		Un vrai baptême root dans l’univers Linux 🐧" data-tech="LinuxAdmin, Virtualization, Debian, SystemSecurity, SysAdmin, 42Paris, RootPower" data-github="https://github.com/Ealves96/Born2beroot" data-live="#"><img src="img/born2beroot.webp" alt="Miniature 42">
+		<div class="project-overlay"><span class="project-title-overlay">Born2beroot</span></div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 4: Born2beroot -->
-    <a href="#" class="project-item" id="post-born2beroot" data-category="devops" data-title="BORN2BEROOT" data-image="img/projects/minishell/minishell-main.png" data-media='[
-            { "type": "image", "src": "img/script.png" },
-            { "type": "image", "src": "img/born1.png" },
-            { "type": "image", "src": "img/born2.png" },
-            { "type": "image", "src": "img/born2beroot_result.png" }
-        ]' data-description="🛡️ Born2beRoot – Serveur Linux sécurisé
-        📦 VM Debian sans interface graphique
-        • Partitions chiffrées avec LVM
-        • SSH sécurisé (port 4242 + no root login)
-        • Politique de mot de passe stricte & sudo verrouillé
-        • UFW, AppArmor, Cron, monitoring toutes les 10 min
-        ⚙️ Projet système pour comprendre la virtualisation, la sécurité et l'administration Debian
-        Un vrai baptême root dans l’univers Linux 🐧" data-tech="LinuxAdmin, Virtualization, Debian, SystemSecurity, SysAdmin, 42Paris, RootPower" data-github="https://github.com/Ealves96/Born2beroot" data-live="#"><img src="img/born2beroot.webp" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">Born2beroot</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 5: Push Swap -->
+	<a href="#" class="project-item" id="post-pushswap" data-category="algo" data-title="PUSH SWAP" data-image="img/projects/pushswap/pushswap-main.gif" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745429529/pushswap_gqv5zb.webm" },
+			{ "type": "image", "src": "img/pushswap_result.png" }
+		]' data-description="🔁 Push_swap – Tri optimisé sur piles
+		📊 Projet d’algo 42 : coder un tri... avec des instructions limitées !
+		• Deux piles, une mission : trier avec le moins d’opérations possible
+		• Algo personnalisé pour chaque taille d’entrée
+		• Gestion fine des cas d’erreur & parsing robuste
+		🎯 Challenge de performance validé : 100 & 500 nombres au top
+		Un projet d'algo... pas si naïf que ça 😏" data-tech="Algorithmique, CProgramming, PushSwap, 42Paris, SortingAlgorithms, StackChallenge, LowLevelLogic" data-github="https://github.com/Ealves96/push_swap" data-live="#"><img src="img/pushswap.png" alt="Miniature 42">
+		<div class="project-overlay"><span class="project-title-overlay">push_swap</span></div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 5: Push Swap -->
-    <a href="#" class="project-item" id="post-pushswap" data-category="algo" data-title="PUSH SWAP" data-image="img/projects/pushswap/pushswap-main.gif" data-media='[
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745429529/pushswap_gqv5zb.webm" },
-            { "type": "image", "src": "img/pushswap_result.png" }
-        ]' data-description="🔁 Push_swap – Tri optimisé sur piles
-        📊 Projet d’algo 42 : coder un tri... avec des instructions limitées !
-        • Deux piles, une mission : trier avec le moins d’opérations possible
-        • Algo personnalisé pour chaque taille d’entrée
-        • Gestion fine des cas d’erreur & parsing robuste
-        🎯 Challenge de performance validé : 100 & 500 nombres au top
-        Un projet d'algo... pas si naïf que ça 😏" data-tech="Algorithmique, CProgramming, PushSwap, 42Paris, SortingAlgorithms, StackChallenge, LowLevelLogic" data-github="https://github.com/Ealves96/push_swap" data-live="#"><img src="img/pushswap.png" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">push_swap</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 6: Webserv -->
+	 <a href="#" class="project-item" id="post-webserv" data-category="backend" data-title="WEBSERV" data-image="img/webserv_result.png" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745426822/startWerbserv_que5cm.webm" },
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745428082/webserv_pzrluj.webm" },
+			{ "type": "image", "src": "img/webserv_result.png" }
+		]' data-description="🌐 Webserv – Serveur HTTP maison
+		⚙️ Projet 42 : C++98 + Linux
+		• Requêtes HTTP (GET, POST, DELETE)
+		• Multi-serveurs, multi-ports & fichiers .conf
+		• Autoindex, pages d’erreur, redirections
+		• Uploads & CGI (Python, PHP...)
+		• Non-bloquant avec poll()
+		💡 Inspiré de NGINX, codé from scratch
+		Un projet bas-niveau qui fait parler le Web 🧠" data-tech="C++, LinuxDev, WebServer, 42Paris, CGI, NetworkProgramming, HTTP" data-github="https://github.com/Ealves96/Webserv" data-live="#"><img src="img/webserv.png" alt="Miniature 42">
+		<div class="project-overlay"><span class="project-title-overlay">WebServ</span></div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 6: Webserv -->
-     <a href="#" class="project-item" id="post-webserv" data-category="backend" data-title="WEBSERV" data-image="img/webserv_result.png" data-media='[
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745426822/startWerbserv_que5cm.webm" },
-            { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745428082/webserv_pzrluj.webm" },
-            { "type": "image", "src": "img/webserv_result.png" }
-        ]' data-description="🌐 Webserv – Serveur HTTP maison
-        ⚙️ Projet 42 : C++98 + Linux
-        • Requêtes HTTP (GET, POST, DELETE)
-        • Multi-serveurs, multi-ports & fichiers .conf
-        • Autoindex, pages d’erreur, redirections
-        • Uploads & CGI (Python, PHP...)
-        • Non-bloquant avec poll()
-        💡 Inspiré de NGINX, codé from scratch
-        Un projet bas-niveau qui fait parler le Web 🧠" data-tech="C++, LinuxDev, WebServer, 42Paris, CGI, NetworkProgramming, HTTP" data-github="https://github.com/Ealves96/Webserv" data-live="#"><img src="img/webserv.png" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">WebServ</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	 <!-- Projet 7: Inception -->
+	 <a href="#" class="project-item" id="post-inception" data-category="devops" data-title="INCEPTION" data-image="img/inception_result.png" data-media='[
+			{ "type": "image", "src": "img/inception1.png" },
+			{ "type": "image", "src": "img/inception_result.png" }
+		]' data-description="🚀 Inception – Stack Web Dockerisée
+		🐳 NGINX + WordPress + MariaDB sous Docker
+		• Containers dédiés, sécurité via TLS (v1.2/1.3)
+		• Variables & secrets hors Git, volumes persistants
+		• Déploiement automatisé via Makefile + Docker Compose
+		• Domain custom ealves.42.fr en HTTPS only
+		💡 Projet système : infra propre, modulaire & 100% containerisée
+		Une vraie immersion DevOps ⚙️" data-tech="Docker, DevOps, NGINX, WordPress, MariaDB, TLS, 42Paris, WebInfra, Linux" data-github="https://github.com/Ealves96/Inception" data-live="#"><img src="img/inception.png" alt="Miniature 42">
+		<div class="project-overlay"><span class="project-title-overlay">Inception</span></div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-     <!-- Projet 7: Inception -->
-     <a href="#" class="project-item" id="post-inception" data-category="devops" data-title="INCEPTION" data-image="img/inception_result.png" data-media='[
-            { "type": "image", "src": "img/inception1.png" },
-            { "type": "image", "src": "img/inception_result.png" }
-        ]' data-description="🚀 Inception – Stack Web Dockerisée
-        🐳 NGINX + WordPress + MariaDB sous Docker
-        • Containers dédiés, sécurité via TLS (v1.2/1.3)
-        • Variables & secrets hors Git, volumes persistants
-        • Déploiement automatisé via Makefile + Docker Compose
-        • Domain custom ealves.42.fr en HTTPS only
-        💡 Projet système : infra propre, modulaire & 100% containerisée
-        Une vraie immersion DevOps ⚙️" data-tech="Docker, DevOps, NGINX, WordPress, MariaDB, TLS, 42Paris, WebInfra, Linux" data-github="https://github.com/Ealves96/Inception" data-live="#"><img src="img/inception.png" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">Inception</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 8: NetPractice -->
+	<a href="#" class="project-item" id="post-netpractice" data-category="backend" data-title="NETPRACTICE" data-image="img/netpractice_result.png" data-media='[
+			{ "type": "image", "src": "img/level1.png" },
+			{ "type": "image", "src": "img/level3.png" },
+			{ "type": "image", "src": "img/level9.png" },
+			{ "type": "image", "src": "img/level10.png" },
+			{ "type": "image", "src": "img/netpractice_result.png" }
+		]' data-description="🌐 NetPractice – Résolution réseau
+		🧠 10 niveaux interactifs pour comprendre TCP/IP
+		• Configuration d’adresses IP & sous-réseaux
+		• Problèmes de connectivité simulés
+		• Routage, masques & debugging en live
+		🛠️ Projet réseau pratique 100 % front dans le navigateur
+		Une plongée fun & pédagogique dans la réseautique 💻" data-tech="Networking, TCPIP, Subnetting, SystemAdmin, 42Paris, NetworkLab, ProblemSolving" data-github="https://github.com/Ealves96/NetPractice" data-live="#"><img src="img/netpractice.png" alt="Miniature 42">
+			<div class="project-overlay"><span class="project-title-overlay">NetPractice</span></div>
+			<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 8: NetPractice -->
-    <a href="#" class="project-item" id="post-netpractice" data-category="backend" data-title="NETPRACTICE" data-image="img/netpractice_result.png" data-media='[
-        { "type": "image", "src": "img/level1.png" },
-        { "type": "image", "src": "img/level3.png" },
-        { "type": "image", "src": "img/level9.png" },
-        { "type": "image", "src": "img/level10.png" },
-        { "type": "image", "src": "img/netpractice_result.png" }
-    ]' data-description="🌐 NetPractice – Résolution réseau
-    🧠 10 niveaux interactifs pour comprendre TCP/IP
-    • Configuration d’adresses IP & sous-réseaux
-    • Problèmes de connectivité simulés
-    • Routage, masques & debugging en live
-    🛠️ Projet réseau pratique 100 % front dans le navigateur
-    Une plongée fun & pédagogique dans la réseautique 💻" data-tech="Networking, TCPIP, Subnetting, SystemAdmin, 42Paris, NetworkLab, ProblemSolving" data-github="https://github.com/Ealves96/NetPractice" data-live="#"><img src="img/netpractice.png" alt="Miniature 42">
-        <div class="project-overlay"><span class="project-title-overlay">NetPractice</span></div>
-        <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 9: DSLR -->
+	<a href="#" class="project-item" id="post-dslr" data-category="data" data-title="DSLR &#10 (En cours)" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745436903/IN_PROCESS..._sjbvvg.mp4" }
+		]' data-description="🧙‍♂️ DataScience x Sorting Hat – Hogwarts Classifier
+		🔍 Projet ML : logistic regression multi-classe
+		• Analyse & visualisation de données : histo, scatter, pair plots
+		• Implémentation from scratch du modèle (sans lib 'magique' 🪄)
+		• Prédictions précises des maisons à 98% minimum !
+		📈 Gradient descent, cost function & prédictions Hogwarts-style
+		Quand la magie rencontre les maths 🧠" data-tech="MachineLearning, PythonDev, DataScience, LogReg, 42Paris, AIProjects, HogwartsClassifier" data-github="#" data-live="#"><img src="img/hp.png" alt="Miniature 42">
+		<div class="project-overlay">
+			<span class="project-title-overlay">DSLR</span>
+		</div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 
-    <!-- Projet 9: DSLR -->
-    <a href="#" class="project-item" id="post-dslr" data-category="data" data-title="DSLR &#10 (En cours)" data-media='[
-        { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745436903/IN_PROCESS..._sjbvvg.mp4" }
-    ]' data-description="🧙‍♂️ DataScience x Sorting Hat – Hogwarts Classifier
-    🔍 Projet ML : logistic regression multi-classe
-    • Analyse & visualisation de données : histo, scatter, pair plots
-    • Implémentation from scratch du modèle (sans lib 'magique' 🪄)
-    • Prédictions précises des maisons à 98% minimum !
-    📈 Gradient descent, cost function & prédictions Hogwarts-style
-    Quand la magie rencontre les maths 🧠" data-tech="MachineLearning, PythonDev, DataScience, LogReg, 42Paris, AIProjects, HogwartsClassifier" data-github="#" data-live="#"><img src="img/hp.png" alt="Miniature 42">
-    <div class="project-overlay">
-        <span class="project-title-overlay">DSLR</span>
-    </div>
-    <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
-
-    <!-- Projet 10: La Tribu d'Isidor -->
-    <a href="#" class="project-item" id="post-latribu" data-category="frontend" data-title="LA TRIBU D'ISIDOR &#10 (Free-lance / En cours)" data-image="img/tribu.png" data-media='[
-        { "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745436903/IN_PROCESS..._sjbvvg.mp4" }
-    ]' data-description="🐾 Plateforme Pet Sitting – Freelance
-    📄 Formulaires en ligne sur mesure
-    • Inscription clients & pet sitters
-    • Quiz interactif pour tester les connaissances
-    📧 Envoi automatique par mail (serveur dédié)
-    • UI claire, responsive & expérience fluide
-    💼 Projet pro pour le lancement d’une entreprise
-    Projet en cours 🐶🐱" data-tech="FreelanceDev, PetSitting, WebForm, EmailServer, FrontEnd, UXDesign, WomenInTech" data-github="#" data-live="#"><img src="img/tribu.png" alt="Miniature La Tribu">
-    <div class="project-overlay">
-        <span class="project-title-overlay">Data Dashboard</span>
-    </div>
-    <span class="multi-media-icon" aria-hidden="true"></span>
-    </a>
+	<!-- Projet 10: La Tribu d'Isidor -->
+	<a href="#" class="project-item" id="post-latribu" data-category="frontend" data-title="LA TRIBU D'ISIDOR &#10 (Free-lance / En cours)" data-image="img/tribu.png" data-media='[
+			{ "type": "video", "src": "https://res.cloudinary.com/dzo1cimyr/video/upload/v1745436903/IN_PROCESS..._sjbvvg.mp4" }
+		]' data-description="🐾 Plateforme Pet Sitting – Freelance
+		📄 Formulaires en ligne sur mesure
+		• Inscription clients & pet sitters
+		• Quiz interactif pour tester les connaissances
+		📧 Envoi automatique par mail (serveur dédié)
+		• UI claire, responsive & expérience fluide
+		💼 Projet pro pour le lancement d’une entreprise
+		Projet en cours 🐶🐱" data-tech="FreelanceDev, PetSitting, WebForm, EmailServer, FrontEnd, UXDesign, WomenInTech" data-github="#" data-live="#"><img src="img/tribu.png" alt="Miniature La Tribu">
+		<div class="project-overlay">
+			<span class="project-title-overlay">Data Dashboard</span>
+		</div>
+		<span class="multi-media-icon" aria-hidden="true"></span>
+	</a>
 </div>
+				<div id="projectModal" class="modal">
+	<div class="modal-content"> 
+		<div class="modal-mobile-header">
+			<div class="modal-author">
+				<div class="author-avatar">
+					<img src="img/photo cv.jpg" alt="Avatar auteur">
+				</div>
+				<span class="author-name">Elisabeth Alves</span>
+			</div>
+		</div>
 
-                <!-- === Inclusion Project Modal === -->
-                <!-- partials/_project-modal.html -->
-<!-- UNIQUEMENT le code de la modale -->
+		<div class="modal-layout">
+			<div class="modal-image-section">
+				<img id="modalImage" src="https://via.placeholder.com/600x400" alt="Image du projet">
+				<video id="modalVideo" src="" style="display: none;" muted="" playsinline="" controls=""></video> 
+				<button class="modal-play-overlay" id="modalPlayButton" aria-label="Lire la vidéo" style="display: none;">
+					<i class="fas fa-play"></i>
+				</button>
+				<div class="slide-indicators-desktop"></div>
+				<div class="slide-indicators-mobile"></div>
+			</div>
+			<div class="modal-mobile-actions">
+				<div class="mobile-actions-left">
+					<button class="action-button like-button" aria-label="Aimer"><i class="far fa-heart"></i></button>
+					<button class="action-button comment-button" aria-label="Commenter"><i class="far fa-comment"></i></button>
+					<button class="action-button share-button" aria-label="Partager"><i class="far fa-paper-plane"></i></button>
+				</div>
+				<div class="mobile-actions-right">
+					 <button class="action-button save-button" aria-label="Enregistrer"><i class="far fa-bookmark"></i></button>
+				</div>
+			</div>
+			<div class="modal-info-section">
+				<div class="modal-header">
+					<div class="modal-author">
+						<div class="author-avatar">
+							<img src="img/photo cv.jpg" alt="Avatar auteur">
+						</div>
+						<span class="author-name">Elisabeth Alves</span>
+					</div>
+					<button id="closeModalButtonDesktop" class="close-button" aria-label="Fermer">×</button>
+				</div>
+				<div class="modal-description-container">
+					<div class="modal-description-content">
+						<div class="author-description-line">
+							 <span class="modal-author-inline">
+								<img src="img/photo cv.jpg" alt="Avatar auteur" class="author-avatar author-avatar-inline">
+								 <span class="author-name">Elisabeth Alves</span>
+							 </span>
+							 <span id="modalDescription">Description détaillée...</span>
+						</div>
+						<p id="modalTech" class="modal-tech-stack">#Tech1 #Tech2</p>
 
-<div id="projectModal" class="modal"> <!-- ID utilisé par JS -->
-    <div class="modal-content"> 
-        <!-- Header Mobile (visible uniquement en mobile via CSS) -->
-        <div class="modal-mobile-header">
-            <div class="modal-author">
-                <div class="author-avatar">
-                    <img src="img/photo cv.jpg" alt="Avatar auteur">
-                </div>
-                <span class="author-name">Elisabeth Alves</span>
-            </div>
-            <!-- Le bouton fermer mobile est positionné absolument par CSS -->
-        </div>
+					</div>
+				</div>
 
-        <!-- Layout principal (Desktop: 2 colonnes, Mobile: Média puis Infos) -->
-        <div class="modal-layout">
+				<div class="modal-actions-bar">
+					<div class="actions-left">
+						<button class="action-button like-button" aria-label="Aimer"><i class="far fa-heart"></i></button>
+						<button class="action-button comment-button" aria-label="Commenter"><i class="far fa-comment"></i></button>
+						<button class="action-button share-button" aria-label="Partager"><i class="far fa-paper-plane"></i></button>
+					</div>
+					<div class="actions-right">
+						 <button class="action-button save-button" aria-label="Enregistrer"><i class="far fa-bookmark"></i></button>
+					</div>
+				</div>
 
-            <!-- Section Image (Gauche Desktop / Haut Mobile) -->
-            <div class="modal-image-section">
-                <img id="modalImage" src="https://via.placeholder.com/600x400" alt="Image du projet"> <!-- ID utilisé par JS -->
-                <video id="modalVideo" src="" style="display: none;" muted="" playsinline="" controls=""></video> 
-                <button class="modal-play-overlay" id="modalPlayButton" aria-label="Lire la vidéo" style="display: none;">
-                    <i class="fas fa-play"></i> <!-- Ou une autre icône Play de Font Awesome -->
-                </button>
-                <!-- Indicateurs de slide Desktop -->
-                <div class="slide-indicators-desktop"></div> <!-- Classe utilisée par JS/CSS -->
-                 <!-- Indicateurs de slide Mobile (positionnés différemment) -->
-                <div class="slide-indicators-mobile"></div> <!-- Classe utilisée par JS/CSS -->
-            </div>
-            <!-- Actions spécifiques Mobile (Affichées via JS/CSS) -->
-            <div class="modal-mobile-actions">
-                <div class="mobile-actions-left">
-                    <button class="action-button like-button" aria-label="Aimer"><i class="far fa-heart"></i></button>
-                    <button class="action-button comment-button" aria-label="Commenter"><i class="far fa-comment"></i></button>
-                    <button class="action-button share-button" aria-label="Partager"><i class="far fa-paper-plane"></i></button>
-                </div>
-                <div class="mobile-actions-right">
-                    <!-- Bouton Save/Bookmark Mobile si besoin -->
-                     <button class="action-button save-button" aria-label="Enregistrer"><i class="far fa-bookmark"></i></button>
-                </div>
-            </div>
-            <!-- Section Infos (Droite Desktop / Bas Mobile) -->
-            <div class="modal-info-section">
 
-                <!-- Header Infos Desktop (caché mobile) -->
-                <div class="modal-header">
-                    <div class="modal-author">
-                        <div class="author-avatar">
-                            <img src="img/photo cv.jpg" alt="Avatar auteur">
-                        </div>
-                        <span class="author-name">Elisabeth Alves</span>
-                    </div>
-                    <!-- Bouton fermer Desktop (ou utiliser celui positionné absolument) -->
-                    <button id="closeModalButtonDesktop" class="close-button" aria-label="Fermer">×</button> <!-- ID ajouté pour JS desktop si besoin -->
-                </div>
-
-                <!-- Conteneur Description/Tech Scrollable -->
-                <div class="modal-description-container">
-                    <!-- <h2 id="modalTitle">Titre du Projet</h2> -->
-                    <div class="modal-description-content">
-                        <div class="author-description-line">
-                             <span class="modal-author-inline"> <!-- Classe différente pour ciblage spécifique si besoin -->
-                                <img src="img/photo cv.jpg" alt="Avatar auteur" class="author-avatar author-avatar-inline">
-                                 <span class="author-name">Elisabeth Alves</span>
-                             </span>
-                             <span id="modalDescription">Description détaillée...</span> <!-- Changé en SPAN pour être inline-block -->
-                        </div>
-                        <p id="modalTech" class="modal-tech-stack">#Tech1 #Tech2</p>
-
-                    </div>
-                    <!-- Espace pour commentaires si besoin -->
-                </div>
-
-                <div class="modal-actions-bar">
-                    <div class="actions-left">
-                        <button class="action-button like-button" aria-label="Aimer"><i class="far fa-heart"></i></button>
-                        <button class="action-button comment-button" aria-label="Commenter"><i class="far fa-comment"></i></button>
-                        <button class="action-button share-button" aria-label="Partager"><i class="far fa-paper-plane"></i></button>
-                    </div>
-                    <div class="actions-right">
-                         <button class="action-button save-button" aria-label="Enregistrer"><i class="far fa-bookmark"></i></button>
-                    </div>
-                </div>
-
-             <!-- Section Ajout Commentaire Desktop -->
-             <div class="modal-footer-link-section">
-                <!-- === CONTENEUR AJOUTÉ POUR LES LIENS JS === -->
-                <div class="modal-project-links-footer">
-                    <!-- Les liens GitHub/Live seront ajoutés ici par js/modal.js -->
-                </div>
-                <!-- =========================================== -->
-            </div>
-        </div> <!-- Fin modal-info-section -->
-        
-        <div class="modal-mobile-actions">
-            <button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button>
-        </div>
-    </div> <!-- Fin modal-layout -->
-    <button class="modal-nav-button prev" id="prevModalButton" aria-label="Projet précédent" style="display: none;">
-        <i class="fas fa-chevron-left"></i>
-    </button>
-    <button class="modal-nav-button next" id="nextModalButton" aria-label="Projet suivant" style="display: none;">
-        <i class="fas fa-chevron-right"></i>
-    </button>
-</div> <!-- Fin modal-content -->
+			 <div class="modal-footer-link-section">
+				<div class="modal-project-links-footer">
+				</div>
+			</div>
+		</div> 
+		
+		<div class="modal-mobile-actions">
+			<button id="closeModalButtonMobile" class="close-button-mobile" aria-label="Fermer">×</button>
+		</div>
+	</div> 
+	<button class="modal-nav-button prev" id="prevModalButton" aria-label="Projet précédent" style="display: none;">
+		<i class="fas fa-chevron-left"></i>
+	</button>
+	<button class="modal-nav-button next" id="nextModalButton" aria-label="Projet suivant" style="display: none;">
+		<i class="fas fa-chevron-right"></i>
+	</button>
+</div> 
 
 </div>
+				<link rel="stylesheet" href="css/profile-stories.css">
 
-                <link rel="stylesheet" href="css/profile-stories.css">
+	<div class="stories-viewer" id="storiesViewer" style="display: none;">
+		<div class="stories-viewer-overlay"></div>
+		
+		<div class="stories-viewer-content">
+			<div class="stories-header">
+	   
+				<div class="stories-user-info">
+					<img src="img/photo cv.jpg" alt="Profile" class="stories-user-avatar">
+					<span class="stories-username">Elisabeth Alves</span>
+				</div>
+				<button class="stories-close-button" onclick="closeStoriesViewer()" aria-label="Fermer">×</button>
+			</div>
+			<div class="stories-media-container">
 
-    <div class="stories-viewer" id="storiesViewer" style="display: none;">
-        <div class="stories-viewer-overlay"></div>
-    
-        <div class="stories-viewer-content">
-            <div class="stories-header">
-       
-                <div class="stories-user-info">
-                    <img src="img/photo cv.jpg" alt="Profile" class="stories-user-avatar">
-                    <span class="stories-username">Elisabeth Alves</span>
-                </div>
+				<video src="" id="storyVideoContent" style="display: none;" autoplay="" muted="" loop="" playsinline=""></video>
+				<img src="" alt="Story Image" id="storyImageContent" style="display: none;">
+			</div>
+		</div> 
 
-                <!-- Ajouter l'onclick -->
-                <button class="stories-close-button" onclick="closeStoriesViewer()" aria-label="Fermer">×</button>
-            </div>
-            <div class="stories-media-container">
-
-                <video src="" id="storyVideoContent" style="display: none;" autoplay="" muted="" loop="" playsinline=""></video>
-                <img src="" alt="Story Image" id="storyImageContent" style="display: none;">
-            </div>
-        </div> 
-
-        <button class="stories-nav-button prev" id="storyPrevButton" style="display: none;"><</button>
-        <button class="stories-nav-button next" id="storyNextButton" style="display: none;">></button>
-    </div> 
-
-
-            </div> <!-- Fin profile-container -->
-        </main> <!-- Fin main-content -->
-
-    </div> <!-- Fin app-layout -->
-
-    <!-- ======================= Inclusion des fichiers JS ======================= -->
-    <script src="js/modal.js"></script>
+		<button class="stories-nav-button prev" id="storyPrevButton" style="display: none;"><</button>
+		<button class="stories-nav-button next" id="storyNextButton" style="display: none;">></button>
+	</div> 
+			</div>
+		</main>
+	</div> 
+	<script src="js/modal.js"></script>
 <script src="js/highlight-viewer.js"></script>
 <script src="js/tabs.js"></script>
 <script src="js/main.js"></script>
-<script src="js/sidebar.js"></script> <!-- << NOUVEAU JS pour la sidebar/thème -->
-    <script src="js/history-manager.js"></script>
-    <script src="js/header.js"></script>
-
+<script src="js/sidebar.js"></script> 
+	<script src="js/history-manager.js"></script>
+	<script src="js/header.js"></script>
 </body>
 </html>

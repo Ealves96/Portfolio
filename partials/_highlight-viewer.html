@@ -1,39 +1,20 @@
-<!-- ================== HIGHLIGHT VIEWER MODAL ================== -->
 <div class="highlight-viewer" id="highlightViewer" style="display: none;">
-    <!-- Overlay sombre (pour desktop) -->
-    <div class="highlight-viewer-overlay"></div>
+	<div class="highlight-viewer-overlay"></div>
+	<div class="highlight-viewer-content">
+		<div class="highlight-progress-bar-container"></div>
+		<div class="highlight-viewer-header">
+			<div class="highlight-info">
+				 <span class="highlight-viewer-icon">❓</span>
+				 <span class="highlight-viewer-title">Highlight</span>
+			</div>
+			<button class="highlight-close-button" onclick="closeHighlightViewer()" aria-label="Fermer">×</button>
+		</div>
+		<div class="highlight-media-container">
+			<img src="" alt="Highlight Content" id="highlightMediaContent" style="display: none;">
+			 <video src="" id="highlightVideoContent" style="display: none;" autoplay muted loop playsinline></video>
+		</div>
+		<button class="highlight-nav-button prev" id="highlightPrevButton" style="display: none;"><</button>
+		<button class="highlight-nav-button next" id="highlightNextButton" style="display: none;">></button>
 
-    <!-- Conteneur principal du contenu -->
-    <div class="highlight-viewer-content">
-
-        <!-- Barre de progression (similaire à Insta) - Optionnel -->
-        <div class="highlight-progress-bar-container">
-            <!-- Les barres seront ajoutées dynamiquement par JS si plusieurs slides -->
-            <!-- <div class="highlight-progress-bar"><div class="progress"></div></div> -->
-        </div>
-
-        <!-- Header (Titre du highlight + Bouton Fermer) -->
-        <div class="highlight-viewer-header">
-            <div class="highlight-info">
-                <!-- Peut-être afficher l'icône et le titre du highlight cliqué -->
-                 <span class="highlight-viewer-icon">❓</span> <!-- Sera remplacé par JS -->
-                 <span class="highlight-viewer-title">Highlight</span> <!-- Sera remplacé par JS -->
-            </div>
-            <button class="highlight-close-button" onclick="closeHighlightViewer()" aria-label="Fermer">×</button>
-        </div>
-
-        <!-- Zone d'affichage du média (Image/Vidéo/Texte) -->
-        <div class="highlight-media-container">
-            <!-- Le contenu (image/vidéo) sera injecté ici par JS -->
-            <img src="" alt="Highlight Content" id="highlightMediaContent" style="display: none;">
-             <video src="" id="highlightVideoContent" style="display: none;" autoplay muted loop playsinline></video>
-             <!-- <div id="highlightTextContent" style="display: none;"></div> -->
-        </div>
-
-        <!-- Boutons de navigation (Précédent/Suivant) -->
-        <button class="highlight-nav-button prev" id="highlightPrevButton" style="display: none;"><</button>
-        <button class="highlight-nav-button next" id="highlightNextButton" style="display: none;">></button>
-
-    </div>
+	</div>
 </div>
-<!-- ================= END HIGHLIGHT VIEWER MODAL ================== -->

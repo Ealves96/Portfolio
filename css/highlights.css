@@ -1,72 +1,59 @@
 .highlights-section {
-    padding: 0 0 30px 0; /* Espace en bas avant les onglets/grille */
+	padding: 0 0 30px 0;
 }
 
 .highlights-list {
-    display: flex;
-    margin-left: 35px;
-    margin-top: 40px;
-    margin-bottom: 30px;
-    gap: 30px; /* Espace entre les cercles */
-    overflow-x: auto; /* Permet de scroller horizontalement si trop d'éléments */
-    padding: 5px 0; /* Petit padding pour l'ombre/bordure */
+	display: flex;
+	margin-left: 35px;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	gap: 30px;
+	overflow-x: auto;
+	padding: 5px 0;
 }
-/* Cache la scrollbar par défaut (esthétique) */
+
 .highlights-list::-webkit-scrollbar {
-    display: none;
+	display: none;
 }
 .highlights-list {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+	-ms-overflow-style: none; 
+	scrollbar-width: none; 
 }
 
 
 .highlight-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-shrink: 0; /* Empêche les items de rétrécir */
-    width: 80px; /* Largeur fixe pour chaque item */
-    cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0; 
+	width: 80px;
+	cursor: pointer;
 }
 
 .highlight-border-wrapper {
-    padding: 2px; /* Épaisseur de l'espace entre le cercle extérieur et intérieur */
-    border-radius: 50%; /* Le rend circulaire */
-    /* === Appliquez VOTRE dégradé ici === */
-    background: linear-gradient(135deg, #f2c7ea, #8a39d6);
-    /* Ajustez la taille si nécessaire, ou laissez le contenu la définir */
-    /* width: 70px; /* Optionnel: Dépend de la taille du cercle intérieur + padding */
-    /* height: 70px; */
-    margin-bottom: 5px; /* Déplacer la marge du cercle ici */
-    box-sizing: border-box; /* Inclut le padding dans la taille si définie */
-    display: inline-block; /* Pour que la taille s'ajuste ou pour le centrage */
+	padding: 2px; 
+	border-radius: 50%; 
+	background: linear-gradient(135deg, #f2c7ea, #8a39d6);
+	margin-bottom: 5px; 
+	box-sizing: border-box;
+	display: inline-block; 
 }
 
 .highlight-circle {
-    width: 66px; /* Taille du cercle intérieur */
-    height: 66px;
-    border-radius: 50%;
-    /* border: 1px solid var(--highlight-border); */
-    /* margin-bottom: 5px; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff; /* Fond blanc pour le cercle */
-    box-sizing: border-box;
+	width: 66px;
+	height: 66px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #fff; 
+	box-sizing: border-box;
 }
-
-/* Effet de hover léger */
-/* .highlight-circle:hover {
-   border-color: var(--secondary-text-color);
-} */
-
 
 .highlight-placeholder {
-    font-size: 30px; /* Taille de l'emoji/icône placeholder */
+	font-size: 30px; 
 }
 
-/* Si on mettait une image dedans */
 .highlight-circle img {
   width: 100%;
   height: 100%;
@@ -75,70 +62,63 @@
 }
 
 .highlight-title {
-    font-size: 12px; /* Petite taille pour le titre */
-    color: var(--primary-text-color);
-    text-align: center;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Ajoute "..." si le texte est trop long */
-    width: 100%; /* Assure que text-overflow fonctionne */
-    color: var(--text-primary);
+	font-size: 12px; 
+	color: var(--primary-text-color);
+	text-align: center;
+	white-space: nowrap; 
+	overflow: hidden;
+	text-overflow: ellipsis; 
+	width: 100%; 
+	color: var(--text-primary);
 }
 
-/* --- Responsive pour les Highlights --- */
 @media (max-width: 768px) {
-    .highlights-section {
-        padding: 0 0 20px 0;
-        /* border-top: 1px solid var(--border-color); */
-        padding-top: 15px;
-        /* Optionnel: Enlever le padding global du parent si vous voulez coller au bord */
-        /* padding-left: 0; */
-        /* padding-right: 0; */
-    }
+	.highlights-section {
+		padding: 0 0 20px 0;
+		padding-top: 15px;
+	}
 
-    .highlights-list {
-        display: flex; /* Garder flex */
-        justify-content: flex-start; /* <<< Confirmer l'alignement à gauche */
-        gap: 15px;
-        overflow-x: auto; /* Garder le scroll horizontal */
-        padding-left: 0px; /* <<< AJUSTER padding gauche pour l'espace au bord */
-        padding-right: 15px; /* Padding droit pour ne pas coller à la fin du scroll */
-        padding-top: 5px; /* Garder padding vertical */
-        padding-bottom: 5px;
-        margin-left: 0; /* <<< ANNULER la marge desktop */
-        /* Les styles pour cacher la scrollbar restent valides */
-        margin-top: -20px;
-         -ms-overflow-style: none;
-         scrollbar-width: none;
-    }
+	.highlights-list {
+		display: flex; 
+		justify-content: flex-start; 
+		gap: 15px;
+		overflow-x: auto; 
+		padding-left: 0px; 
+		padding-right: 15px;
+		padding-top: 5px; 
+		padding-bottom: 5px;
+		margin-left: 0; 
+		margin-top: -20px;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
 
-    .highlights-list::-webkit-scrollbar {
-        display: none;
-     }
+	.highlights-list::-webkit-scrollbar {
+		display: none;
+	 }
 
-    .highlight-item {
-        width: 70px;
-        /* margin-left: 5px; */
-    }
-    .highlight-circle {
-        width: 60px;
-        height: 60px;
-    }
-     .highlight-placeholder {
-        font-size: 26px;
-    }
-    .highlight-title {
-        font-size: 11px;
-    }
-    .highlight-border-wrapper {
-        padding: 1.5px; /* Espace un peu plus fin sur mobile ? */
-        /* Ajustez la marge si besoin */
-    }
-    .highlight-circle {
-        width: 60px; /* Ajustez la taille mobile */
-        height: 60px;
-    }
-     .highlight-placeholder {
-        font-size: 26px;
-    }
+	.highlight-item {
+		width: 70px;
+	}
+	.highlight-circle {
+		width: 60px;
+		height: 60px;
+	}
+	 .highlight-placeholder {
+		font-size: 26px;
+	}
+	.highlight-title {
+		font-size: 11px;
+	}
+	.highlight-border-wrapper {
+		padding: 1.5px;
+	}
+
+	.highlight-circle {
+		width: 60px; 
+		height: 60px;
+	}
+	 .highlight-placeholder {
+		font-size: 26px;
+	}
 }

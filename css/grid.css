@@ -1,148 +1,121 @@
-/* Styles pour la grille de projets */
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    padding-top: 20px;
-    margin-top: -17px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 4px;
+	padding-top: 20px;
+	margin-top: -17px;
 }
 
 .project-item {
-    position: relative;
-    aspect-ratio: 12 / 16;
-    overflow: hidden;
-    cursor: pointer;
-    /* display: block; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white; 
-    border-bottom: 1px solid #eee;
-    border-top: 1px solid #eee;
-    border-left: 1px solid #eee;
-    border-right: 1px solid #eee;
-    transition: filter 0.2s ease; /* Pour un effet de survol subtil */
-    background-size: cover; 
-    background-position: center center;
-    background-repeat: no-repeat; 
+	position: relative;
+	aspect-ratio: 12 / 16;
+	overflow: hidden;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: white; 
+	border-bottom: 1px solid #eee;
+	border-top: 1px solid #eee;
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+	transition: filter 0.2s ease;
+	background-size: cover; 
+	background-position: center center;
+	background-repeat: no-repeat; 
 }
 
 .multi-media-icon {
-    display: none; /* Caché par défaut */
-    position: absolute;
-    top: 8px;      /* Ajuste la distance du haut */
-    right: 8px;     /* Ajuste la distance de la droite */
-    z-index: 3;      /* Assure qu'il est au-dessus de l'overlay (si l'overlay a un z-index inférieur ou pas de z-index) */
-    color: #ffffff;  /* Couleur de l'icône */
-    font-size: 16px; /* Taille de l'icône */
-    /* Ombre pour améliorer la visibilité sur différents fonds */
-    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
+	display: none;
+	position: absolute;
+	top: 8px;
+	right: 8px;
+	z-index: 3;
+	color: #ffffff;
+	font-size: 16px;
+	text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Utilisation d'un pseudo-élément pour afficher l'icône Font Awesome */
 .multi-media-icon::before {
-    /* Assure-toi que Font Awesome est chargé */
-    font-family: "Font Awesome 6 Free", "Font Awesome 6 Solid"; /* Vérifie le nom exact */
-    font-weight: 900; /* Nécessaire pour les icônes 'solid' */
-    /* Icône "clone" (deux carrés) ou "layer-group" (trois carrés) */
-    content: "\f24d"; /* Unicode pour fa-clone */
-    /* Ou utilise: content: "\f5fd"; */ /* Unicode pour fa-layer-group */
-    display: inline-block; /* Ou block */
+	font-family: "Font Awesome 6 Free", "Font Awesome 6 Solid";
+	font-weight: 900;
+	content: "\f24d";
+	display: inline-block;
 }
 
-/* Règle pour afficher l'icône QUAND le parent a la classe .has-multiple-media */
 .project-item.has-multiple-media .multi-media-icon {
-    display: inline-block; /* Ou block */
+	display: inline-block;
 }
 
-/* Cacher l'image placeholder (ou la laisser en arrière-plan si souhaité) */
-/* Option 1: La cacher complètement */
 .project-item img {
-   /* display: none; */
-   display: block; /* Comportement normal pour une image */
-   /* Limiter la taille à celle du conteneur */
+   display: block;
    max-width: 100%;
    max-height: 100%;
-   /* Conserver les proportions et afficher entièrement */
-   object-fit: contain; /* <<< C'EST LA CLÉ : Affiche tout sans couper */
+   object-fit: contain;
    object-position: center;
 }
 
-/* L'overlay est maintenant visible par défaut */
 .project-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(32, 32, 32, 0.85);
-    color: white; /* Couleur du texte (nom du projet) */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrage horizontal */
-    justify-content: center; /* Centrage vertical */
-    text-align: center;
-    padding: 15px; /* Espace autour du texte */
-
-    opacity: 0; /* CHANGER SI BESOIN */
-    transition: opacity 0.3s ease, background 0.3s ease; /* Garder une transition si on change l'opacité au survol */
-    pointer-events: none; /* L'overlay lui-même n'intercepte pas le clic (le <a> parent le fait) */
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(32, 32, 32, 0.85);
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 15px;
+	opacity: 0;
+	transition: opacity 0.3s ease, background 0.3s ease;
+	pointer-events: none;
 }
 
 .project-title-overlay {
-    font-weight: bold;
-    font-size: 1.3em; /* Ajustez la taille si besoin */
-    line-height: 1.3;
-    /* Gérer les textes longs */
-    max-height: 100%; /* Limite la hauteur au cas où */
-    overflow: hidden; /* Cache le texte qui dépasse */
-     /* Optionnel: Pour couper le texte avec "..." si trop long sur plusieurs lignes (nécessite ajustements)*/
-    /* display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical; */
-    word-break: break-word; /* Permet de couper les mots longs si nécessaire */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-    white-space: pre-line;
+	font-weight: bold;
+	font-size: 1.3em;
+	line-height: 1.3;
+	max-height: 100%;
+	overflow: hidden;
+	word-break: break-word;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+	white-space: pre-line;
 }
 
-/* --- Nouvel effet de survol (Optionnel) --- */
-/* On peut appliquer un effet subtil sur l'item entier au lieu de l'ancien zoom/fade */
 .project-item:hover {
-   filter: brightness(1.1); /* Éclaircit légèrement l'ensemble */
-   /* Ou assombrir: filter: brightness(0.9); */
+   filter: brightness(1.1);
 }
 
-/* Supprimer les anciens styles de survol spécifiques à l'overlay/image */
 .project-item:hover .project-overlay {
-    opacity: 1;
-}  /* Plus nécessaire pour afficher l'overlay */
-/* .project-item:hover img { ... } */ /* Plus nécessaire pour le zoom */
+	opacity: 1;
+}
 
 .project-title-overlay {
-    font-weight: bold;
-    font-size: 1.3em;
-    line-height: 1.3;
-    max-height: 100%;
-    overflow: hidden;
-    word-break: break-word;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+	font-weight: bold;
+	font-size: 1.3em;
+	line-height: 1.3;
+	max-height: 100%;
+	overflow: hidden;
+	word-break: break-word;
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
 }
 
-/* Classe pour masquer les projets non sélectionnés (reste inchangée) */
 .project-item.hidden {
-    display: none;
+	display: none;
 }
 
-/* --- Responsive (reste similaire) --- */
 @media (max-width: 768px) {
-    .project-grid {
-        gap: 3px;
-        margin-top: -17px;
-    }
-    .project-overlay {
-        padding: 10px;
-    }
-    .project-title-overlay {
-        font-size: 13px; /* Titre plus petit sur mobile */
-    }
+	.project-grid {
+		gap: 3px;
+		margin-top: -17px;
+	}
+	.project-overlay {
+		padding: 10px;
+	}
+	.project-title-overlay {
+		font-size: 13px;
+	}
 }

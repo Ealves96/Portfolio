@@ -1,52 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <!-- Inclut le contenu de _head.html -->
-    <include src="partials/_head.html"></include>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<include src="partials/_head.html"></include>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
-
-    <!-- ======================= Nouvelle Structure Globale ======================= -->
-    <div class="app-layout">
-
-        <!-- === Inclusion Sidebar === -->
-        <include src="partials/_sidebar.html"></include>
-
-        <!-- ======================= Contenu Principal ======================= -->
-        <main class="main-content">
-            <div class="profile-container">
-
-                <!-- === Inclusion Header === -->
-                <include src="partials/_header.html"></include>
-
-                <!-- === Inclusion Highlights === -->
-                <include src="partials/_highlights.html"></include>
-                
-                <!-- === Inclusion Highlights Viewer === -->
-                <include src="partials/_highlight-viewer.html"></include>
-
-                <!-- === Inclusion Tabs === -->
-                <include src="partials/_tabs.html"></include>
-
-                <!-- === Inclusion Project Grid === -->
-                <include src="partials/_project-grid.html"></include>
-
-                <!-- === Inclusion Project Modal === -->
-                <include src="partials/_project-modal.html"></include>
-
-                <include src="partials/_stories-viewer.html"></include>
-
-
-            </div> <!-- Fin profile-container -->
-        </main> <!-- Fin main-content -->
-
-    </div> <!-- Fin app-layout -->
-
-    <!-- ======================= Inclusion des fichiers JS ======================= -->
-    <include src="partials/_scripts.html"></include>
-    <script src="js/history-manager.js"></script>
-    <script src="js/header.js"></script>
-
+	<div class="app-layout">
+		<include src="partials/_sidebar.html"></include>
+		
+		<main class="main-content">
+			<div class="profile-container">
+				<include src="partials/_header.html"></include>
+				<include src="partials/_highlights.html"></include>
+				<include src="partials/_highlight-viewer.html"></include>
+				<include src="partials/_tabs.html"></include>
+				<include src="partials/_project-grid.html"></include>
+				<include src="partials/_project-modal.html"></include>
+				<include src="partials/_stories-viewer.html"></include>
+			</div>
+		</main>
+	</div> 
+	<include src="partials/_scripts.html"></include>
+	<script src="js/history-manager.js"></script>
+	<script src="js/header.js"></script>
 </body>
 </html>

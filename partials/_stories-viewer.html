@@ -1,26 +1,24 @@
 <link rel="stylesheet" href="css/profile-stories.css">
 
-    <div class="stories-viewer" id="storiesViewer" style="display: none;">
-        <div class="stories-viewer-overlay"></div>
-    
-        <div class="stories-viewer-content">
-            <div class="stories-header">
-       
-                <div class="stories-user-info">
-                    <img src="img/photo cv.jpg" alt="Profile" class="stories-user-avatar">
-                    <span class="stories-username">Elisabeth Alves</span>
-                </div>
+	<div class="stories-viewer" id="storiesViewer" style="display: none;">
+		<div class="stories-viewer-overlay"></div>
+		
+		<div class="stories-viewer-content">
+			<div class="stories-header">
+	   
+				<div class="stories-user-info">
+					<img src="img/photo cv.jpg" alt="Profile" class="stories-user-avatar">
+					<span class="stories-username">Elisabeth Alves</span>
+				</div>
+				<button class="stories-close-button" onclick="closeStoriesViewer()" aria-label="Fermer">×</button>
+			</div>
+			<div class="stories-media-container">
 
-                <!-- Ajouter l'onclick -->
-                <button class="stories-close-button" onclick="closeStoriesViewer()" aria-label="Fermer">×</button>
-            </div>
-            <div class="stories-media-container">
+				<video src="" id="storyVideoContent" style="display: none;" autoplay muted loop playsinline></video>
+				<img src="" alt="Story Image" id="storyImageContent" style="display: none;">
+			</div>
+		</div> 
 
-                <video src="" id="storyVideoContent" style="display: none;" autoplay muted loop playsinline></video>
-                <img src="" alt="Story Image" id="storyImageContent" style="display: none;">
-            </div>
-        </div> 
-
-        <button class="stories-nav-button prev" id="storyPrevButton" style="display: none;"><</button>
-        <button class="stories-nav-button next" id="storyNextButton" style="display: none;">></button>
-    </div> 
+		<button class="stories-nav-button prev" id="storyPrevButton" style="display: none;"><</button>
+		<button class="stories-nav-button next" id="storyNextButton" style="display: none;">></button>
+	</div> 

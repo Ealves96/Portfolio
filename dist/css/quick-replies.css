@@ -1,79 +1,70 @@
-/* ============================================ */
-/* ==      css/quick-replies.css             == */
-/* ============================================ */
-
-/* Container des boutons de réponse rapide */
 .quick-replies-container {
-    padding: 15px 20px;
-    margin-bottom: 15px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: left;
-    position: relative;
-    z-index: 3; /* S'assurer que les boutons restent cliquables */
-    background-color: var(--content-bg); /* Fond pour éviter la transparence */
+	padding: 15px 20px;
+	margin-bottom: 15px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: left;
+	position: relative;
+	z-index: 3;
+	background-color: var(--content-bg);
 }
 
-/* Style des boutons */
 .quick-reply-btn {
-    background-color: var(--content-bg);
-    border: 1px solid var(--border-main);
-    border-radius: 20px;
-    padding: 8px 16px;
-    font-size: 14px;
-    white-space: nowrap;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    color: var(--text-primary);
+	background-color: var(--content-bg);
+	border: 1px solid var(--border-main);
+	border-radius: 20px;
+	padding: 8px 16px;
+	font-size: 14px;
+	white-space: nowrap;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	color: var(--text-primary);
 }
 
 .quick-reply-btn:hover {
-    background-color: var(--hover-bg);
-    border-color: var(--text-secondary);
+	background-color: var(--hover-bg);
+	border-color: var(--text-secondary);
 }
 
 .quick-reply-btn.active {
-    background-color: var(--primary-button-bg);
-    color: white;
-    border-color: var(--primary-button-bg);
+	background-color: var(--primary-button-bg);
+	color: white;
+	border-color: var(--primary-button-bg);
 }
 
-/* Thème sombre */
 [data-theme="dark"] .quick-reply-btn {
-    background-color: var(--content-bg-dark);
-    border-color: var(--border-main-dark);
+	background-color: var(--content-bg-dark);
+	border-color: var(--border-main-dark);
 }
 
 [data-theme="dark"] .quick-reply-btn:hover {
-    background-color: var(--hover-bg-dark);
+	background-color: var(--hover-bg-dark);
 }
 
-/* Styles mobile */
 @media (max-width: 768px) {
-    .quick-replies-container {
-        padding: 10px;
-        background-color: var(--content-bg);
-        position: fixed; /* Changer sticky en fixed */
-        bottom: 60px; /* Ajuster selon la hauteur de votre message-input-area */
-        left: 0;
-        right: 0;
-        margin-bottom: 15px; /* Supprimer la marge qui peut causer des problèmes */
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        justify-content: flex-start;
-        -webkit-overflow-scrolling: touch;
-        border-top: 1px solid var(--border-main);
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05); /* Ajouter une ombre subtile */
-        z-index: 100; /* S'assurer qu'il reste au-dessus de tout */
-    }
+	.quick-replies-container {
+		padding: 10px;
+		background-color: var(--content-bg);
+		position: fixed; 
+		bottom: 60px; 
+		left: 0;
+		right: 0;
+		margin-bottom: 15px;
+		overflow-x: auto;
+		flex-wrap: nowrap;
+		justify-content: flex-start;
+		-webkit-overflow-scrolling: touch;
+		border-top: 1px solid var(--border-main);
+		box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+		z-index: 100;
+	}
 
-    /* Ajuster l'espace pour les messages pour éviter le chevauchement */
-    .message-list {
-        padding-bottom: 120px; /* Espace pour les quick replies + input */
-    }
+	.message-list {
+		padding-bottom: 120px; 
+	}
 
-    .quick-replies-container::-webkit-scrollbar {
-        display: none;
-    }
+	.quick-replies-container::-webkit-scrollbar {
+		display: none;
+	}
 }

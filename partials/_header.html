@@ -1,93 +1,78 @@
-<!-- partials/_header.html -->
+<header class="profile-header">
 
-<header class="profile-header"> <!-- Classe générique pour le header -->
-
-    <!-- ======================================== -->
-    <!-- ==    STRUCTURE POUR LE DESKTOP       == -->
-    <!-- == (Sera cachée sur mobile via CSS)  == -->
-    <!-- ======================================== -->
-    <div class="profile-header-section profile-header-desktop-view">
-        <div class="profile-header-top">
-            <div class="profile-pic-container">
-                <div class="profile-pic-border-wrapper">
-                    <img src="img/photo cv.jpg" alt="Photo de profil" class="profile-pic" onclick="openStories()">
-                </div>
-            </div>
-            <div class="profile-info-top">
-                <div class="profile-top-bar">
-                    <h2 class="profile-username">Elisabeth Alves</h2> <!-- Nom Desktop -->
-                    <div class="profile-actions-desktop"> <!-- Boutons Desktop -->
-                        <a href="mailto:ealves0996@gmail.com" class="button">Email</a>
-                        <a href="https://calendly.com/ealves0996/entretien" class="button"
-                        target="_blank" 
-                        rel="noopener noreferrer">Prendre RDV</a>
-                    </div>
-                </div>
-                <ul class="profile-stats"> <!-- Stats Desktop -->
-                    <li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
-                    <li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
-                    <li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
-                </ul>
-                <div class="profile-bio-section-desktop"> <!-- Bio Desktop -->
-                    <p class="profile-real-name">📍 Looking for a DevOps internship</p>
-                    <div class="profile-bio">
-                        <p> 🎓 Common core done<br>
-                            🔧 DevOps trainee – 42 Paris<br>
-                            🐧 Linux · Docker · C++ web server<br>
-                            🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
-                    </div>
-                </div>
-            </div> <!-- Fin profile-info-top -->
-        </div> <!-- Fin profile-header-top -->
-    </div> <!-- Fin profile-header-desktop-view -->
+	<!-- ==================== -->
+	<!-- ==		DESKTOP	   == -->
+	<!-- ==================== -->
+	<div class="profile-header-section profile-header-desktop-view">
+		<div class="profile-header-top">
+			<div class="profile-pic-container">
+				<div class="profile-pic-border-wrapper">
+					<img src="img/photo cv.jpg" alt="Photo de profil" class="profile-pic" onclick="openStories()">
+				</div>
+			</div>
+			<div class="profile-info-top">
+				<div class="profile-top-bar">
+					<h2 class="profile-username">Elisabeth Alves</h2> 
+					<div class="profile-actions-desktop"> <
+						<a href="mailto:ealves0996@gmail.com" class="button">Email</a>
+						<a href="https://calendly.com/ealves0996/entretien" class="button"
+						target="_blank" 
+						rel="noopener noreferrer">Prendre RDV</a>
+					</div>
+				</div>
+				<ul class="profile-stats"> 
+					<li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
+					<li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
+					<li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
+				</ul>
+				<div class="profile-bio-section-desktop"> 
+					<p class="profile-real-name">📍 Looking for a DevOps internship</p>
+					<div class="profile-bio">
+						<p> 🎓 Common core done<br>
+							🔧 DevOps trainee – 42 Paris<br>
+							🐧 Linux · Docker · C++ web server<br>
+							🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
+					</div>
+				</div>
+			</div> 
+		</div> 
+	</div> 
 
 
-    <!-- ======================================== -->
-    <!-- ==     STRUCTURE POUR LE MOBILE       == -->
-    <!-- == (Sera cachée sur desktop via CSS) == -->
-    <!-- ======================================== -->
-    <div class="profile-header-section profile-header-mobile-view">
-
-        <!-- 1. Nom Mobile -->
-        <h2 class="profile-username-mobile">
-            <span>Elisabeth Alves</span>
-            <i class="fa-solid fa-chevron-down username-dropdown-icon"></i>
-        </h2>
-
-        <!-- 2. Ligne Photo | Stats (Structure qui fonctionnait) -->
-        <div class="photo-stats-container">
-            <div class="profile-pic-container">
-                <div class="profile-pic-border-wrapper">
-                    <img src="img/photo cv.jpg" alt="Photo de profil">
-                </div>
-            </div>
-            <!-- Stats (utilisant la même classe que desktop pour le style interne) -->
-            <ul class="profile-stats">
-                <li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
-                <li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
-                <li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
-            </ul>
-        </div>
-
-        <!-- 3. Bio Mobile -->
-        <div class="profile-bio-section-mobile">
-            <p class="profile-real-name">📍 Looking for a DevOps internship</p>
-            <div class="profile-bio">
-                <p> 🎓 Common core done<br>
-                    🔧 DevOps trainee – 42 Paris<br>
-                    🐧 Linux · Docker · C++ web server<br>
-                    🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
-            </div>
-        </div>
-
-        <!-- 4. Boutons Mobile -->
-        <div class="profile-actions-mobile">
-            <a href="mailto:ealves0996@gmail.com" class="button">Email</a>
-            <a href="https://calendly.com/ealves0996/entretien" class="button"
-            target="_blank" 
-            rel="noopener noreferrer">Prendre RDV</a>
-       </div>
-
-    </div> <!-- Fin profile-header-mobile-view -->
-
+	<!-- ==================== -->
+	<!-- ==		MOBILE	   == -->
+	<!-- ====================-->
+	<div class="profile-header-section profile-header-mobile-view">
+		<h2 class="profile-username-mobile">
+			<span>Elisabeth Alves</span>
+			<i class="fa-solid fa-chevron-down username-dropdown-icon"></i>
+		</h2>
+		<div class="photo-stats-container">
+			<div class="profile-pic-container">
+				<div class="profile-pic-border-wrapper">
+					<img src="img/photo cv.jpg" alt="Photo de profil">
+				</div>
+			</div>
+			<ul class="profile-stats">
+				<li><span class="stat-number">15</span> <span class="stat-label">Projets</span></li>
+				<li><span class="stat-number">+17</span> <span class="stat-label">Compétences</span></li>
+				<li><span class="stat-number">+2</span> <span class="stat-label">Ecole 42</span></li>
+			</ul>
+		</div>
+		<div class="profile-bio-section-mobile">
+			<p class="profile-real-name">📍 Looking for a DevOps internship</p>
+			<div class="profile-bio">
+				<p> 🎓 Common core done<br>
+					🔧 DevOps trainee – 42 Paris<br>
+					🐧 Linux · Docker · C++ web server<br>
+					🚀 In progress: Ansible, Kubernetes (K3s, Argo CD)</p>
+			</div>
+		</div>
+		<div class="profile-actions-mobile">
+			<a href="mailto:ealves0996@gmail.com" class="button">Email</a>
+			<a href="https://calendly.com/ealves0996/entretien" class="button"
+			target="_blank" 
+			rel="noopener noreferrer">Prendre RDV</a>
+	   </div>
+	</div>
 </header>

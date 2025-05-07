@@ -344,14 +344,15 @@
     top: 20px;
     right: -300px; /* Commence hors écran */
     background: var(--accent-color);
-    color: black;
+    background-color: rgb(186, 76, 230);
+    color: white;
     padding: 12px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     display: flex;
     align-items: center;
     gap: 10px;
-    z-index: 1000;
+    z-index: 1100;
     transition: right 0.3s ease;
 }
 
